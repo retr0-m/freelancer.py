@@ -256,6 +256,92 @@ def get_leads(lead_id: Optional[int] = None, name: Optional[str] = None,
         if conn:
             conn.close()
 
+def update_lead_status(lead_id: int, new_status: int) -> bool:
+    """
+    Updates the status of a lead identified by lead_id.
+    Returns True if updated, False otherwise.
+    """
+    log(f"Attempting to update status for Lead ID {lead_id} → {new_status}")
+    conn = create_connection()
+    if conn is None:
+        log("Status update failed: No DB connection.")
+        return False
+
+    try:
+        cursor = conn.cursor()
+        sql = "UPDATE leads SET status = ? WHERE id = ?"
+        cursor.execute(sql, (new_status, lead_id))
+        conn.commit()
+
+        if cursor.rowcount == 0:
+            log(f"⚠️ No lead found with ID {lead_id}. No update performed.")
+            return False
+
+        log(f"✅ Status updated successfully for Lead ID {lead_id}.")
+        return True
+
+    except sqlite3.Error as e:
+        log(f"❌ Error updating status for Lead ID {lead_id}: {e}")
+        return False
+
+    finally:
+        conn.close()
+        
+        
+def add_image_to_lead(lead_id: int, image_url: str) -> bool:
+    """
+    Appends a new image URL to a lead's image list.
+    Returns True if successful.
+    """
+    log(f"Attempting to add image to Lead ID {lead_id}: {image_url}")
+    conn = create_connection()
+    if conn is None:
+        log("Image update failed: No DB connection.")
+        return False
+
+    try:
+        cursor = conn.cursor()
+
+        # Step 1: Get existing images
+        cursor.execute("SELECT images FROM leads WHERE id = ?", (lead_id,))
+        row = cursor.fetchone()
+
+        if not row:
+            log(f"⚠️ No lead found with ID {lead_id}. Cannot add image.")
+            return False
+
+        try:
+            current_images = json.loads(row['images']) if row['images'] else []
+        except json.JSONDecodeError:
+            current_images = []
+
+        # Avoid duplicates
+        if image_url in current_images:
+            log(f"⚠️ Image already exists in lead ID {lead_id}. Skipping.")
+            return False
+
+        # Step 2: Modify image list
+        current_images.append(image_url)
+        images_json = json.dumps(current_images)
+
+        # Step 3: Write updated list back to DB
+        cursor.execute(
+            "UPDATE leads SET images = ? WHERE id = ?",
+            (images_json, lead_id)
+        )
+        conn.commit()
+
+        log(f"✅ Image added to Lead ID {lead_id}. Total images: {len(current_images)}")
+        return True
+
+    except sqlite3.Error as e:
+        log(f"❌ Error adding image to Lead ID {lead_id}: {e}")
+        return False
+
+    finally:
+        conn.close()
+            
+
 if __name__ == "__main__":
     log("--- Starting Database Module Initialization ---")
     initialize_database()

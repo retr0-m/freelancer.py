@@ -1,0 +1,475 @@
+[2025-11-27 22:03:40.855]	[scrape_images.py]	Searching images for: *Ristorante Commercianti Lugano Lugano*
+[2025-11-27 22:03:41.873]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:03:42.264]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-11-27 22:03:42.488]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-11-27 22:03:42.922]	[scrape_images.py]	Downloaded: ./leads/1/images/4.jpg
+[2025-11-27 22:03:43.039]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-11-27 22:03:43.040]	[scrape_images.py]	images scraping done
+[2025-11-27 22:06:29.180]	[scrape_images.py]	Searching images for: *Al-74* Via Trevano 74 *Lugano*
+[2025-11-27 22:06:29.836]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:06:30.182]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-11-27 22:06:30.401]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-11-27 22:06:30.836]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-11-27 22:06:31.764]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:06:31.764]	[scrape_images.py]	images scraping done
+[2025-11-27 22:16:06.149]	[scrape_images.py]	Searching images for: *Al-74* Via Trevano 74 *Lugano*
+[2025-11-27 22:16:06.781]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:16:06.936]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-11-27 22:16:07.115]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-11-27 22:16:07.407]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-11-27 22:16:08.510]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:16:08.511]	[scrape_images.py]	images scraping done
+[2025-11-27 22:28:44.271]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 1, Ristorante Cantinone
+[2025-11-27 22:28:44.382]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 2, Ristorante La Pergola
+[2025-11-27 22:28:45.084]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 3, AL 74 Bar Ristorante Pizzeria
+[2025-11-27 22:28:47.590]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:28:48.523]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 4, Osteria Pizzeria Pazzallo
+[2025-11-27 22:28:48.585]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 5, Ristorante Pescheria Belvga
+[2025-11-27 22:28:48.719]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 6, La Tinèra
+[2025-11-27 22:28:49.123]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 7, Porto Bello! Ristorantino alla Foce di Lugano!
+[2025-11-27 22:28:49.202]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 8, Ristorante La Ticinella
+[2025-11-27 22:28:49.277]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 9, Bottegone
+[2025-11-27 22:28:49.340]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 10, Ristorante Bar Pizzeria Hollywood (Live Music)
+[2025-11-27 22:28:49.588]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 11, Bar-Ristorante pizzeria Bivio
+[2025-11-27 22:28:51.710]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:28:52.889]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 12, Grotto Rialdo
+[2025-11-27 22:28:53.346]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 13, Ristorante Schnitzy
+[2025-11-27 22:28:53.408]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 14, Grotto al Mulino
+[2025-11-27 22:28:53.980]	[find_customers.py]	Saved 14 leads to ./leads/index.csv
+[2025-11-27 22:28:53.981]	[scrape_images.py]	Searching images for: *Ristorante Cantinone* Piazza Cioccaro 8, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:28:54.522]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:28:54.665]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-11-27 22:28:54.818]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-11-27 22:28:54.942]	[scrape_images.py]	Downloaded: ./leads/1/images/4.jpg
+[2025-11-27 22:28:55.160]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-11-27 22:28:55.161]	[scrape_images.py]	images scraping done
+[2025-11-27 22:29:44.860]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 1, Ristorante Cantinone
+[2025-11-27 22:29:44.929]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 2, Ristorante La Pergola
+[2025-11-27 22:29:45.374]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 3, AL 74 Bar Ristorante Pizzeria
+[2025-11-27 22:29:47.905]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:29:48.567]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 4, Osteria Pizzeria Pazzallo
+[2025-11-27 22:29:48.611]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 5, Ristorante Pescheria Belvga
+[2025-11-27 22:29:48.793]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 6, La Tinèra
+[2025-11-27 22:29:49.019]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 7, Porto Bello! Ristorantino alla Foce di Lugano!
+[2025-11-27 22:29:49.065]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 8, Ristorante La Ticinella
+[2025-11-27 22:29:49.132]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 9, Bottegone
+[2025-11-27 22:29:49.199]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 10, Ristorante Bar Pizzeria Hollywood (Live Music)
+[2025-11-27 22:29:49.408]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 11, Bar-Ristorante pizzeria Bivio
+[2025-11-27 22:29:51.528]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:29:51.796]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 12, Grotto Rialdo
+[2025-11-27 22:29:52.167]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 13, Ristorante Schnitzy
+[2025-11-27 22:29:52.208]	[find_customers.py]	🎯 LEAD TROVATO e Inizializzato: ID 14, Grotto al Mulino
+[2025-11-27 22:29:52.626]	[find_customers.py]	Saved 14 leads to ./leads/index.csv
+[2025-11-27 22:29:52.627]	[scrape_images.py]	Searching images for: *Ristorante Cantinone* Piazza Cioccaro 8, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:29:53.111]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:29:53.237]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-11-27 22:29:53.428]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-11-27 22:29:53.575]	[scrape_images.py]	Downloaded: ./leads/1/images/4.jpg
+[2025-11-27 22:29:53.775]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-11-27 22:29:53.776]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:34.108]	[find_customers.py]	🎯 LEAD found and initialized: ID 1, Ristorante Cantinone
+[2025-11-27 22:31:34.488]	[find_customers.py]	🎯 LEAD found and initialized: ID 2, AL 74 Bar Ristorante Pizzeria
+[2025-11-27 22:31:34.944]	[find_customers.py]	🎯 LEAD found and initialized: ID 3, Ristorante Pescheria Belvga
+[2025-11-27 22:31:35.025]	[find_customers.py]	🎯 LEAD found and initialized: ID 4, La Tinèra
+[2025-11-27 22:31:37.031]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:31:37.794]	[find_customers.py]	🎯 LEAD found and initialized: ID 5, Porto Bello! Ristorantino alla Foce di Lugano!
+[2025-11-27 22:31:37.846]	[find_customers.py]	🎯 LEAD found and initialized: ID 6, Bottegone
+[2025-11-27 22:31:37.891]	[find_customers.py]	🎯 LEAD found and initialized: ID 7, Ristorante Bar Pizzeria Hollywood (Live Music)
+[2025-11-27 22:31:38.034]	[find_customers.py]	🎯 LEAD found and initialized: ID 8, Ristorante La Ticinella
+[2025-11-27 22:31:38.117]	[find_customers.py]	🎯 LEAD found and initialized: ID 9, Bar-Ristorante pizzeria Bivio
+[2025-11-27 22:31:38.321]	[find_customers.py]	🎯 LEAD found and initialized: ID 10, Grotto Rialdo
+[2025-11-27 22:31:40.550]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:31:41.504]	[find_customers.py]	🎯 LEAD found and initialized: ID 11, Ristorante La Pergola
+[2025-11-27 22:31:41.545]	[find_customers.py]	🎯 LEAD found and initialized: ID 12, Grotto al Mulino
+[2025-11-27 22:31:42.183]	[find_customers.py]	🎯 LEAD found and initialized: ID 13, AnemaCore - Seafood & Pizza Ristorante, Viganello
+[2025-11-27 22:31:42.484]	[find_customers.py]	Saved 13 leads to ./leads/index.csv
+[2025-11-27 22:31:42.485]	[scrape_images.py]	Searching images for: *Ristorante Cantinone* Piazza Cioccaro 8, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:31:43.056]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:31:43.188]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-11-27 22:31:43.330]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-11-27 22:31:43.537]	[scrape_images.py]	Downloaded: ./leads/1/images/4.jpg
+[2025-11-27 22:31:43.755]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-11-27 22:31:43.756]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:43.756]	[lead.py]	added images to lead: (['./leads/1/images/1.jpg', './leads/1/images/2.jpg', './leads/1/images/3.jpg', './leads/1/images/4.jpg', './leads/1/images/5.jpg'],)
+[2025-11-27 22:31:43.756]	[database.py]	Attempting to insert new lead: ID 1, Name: Ristorante Cantinone
+[2025-11-27 22:31:43.756]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:31:43.757]	[database.py]	Successfully established database connection.
+[2025-11-27 22:31:43.758]	[database.py]	❌ Error inserting lead ID 1: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:31:43.758]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:31:43.758]	[scrape_images.py]	Searching images for: *AL 74 Bar Ristorante Pizzeria* Via Trevano 74, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:31:44.246]	[scrape_images.py]	Downloaded: ./leads/2/images/1.jpg
+[2025-11-27 22:31:44.425]	[scrape_images.py]	Downloaded: ./leads/2/images/2.jpg
+[2025-11-27 22:31:44.619]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=581785063947052
+[2025-11-27 22:31:44.744]	[scrape_images.py]	Downloaded: ./leads/2/images/4.jpg
+[2025-11-27 22:31:44.999]	[scrape_images.py]	Downloaded: ./leads/2/images/5.jpg
+[2025-11-27 22:31:45.634]	[scrape_images.py]	Downloaded: ./leads/2/images/1.jpg
+[2025-11-27 22:31:45.635]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:45.635]	[lead.py]	added images to lead: (['./leads/2/images/1.jpg', './leads/2/images/2.jpg', './leads/2/images/4.jpg', './leads/2/images/5.jpg'],)
+[2025-11-27 22:31:45.636]	[database.py]	Attempting to insert new lead: ID 2, Name: AL 74 Bar Ristorante Pizzeria
+[2025-11-27 22:31:45.636]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:31:45.637]	[database.py]	Successfully established database connection.
+[2025-11-27 22:31:45.637]	[database.py]	❌ Error inserting lead ID 2: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:31:45.637]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:31:45.638]	[scrape_images.py]	Searching images for: *Ristorante Pescheria Belvga* Via G.B. Pioda 4, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:31:46.276]	[scrape_images.py]	Downloaded: ./leads/3/images/1.jpg
+[2025-11-27 22:31:46.434]	[scrape_images.py]	Downloaded: ./leads/3/images/2.jpg
+[2025-11-27 22:31:46.583]	[scrape_images.py]	Downloaded: ./leads/3/images/3.jpg
+[2025-11-27 22:31:46.789]	[scrape_images.py]	Downloaded: ./leads/3/images/4.jpg
+[2025-11-27 22:31:46.949]	[scrape_images.py]	Downloaded: ./leads/3/images/5.jpg
+[2025-11-27 22:31:46.950]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:46.950]	[lead.py]	added images to lead: (['./leads/3/images/1.jpg', './leads/3/images/2.jpg', './leads/3/images/3.jpg', './leads/3/images/4.jpg', './leads/3/images/5.jpg'],)
+[2025-11-27 22:31:46.950]	[database.py]	Attempting to insert new lead: ID 3, Name: Ristorante Pescheria Belvga
+[2025-11-27 22:31:46.951]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:31:46.951]	[database.py]	Successfully established database connection.
+[2025-11-27 22:31:46.952]	[database.py]	❌ Error inserting lead ID 3: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:31:46.952]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:31:46.954]	[scrape_images.py]	Searching images for: *La Tinèra* Via dei Gorini 2, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:31:47.678]	[scrape_images.py]	Downloaded: ./leads/4/images/1.jpg
+[2025-11-27 22:31:48.332]	[scrape_images.py]	Downloaded: ./leads/4/images/2.jpg
+[2025-11-27 22:31:49.122]	[scrape_images.py]	Downloaded: ./leads/4/images/3.jpg
+[2025-11-27 22:31:49.764]	[scrape_images.py]	Downloaded: ./leads/4/images/4.jpg
+[2025-11-27 22:31:49.915]	[scrape_images.py]	Downloaded: ./leads/4/images/5.jpg
+[2025-11-27 22:31:49.916]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:49.916]	[lead.py]	added images to lead: (['./leads/4/images/1.jpg', './leads/4/images/2.jpg', './leads/4/images/3.jpg', './leads/4/images/4.jpg', './leads/4/images/5.jpg'],)
+[2025-11-27 22:31:49.917]	[database.py]	Attempting to insert new lead: ID 4, Name: La Tinèra
+[2025-11-27 22:31:49.917]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:31:49.917]	[database.py]	Successfully established database connection.
+[2025-11-27 22:31:49.918]	[database.py]	❌ Error inserting lead ID 4: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:31:49.918]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:31:49.919]	[scrape_images.py]	Searching images for: *Porto Bello! Ristorantino alla Foce di Lugano!* Circolo Velico Lugano, Via Foce 11, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:31:51.250]	[scrape_images.py]	Downloaded: ./leads/5/images/1.jpeg
+[2025-11-27 22:31:51.513]	[scrape_images.py]	Downloaded: ./leads/5/images/2.jpg
+[2025-11-27 22:31:52.290]	[scrape_images.py]	Downloaded: ./leads/5/images/3.jpeg
+[2025-11-27 22:31:52.728]	[scrape_images.py]	Downloaded: ./leads/5/images/4.jpg
+[2025-11-27 22:31:53.529]	[scrape_images.py]	Downloaded: ./leads/5/images/5.jpeg
+[2025-11-27 22:31:53.529]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:53.530]	[lead.py]	added images to lead: (['./leads/5/images/1.jpeg', './leads/5/images/2.jpg', './leads/5/images/3.jpeg', './leads/5/images/4.jpg', './leads/5/images/5.jpeg'],)
+[2025-11-27 22:31:53.530]	[database.py]	Attempting to insert new lead: ID 5, Name: Porto Bello! Ristorantino alla Foce di Lugano!
+[2025-11-27 22:31:53.530]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:31:53.531]	[database.py]	Successfully established database connection.
+[2025-11-27 22:31:53.531]	[database.py]	❌ Error inserting lead ID 5: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:31:53.532]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:31:53.532]	[scrape_images.py]	Searching images for: *Bottegone* Via Massimiliano Magatti 3, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:31:53.962]	[scrape_images.py]	Downloaded: ./leads/6/images/1.jpg
+[2025-11-27 22:31:54.135]	[scrape_images.py]	Downloaded: ./leads/6/images/2.jpg
+[2025-11-27 22:31:54.255]	[scrape_images.py]	Downloaded: ./leads/6/images/3.jpg
+[2025-11-27 22:31:55.444]	[scrape_images.py]	Downloaded: ./leads/6/images/4.jpg
+[2025-11-27 22:31:55.711]	[scrape_images.py]	Downloaded: ./leads/6/images/5.jpg
+[2025-11-27 22:31:55.712]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:55.713]	[lead.py]	added images to lead: (['./leads/6/images/1.jpg', './leads/6/images/2.jpg', './leads/6/images/3.jpg', './leads/6/images/4.jpg', './leads/6/images/5.jpg'],)
+[2025-11-27 22:31:55.713]	[database.py]	Attempting to insert new lead: ID 6, Name: Bottegone
+[2025-11-27 22:31:55.714]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:31:55.715]	[database.py]	Successfully established database connection.
+[2025-11-27 22:31:55.716]	[database.py]	❌ Error inserting lead ID 6: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:31:55.716]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:31:55.717]	[scrape_images.py]	Searching images for: *Ristorante Bar Pizzeria Hollywood (Live Music)* Via Giuseppe Bagutti 14, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:31:56.163]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1508972300554629
+[2025-11-27 22:31:56.297]	[scrape_images.py]	Downloaded: ./leads/7/images/2.webp
+[2025-11-27 22:31:56.449]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=705055352557721
+[2025-11-27 22:31:56.666]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231884926613737
+[2025-11-27 22:31:56.815]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231897523328647
+[2025-11-27 22:31:57.210]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231604826411407
+[2025-11-27 22:31:57.421]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=515006108229314
+[2025-11-27 22:31:57.720]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231692789450428
+[2025-11-27 22:31:57.852]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=571486109247980
+[2025-11-27 22:31:58.247]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100091597872878
+[2025-11-27 22:31:58.417]	[scrape_images.py]	Skipped small image (403 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=826184043119674&get_thumbnail=1
+[2025-11-27 22:31:58.620]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=488397660890159
+[2025-11-27 22:31:58.905]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=3256905527996146
+[2025-11-27 22:31:59.136]	[scrape_images.py]	No more images found.
+[2025-11-27 22:31:59.137]	[scrape_images.py]	images scraping done
+[2025-11-27 22:31:59.137]	[lead.py]	added images to lead: (['./leads/7/images/2.webp'],)
+[2025-11-27 22:31:59.138]	[database.py]	Attempting to insert new lead: ID 7, Name: Ristorante Bar Pizzeria Hollywood (Live Music)
+[2025-11-27 22:31:59.138]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:31:59.138]	[database.py]	Successfully established database connection.
+[2025-11-27 22:31:59.139]	[database.py]	❌ Error inserting lead ID 7: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:31:59.139]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:31:59.140]	[scrape_images.py]	Searching images for: *Ristorante La Ticinella* Via Cantonale 8, 6942 Savosa, Switzerland *Lugano*
+[2025-11-27 22:31:59.987]	[scrape_images.py]	Downloaded: ./leads/8/images/1.jpg
+[2025-11-27 22:32:00.295]	[scrape_images.py]	Downloaded: ./leads/8/images/2.jpg
+[2025-11-27 22:32:00.493]	[scrape_images.py]	Downloaded: ./leads/8/images/3.jpg
+[2025-11-27 22:32:00.612]	[scrape_images.py]	Downloaded: ./leads/8/images/4.jpg
+[2025-11-27 22:32:00.891]	[scrape_images.py]	Downloaded: ./leads/8/images/5.jpg
+[2025-11-27 22:32:00.892]	[scrape_images.py]	images scraping done
+[2025-11-27 22:32:00.892]	[lead.py]	added images to lead: (['./leads/8/images/1.jpg', './leads/8/images/2.jpg', './leads/8/images/3.jpg', './leads/8/images/4.jpg', './leads/8/images/5.jpg'],)
+[2025-11-27 22:32:00.893]	[database.py]	Attempting to insert new lead: ID 8, Name: Ristorante La Ticinella
+[2025-11-27 22:32:00.893]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:32:00.893]	[database.py]	Successfully established database connection.
+[2025-11-27 22:32:00.894]	[database.py]	❌ Error inserting lead ID 8: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:32:00.894]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:32:00.895]	[scrape_images.py]	Searching images for: *Bar-Ristorante pizzeria Bivio* Via Cantonale 37, 6928 Manno, Switzerland *Lugano*
+[2025-11-27 22:32:01.499]	[scrape_images.py]	Downloaded: ./leads/9/images/1.jpg
+[2025-11-27 22:32:01.642]	[scrape_images.py]	Skipped small image (6755 bytes): https://img.speisekarte.menu/storage/media/company_gallery/31649894/conversions/contribution_gallery.jpg
+[2025-11-27 22:32:01.753]	[scrape_images.py]	Downloaded: ./leads/9/images/3.jpg
+[2025-11-27 22:32:01.995]	[scrape_images.py]	Skipped small image (6755 bytes): https://img.speisekarte.menu/storage/media/company_gallery/31649895/conversions/contribution_gallery.jpg
+[2025-11-27 22:32:02.740]	[scrape_images.py]	Downloaded: ./leads/9/images/5.jpg
+[2025-11-27 22:32:03.130]	[scrape_images.py]	Downloaded: ./leads/9/images/1.webp
+[2025-11-27 22:32:03.456]	[scrape_images.py]	Downloaded: ./leads/9/images/2.jpg
+[2025-11-27 22:32:03.457]	[scrape_images.py]	images scraping done
+[2025-11-27 22:32:03.458]	[lead.py]	added images to lead: (['./leads/9/images/1.jpg', './leads/9/images/1.webp', './leads/9/images/2.jpg', './leads/9/images/3.jpg', './leads/9/images/5.jpg'],)
+[2025-11-27 22:32:03.458]	[database.py]	Attempting to insert new lead: ID 9, Name: Bar-Ristorante pizzeria Bivio
+[2025-11-27 22:32:03.459]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:32:03.460]	[database.py]	Successfully established database connection.
+[2025-11-27 22:32:03.461]	[database.py]	❌ Error inserting lead ID 9: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:32:03.461]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:32:03.462]	[scrape_images.py]	Searching images for: *Grotto Rialdo* Corso Italia, 13, 22060 Campione d'Italia CO, Italy *Lugano*
+[2025-11-27 22:32:04.009]	[scrape_images.py]	Skipped small image (126 bytes): https://upload.wikimedia.org/wikipedia/commons/9/98/Karte_Luganersee.png
+[2025-11-27 22:32:04.293]	[scrape_images.py]	Downloaded: ./leads/10/images/2.jpg
+[2025-11-27 22:32:04.463]	[scrape_images.py]	Skipped small image (126 bytes): https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Campione_d%27Italia_%28WV_banner%29.jpg/2560px-Campione_d%27Italia_%28WV_banner%29.jpg
+[2025-11-27 22:32:05.070]	[scrape_images.py]	Downloaded: ./leads/10/images/4.jpg
+[2025-11-27 22:32:05.298]	[scrape_images.py]	Downloaded: ./leads/10/images/5.jpg
+[2025-11-27 22:32:05.987]	[scrape_images.py]	Downloaded: ./leads/10/images/1.jpg
+[2025-11-27 22:32:06.369]	[scrape_images.py]	Downloaded: ./leads/10/images/2.jpg
+[2025-11-27 22:32:06.370]	[scrape_images.py]	images scraping done
+[2025-11-27 22:32:06.370]	[lead.py]	added images to lead: (['./leads/10/images/1.jpg', './leads/10/images/2.jpg', './leads/10/images/4.jpg', './leads/10/images/5.jpg'],)
+[2025-11-27 22:32:06.371]	[database.py]	Attempting to insert new lead: ID 10, Name: Grotto Rialdo
+[2025-11-27 22:32:06.371]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:32:06.372]	[database.py]	Successfully established database connection.
+[2025-11-27 22:32:06.373]	[database.py]	❌ Error inserting lead ID 10: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:32:06.374]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:32:06.375]	[scrape_images.py]	Searching images for: *Ristorante La Pergola* Via Cantonale 13, 6814 Cadempino, Switzerland *Lugano*
+[2025-11-27 22:32:06.997]	[scrape_images.py]	Downloaded: ./leads/11/images/1.jpg
+[2025-11-27 22:32:07.219]	[scrape_images.py]	Downloaded: ./leads/11/images/2.jpg
+[2025-11-27 22:32:07.331]	[scrape_images.py]	Downloaded: ./leads/11/images/3.jpg
+[2025-11-27 22:32:07.498]	[scrape_images.py]	Downloaded: ./leads/11/images/4.jpg
+[2025-11-27 22:32:07.697]	[scrape_images.py]	Downloaded: ./leads/11/images/5.jpg
+[2025-11-27 22:32:07.698]	[scrape_images.py]	images scraping done
+[2025-11-27 22:32:07.698]	[lead.py]	added images to lead: (['./leads/11/images/1.jpg', './leads/11/images/2.jpg', './leads/11/images/3.jpg', './leads/11/images/4.jpg', './leads/11/images/5.jpg'],)
+[2025-11-27 22:32:07.699]	[database.py]	Attempting to insert new lead: ID 11, Name: Ristorante La Pergola
+[2025-11-27 22:32:07.699]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:32:07.699]	[database.py]	Successfully established database connection.
+[2025-11-27 22:32:07.700]	[database.py]	❌ Error inserting lead ID 11: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:32:07.700]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:32:07.701]	[scrape_images.py]	Searching images for: *Grotto al Mulino* Via Ramello 3, 6963 Lugano, Switzerland *Lugano*
+[2025-11-27 22:32:08.306]	[scrape_images.py]	Downloaded: ./leads/12/images/1.jpg
+[2025-11-27 22:32:08.774]	[scrape_images.py]	Downloaded: ./leads/12/images/2.jpg
+[2025-11-27 22:32:09.500]	[scrape_images.py]	Downloaded: ./leads/12/images/3.jpg
+[2025-11-27 22:32:09.619]	[scrape_images.py]	Downloaded: ./leads/12/images/4.jpg
+[2025-11-27 22:32:10.002]	[scrape_images.py]	Downloaded: ./leads/12/images/5.jpg
+[2025-11-27 22:32:10.003]	[scrape_images.py]	images scraping done
+[2025-11-27 22:32:10.004]	[lead.py]	added images to lead: (['./leads/12/images/1.jpg', './leads/12/images/2.jpg', './leads/12/images/3.jpg', './leads/12/images/4.jpg', './leads/12/images/5.jpg'],)
+[2025-11-27 22:32:10.004]	[database.py]	Attempting to insert new lead: ID 12, Name: Grotto al Mulino
+[2025-11-27 22:32:10.005]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:32:10.006]	[database.py]	Successfully established database connection.
+[2025-11-27 22:32:10.007]	[database.py]	❌ Error inserting lead ID 12: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:32:10.007]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:32:10.008]	[scrape_images.py]	Searching images for: *AnemaCore - Seafood & Pizza Ristorante, Viganello* Via Pietro Capelli 2, 6962 Viganello, Switzerland *Lugano*
+[2025-11-27 22:32:10.464]	[scrape_images.py]	Downloaded: ./leads/13/images/1.jpg
+[2025-11-27 22:32:11.914]	[scrape_images.py]	Downloaded: ./leads/13/images/2.jpg
+[2025-11-27 22:32:12.034]	[scrape_images.py]	Downloaded: ./leads/13/images/3.jpg
+[2025-11-27 22:32:12.159]	[scrape_images.py]	Downloaded: ./leads/13/images/4.webp
+[2025-11-27 22:32:12.280]	[scrape_images.py]	Downloaded: ./leads/13/images/5.jpg
+[2025-11-27 22:32:12.281]	[scrape_images.py]	images scraping done
+[2025-11-27 22:32:12.281]	[lead.py]	added images to lead: (['./leads/13/images/1.jpg', './leads/13/images/2.jpg', './leads/13/images/3.jpg', './leads/13/images/4.webp', './leads/13/images/5.jpg'],)
+[2025-11-27 22:32:12.282]	[database.py]	Attempting to insert new lead: ID 13, Name: AnemaCore - Seafood & Pizza Ristorante, Viganello
+[2025-11-27 22:32:12.282]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:32:12.283]	[database.py]	Successfully established database connection.
+[2025-11-27 22:32:12.283]	[database.py]	❌ Error inserting lead ID 13: Integrity constraint violation. UNIQUE constraint failed: leads.id
+[2025-11-27 22:32:12.284]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:32:12.284]	[database.py]	Fetching up to 10 leads with status >= 0 for display.
+[2025-11-27 22:32:12.284]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:32:12.285]	[database.py]	Successfully established database connection.
+[2025-11-27 22:32:12.286]	[database.py]	Successfully displayed 10 leads.
+[2025-11-27 22:36:22.808]	[find_customers.py]	🎯 LEAD found and initialized: ID 1, Ristorante Cantinone
+[2025-11-27 22:36:23.331]	[find_customers.py]	🎯 LEAD found and initialized: ID 2, AL 74 Bar Ristorante Pizzeria
+[2025-11-27 22:36:23.835]	[find_customers.py]	🎯 LEAD found and initialized: ID 3, Ristorante Pescheria Belvga
+[2025-11-27 22:36:25.887]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:36:26.560]	[find_customers.py]	🎯 LEAD found and initialized: ID 4, La Tinèra
+[2025-11-27 22:36:26.746]	[find_customers.py]	🎯 LEAD found and initialized: ID 5, Porto Bello! Ristorantino alla Foce di Lugano!
+[2025-11-27 22:36:26.797]	[find_customers.py]	🎯 LEAD found and initialized: ID 6, Ristorante La Ticinella
+[2025-11-27 22:36:26.850]	[find_customers.py]	🎯 LEAD found and initialized: ID 7, Bottegone
+[2025-11-27 22:36:26.918]	[find_customers.py]	🎯 LEAD found and initialized: ID 8, Ristorante Bar Pizzeria Hollywood (Live Music)
+[2025-11-27 22:36:27.094]	[find_customers.py]	🎯 LEAD found and initialized: ID 9, Bar-Ristorante pizzeria Bivio
+[2025-11-27 22:36:27.434]	[find_customers.py]	🎯 LEAD found and initialized: ID 10, Grotto Rialdo
+[2025-11-27 22:36:29.641]	[find_customers.py]	Fetching next page of results...
+[2025-11-27 22:36:30.452]	[find_customers.py]	🎯 LEAD found and initialized: ID 11, Ristorante La Pergola
+[2025-11-27 22:36:30.499]	[find_customers.py]	🎯 LEAD found and initialized: ID 12, Grotto al Mulino
+[2025-11-27 22:36:31.103]	[find_customers.py]	🎯 LEAD found and initialized: ID 13, AnemaCore - Seafood & Pizza Ristorante, Viganello
+[2025-11-27 22:36:31.535]	[find_customers.py]	Saved 13 leads to ./leads/index.csv
+[2025-11-27 22:36:31.536]	[scrape_images.py]	Searching images for: *Ristorante Cantinone* Piazza Cioccaro 8, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:32.100]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-11-27 22:36:32.284]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-11-27 22:36:32.611]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-11-27 22:36:32.743]	[scrape_images.py]	Downloaded: ./leads/1/images/4.jpg
+[2025-11-27 22:36:32.911]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-11-27 22:36:32.911]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:32.911]	[lead.py]	added images to lead: (['./leads/1/images/1.jpg', './leads/1/images/2.jpg', './leads/1/images/3.jpg', './leads/1/images/4.jpg', './leads/1/images/5.jpg'],)
+[2025-11-27 22:36:32.912]	[database.py]	Attempting to insert new lead: ID 1, Name: Ristorante Cantinone
+[2025-11-27 22:36:32.912]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:32.913]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:32.913]	[database.py]	❌ General SQLite Error inserting lead ID 1: no such table: leads
+[2025-11-27 22:36:32.913]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:32.913]	[scrape_images.py]	Searching images for: *AL 74 Bar Ristorante Pizzeria* Via Trevano 74, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:33.292]	[scrape_images.py]	Downloaded: ./leads/2/images/1.jpg
+[2025-11-27 22:36:33.550]	[scrape_images.py]	Downloaded: ./leads/2/images/2.jpg
+[2025-11-27 22:36:33.682]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=581785063947052
+[2025-11-27 22:36:33.853]	[scrape_images.py]	Downloaded: ./leads/2/images/4.jpg
+[2025-11-27 22:36:34.022]	[scrape_images.py]	Downloaded: ./leads/2/images/5.jpg
+[2025-11-27 22:36:34.427]	[scrape_images.py]	Downloaded: ./leads/2/images/1.jpg
+[2025-11-27 22:36:34.427]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:34.427]	[lead.py]	added images to lead: (['./leads/2/images/1.jpg', './leads/2/images/2.jpg', './leads/2/images/4.jpg', './leads/2/images/5.jpg'],)
+[2025-11-27 22:36:34.428]	[database.py]	Attempting to insert new lead: ID 2, Name: AL 74 Bar Ristorante Pizzeria
+[2025-11-27 22:36:34.428]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:34.428]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:34.429]	[database.py]	❌ General SQLite Error inserting lead ID 2: no such table: leads
+[2025-11-27 22:36:34.429]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:34.429]	[scrape_images.py]	Searching images for: *Ristorante Pescheria Belvga* Via G.B. Pioda 4, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:34.953]	[scrape_images.py]	Downloaded: ./leads/3/images/1.jpg
+[2025-11-27 22:36:35.153]	[scrape_images.py]	Downloaded: ./leads/3/images/2.jpg
+[2025-11-27 22:36:35.358]	[scrape_images.py]	Downloaded: ./leads/3/images/3.jpg
+[2025-11-27 22:36:35.669]	[scrape_images.py]	Downloaded: ./leads/3/images/4.jpg
+[2025-11-27 22:36:35.908]	[scrape_images.py]	Downloaded: ./leads/3/images/5.jpg
+[2025-11-27 22:36:35.909]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:35.909]	[lead.py]	added images to lead: (['./leads/3/images/1.jpg', './leads/3/images/2.jpg', './leads/3/images/3.jpg', './leads/3/images/4.jpg', './leads/3/images/5.jpg'],)
+[2025-11-27 22:36:35.910]	[database.py]	Attempting to insert new lead: ID 3, Name: Ristorante Pescheria Belvga
+[2025-11-27 22:36:35.910]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:35.911]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:35.911]	[database.py]	❌ General SQLite Error inserting lead ID 3: no such table: leads
+[2025-11-27 22:36:35.912]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:35.912]	[scrape_images.py]	Searching images for: *La Tinèra* Via dei Gorini 2, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:37.020]	[scrape_images.py]	Downloaded: ./leads/4/images/1.jpg
+[2025-11-27 22:36:37.255]	[scrape_images.py]	Downloaded: ./leads/4/images/2.jpg
+[2025-11-27 22:36:37.479]	[scrape_images.py]	Downloaded: ./leads/4/images/3.jpg
+[2025-11-27 22:36:37.931]	[scrape_images.py]	Downloaded: ./leads/4/images/4.jpg
+[2025-11-27 22:36:38.231]	[scrape_images.py]	Downloaded: ./leads/4/images/5.jpg
+[2025-11-27 22:36:38.231]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:38.232]	[lead.py]	added images to lead: (['./leads/4/images/1.jpg', './leads/4/images/2.jpg', './leads/4/images/3.jpg', './leads/4/images/4.jpg', './leads/4/images/5.jpg'],)
+[2025-11-27 22:36:38.232]	[database.py]	Attempting to insert new lead: ID 4, Name: La Tinèra
+[2025-11-27 22:36:38.232]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:38.232]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:38.232]	[database.py]	❌ General SQLite Error inserting lead ID 4: no such table: leads
+[2025-11-27 22:36:38.233]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:38.233]	[scrape_images.py]	Searching images for: *Porto Bello! Ristorantino alla Foce di Lugano!* Circolo Velico Lugano, Via Foce 11, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:39.258]	[scrape_images.py]	Downloaded: ./leads/5/images/1.jpeg
+[2025-11-27 22:36:39.417]	[scrape_images.py]	Downloaded: ./leads/5/images/2.jpg
+[2025-11-27 22:36:40.121]	[scrape_images.py]	Downloaded: ./leads/5/images/3.jpeg
+[2025-11-27 22:36:40.339]	[scrape_images.py]	Downloaded: ./leads/5/images/4.jpg
+[2025-11-27 22:36:41.174]	[scrape_images.py]	Downloaded: ./leads/5/images/5.jpeg
+[2025-11-27 22:36:41.174]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:41.174]	[lead.py]	added images to lead: (['./leads/5/images/1.jpeg', './leads/5/images/2.jpg', './leads/5/images/3.jpeg', './leads/5/images/4.jpg', './leads/5/images/5.jpeg'],)
+[2025-11-27 22:36:41.174]	[database.py]	Attempting to insert new lead: ID 5, Name: Porto Bello! Ristorantino alla Foce di Lugano!
+[2025-11-27 22:36:41.174]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:41.175]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:41.175]	[database.py]	❌ General SQLite Error inserting lead ID 5: no such table: leads
+[2025-11-27 22:36:41.175]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:41.175]	[scrape_images.py]	Searching images for: *Ristorante La Ticinella* Via Cantonale 8, 6942 Savosa, Switzerland *Lugano*
+[2025-11-27 22:36:41.558]	[scrape_images.py]	Downloaded: ./leads/6/images/1.jpg
+[2025-11-27 22:36:41.696]	[scrape_images.py]	Downloaded: ./leads/6/images/2.jpg
+[2025-11-27 22:36:41.994]	[scrape_images.py]	Downloaded: ./leads/6/images/3.jpg
+[2025-11-27 22:36:42.145]	[scrape_images.py]	Downloaded: ./leads/6/images/4.jpg
+[2025-11-27 22:36:42.312]	[scrape_images.py]	Downloaded: ./leads/6/images/5.jpg
+[2025-11-27 22:36:42.313]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:42.313]	[lead.py]	added images to lead: (['./leads/6/images/1.jpg', './leads/6/images/2.jpg', './leads/6/images/3.jpg', './leads/6/images/4.jpg', './leads/6/images/5.jpg'],)
+[2025-11-27 22:36:42.314]	[database.py]	Attempting to insert new lead: ID 6, Name: Ristorante La Ticinella
+[2025-11-27 22:36:42.314]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:42.315]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:42.316]	[database.py]	❌ General SQLite Error inserting lead ID 6: no such table: leads
+[2025-11-27 22:36:42.317]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:42.318]	[scrape_images.py]	Searching images for: *Bottegone* Via Massimiliano Magatti 3, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:42.724]	[scrape_images.py]	Downloaded: ./leads/7/images/1.jpg
+[2025-11-27 22:36:43.026]	[scrape_images.py]	Downloaded: ./leads/7/images/2.jpg
+[2025-11-27 22:36:43.206]	[scrape_images.py]	Downloaded: ./leads/7/images/3.jpg
+[2025-11-27 22:36:44.318]	[scrape_images.py]	Downloaded: ./leads/7/images/4.jpg
+[2025-11-27 22:36:44.481]	[scrape_images.py]	Downloaded: ./leads/7/images/5.jpg
+[2025-11-27 22:36:44.481]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:44.481]	[lead.py]	added images to lead: (['./leads/7/images/1.jpg', './leads/7/images/2.jpg', './leads/7/images/3.jpg', './leads/7/images/4.jpg', './leads/7/images/5.jpg'],)
+[2025-11-27 22:36:44.481]	[database.py]	Attempting to insert new lead: ID 7, Name: Bottegone
+[2025-11-27 22:36:44.481]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:44.481]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:44.482]	[database.py]	❌ General SQLite Error inserting lead ID 7: no such table: leads
+[2025-11-27 22:36:44.482]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:44.482]	[scrape_images.py]	Searching images for: *Ristorante Bar Pizzeria Hollywood (Live Music)* Via Giuseppe Bagutti 14, 6900 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:44.901]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1508972300554629
+[2025-11-27 22:36:45.112]	[scrape_images.py]	Downloaded: ./leads/8/images/2.webp
+[2025-11-27 22:36:45.268]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=705055352557721
+[2025-11-27 22:36:45.438]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231884926613737
+[2025-11-27 22:36:45.563]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231897523328647
+[2025-11-27 22:36:45.966]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231604826411407
+[2025-11-27 22:36:46.221]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=515006108229314
+[2025-11-27 22:36:46.385]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=10231692789450428
+[2025-11-27 22:36:46.546]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=571486109247980
+[2025-11-27 22:36:47.192]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100091597872878
+[2025-11-27 22:36:47.365]	[scrape_images.py]	Skipped small image (403 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=826184043119674&get_thumbnail=1
+[2025-11-27 22:36:47.510]	[scrape_images.py]	Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=488397660890159
+[2025-11-27 22:36:47.695]	[scrape_images.py]	Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=3256905527996146
+[2025-11-27 22:36:47.922]	[scrape_images.py]	No more images found.
+[2025-11-27 22:36:47.923]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:47.924]	[lead.py]	added images to lead: (['./leads/8/images/2.webp'],)
+[2025-11-27 22:36:47.925]	[database.py]	Attempting to insert new lead: ID 8, Name: Ristorante Bar Pizzeria Hollywood (Live Music)
+[2025-11-27 22:36:47.925]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:47.927]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:47.929]	[database.py]	❌ General SQLite Error inserting lead ID 8: no such table: leads
+[2025-11-27 22:36:47.929]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:47.931]	[scrape_images.py]	Searching images for: *Bar-Ristorante pizzeria Bivio* Via Cantonale 37, 6928 Manno, Switzerland *Lugano*
+[2025-11-27 22:36:48.532]	[scrape_images.py]	Downloaded: ./leads/9/images/1.jpg
+[2025-11-27 22:36:48.645]	[scrape_images.py]	Skipped small image (6734 bytes): https://img.speisekarte.menu/storage/media/company_gallery/31649894/conversions/contribution_gallery.jpg
+[2025-11-27 22:36:48.866]	[scrape_images.py]	Downloaded: ./leads/9/images/3.jpg
+[2025-11-27 22:36:48.966]	[scrape_images.py]	Skipped small image (6734 bytes): https://img.speisekarte.menu/storage/media/company_gallery/31649895/conversions/contribution_gallery.jpg
+[2025-11-27 22:36:49.233]	[scrape_images.py]	Downloaded: ./leads/9/images/5.jpg
+[2025-11-27 22:36:49.595]	[scrape_images.py]	Downloaded: ./leads/9/images/1.webp
+[2025-11-27 22:36:49.707]	[scrape_images.py]	Downloaded: ./leads/9/images/2.jpg
+[2025-11-27 22:36:49.707]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:49.707]	[lead.py]	added images to lead: (['./leads/9/images/1.jpg', './leads/9/images/1.webp', './leads/9/images/2.jpg', './leads/9/images/3.jpg', './leads/9/images/5.jpg'],)
+[2025-11-27 22:36:49.707]	[database.py]	Attempting to insert new lead: ID 9, Name: Bar-Ristorante pizzeria Bivio
+[2025-11-27 22:36:49.707]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:49.708]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:49.708]	[database.py]	❌ General SQLite Error inserting lead ID 9: no such table: leads
+[2025-11-27 22:36:49.708]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:49.708]	[scrape_images.py]	Searching images for: *Grotto Rialdo* Corso Italia, 13, 22060 Campione d'Italia CO, Italy *Lugano*
+[2025-11-27 22:36:50.137]	[scrape_images.py]	Skipped small image (126 bytes): https://upload.wikimedia.org/wikipedia/commons/9/98/Karte_Luganersee.png
+[2025-11-27 22:36:50.409]	[scrape_images.py]	Downloaded: ./leads/10/images/2.jpg
+[2025-11-27 22:36:50.601]	[scrape_images.py]	Skipped small image (126 bytes): https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Campione_d%27Italia_%28WV_banner%29.jpg/2560px-Campione_d%27Italia_%28WV_banner%29.jpg
+[2025-11-27 22:36:50.875]	[scrape_images.py]	Downloaded: ./leads/10/images/4.jpg
+[2025-11-27 22:36:51.032]	[scrape_images.py]	Downloaded: ./leads/10/images/5.jpg
+[2025-11-27 22:36:51.472]	[scrape_images.py]	Downloaded: ./leads/10/images/1.jpg
+[2025-11-27 22:36:51.635]	[scrape_images.py]	Downloaded: ./leads/10/images/2.jpg
+[2025-11-27 22:36:51.636]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:51.637]	[lead.py]	added images to lead: (['./leads/10/images/1.jpg', './leads/10/images/2.jpg', './leads/10/images/4.jpg', './leads/10/images/5.jpg'],)
+[2025-11-27 22:36:51.637]	[database.py]	Attempting to insert new lead: ID 10, Name: Grotto Rialdo
+[2025-11-27 22:36:51.637]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:51.638]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:51.639]	[database.py]	❌ General SQLite Error inserting lead ID 10: no such table: leads
+[2025-11-27 22:36:51.640]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:51.641]	[scrape_images.py]	Searching images for: *Ristorante La Pergola* Via Cantonale 13, 6814 Cadempino, Switzerland *Lugano*
+[2025-11-27 22:36:52.132]	[scrape_images.py]	Downloaded: ./leads/11/images/1.jpg
+[2025-11-27 22:36:52.414]	[scrape_images.py]	Downloaded: ./leads/11/images/2.jpg
+[2025-11-27 22:36:52.591]	[scrape_images.py]	Downloaded: ./leads/11/images/3.jpg
+[2025-11-27 22:36:52.727]	[scrape_images.py]	Downloaded: ./leads/11/images/4.jpg
+[2025-11-27 22:36:52.871]	[scrape_images.py]	Downloaded: ./leads/11/images/5.jpg
+[2025-11-27 22:36:52.872]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:52.872]	[lead.py]	added images to lead: (['./leads/11/images/1.jpg', './leads/11/images/2.jpg', './leads/11/images/3.jpg', './leads/11/images/4.jpg', './leads/11/images/5.jpg'],)
+[2025-11-27 22:36:52.872]	[database.py]	Attempting to insert new lead: ID 11, Name: Ristorante La Pergola
+[2025-11-27 22:36:52.872]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:52.873]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:52.873]	[database.py]	❌ General SQLite Error inserting lead ID 11: no such table: leads
+[2025-11-27 22:36:52.873]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:52.873]	[scrape_images.py]	Searching images for: *Grotto al Mulino* Via Ramello 3, 6963 Lugano, Switzerland *Lugano*
+[2025-11-27 22:36:53.304]	[scrape_images.py]	Downloaded: ./leads/12/images/1.jpg
+[2025-11-27 22:36:53.568]	[scrape_images.py]	Downloaded: ./leads/12/images/2.jpg
+[2025-11-27 22:36:53.679]	[scrape_images.py]	Downloaded: ./leads/12/images/3.jpg
+[2025-11-27 22:36:53.816]	[scrape_images.py]	Downloaded: ./leads/12/images/4.jpg
+[2025-11-27 22:36:53.927]	[scrape_images.py]	Downloaded: ./leads/12/images/5.jpg
+[2025-11-27 22:36:53.928]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:53.928]	[lead.py]	added images to lead: (['./leads/12/images/1.jpg', './leads/12/images/2.jpg', './leads/12/images/3.jpg', './leads/12/images/4.jpg', './leads/12/images/5.jpg'],)
+[2025-11-27 22:36:53.928]	[database.py]	Attempting to insert new lead: ID 12, Name: Grotto al Mulino
+[2025-11-27 22:36:53.928]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:53.929]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:53.929]	[database.py]	❌ General SQLite Error inserting lead ID 12: no such table: leads
+[2025-11-27 22:36:53.929]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:53.929]	[scrape_images.py]	Searching images for: *AnemaCore - Seafood & Pizza Ristorante, Viganello* Via Pietro Capelli 2, 6962 Viganello, Switzerland *Lugano*
+[2025-11-27 22:36:54.328]	[scrape_images.py]	Downloaded: ./leads/13/images/1.jpg
+[2025-11-27 22:36:54.646]	[scrape_images.py]	Downloaded: ./leads/13/images/2.jpg
+[2025-11-27 22:36:54.831]	[scrape_images.py]	Downloaded: ./leads/13/images/3.jpg
+[2025-11-27 22:36:54.930]	[scrape_images.py]	Downloaded: ./leads/13/images/4.webp
+[2025-11-27 22:36:55.187]	[scrape_images.py]	Downloaded: ./leads/13/images/5.jpg
+[2025-11-27 22:36:55.187]	[scrape_images.py]	images scraping done
+[2025-11-27 22:36:55.188]	[lead.py]	added images to lead: (['./leads/13/images/1.jpg', './leads/13/images/2.jpg', './leads/13/images/3.jpg', './leads/13/images/4.webp', './leads/13/images/5.jpg'],)
+[2025-11-27 22:36:55.188]	[database.py]	Attempting to insert new lead: ID 13, Name: AnemaCore - Seafood & Pizza Ristorante, Viganello
+[2025-11-27 22:36:55.189]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:55.189]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:55.190]	[database.py]	❌ General SQLite Error inserting lead ID 13: no such table: leads
+[2025-11-27 22:36:55.190]	[database.py]	Database connection closed after insertion attempt.
+[2025-11-27 22:36:55.191]	[database.py]	Fetching up to 10 leads with status >= 0 for display.
+[2025-11-27 22:36:55.191]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-11-27 22:36:55.192]	[database.py]	Successfully established database connection.
+[2025-11-27 22:36:55.192]	[database.py]	❌ Error displaying database content: no such table: leads

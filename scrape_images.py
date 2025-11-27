@@ -32,7 +32,7 @@ def google_image_search(query, num_images=10, output_dir="images"):
             "searchType": "image",
             "num": n,
             "start": start,
-            "imgSize": "xlarge",
+            "imgSize": "xxlarge",
         }
 
         response = requests.get(url, params=params).json()
@@ -52,7 +52,7 @@ def google_image_search(query, num_images=10, output_dir="images"):
             try:
                 img_data = requests.get(img_url, timeout=10).content
                 if len(img_data) < 10_000:  # 10 KB threshold
-                    print(f"Skipped small image ({len(img_data)} bytes): {img_url}")
+                    log(f"Skipped small image ({len(img_data)} bytes): {img_url}")
                     continue
                 ext = img_url.split(".")[-1].split("?")[0]
                 if len(ext) > 4:
@@ -76,15 +76,25 @@ def google_image_search(query, num_images=10, output_dir="images"):
         start += n
 
     log("images scraping done")
+    return 0
 
 def search_lead_images(lead:Lead):
-    query=f"*{lead.name} {lead.city}*"
+    query = f"*{lead.name}* {lead.address} *{lead.city}*"
     
-    img_path=f"./leads/{lead.id}/images"
-    google_image_search(query, num_images=5, output_dir=img_path)
+    img_path = f"./leads/{lead.id}/images"
+    if google_image_search(query, num_images=5, output_dir=img_path) == 0:
+        
+        files = sorted(
+            os.path.join(img_path, f) 
+            for f in os.listdir(img_path) 
+            if "." in f 
+        )
+        return files
+    
 
 
 
 if __name__ == "__main__":
-    l=Lead(1, "", "21312432", "Via pizzaculo2", "Lugano", [], 0)
-    search_lead_images(l)
+    #sandbox data
+    l=Lead(1, "Al-74", "21312432", "Via Trevano 74", "Lugano", [], 0)
+    files=search_lead_images(l)

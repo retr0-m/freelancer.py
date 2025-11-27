@@ -1,5 +1,6 @@
 from typing import List, Dict, Optional
 import re
+from log import log
 class Lead:
     """
     Represents a single business lead in the pipeline, with a built-in 
@@ -15,9 +16,10 @@ class Lead:
         self.city = city
         self.images = images if images is not None else []
         self.status = status
-
+    def __str__(self):
+        return f"id:{self.id}, name:{self.name}, status:{self.status})"
     def __repr__(self):
-        return f"Lead(id={self.id}, name='{self.name}', status={self.status})"
+        return f"Lead(id={self.id}, name='{self.name}', phone='{self.phone}', address='{self.address}', city='{self.city}', images='{self.images}' status={self.status})"
 
     def to_dict(self) -> Dict:
         """
@@ -33,6 +35,12 @@ class Lead:
             'images': self.images, 
             'status': self.status
         }
+        
+    def add_images(self, *images) -> None:
+        for img in images:
+            self.images.append(img)
+        log(f"added images to lead: {images}")
+        return 0
     
     @classmethod
     def from_map_data(cls, lead_id: int, result: dict, city: str, website_status: str):

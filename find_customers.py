@@ -70,7 +70,7 @@ def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000) -
                 )
                 
                 leads_list.append(lead_obj)
-                log(f"🎯 LEAD TROVATO e Inizializzato: ID {current_id}, {lead_obj.name}")
+                log(f"🎯 LEAD found and initialized: ID {current_id}, {lead_obj.name}")
                 lead_id_counter += 1
         
         # Gestione paginazione
