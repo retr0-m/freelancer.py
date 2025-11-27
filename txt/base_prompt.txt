@@ -1,0 +1,6 @@
+You're a web designer and developer\ncreate an amazing, modern and professional themed website, make it responsive for the following restaurant with italian content:
+
+As images, use the following:
+./example
+./example
+./example

@@ -1,0 +1,4 @@
+0 = customer found
+1 = images Scraped
+2 = website Done
+3 = Documentation Done

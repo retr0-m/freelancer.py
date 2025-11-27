@@ -1,0 +1,22 @@
+project_root/
+├── main.py                    # Orchestrates the pipeline
+├── find_customers.py          # Step 1 Script
+├── scrape_images.py           # Step 2 Script
+├── create_websites.py         # Step 3 Script (yields)
+├── create_documentation.py    # Step 5 Script
+├── database.py                # Database interaction logic (SQLite)
+├── logger.py                  # Custom logging utility
+├── leads.db                   # ⚡ SQLite Database (stores all Lead objects)
+└── leads/
+    ├── index.csv              # (Initial input, then imported into DB)
+    └── {lead_id}/             # Per-lead directory
+        ├── imgs/
+        │   └── {lead_id}_{img_id}.png  # (e.g., 23_01.png, 23_02.png)
+        ├── website/
+        │   └── index.html
+        │   └── style.css
+        │   └── ...
+        └── documents/
+            └── proposal/
+                └── proposal.pdf
+                └── whats_included.pdf
