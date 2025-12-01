@@ -4,22 +4,33 @@ from log import log
 import pandas as pd
 import time
 from typing import List, Dict
+import os
+from dotenv import load_dotenv
+import database
+
+
 
 # Setup
-API_KEY = 'AIzaSyB7RMAlSOyQSqP5FachiAQcOsSWcX92YsE'
+
+load_dotenv()
+API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 gmaps = googlemaps.Client(key=API_KEY)
 
 
-def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000) -> List[Lead]:
+def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000, max_leads: int=0) -> List[Lead]: # if max == 0 searches all the leads it can, else it will stop at {max} leads
     """
     Finds leads via Google Maps API and initializes them as Lead objects.
     
     Returns: A list of Lead objects that pass the filtering criteria (no website).
     """
     leads_list: List[Lead] = []
-    
     # 1. Geocoding della città
-    geocode_result = gmaps.geocode(location)
+    try:
+        geocode_result = gmaps.geocode(location)
+    except googlemaps.exceptions.TransportError:
+        log("FATAL ERROR: GoogleMaps Transport error, connect to the internet to run this script.")
+        print("Aborting...")
+        exit()
     if not geocode_result:
         log(f"Città non trovata: {location}")
         return []
@@ -38,22 +49,21 @@ def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000) -
 
     while True:
         for place in places_result.get('results', []):
-            
-            # Ottieni dettagli completi per verificare il sito web
+            if max_leads != 0:
+                if lead_id_counter > max_leads:
+                    return leads_list
             try:
                 place_details = gmaps.place(
                     place_id=place['place_id'], 
                     fields=['name', 'website', 'formatted_phone_number', 'formatted_address']
                 )
             except Exception as e:
-                log(f"Errore durante Place Details per ID {place['place_id']}: {e}")
+                log(f"Error while receiving Place Details for ID {place['place_id']}: {e}")
                 continue
-
             result = place_details.get('result', {})
             website = result.get('website')
             name = result.get('name')
 
-            # LOGICA DI FILTRO: Solo se NON c'è un sito web utile
             is_social_site = website and ("facebook.com" in website or "instagram.com" in website)
             
             if not website or is_social_site:
@@ -69,13 +79,16 @@ def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000) -
                     website_status=website if website else "Nessun Sito"
                 )
                 
-                leads_list.append(lead_obj)
-                log(f"🎯 LEAD found and initialized: ID {current_id}, {lead_obj.name}")
-                lead_id_counter += 1
+                exists=database.lead_exists(name=lead_obj.name)
+                if not exists:
+                    leads_list.append(lead_obj)
+                    log(f"🎯 LEAD found and initialized: ID {current_id}, {lead_obj.name}")
+                    lead_id_counter += 1
+                else:
+                    log(f"Lead ({lead_obj.name}) skipped because it was already existing in db")
         
-        # Gestione paginazione
         if 'next_page_token' in places_result:
-            time.sleep(2) # Pausa obbligatoria per token
+            time.sleep(2) 
             log("Fetching next page of results...")
             places_result = gmaps.places_nearby(
                 location=lat_lng,
@@ -106,8 +119,7 @@ def save_leads_to_csv(leads_list: List[Lead]):
         'phone': lead.phone,
         'address': lead.address,
         'city': lead.city,
-        'status': lead.status,
-        'website_status': 'Social' if lead.images else 'None' # Status for CSV clarity
+        'proposed': "Yes" if lead.status else "",
     } for lead in leads_list]
     
     # 2. Create DataFrame and save
@@ -119,7 +131,15 @@ def save_leads_to_csv(leads_list: List[Lead]):
 # --- Execution Example ---
 
 if __name__ == "__main__":
-    found_leads = find_and_initialize_leads("Ristorante", "Lugano")
-    if found_leads:
-        save_leads_to_csv(found_leads)
+    
+    log("="*50)
+    log("TESTING SCRIPT")
+    
+    #TEST 1
+    log('TEST-1 with following sandbox data:      "Ristorante", "Lugano"')
+    database.initialize_database()
+    found_leads = find_and_initialize_leads("Ristorante", "Lugano", max_leads=0)
+    save_leads_to_csv(found_leads)
+    
+    
         

@@ -21,6 +21,10 @@ class Lead:
     def __repr__(self):
         return f"Lead(id={self.id}, name='{self.name}', phone='{self.phone}', address='{self.address}', city='{self.city}', images='{self.images}' status={self.status})"
 
+    def change_status(self, s:int):
+        self.status=s
+        
+    
     def to_dict(self) -> Dict:
         """
         Converts the Lead instance into a dictionary suitable for 
@@ -36,7 +40,7 @@ class Lead:
             'status': self.status
         }
         
-    def add_images(self, *images) -> None:
+    def add_images(self, images:List) -> None:
         for img in images:
             self.images.append(img)
         log(f"added images to lead: {images}")
@@ -64,3 +68,5 @@ class Lead:
             images=[],
             status=0
         )
+        
+        

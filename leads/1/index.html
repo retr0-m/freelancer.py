@@ -1,0 +1,1010 @@
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Cantinone - Cucina Italiana a Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Reset & Variables */
+        :root {
+            --primary-color: #6a0e0e; /* Deep Red/Bordeaux */
+            --secondary-color: #f7f0e7; /* Off-white/Cream */
+            --accent-color: #b88d44; /* Gold/Bronze */
+            --text-dark: #333;
+            --text-light: #fdfdfd;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Open Sans', sans-serif;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+        p { margin-bottom: 1em; }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            text-align: center;
+            overflow: hidden;
+            margin-top: var(--header-height); /* Offset for fixed header */
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            filter: brightness(0.8);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.2em;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+            color: var(--text-light);
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: var(--secondary-color);
+        }
+
+        section:nth-of-type(even) {
+            background-color: #fcf6f0;
+        }
+
+        .section-title {
+            font-size: 3em;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+            display: inline-block;
+            color: var(--primary-color);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Chi Siamo Section */
+        .about-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .about-text h3 {
+            color: var(--accent-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-category {
+            background-color: var(--text-light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            border-top: 4px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+            position: relative;
+        }
+        .menu-category h3::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .item-description {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.1em;
+            margin-left: 15px;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            background-color: #fff;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay span {
+            color: var(--text-light);
+            font-size: 1.2em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            text-align: left;
+            flex-wrap: wrap;
+        }
+
+        .contact-info, .contact-form-wrapper {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .contact-info h3, .contact-form-wrapper h3 {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-info p strong {
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        .contact-info iframe {
+            width: 100%;
+            height: 250px;
+            border: 0;
+            border-radius: 8px;
+            margin-top: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form {
+            background-color: var(--text-light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            width: auto;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-nav ul li {
+            margin: 0 15px 10px 15px;
+        }
+
+        .footer-nav ul li a {
+            color: var(--secondary-color);
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .footer-nav ul li a:hover {
+            color: var(--accent-color);
+            opacity: 1;
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-details-footer {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .contact-details-footer p {
+            margin-bottom: 5px;
+        }
+        .contact-details-footer p:last-child {
+             margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8em; }
+            h2 { font-size: 2em; }
+            .hero-content h1 { font-size: 3.5em; }
+            .hero-content p { font-size: 1.2em; }
+            .section-title { font-size: 2.5em; }
+
+            .about-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .about-image, .about-text {
+                max-width: 100%;
+            }
+            .about-text { text-align: center; }
+
+            .contact-grid {
+                flex-direction: column;
+                gap: 40px;
+                align-items: center;
+            }
+            .contact-info, .contact-form-wrapper {
+                max-width: 600px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 1.8em; }
+            nav { display: none; }
+            .hamburger { display: flex; }
+
+            .main-nav.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding-bottom: 20px;
+            }
+
+            .main-nav.active ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .main-nav.active ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .main-nav.active ul li a {
+                display: block;
+                padding: 15px 20px;
+                border-bottom: 1px solid #eee;
+            }
+            .main-nav.active ul li:last-child a {
+                border-bottom: none;
+            }
+            .main-nav.active ul li a::after {
+                display: none;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+            .hero-content h1 { font-size: 2.8em; }
+            .hero-content p { font-size: 1em; }
+            .btn { padding: 12px 25px; font-size: 1em; }
+
+            .section-title { font-size: 2em; margin-bottom: 30px; }
+            section { padding: 60px 0; }
+
+            .menu-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item img { height: 200px; }
+
+            footer .footer-nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            footer .footer-nav ul li {
+                margin: 5px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo { font-size: 1.5em; }
+            .hero-content h1 { font-size: 2.2em; }
+            .hero-content p { font-size: 0.9em; }
+            .btn { padding: 10px 20px; font-size: 0.9em; }
+
+            .section-title { font-size: 1.8em; }
+
+            .contact-info p {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .contact-info p strong {
+                margin-right: 0;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Ristorante Cantinone</a>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <img src="./images/1.jpg" alt="Interno accogliente del Ristorante Cantinone" class="hero-bg">
+            <div class="hero-content">
+                <h1>Ristorante Cantinone</h1>
+                <p>Un viaggio autentico nei sapori d'Italia, nel cuore di Lugano.</p>
+                <a href="#menu" class="btn">Scopri il Nostro Menu</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">La Nostra Storia</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Passione e Tradizione</h3>
+                        <p>Benvenuti al Ristorante Cantinone, dove la tradizione culinaria italiana si sposa con l'innovazione e la passione. Situati nel cuore storico di Lugano, offriamo ai nostri ospiti un'esperienza gastronomica indimenticabile, fatta di sapori autentici e ingredienti freschi di stagione.</p>
+                        <p>Dal 1980, Cantinone è un punto di riferimento per gli amanti della buona cucina. Ogni piatto racconta una storia, dalla selezione meticolosa delle materie prime locali e italiane, alla preparazione artigianale che rispetta le ricette della nonna, con un tocco moderno. Il nostro ambiente elegante ma accogliente è perfetto per ogni occasione, dalla cena romantica all'incontro d'affari.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/2.jpg" alt="Tavolo apparecchiato con cura in un ambiente elegante">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2 class="section-title">Il Nostro Menu</h2>
+                <p>Una selezione di piatti che celebrano la ricchezza della cucina italiana.</p>
+                <div class="menu-grid">
+                    <div class="menu-category">
+                        <h3>Antipasti</h3>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Tagliere di Salumi e Formaggi Ticinesi</span>
+                                <p class="item-description">Una selezione dei migliori prodotti locali, serviti con miele e confetture.</p>
+                            </div>
+                            <span class="item-price">CHF 22.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Carpaccio di Manzo con Scaglie di Parmigiano</span>
+                                <p class="item-description">Fettine sottili di manzo di qualità superiore con rucola e parmigiano.</p>
+                            </div>
+                            <span class="item-price">CHF 24.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Fiori di Zucca Fritti con Ricotta e Menta</span>
+                                <p class="item-description">Delicati fiori di zucca ripieni e fritti alla perfezione.</p>
+                            </div>
+                            <span class="item-price">CHF 18.-</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Primi Piatti</h3>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Risotto ai Funghi Porcini</span>
+                                <p class="item-description">Un classico risotto cremoso con funghi porcini freschi.</p>
+                            </div>
+                            <span class="item-price">CHF 28.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Pasta Fresca del Giorno (chiedere al cameriere)</span>
+                                <p class="item-description">La nostra pasta fatta in casa con il sugo del giorno.</p>
+                            </div>
+                            <span class="item-price">CHF 26.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Gnocchi di Patate al Pesto Genovese</span>
+                                <p class="item-description">Gnocchi morbidi con pesto fresco, fagiolini e patate.</p>
+                            </div>
+                            <span class="item-price">CHF 25.-</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Secondi Piatti</h3>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Filetto di Branzino al Sale</span>
+                                <p class="item-description">Branzino intero cotto al sale, servito con verdure di stagione.</p>
+                            </div>
+                            <span class="item-price">CHF 38.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Ossobuco alla Milanese con Gremolata</span>
+                                <p class="item-description">Piatto iconico della cucina lombarda, lento cottura e ricco di sapore.</p>
+                            </div>
+                            <span class="item-price">CHF 36.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Costolette d'Agnello scottadito</span>
+                                <p class="item-description">Costolette d'agnello succulente, cotte alla griglia e profumate alle erbe.</p>
+                            </div>
+                            <span class="item-price">CHF 42.-</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Dolci & Caffetteria</h3>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Tiramisù Classico</span>
+                                <p class="item-description">Il nostro inimitabile tiramisù, preparato secondo la ricetta tradizionale.</p>
+                            </div>
+                            <span class="item-price">CHF 12.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Panna Cotta ai Frutti di Bosco</span>
+                                <p class="item-description">Morbida panna cotta con una salsa fresca ai frutti di bosco.</p>
+                            </div>
+                            <span class="item-price">CHF 10.-</span>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-details">
+                                <span class="item-name">Caffè Espresso / Macchiato</span>
+                            </div>
+                            <span class="item-price">CHF 4.-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2 class="section-title">La Nostra Galleria</h2>
+                <p>Uno sguardo ai nostri piatti, al nostro ambiente e ai momenti speciali.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Piatto gourmet ben presentato">
+                        <div class="gallery-item-overlay"><span>Creazione dello Chef</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/4.jpg" alt="Interno del ristorante con atmosfera accogliente">
+                        <div class="gallery-item-overlay"><span>Ambiente Raffinato</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/5.jpg" alt="Un bicchiere di vino rosso con una bottiglia">
+                        <div class="gallery-item-overlay"><span>La Nostra Cantina</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/1.jpg" alt="Interno accogliente del Ristorante Cantinone">
+                        <div class="gallery-item-overlay"><span>Dettagli Eleganti</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contattaci</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Informazioni e Prenotazioni</h3>
+                        <p><strong>Telefono:</strong> <a href="tel:0919231068">091 923 10 68</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:info@ristorantecantinone.ch">info@ristorantecantinone.ch</a></p>
+                        <p><strong>Indirizzo:</strong> Piazza Cioccaro 8, 6900 Lugano, Switzerland</p>
+                        <p><strong>Orari:</strong><br>
+                            Martedì - Sabato: 12:00 - 14:00 | 18:30 - 22:30<br>
+                            Domenica - Lunedì: Chiuso
+                        </p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.264215264843!2d8.94939227653597!3d46.00223727109265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478432b4f699049d%3A0xc391300994553229!2sPiazza%20Cioccaro%208%2C%206900%20Lugano!5e0!3m2!1sen!2sch!4v1701389279075!5m2!1sen!2sch" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <h3>Inviaci un Messaggio</h3>
+                        <form class="contact-form" action="#" method="POST">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="subject">Oggetto:</label>
+                            <input type="text" id="subject" name="subject">
+
+                            <label for="message">Messaggio:</label>
+                            <textarea id="message" name="message" required></textarea>
+
+                            <button type="submit" class="btn">Invia Messaggio</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Ristorante Cantinone</div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.588-1.333h2.412v-3h-3.979c-3.121 0-4.221 1.503-4.221 4.5v2.5z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.85 0 3.204-.012 3.584-.07 4.85-C21.611 19.424 20.09 20.942 16.859 21.09c-1.264.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.251-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.645-.07-4.85 0-3.204.012-3.584.07-4.85 0-3.252 1.691-4.771 4.919-4.919 1.266-.058 1.644-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072C2.793 1.173 1.173 2.793 1.07 5.053.012 6.333 0 6.741 0 10s.014 3.667.072 4.947c.102 2.26 1.722 3.88 3.982 3.982 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c2.26-.102 3.88-1.722 3.982-3.982.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.102-2.26-1.722-3.88-3.982-3.982C15.667.014 15.259 0 12 0zm0 4.471c-4.07 0-7.382 3.312-7.382 7.382s3.312 7.382 7.382 7.382 7.382-3.312 7.382-7.382-3.312-7.382-7.382-7.382zm0 12.041c-2.503 0-4.545-2.042-4.545-4.545s2.042-4.545 4.545-4.545 4.545 2.042 4.545 4.545-2.042 4.545-4.545 4.545zm7.425-9.872c0 .552-.447 1-1 1s-1-.448-1-1 .447-1 1-1 1 .448 1 1z"/></svg></a>
+            </div>
+            <div class="contact-details-footer">
+                <p>Ristorante Cantinone &copy; 2023. Tutti i diritti riservati.</p>
+                <p>Piazza Cioccaro 8, 6900 Lugano, Switzerland</p>
+                <p>Tel: 091 923 10 68</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const mainNav = document.getElementById('mainNav');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            hamburger.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+
+            // Close mobile menu when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    const headerOffset = document.querySelector('header').offsetHeight; // Get dynamic header height
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+```

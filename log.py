@@ -20,3 +20,10 @@ def log(*msg: str) -> None:
     with open("./log.txt", "a") as f:
         for m in msg:
             f.write(f"{prefix}{m}\n")
+            
+
+
+
+def log_empty_row():
+    with open("./log.txt", "a") as f:
+        f.write("\n")

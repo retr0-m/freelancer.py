@@ -57,6 +57,56 @@ def initialize_database():
             log("Database connection closed after initialization.")
 
 
+def lead_exists(lead_id: Optional[int] = None, name: Optional[str] = None) -> Optional[int]:
+    """
+    Checks if a lead already exists in the database.
+    Returns the lead's status code if it exists.
+    Returns None if no matching lead is found.
+    """
+
+    if lead_id is None and name is None:
+        log("lead_exists called with no parameters. Returning None.")
+        return None
+
+    conn = create_connection()
+    if conn is None:
+        return None
+
+    try:
+        cursor = conn.cursor()
+
+        sql = "SELECT status FROM leads WHERE 1=1"
+        params = []
+
+        if lead_id is not None:
+            sql += " AND id = ?"
+            params.append(lead_id)
+
+        if name is not None:
+            sql += " AND name = ?"
+            params.append(name)
+
+        log(f"Checking if lead exists: {sql} with params {params}")
+        cursor.execute(sql, params)
+
+        row = cursor.fetchone()
+
+        if row is None:
+            log("Lead not found.")
+            return None
+
+        status = row["status"]
+        log(f"Lead exists. Status = {status}")
+        return status
+
+    except sqlite3.Error as e:
+        log(f"❌ Error checking if lead exists: {e}")
+        return None
+
+    finally:
+        conn.close()
+
+
 def insert_lead(lead: Lead):
     """Inserts a single lead record into the database."""
     log(f"Attempting to insert new lead: ID {lead.id}, Name: {lead.name}")
