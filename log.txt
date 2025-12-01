@@ -1,150 +1,116 @@
-[2025-12-01 17:24:32.573]	[ftp_manager.py]	==================================================
-[2025-12-01 17:24:32.574]	[ftp_manager.py]	TESTING SCRIPT
-[2025-12-01 17:24:32.574]	[ftp_manager.py]	Starting FTP upload process for leads.
-[2025-12-01 17:24:32.574]	[ftp_manager.py]	Trying to connect to FTPS host...
-[2025-12-01 17:24:32.769]	[ftp_manager.py]	Connected to FTPS host, logging in...
-[2025-12-01 17:24:33.196]	[ftp_manager.py]	Logged in successfully.
-[2025-12-01 17:24:33.337]	[ftp_manager.py]	Secured data channel with PROT P. Connected to 31.11.35.224
-[2025-12-01 17:24:33.337]	[ftp_manager.py]	Uploading lead ID 1
-[2025-12-01 17:24:33.337]	[ftp_manager.py]	Preparing to upload folder: ./leads/1/ → matteocola.com/preview/f/1
-[2025-12-01 17:24:33.338]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com
-[2025-12-01 17:24:33.411]	[ftp_manager.py]	Entered remote directory: matteocola.com
-[2025-12-01 17:24:33.411]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview
-[2025-12-01 17:24:33.487]	[ftp_manager.py]	Entered remote directory: matteocola.com/preview
-[2025-12-01 17:24:33.487]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f
-[2025-12-01 17:24:33.565]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:33.640]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:33.715]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:33.716]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/1
-[2025-12-01 17:24:33.790]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/1: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:33.867]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/1: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:33.946]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/1: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:33.946]	[ftp_manager.py]	Attempting to upload file: ./leads/1/index.html to matteocola.com/preview/f/1/index.html
-[2025-12-01 17:24:33.946]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/index.html
-[2025-12-01 17:24:34.218]	[ftp_manager.py]	Failed to upload ./leads/1/index.html: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:34.218]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com
-[2025-12-01 17:24:34.297]	[ftp_manager.py]	Entered remote directory: matteocola.com
-[2025-12-01 17:24:34.298]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview
-[2025-12-01 17:24:34.375]	[ftp_manager.py]	Entered remote directory: matteocola.com/preview
-[2025-12-01 17:24:34.376]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f
-[2025-12-01 17:24:34.456]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:34.541]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:34.625]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:34.625]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/1
-[2025-12-01 17:24:34.713]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/1: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:34.795]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/1: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:34.870]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/1: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:34.871]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/1/images
-[2025-12-01 17:24:34.954]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/1/images: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:35.032]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/1/images: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:35.117]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/1/images: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:35.118]	[ftp_manager.py]	Attempting to upload file: ./leads/1/images/4.jpg to matteocola.com/preview/f/1/images/4.jpg
-[2025-12-01 17:24:35.118]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/images/4.jpg
-[2025-12-01 17:24:35.421]	[ftp_manager.py]	Failed to upload ./leads/1/images/4.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:35.421]	[ftp_manager.py]	Attempting to upload file: ./leads/1/images/5.jpg to matteocola.com/preview/f/1/images/5.jpg
-[2025-12-01 17:24:35.421]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/images/5.jpg
-[2025-12-01 17:24:35.726]	[ftp_manager.py]	Failed to upload ./leads/1/images/5.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:35.726]	[ftp_manager.py]	Attempting to upload file: ./leads/1/images/2.jpg to matteocola.com/preview/f/1/images/2.jpg
-[2025-12-01 17:24:35.726]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/images/2.jpg
-[2025-12-01 17:24:36.022]	[ftp_manager.py]	Failed to upload ./leads/1/images/2.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:36.022]	[ftp_manager.py]	Attempting to upload file: ./leads/1/images/3.jpg to matteocola.com/preview/f/1/images/3.jpg
-[2025-12-01 17:24:36.023]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/images/3.jpg
-[2025-12-01 17:24:36.332]	[ftp_manager.py]	Failed to upload ./leads/1/images/3.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:36.333]	[ftp_manager.py]	Attempting to upload file: ./leads/1/images/1.jpg to matteocola.com/preview/f/1/images/1.jpg
-[2025-12-01 17:24:36.333]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/images/1.jpg
-[2025-12-01 17:24:36.635]	[ftp_manager.py]	Failed to upload ./leads/1/images/1.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:36.635]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com
-[2025-12-01 17:24:36.711]	[ftp_manager.py]	Entered remote directory: matteocola.com
-[2025-12-01 17:24:36.711]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview
-[2025-12-01 17:24:36.797]	[ftp_manager.py]	Entered remote directory: matteocola.com/preview
-[2025-12-01 17:24:36.797]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f
-[2025-12-01 17:24:36.890]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:36.985]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:37.080]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:37.080]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/1
-[2025-12-01 17:24:37.170]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/1: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:37.265]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/1: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:37.355]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/1: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:37.355]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/1/documents
-[2025-12-01 17:24:37.450]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/1/documents: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:37.545]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/1/documents: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:37.640]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/1/documents: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:37.640]	[ftp_manager.py]	Attempting to upload file: ./leads/1/documents/proposal.pdf to matteocola.com/preview/f/1/documents/proposal.pdf
-[2025-12-01 17:24:37.640]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/documents/proposal.pdf
-[2025-12-01 17:24:37.952]	[ftp_manager.py]	Failed to upload ./leads/1/documents/proposal.pdf: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:37.952]	[ftp_manager.py]	Attempting to upload file: ./leads/1/documents/qr_code.png to matteocola.com/preview/f/1/documents/qr_code.png
-[2025-12-01 17:24:37.953]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/1/documents/qr_code.png
-[2025-12-01 17:24:38.266]	[ftp_manager.py]	Failed to upload ./leads/1/documents/qr_code.png: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:38.266]	[ftp_manager.py]	Folder upload complete for ./leads/1/
-[2025-12-01 17:24:38.267]	[ftp_manager.py]	Uploading lead ID 2
-[2025-12-01 17:24:38.267]	[ftp_manager.py]	Preparing to upload folder: ./leads/2/ → matteocola.com/preview/f/2
-[2025-12-01 17:24:38.267]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com
-[2025-12-01 17:24:38.355]	[ftp_manager.py]	Entered remote directory: matteocola.com
-[2025-12-01 17:24:38.355]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview
-[2025-12-01 17:24:38.447]	[ftp_manager.py]	Entered remote directory: matteocola.com/preview
-[2025-12-01 17:24:38.448]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f
-[2025-12-01 17:24:38.552]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:38.656]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:38.761]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:38.761]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/2
-[2025-12-01 17:24:38.872]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/2: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:38.977]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/2: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:39.081]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/2: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:39.082]	[ftp_manager.py]	Attempting to upload file: ./leads/2/index.html to matteocola.com/preview/f/2/index.html
-[2025-12-01 17:24:39.082]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/2/index.html
-[2025-12-01 17:24:39.396]	[ftp_manager.py]	Failed to upload ./leads/2/index.html: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:39.396]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com
-[2025-12-01 17:24:39.498]	[ftp_manager.py]	Entered remote directory: matteocola.com
-[2025-12-01 17:24:39.499]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview
-[2025-12-01 17:24:39.603]	[ftp_manager.py]	Entered remote directory: matteocola.com/preview
-[2025-12-01 17:24:39.604]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f
-[2025-12-01 17:24:39.721]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:39.841]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:39.962]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:39.962]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/2
-[2025-12-01 17:24:40.077]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/2: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:40.197]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/2: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:40.317]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/2: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:40.317]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/2/images
-[2025-12-01 17:24:40.442]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/2/images: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:40.562]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/2/images: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:40.683]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/2/images: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:40.683]	[ftp_manager.py]	Attempting to upload file: ./leads/2/images/5.jpg to matteocola.com/preview/f/2/images/5.jpg
-[2025-12-01 17:24:40.683]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/2/images/5.jpg
-[2025-12-01 17:24:41.014]	[ftp_manager.py]	Failed to upload ./leads/2/images/5.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:41.014]	[ftp_manager.py]	Attempting to upload file: ./leads/2/images/2.jpg to matteocola.com/preview/f/2/images/2.jpg
-[2025-12-01 17:24:41.014]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/2/images/2.jpg
-[2025-12-01 17:24:41.343]	[ftp_manager.py]	Failed to upload ./leads/2/images/2.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:41.344]	[ftp_manager.py]	Attempting to upload file: ./leads/2/images/3.jpg to matteocola.com/preview/f/2/images/3.jpg
-[2025-12-01 17:24:41.344]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/2/images/3.jpg
-[2025-12-01 17:24:41.674]	[ftp_manager.py]	Failed to upload ./leads/2/images/3.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:41.674]	[ftp_manager.py]	Attempting to upload file: ./leads/2/images/1.jpg to matteocola.com/preview/f/2/images/1.jpg
-[2025-12-01 17:24:41.674]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/2/images/1.jpg
-[2025-12-01 17:24:42.004]	[ftp_manager.py]	Failed to upload ./leads/2/images/1.jpg: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:42.004]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com
-[2025-12-01 17:24:42.122]	[ftp_manager.py]	Entered remote directory: matteocola.com
-[2025-12-01 17:24:42.123]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview
-[2025-12-01 17:24:42.245]	[ftp_manager.py]	Could not enter directory matteocola.com/preview: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:42.360]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:42.480]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:42.480]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f
-[2025-12-01 17:24:42.603]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:42.730]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:42.856]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:42.856]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/2
-[2025-12-01 17:24:42.983]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/2: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:43.700]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/2: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:43.824]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/2: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:43.825]	[ftp_manager.py]	Trying to enter remote directory: matteocola.com/preview/f/2/documents
-[2025-12-01 17:24:43.953]	[ftp_manager.py]	Could not enter directory matteocola.com/preview/f/2/documents: 550 The system cannot find the path specified. . Attempting to create it.
-[2025-12-01 17:24:44.085]	[ftp_manager.py]	Failed to create directoy matteocola.com/preview/f/2/documents: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:44.210]	[ftp_manager.py]	Failed to enter remote directory after creation matteocola.com/preview/f/2/documents: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:44.210]	[ftp_manager.py]	Attempting to upload file: ./leads/2/documents/proposal.pdf to matteocola.com/preview/f/2/documents/proposal.pdf
-[2025-12-01 17:24:44.210]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/2/documents/proposal.pdf
-[2025-12-01 17:24:44.548]	[ftp_manager.py]	Failed to upload ./leads/2/documents/proposal.pdf: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:44.548]	[ftp_manager.py]	Attempting to upload file: ./leads/2/documents/qr_code.png to matteocola.com/preview/f/2/documents/qr_code.png
-[2025-12-01 17:24:44.549]	[ftp_manager.py]	STOR command path = matteocola.com/preview/f/2/documents/qr_code.png
-[2025-12-01 17:24:44.892]	[ftp_manager.py]	Failed to upload ./leads/2/documents/qr_code.png: 550 The system cannot find the path specified. 
-[2025-12-01 17:24:44.892]	[ftp_manager.py]	Folder upload complete for ./leads/2/
-[2025-12-01 17:24:44.893]	[ftp_manager.py]	All leads uploaded successfully.
-[2025-12-01 17:24:44.962]	[ftp_manager.py]	FTPS connection closed.
+
+[2025-12-01 19:24:53.568]	[main.py]	================= FREELANCER.PY ==================
+[2025-12-01 19:24:53.568]	[main.py]	==================================================
+[2025-12-01 19:24:53.568]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-12-01 19:24:53.570]	[database.py]	Successfully established database connection.
+[2025-12-01 19:24:53.571]	[database.py]	Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-01 19:24:53.571]	[database.py]	Database connection closed after initialization.
+[2025-12-01 19:24:55.075]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-12-01 19:24:55.076]	[database.py]	Successfully established database connection.
+[2025-12-01 19:24:55.076]	[database.py]	Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['La Tinèra']
+[2025-12-01 19:24:55.076]	[database.py]	Lead not found.
+[2025-12-01 19:24:55.076]	[find_customers.py]	🎯 LEAD found and initialized: ID 1, La Tinèra
+[2025-12-01 19:24:55.201]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-12-01 19:24:55.202]	[database.py]	Successfully established database connection.
+[2025-12-01 19:24:55.202]	[database.py]	Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Ristorante Cantinone']
+[2025-12-01 19:24:55.202]	[database.py]	Lead not found.
+[2025-12-01 19:24:55.202]	[find_customers.py]	🎯 LEAD found and initialized: ID 2, Ristorante Cantinone
+[2025-12-01 19:24:55.207]	[find_customers.py]	Saved 2 leads to ./leads/index.csv
+[2025-12-01 19:24:55.207]	[scrape_images.py]	Searching images for: La Tinèra Via dei Gorini 2, 6900 Lugano, Switzerland
+[2025-12-01 19:24:56.495]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
+[2025-12-01 19:24:57.573]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
+[2025-12-01 19:24:58.027]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
+[2025-12-01 19:24:58.970]	[scrape_images.py]	Downloaded: ./leads/1/images/4.jpg
+[2025-12-01 19:24:59.426]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
+[2025-12-01 19:24:59.426]	[scrape_images.py]	images scraping done
+[2025-12-01 19:24:59.427]	[lead.py]	added images to lead: ['./leads/1/images/1.jpg', './leads/1/images/2.jpg', './leads/1/images/3.jpg', './leads/1/images/4.jpg', './leads/1/images/5.jpg']
+[2025-12-01 19:24:59.427]	[create_website.py]	Initializing client
+[2025-12-01 19:24:59.509]	[create_website.py]	CLient initialized
+[2025-12-01 19:24:59.509]	[create_website.py]	Generating prompt...
+[2025-12-01 19:24:59.510]	[create_website.py]	Done!
+[2025-12-01 19:24:59.510]	[create_website.py]	prompting model for website...
+[2025-12-01 19:25:47.712]	[create_website.py]	Checking if content is HTML
+[2025-12-01 19:25:47.714]	[create_website.py]	Succesfully received a response with HTML code.
+[2025-12-01 19:25:47.714]	[create_website.py]	Saving website content to ./leads/1/index.html
+[2025-12-01 19:25:47.715]	[create_website.py]	Done writing 27393 characters into the index file
+[2025-12-01 19:25:47.734]	[qr_generator.py]	qr generated... saving it...
+[2025-12-01 19:25:47.747]	[qr_generator.py]	documents folder not found, creating one.
+[2025-12-01 19:25:47.748]	[qr_generator.py]	done!
+[2025-12-01 19:25:47.783]	[create_documentation.py]	Done! Created:
+[2025-12-01 19:25:47.783]	[create_documentation.py]	./leads/1/documents/proposal.pdf
+[2025-12-01 19:25:47.783]	[database.py]	Attempting to insert new lead: ID 1, Name: La Tinèra
+[2025-12-01 19:25:47.783]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-12-01 19:25:47.783]	[database.py]	Successfully established database connection.
+[2025-12-01 19:25:47.784]	[database.py]	✅ Lead successfully inserted. New Row ID: 1 (Lead ID: 1)
+[2025-12-01 19:25:47.784]	[database.py]	Database connection closed after insertion attempt.
+[2025-12-01 19:25:47.784]	[database.py]	Fetching up to 20 leads with status >= 0 for display.
+[2025-12-01 19:25:47.784]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-12-01 19:25:47.784]	[database.py]	Successfully established database connection.
+[2025-12-01 19:25:47.785]	[database.py]	Successfully displayed 1 leads.
+[2025-12-01 19:25:47.947]	[scrape_images.py]	Searching images for: Ristorante Cantinone Piazza Cioccaro 8, 6900 Lugano, Switzerland
+[2025-12-01 19:25:49.124]	[scrape_images.py]	Downloaded: ./leads/2/images/1.jpg
+[2025-12-01 19:25:49.614]	[scrape_images.py]	Downloaded: ./leads/2/images/2.jpg
+[2025-12-01 19:25:50.292]	[scrape_images.py]	Downloaded: ./leads/2/images/3.jpg
+[2025-12-01 19:25:50.755]	[scrape_images.py]	Downloaded: ./leads/2/images/4.jpg
+[2025-12-01 19:25:51.240]	[scrape_images.py]	Downloaded: ./leads/2/images/5.jpg
+[2025-12-01 19:25:51.241]	[scrape_images.py]	images scraping done
+[2025-12-01 19:25:51.241]	[lead.py]	added images to lead: ['./leads/2/images/1.jpg', './leads/2/images/2.jpg', './leads/2/images/3.jpg', './leads/2/images/4.jpg', './leads/2/images/5.jpg']
+[2025-12-01 19:25:51.242]	[create_website.py]	Initializing client
+[2025-12-01 19:25:51.266]	[create_website.py]	CLient initialized
+[2025-12-01 19:25:51.266]	[create_website.py]	Generating prompt...
+[2025-12-01 19:25:51.267]	[create_website.py]	Done!
+[2025-12-01 19:25:51.267]	[create_website.py]	prompting model for website...
+[2025-12-01 19:26:24.811]	[create_website.py]	Checking if content is HTML
+[2025-12-01 19:26:24.813]	[create_website.py]	Succesfully received a response with HTML code.
+[2025-12-01 19:26:24.813]	[create_website.py]	Saving website content to ./leads/2/index.html
+[2025-12-01 19:26:24.814]	[create_website.py]	Done writing 25203 characters into the index file
+[2025-12-01 19:26:24.836]	[qr_generator.py]	qr generated... saving it...
+[2025-12-01 19:26:24.837]	[qr_generator.py]	documents folder not found, creating one.
+[2025-12-01 19:26:24.838]	[qr_generator.py]	done!
+[2025-12-01 19:26:24.877]	[create_documentation.py]	Done! Created:
+[2025-12-01 19:26:24.877]	[create_documentation.py]	./leads/2/documents/proposal.pdf
+[2025-12-01 19:26:24.877]	[database.py]	Attempting to insert new lead: ID 2, Name: Ristorante Cantinone
+[2025-12-01 19:26:24.877]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-12-01 19:26:24.878]	[database.py]	Successfully established database connection.
+[2025-12-01 19:26:24.878]	[database.py]	✅ Lead successfully inserted. New Row ID: 2 (Lead ID: 2)
+[2025-12-01 19:26:24.879]	[database.py]	Database connection closed after insertion attempt.
+[2025-12-01 19:26:24.879]	[database.py]	Fetching up to 20 leads with status >= 0 for display.
+[2025-12-01 19:26:24.879]	[database.py]	Attempting to connect to database file: ./leads.db
+[2025-12-01 19:26:24.879]	[database.py]	Successfully established database connection.
+[2025-12-01 19:26:24.879]	[database.py]	Successfully displayed 2 leads.
+[2025-12-01 19:26:24.990]	[main.py]	Websites creation done, waiting for human confirmation to upload to FTPS.
+[2025-12-01 19:28:45.278]	[editor.py]	Generating prompt...
+[2025-12-01 19:28:45.283]	[editor.py]	Done!
+[2025-12-01 19:28:45.284]	[editor.py]	Generating prompt...
+[2025-12-01 19:28:45.288]	[editor.py]	Done!
+[2025-12-01 19:28:45.289]	[create_website.py]	Initializing client
+[2025-12-01 19:28:45.313]	[create_website.py]	CLient initialized
+[2025-12-01 19:28:45.313]	[editor.py]	prompting model to apply edits...
+[2025-12-01 19:29:32.195]	[create_website.py]	Checking if content is HTML
+[2025-12-01 19:29:32.196]	[editor.py]	Succesfully received a response with HTML code.
+[2025-12-01 19:29:32.196]	[editor.py]	Replacing website content on ./leads/1/index.html
+[2025-12-01 19:29:32.198]	[editor.py]	Done writing 27544 characters into the index file
+[2025-12-01 19:29:32.198]	[editor.py]	prompting model to apply edits...
+[2025-12-01 19:30:06.303]	[create_website.py]	Checking if content is HTML
+[2025-12-01 19:30:06.305]	[editor.py]	Succesfully received a response with HTML code.
+[2025-12-01 19:30:06.306]	[editor.py]	Replacing website content on ./leads/2/index.html
+[2025-12-01 19:30:06.308]	[editor.py]	Done writing 25475 characters into the index file
+[2025-12-01 19:30:06.315]	[ftp_manager.py]	Attempting to connect to FTPS...
+[2025-12-01 19:30:10.784]	[ftp_manager.py]	Succesfully connected!
+[2025-12-01 19:30:11.674]	[ftp_manager.py]	Uploading ./leads/1/index.html → /matteocola.com/preview/f/1/index.html
+[2025-12-01 19:30:13.357]	[ftp_manager.py]	Uploading ./leads/1/images/4.jpg → /matteocola.com/preview/f/1/images/4.jpg
+[2025-12-01 19:30:14.602]	[ftp_manager.py]	Uploading ./leads/1/images/5.jpg → /matteocola.com/preview/f/1/images/5.jpg
+[2025-12-01 19:30:16.156]	[ftp_manager.py]	Uploading ./leads/1/images/2.jpg → /matteocola.com/preview/f/1/images/2.jpg
+[2025-12-01 19:30:18.906]	[ftp_manager.py]	Uploading ./leads/1/images/3.jpg → /matteocola.com/preview/f/1/images/3.jpg
+[2025-12-01 19:30:21.504]	[ftp_manager.py]	Uploading ./leads/1/images/1.jpg → /matteocola.com/preview/f/1/images/1.jpg
+[2025-12-01 19:30:24.812]	[ftp_manager.py]	Done!
+[2025-12-01 19:30:24.889]	[ftp_manager.py]	Attempting to connect to FTPS...
+[2025-12-01 19:30:25.682]	[ftp_manager.py]	Succesfully connected!
+[2025-12-01 19:30:26.774]	[ftp_manager.py]	Uploading ./leads/2/index.html → /matteocola.com/preview/f/2/index.html
+[2025-12-01 19:30:28.652]	[ftp_manager.py]	Uploading ./leads/2/images/4.jpg → /matteocola.com/preview/f/2/images/4.jpg
+[2025-12-01 19:30:29.672]	[ftp_manager.py]	Uploading ./leads/2/images/5.jpg → /matteocola.com/preview/f/2/images/5.jpg
+[2025-12-01 19:30:30.658]	[ftp_manager.py]	Uploading ./leads/2/images/2.jpg → /matteocola.com/preview/f/2/images/2.jpg
+[2025-12-01 19:30:31.665]	[ftp_manager.py]	Uploading ./leads/2/images/3.jpg → /matteocola.com/preview/f/2/images/3.jpg
+[2025-12-01 19:30:32.771]	[ftp_manager.py]	Uploading ./leads/2/images/1.jpg → /matteocola.com/preview/f/2/images/1.jpg
+[2025-12-01 19:30:34.028]	[ftp_manager.py]	Done!
+[2025-12-01 19:30:34.102]	[main.py]	Done! ran all the scripts with no fatal errors. exiting...

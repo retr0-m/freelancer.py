@@ -1,109 +1,173 @@
 from ftplib import FTP_TLS
-from lead import Lead
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 from log import log
+from lead import Lead
 
-load_dotenv()
-try:
-    FTPS_HOST = os.getenv("FTPS_HOST")
-    FTPS_USERNAME = os.getenv("FTPS_USERNAME")
-    FTPS_PASSWORD = os.getenv("FTPS_PASSWORD")
-except:
-    log("One or more of the following vars is not stored in .env: FTPS_HOST, FTPS_USERNAME, FTPS_PASSWORD")
-
-
-def ftps_initialize(host, username, password) -> FTP_TLS:
-    log("Trying to connect to FTPS host...")
-    ftps = FTP_TLS(host)
-    log("Connected to FTPS host, logging in...")
-    ftps.login(username, password)
-    log("Logged in successfully.")
-    ftps.prot_p()  # secure the data channel
-    log(f"Secured data channel with PROT P. Connected to {host}")
+def connect_ftps(host: str, username: str, password: str) -> FTP_TLS:
+    """
+    Connect to a Windows FTPS server (explicit FTPS, IIS compatible).
+    """
+    log("Attempting to connect to FTPS...")
+    try:
+        ftps = FTP_TLS()
+        ftps.connect(host, 21, timeout=10)
+        ftps.auth()
+        ftps.login(username, password)
+        ftps.prot_p()          # required for encrypted STOR
+        log("Succesfully connected!")
+    except Exception as E:
+        log(f"Could not connect to ftps for the following reason: {E}")
     return ftps
 
 
-def ensure_remote_dir(ftps: FTP_TLS, remote_path: str):
+# -------------------------------------------------
+#   FIX: Windows IIS causes socket.timeout on STOR
+#   We use a custom STOR that avoids `.unwrap()`
+# -------------------------------------------------
+def storbinary_no_tear(ftps: FTP_TLS, cmd: str, fp, blocksize=8192):
     """
-    Recursively create remote directories if they don't exist.
-    Keeps you in the final directory.
+    IIS-compatible STOR command — avoids TLS shutdown timeout.
     """
-    parts = remote_path.lstrip("/").split("/")
-    current = ""
-    for part in parts:
-        current = part if current == "" else f"{current}/{part}"
-        try:
-            log(f"Trying to enter remote directory: {current}")
-            ftps.cwd(current)
-            log(f"Entered remote directory: {current}")
-        except Exception as e_cwd:
-            log(f"Could not enter directory {current}: {e_cwd}. Attempting to create it.")
-            try:
-                ftps.mkd(current)
-                log(f"Created remote directory: {current}")
-            except Exception as e_mkd:
-                log(f"Failed to create directoy {current}: {e_mkd}")
-            try:
-                ftps.cwd(current)
-                log(f"Entered remote directory after creation: {current}")
-            except Exception as e_mkd:
-                log(f"Failed to enter remote directory after creation {current}: {e_mkd}")
+    conn = ftps.transfercmd(cmd)
+    while True:
+        block = fp.read(blocksize)
+        if not block:
+            break
+        conn.sendall(block)
 
-
-def ftps_upload_folder(ftps: FTP_TLS, local_folder: str, remote_folder: str):
-    log(f"Preparing to upload folder: {local_folder} → {remote_folder}")
-
-    if not os.path.exists(local_folder):
-        log(f"Local folder does not exist: {local_folder}")
-        return
-    if not os.listdir(local_folder):
-        log(f"Local folder is empty: {local_folder}")
-        return
-
-    for root, dirs, files in os.walk(local_folder):
-        rel_path = os.path.relpath(root, local_folder)
-        remote_path = remote_folder if rel_path == "." else f"{remote_folder}/{rel_path}"
-
-        # ensure remote path exists and enter it
-        ensure_remote_dir(ftps, remote_path)
-
-        for filename in files:
-            local_file_path = os.path.join(root, filename)
-            log(f"Attempting to upload file: {local_file_path} to {remote_path}/{filename}")
-            try:
-                with open(local_file_path, "rb") as f:
-                    full_remote = f"{remote_path}/{filename}"
-                    log(f"STOR command path = {full_remote}")
-                    ftps.storbinary(f"STOR {full_remote}", f)
-                    log(f"Uploaded: {local_file_path} → {remote_path}/{filename}")
-            except Exception as e:
-                log(f"Failed to upload {local_file_path}: {e}")
-
-    log(f"Folder upload complete for {local_folder}")
-
-
-def upload_to_ftp(leads: list[Lead]) -> int:
-    log("Starting FTP upload process for leads.")
-    ftps = ftps_initialize(FTPS_HOST, FTPS_USERNAME, FTPS_PASSWORD)
     try:
-        for lead in leads:
-            local_folder = f"./leads/{lead.id}/"
-            remote_folder = f"matteocola.com/preview/f/{lead.id}"
-            log(f"Uploading lead ID {lead.id}")
-            ftps_upload_folder(ftps, local_folder, remote_folder)
-        log("All leads uploaded successfully.")
-    finally:
-        ftps.quit()
-        log("FTPS connection closed.")
+        conn.close()      # Do NOT call unwrap()
+    except:
+        pass
 
-    return 0
+    ftps.voidresp()
 
+
+# -------------------------------------------------
+#   REMOTE FOLDER CREATION (Windows-safe)
+# -------------------------------------------------
+def ftps_create_folder(ftps: FTP_TLS, remote_path: str):
+    """
+    Creates a folder recursively on a Windows FTPS server.
+    Example: ftps_create_folder(ftps, "/preview/f/123")
+    """
+
+    # Normalize path
+    parts = remote_path.strip('/').split('/')
+
+    ftps.cwd('/')  # Always start from root on Windows FTPS
+
+    for part in parts:
+        if not part:
+            continue
+        try:
+            ftps.cwd(part)
+        except:
+            # Try to create folder
+            try:
+                ftps.mkd(part)
+            except:
+                pass   # It might already exist
+            ftps.cwd(part)
+
+
+
+
+# -------------------------------------------------
+#   SEND A FILE (local → remote)
+# -------------------------------------------------
+def ftps_send_file(ftps: FTP_TLS, local_path: str, remote_path: str):
+    """
+    Upload a single file from local_path → remote_path.
+    Automatically creates the remote directory tree.
+    """
+    # Extract directory part
+    remote_dir = os.path.dirname(remote_path)
+
+    # Ensure folder exists
+    ftps_create_folder(ftps, remote_dir)
+
+    # Confirm root for upload
+    ftps.cwd('/')
+
+    # Upload file using IIS-safe STOR
+    with open(local_path, "rb") as f:
+        log(f"Uploading {local_path} → {remote_path}")
+        storbinary_no_tear(ftps, f"STOR {remote_path}", f)
+
+def ftps_upload_dir(ftps: FTP_TLS, local_dir: str, remote_dir: str):
+    """
+    Uploads all files inside a directory (non-recursive) to a remote FTPS folder.
+    Perfect for folders that contain only images or static files.
+    """
+    if not os.path.isdir(local_dir):
+        raise ValueError(f"Local path is not a directory: {local_dir}")
+
+    # Ensure remote directory exists
+    ftps_create_folder(ftps, remote_dir)
+
+    # Loop through files
+    for filename in os.listdir(local_dir):
+        local_path = os.path.join(local_dir, filename)
+
+        # skip subfolders
+        if os.path.isdir(local_path):
+            continue
+
+        remote_path = f"{remote_dir}/{filename}"
+
+        log(f"Uploading {local_path} → {remote_path}")
+        with open(local_path, "rb") as f:
+            storbinary_no_tear(ftps, f"STOR {remote_path}", f)
+
+def init_vars():
+    load_dotenv()
+
+    FTPS_HOST = os.getenv("FTPS_HOST")
+    FTPS_USER = os.getenv("FTPS_USERNAME")
+    FTPS_PASS = os.getenv("FTPS_PASSWORD")
+    
+    return FTPS_HOST, FTPS_PASS, FTPS_USER
+    
+
+
+def ftps_upload_lead(lead:Lead):
+   
+    FTPS_HOST, FTPS_PASS, FTPS_USER = init_vars()
+
+    ftps = connect_ftps(FTPS_HOST, FTPS_USER, FTPS_PASS)
+
+    
+    ftps_create_folder(ftps, f"/matteocola.com/preview/f/{lead.id}")
+
+    ftps_send_file(
+        ftps,
+        local_path=f"./leads/{lead.id}/index.html",
+        remote_path=f"/matteocola.com/preview/f/{lead.id}/index.html"
+    )
+    ftps_create_folder(ftps, f"/matteocola.com/preview/f/{lead.id}/images")
+    
+    ftps_upload_dir(ftps, f"./leads/{lead.id}/images", f"/matteocola.com/preview/f/{lead.id}/images")
+
+    log("Done!")
+    
+    ftps.quit()
+    
+    
+    
+def ftps_upload_lead_list(lead_list: list[Lead]):
+    for lead in lead_list:
+        ftps_upload_lead(lead)
 
 if __name__ == "__main__":
-    log("=" * 50)
+    
+    log("="*50)
     log("TESTING SCRIPT")
-
-    l1 = Lead(1, "TEST", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
-    l2 = Lead(2, "TEST2", "21312333", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
-    upload_to_ftp([l1, l2])
+    
+    #TEST 1
+    log('TEST-1 with following sandbox data:      Lead(1, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)')
+    l=Lead(1, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
+    ftps_upload_lead(l)
+    
+    

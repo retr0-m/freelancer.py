@@ -7,10 +7,11 @@ import qr_generator
 import os
 from log import log, log_empty_row
 import ftp_manager
+import preview
+import editor
 
 CUSTOMERS_TYPE="Ristorante"
 CUSTOMERS_CITY="Lugano"
-
 
 def main():
     log_empty_row()
@@ -44,10 +45,20 @@ def main():
         
         database.insert_lead(lead)
         database.display_leads_table(limit=20, min_status=0)
-
-        #last step: uploading to ftp matteocola.com/preview/lead.id/index.html
+        preview.open_website_preview(lead)
     
-    ftp_manager.upload_to_ftp(lead_list)
+    while True:
+        if not editor.yes_or_no_input("Want to edit websites?"):
+            break
+        # human check
+        log("Websites creation done, waiting for human confirmation to upload to FTPS.")
+        edits=editor.prompt_user_edits(lead_list)
+        editor.apply_user_edits(edits)
+    
+    input("Press ENTER to upload all to FTPS\nCTRL+C to cancel.")
+    
+    # uploading to FTPS
+    ftp_manager.ftps_upload_lead_list(lead_list)
     
     log("Done! ran all the scripts with no fatal errors. exiting...")
     exit(0)
