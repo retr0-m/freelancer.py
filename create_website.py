@@ -8,7 +8,7 @@ import re
 load_dotenv()
 
 GEMINI_MODEL = "gemini-2.5-flash"
-PROMPT_BASE = "You're a web designer and developer\ncreate an amazing, modern and professional themed website, make it responsive and use placeholders instead of images, so i can add them later, for the following restaurant with italian content:"
+PROMPT_BASE = "You're a web designer and developer\ncreate an amazing, content in italian, modern and professional themed website, make it responsive and **use placeholders ONLY FOR THE MENU ITEMS**, for the following restaurant:"
 try:
     API_KEY = os.getenv("GEMINI_API_KEY")   
 except Exception as e:
@@ -105,8 +105,13 @@ def init_client():
         return client
     except Exception as e:
         log("Failed client initialization: "+str(e))
-        
-        
+
+
+def format_html(content):
+    c=str(content)
+    c=c.replace("```html", "")
+    c=c.replace("```", "")
+    return content
 
 def strip_leads_folder(path: str) -> str:
     """
@@ -114,7 +119,7 @@ def strip_leads_folder(path: str) -> str:
     by removing the first two path segments after '.'.
     """
     parts = path.split('/')
-    
+
     # Example parts: ['.', 'leads', '150', 'images', '1.jpg']
     # We want: ['.', 'images', '1.jpg']
     if len(parts) >= 5 and parts[0] == '.' and parts[1] == 'leads':
@@ -125,6 +130,7 @@ def strip_leads_folder(path: str) -> str:
 
 def save_website_to_file(lead: Lead,website_content):
     log(f"Saving website content to ./leads/{lead.id}/index.html")
+    website_content=format_html(website_content)
     with open(f"./leads/{lead.id}/index.html", "a") as f:
         chars=f.write(str(website_content))
     log(f"Done writing {chars} characters into the index file")

@@ -44,13 +44,12 @@ def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000, m
         keyword=keyword
     )
     
-    # Initialize a counter for the lead ID (will be overwritten by DB ID later)
-    lead_id_counter = 1
-
+    last_lead_id_in_db = database.get_last_lead_id()
+    lead_id_counter = last_lead_id_in_db + 1
     while True:
         for place in places_result.get('results', []):
             if max_leads != 0:
-                if lead_id_counter > max_leads:
+                if lead_id_counter - last_lead_id_in_db > max_leads:
                     return leads_list
             try:
                 place_details = gmaps.place(

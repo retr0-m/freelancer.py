@@ -3,7 +3,7 @@ from lead import Lead
 from google import genai
 import os 
 from dotenv import load_dotenv
-from create_website import is_html, init_client
+from create_website import is_html, init_client, format_html
 
 
 load_dotenv()
@@ -42,11 +42,13 @@ def yes_or_no_input(text: str): #deprecated
 
 def prompt_user_edits(lead_list: list[Lead]) -> list[Edit]:
     # will be { lead.id : "Make the title bolder..."}
+    log("Waiting for user to type edits for the websites.")
     edits=[]
     for lead in lead_list:
-        s=input(f"Anything wrong with website with id {lead.id}?     (ENTER to skip)\n\t-> ")
+        s=input(f"Anything wrong with website with id {lead.id} - {lead.name}?     (ENTER to skip)\n\t-> ")
         if(s.strip()!=""):
             edits.append(Edit(s, lead))
+            log("User entered the following edit: "+s)
     return edits
 
 def generate_prompt(edit: Edit):
@@ -81,6 +83,7 @@ def run_prompt(client, prompt):
 
 def replace_website_content(lead: Lead,website_content):
     log(f"Replacing website content on ./leads/{lead.id}/index.html")
+    website_content=format_html(website_content)
     with open(f"./leads/{lead.id}/index.html", "w", encoding="utf-8") as f:
         chars = f.write(str(website_content))
     log(f"Done writing {chars} characters into the index file")

@@ -118,8 +118,11 @@ def ftps_upload_dir(ftps: FTP_TLS, local_dir: str, remote_dir: str):
         remote_path = f"{remote_dir}/{filename}"
 
         log(f"Uploading {local_path} → {remote_path}")
-        with open(local_path, "rb") as f:
-            storbinary_no_tear(ftps, f"STOR {remote_path}", f)
+        try:
+            with open(local_path, "rb") as f:
+                storbinary_no_tear(ftps, f"STOR {remote_path}", f)
+        except Exception as e:
+            log(f"ERROR WHILE UPLOADING FILE {local_path} ----- {e}")
 
 def init_vars():
     load_dotenv()

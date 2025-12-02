@@ -10,8 +10,9 @@ import ftp_manager
 import preview
 import editor
 
-CUSTOMERS_TYPE="Ristorante"
-CUSTOMERS_CITY="Lugano"
+CUSTOMERS_TYPE = "Ristorante"
+CUSTOMERS_CITY = "Lugano"
+LEADS_TO_GENERATE = 2
 
 def main():
     log_empty_row()
@@ -21,7 +22,7 @@ def main():
     #init db
     database.initialize_database()
     
-    lead_list=find_customers.find_and_initialize_leads(CUSTOMERS_TYPE, CUSTOMERS_CITY, max_leads=2)
+    lead_list=find_customers.find_and_initialize_leads(CUSTOMERS_TYPE, CUSTOMERS_CITY, max_leads=LEADS_TO_GENERATE)
     if lead_list:
         find_customers.save_leads_to_csv(lead_list)
     else:
@@ -48,14 +49,13 @@ def main():
         preview.open_website_preview(lead)
     
     while True:
-        if not editor.yes_or_no_input("Want to edit websites?"):
-            break
         # human check
-        log("Websites creation done, waiting for human confirmation to upload to FTPS.")
         edits=editor.prompt_user_edits(lead_list)
+        if len(edits) == 0:
+            break
         editor.apply_user_edits(edits)
     
-    input("Press ENTER to upload all to FTPS\nCTRL+C to cancel.")
+    input("Press ENTER to upload files to FTPS\nCTRL+C to cancel.")
     
     # uploading to FTPS
     ftp_manager.ftps_upload_lead_list(lead_list)

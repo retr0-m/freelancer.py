@@ -106,6 +106,29 @@ def lead_exists(lead_id: Optional[int] = None, name: Optional[str] = None) -> Op
     finally:
         conn.close()
 
+def get_last_lead_id() -> int:
+    """
+    Returns the highest lead ID in the database.
+    Returns 0 if no leads exist or in case of an error.
+    """
+    conn = create_connection()
+    if conn is None:
+        log("Could not connect to DB to get last lead ID.")
+        return 0
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT MAX(id) AS last_id FROM leads")
+        row = cursor.fetchone()
+        last_id = row["last_id"] if row and row["last_id"] is not None else 0
+        log(f"Last lead ID in database: {last_id}")
+        return last_id
+    except sqlite3.Error as e:
+        log(f"❌ Error fetching last lead ID: {e}")
+        return 0
+    finally:
+        conn.close()
+
 
 def insert_lead(lead: Lead):
     """Inserts a single lead record into the database."""

@@ -14,7 +14,7 @@ def log(*msg: str) -> None:
     
     # 3. Format the log line prefix
     time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3] # Format time with milliseconds
-    prefix = f"[{time_str}]\t[{file_name}]\t"
+    prefix = f"[{time_str}]\t[{file_name}]\t\t"
     
     # 4. Write to the log file
     with open("./log.txt", "a") as f:

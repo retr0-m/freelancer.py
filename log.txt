@@ -1,116 +1,394 @@
 
-[2025-12-01 19:24:53.568]	[main.py]	================= FREELANCER.PY ==================
-[2025-12-01 19:24:53.568]	[main.py]	==================================================
-[2025-12-01 19:24:53.568]	[database.py]	Attempting to connect to database file: ./leads.db
-[2025-12-01 19:24:53.570]	[database.py]	Successfully established database connection.
-[2025-12-01 19:24:53.571]	[database.py]	Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
-[2025-12-01 19:24:53.571]	[database.py]	Database connection closed after initialization.
-[2025-12-01 19:24:55.075]	[database.py]	Attempting to connect to database file: ./leads.db
-[2025-12-01 19:24:55.076]	[database.py]	Successfully established database connection.
-[2025-12-01 19:24:55.076]	[database.py]	Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['La Tinèra']
-[2025-12-01 19:24:55.076]	[database.py]	Lead not found.
-[2025-12-01 19:24:55.076]	[find_customers.py]	🎯 LEAD found and initialized: ID 1, La Tinèra
-[2025-12-01 19:24:55.201]	[database.py]	Attempting to connect to database file: ./leads.db
-[2025-12-01 19:24:55.202]	[database.py]	Successfully established database connection.
-[2025-12-01 19:24:55.202]	[database.py]	Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Ristorante Cantinone']
-[2025-12-01 19:24:55.202]	[database.py]	Lead not found.
-[2025-12-01 19:24:55.202]	[find_customers.py]	🎯 LEAD found and initialized: ID 2, Ristorante Cantinone
-[2025-12-01 19:24:55.207]	[find_customers.py]	Saved 2 leads to ./leads/index.csv
-[2025-12-01 19:24:55.207]	[scrape_images.py]	Searching images for: La Tinèra Via dei Gorini 2, 6900 Lugano, Switzerland
-[2025-12-01 19:24:56.495]	[scrape_images.py]	Downloaded: ./leads/1/images/1.jpg
-[2025-12-01 19:24:57.573]	[scrape_images.py]	Downloaded: ./leads/1/images/2.jpg
-[2025-12-01 19:24:58.027]	[scrape_images.py]	Downloaded: ./leads/1/images/3.jpg
-[2025-12-01 19:24:58.970]	[scrape_images.py]	Downloaded: ./leads/1/images/4.jpg
-[2025-12-01 19:24:59.426]	[scrape_images.py]	Downloaded: ./leads/1/images/5.jpg
-[2025-12-01 19:24:59.426]	[scrape_images.py]	images scraping done
-[2025-12-01 19:24:59.427]	[lead.py]	added images to lead: ['./leads/1/images/1.jpg', './leads/1/images/2.jpg', './leads/1/images/3.jpg', './leads/1/images/4.jpg', './leads/1/images/5.jpg']
-[2025-12-01 19:24:59.427]	[create_website.py]	Initializing client
-[2025-12-01 19:24:59.509]	[create_website.py]	CLient initialized
-[2025-12-01 19:24:59.509]	[create_website.py]	Generating prompt...
-[2025-12-01 19:24:59.510]	[create_website.py]	Done!
-[2025-12-01 19:24:59.510]	[create_website.py]	prompting model for website...
-[2025-12-01 19:25:47.712]	[create_website.py]	Checking if content is HTML
-[2025-12-01 19:25:47.714]	[create_website.py]	Succesfully received a response with HTML code.
-[2025-12-01 19:25:47.714]	[create_website.py]	Saving website content to ./leads/1/index.html
-[2025-12-01 19:25:47.715]	[create_website.py]	Done writing 27393 characters into the index file
-[2025-12-01 19:25:47.734]	[qr_generator.py]	qr generated... saving it...
-[2025-12-01 19:25:47.747]	[qr_generator.py]	documents folder not found, creating one.
-[2025-12-01 19:25:47.748]	[qr_generator.py]	done!
-[2025-12-01 19:25:47.783]	[create_documentation.py]	Done! Created:
-[2025-12-01 19:25:47.783]	[create_documentation.py]	./leads/1/documents/proposal.pdf
-[2025-12-01 19:25:47.783]	[database.py]	Attempting to insert new lead: ID 1, Name: La Tinèra
-[2025-12-01 19:25:47.783]	[database.py]	Attempting to connect to database file: ./leads.db
-[2025-12-01 19:25:47.783]	[database.py]	Successfully established database connection.
-[2025-12-01 19:25:47.784]	[database.py]	✅ Lead successfully inserted. New Row ID: 1 (Lead ID: 1)
-[2025-12-01 19:25:47.784]	[database.py]	Database connection closed after insertion attempt.
-[2025-12-01 19:25:47.784]	[database.py]	Fetching up to 20 leads with status >= 0 for display.
-[2025-12-01 19:25:47.784]	[database.py]	Attempting to connect to database file: ./leads.db
-[2025-12-01 19:25:47.784]	[database.py]	Successfully established database connection.
-[2025-12-01 19:25:47.785]	[database.py]	Successfully displayed 1 leads.
-[2025-12-01 19:25:47.947]	[scrape_images.py]	Searching images for: Ristorante Cantinone Piazza Cioccaro 8, 6900 Lugano, Switzerland
-[2025-12-01 19:25:49.124]	[scrape_images.py]	Downloaded: ./leads/2/images/1.jpg
-[2025-12-01 19:25:49.614]	[scrape_images.py]	Downloaded: ./leads/2/images/2.jpg
-[2025-12-01 19:25:50.292]	[scrape_images.py]	Downloaded: ./leads/2/images/3.jpg
-[2025-12-01 19:25:50.755]	[scrape_images.py]	Downloaded: ./leads/2/images/4.jpg
-[2025-12-01 19:25:51.240]	[scrape_images.py]	Downloaded: ./leads/2/images/5.jpg
-[2025-12-01 19:25:51.241]	[scrape_images.py]	images scraping done
-[2025-12-01 19:25:51.241]	[lead.py]	added images to lead: ['./leads/2/images/1.jpg', './leads/2/images/2.jpg', './leads/2/images/3.jpg', './leads/2/images/4.jpg', './leads/2/images/5.jpg']
-[2025-12-01 19:25:51.242]	[create_website.py]	Initializing client
-[2025-12-01 19:25:51.266]	[create_website.py]	CLient initialized
-[2025-12-01 19:25:51.266]	[create_website.py]	Generating prompt...
-[2025-12-01 19:25:51.267]	[create_website.py]	Done!
-[2025-12-01 19:25:51.267]	[create_website.py]	prompting model for website...
-[2025-12-01 19:26:24.811]	[create_website.py]	Checking if content is HTML
-[2025-12-01 19:26:24.813]	[create_website.py]	Succesfully received a response with HTML code.
-[2025-12-01 19:26:24.813]	[create_website.py]	Saving website content to ./leads/2/index.html
-[2025-12-01 19:26:24.814]	[create_website.py]	Done writing 25203 characters into the index file
-[2025-12-01 19:26:24.836]	[qr_generator.py]	qr generated... saving it...
-[2025-12-01 19:26:24.837]	[qr_generator.py]	documents folder not found, creating one.
-[2025-12-01 19:26:24.838]	[qr_generator.py]	done!
-[2025-12-01 19:26:24.877]	[create_documentation.py]	Done! Created:
-[2025-12-01 19:26:24.877]	[create_documentation.py]	./leads/2/documents/proposal.pdf
-[2025-12-01 19:26:24.877]	[database.py]	Attempting to insert new lead: ID 2, Name: Ristorante Cantinone
-[2025-12-01 19:26:24.877]	[database.py]	Attempting to connect to database file: ./leads.db
-[2025-12-01 19:26:24.878]	[database.py]	Successfully established database connection.
-[2025-12-01 19:26:24.878]	[database.py]	✅ Lead successfully inserted. New Row ID: 2 (Lead ID: 2)
-[2025-12-01 19:26:24.879]	[database.py]	Database connection closed after insertion attempt.
-[2025-12-01 19:26:24.879]	[database.py]	Fetching up to 20 leads with status >= 0 for display.
-[2025-12-01 19:26:24.879]	[database.py]	Attempting to connect to database file: ./leads.db
-[2025-12-01 19:26:24.879]	[database.py]	Successfully established database connection.
-[2025-12-01 19:26:24.879]	[database.py]	Successfully displayed 2 leads.
-[2025-12-01 19:26:24.990]	[main.py]	Websites creation done, waiting for human confirmation to upload to FTPS.
-[2025-12-01 19:28:45.278]	[editor.py]	Generating prompt...
-[2025-12-01 19:28:45.283]	[editor.py]	Done!
-[2025-12-01 19:28:45.284]	[editor.py]	Generating prompt...
-[2025-12-01 19:28:45.288]	[editor.py]	Done!
-[2025-12-01 19:28:45.289]	[create_website.py]	Initializing client
-[2025-12-01 19:28:45.313]	[create_website.py]	CLient initialized
-[2025-12-01 19:28:45.313]	[editor.py]	prompting model to apply edits...
-[2025-12-01 19:29:32.195]	[create_website.py]	Checking if content is HTML
-[2025-12-01 19:29:32.196]	[editor.py]	Succesfully received a response with HTML code.
-[2025-12-01 19:29:32.196]	[editor.py]	Replacing website content on ./leads/1/index.html
-[2025-12-01 19:29:32.198]	[editor.py]	Done writing 27544 characters into the index file
-[2025-12-01 19:29:32.198]	[editor.py]	prompting model to apply edits...
-[2025-12-01 19:30:06.303]	[create_website.py]	Checking if content is HTML
-[2025-12-01 19:30:06.305]	[editor.py]	Succesfully received a response with HTML code.
-[2025-12-01 19:30:06.306]	[editor.py]	Replacing website content on ./leads/2/index.html
-[2025-12-01 19:30:06.308]	[editor.py]	Done writing 25475 characters into the index file
-[2025-12-01 19:30:06.315]	[ftp_manager.py]	Attempting to connect to FTPS...
-[2025-12-01 19:30:10.784]	[ftp_manager.py]	Succesfully connected!
-[2025-12-01 19:30:11.674]	[ftp_manager.py]	Uploading ./leads/1/index.html → /matteocola.com/preview/f/1/index.html
-[2025-12-01 19:30:13.357]	[ftp_manager.py]	Uploading ./leads/1/images/4.jpg → /matteocola.com/preview/f/1/images/4.jpg
-[2025-12-01 19:30:14.602]	[ftp_manager.py]	Uploading ./leads/1/images/5.jpg → /matteocola.com/preview/f/1/images/5.jpg
-[2025-12-01 19:30:16.156]	[ftp_manager.py]	Uploading ./leads/1/images/2.jpg → /matteocola.com/preview/f/1/images/2.jpg
-[2025-12-01 19:30:18.906]	[ftp_manager.py]	Uploading ./leads/1/images/3.jpg → /matteocola.com/preview/f/1/images/3.jpg
-[2025-12-01 19:30:21.504]	[ftp_manager.py]	Uploading ./leads/1/images/1.jpg → /matteocola.com/preview/f/1/images/1.jpg
-[2025-12-01 19:30:24.812]	[ftp_manager.py]	Done!
-[2025-12-01 19:30:24.889]	[ftp_manager.py]	Attempting to connect to FTPS...
-[2025-12-01 19:30:25.682]	[ftp_manager.py]	Succesfully connected!
-[2025-12-01 19:30:26.774]	[ftp_manager.py]	Uploading ./leads/2/index.html → /matteocola.com/preview/f/2/index.html
-[2025-12-01 19:30:28.652]	[ftp_manager.py]	Uploading ./leads/2/images/4.jpg → /matteocola.com/preview/f/2/images/4.jpg
-[2025-12-01 19:30:29.672]	[ftp_manager.py]	Uploading ./leads/2/images/5.jpg → /matteocola.com/preview/f/2/images/5.jpg
-[2025-12-01 19:30:30.658]	[ftp_manager.py]	Uploading ./leads/2/images/2.jpg → /matteocola.com/preview/f/2/images/2.jpg
-[2025-12-01 19:30:31.665]	[ftp_manager.py]	Uploading ./leads/2/images/3.jpg → /matteocola.com/preview/f/2/images/3.jpg
-[2025-12-01 19:30:32.771]	[ftp_manager.py]	Uploading ./leads/2/images/1.jpg → /matteocola.com/preview/f/2/images/1.jpg
-[2025-12-01 19:30:34.028]	[ftp_manager.py]	Done!
-[2025-12-01 19:30:34.102]	[main.py]	Done! ran all the scripts with no fatal errors. exiting...
+[2025-12-02 08:58:02.041]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-02 08:58:02.041]	[main.py]		==================================================
+[2025-12-02 08:58:02.042]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 08:58:02.044]	[database.py]		Successfully established database connection.
+[2025-12-02 08:58:02.045]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-02 08:58:02.045]	[database.py]		Database connection closed after initialization.
+[2025-12-02 08:58:03.020]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 08:58:03.022]	[database.py]		Successfully established database connection.
+[2025-12-02 08:58:03.023]	[database.py]		Last lead ID in database: 0
+[2025-12-02 08:58:03.335]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 08:58:03.336]	[database.py]		Successfully established database connection.
+[2025-12-02 08:58:03.337]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['AL 74 Bar Ristorante Pizzeria']
+[2025-12-02 08:58:03.338]	[database.py]		Lead not found.
+[2025-12-02 08:58:03.338]	[find_customers.py]		🎯 LEAD found and initialized: ID 1, AL 74 Bar Ristorante Pizzeria
+[2025-12-02 08:58:04.533]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 08:58:04.534]	[database.py]		Successfully established database connection.
+[2025-12-02 08:58:04.534]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['La Tinèra']
+[2025-12-02 08:58:04.534]	[database.py]		Lead not found.
+[2025-12-02 08:58:04.535]	[find_customers.py]		🎯 LEAD found and initialized: ID 2, La Tinèra
+[2025-12-02 08:58:04.539]	[find_customers.py]		Saved 2 leads to ./leads/index.csv
+[2025-12-02 08:58:04.540]	[scrape_images.py]		Searching images for: AL 74 Bar Ristorante Pizzeria Via Trevano 74, 6900 Lugano, Switzerland
+[2025-12-02 08:58:05.713]	[scrape_images.py]		Downloaded: ./leads/1/images/1.jpg
+[2025-12-02 08:58:06.124]	[scrape_images.py]		Downloaded: ./leads/1/images/2.jpg
+[2025-12-02 08:58:06.699]	[scrape_images.py]		Downloaded: ./leads/1/images/3.jpg
+[2025-12-02 08:58:07.133]	[scrape_images.py]		Downloaded: ./leads/1/images/4.jpg
+[2025-12-02 08:58:07.503]	[scrape_images.py]		Downloaded: ./leads/1/images/5.jpg
+[2025-12-02 08:58:07.504]	[scrape_images.py]		images scraping done
+[2025-12-02 08:58:07.505]	[lead.py]		added images to lead: ['./leads/1/images/1.jpg', './leads/1/images/2.jpg', './leads/1/images/3.jpg', './leads/1/images/4.jpg', './leads/1/images/5.jpg']
+[2025-12-02 08:58:07.505]	[create_website.py]		Initializing client
+[2025-12-02 08:58:07.605]	[create_website.py]		CLient initialized
+[2025-12-02 08:58:07.605]	[create_website.py]		Generating prompt...
+[2025-12-02 08:58:07.605]	[create_website.py]		Done!
+[2025-12-02 08:58:07.606]	[create_website.py]		prompting model for website...
+[2025-12-02 08:59:24.546]	[create_website.py]		Checking if content is HTML
+[2025-12-02 08:59:24.548]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-02 08:59:24.549]	[create_website.py]		Saving website content to ./leads/1/index.html
+[2025-12-02 08:59:24.550]	[create_website.py]		Done writing 28056 characters into the index file
+[2025-12-02 08:59:24.569]	[qr_generator.py]		qr generated... saving it...
+[2025-12-02 08:59:24.581]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-02 08:59:24.583]	[qr_generator.py]		done!
+[2025-12-02 08:59:24.617]	[create_documentation.py]		Done! Created:
+[2025-12-02 08:59:24.617]	[create_documentation.py]		./leads/1/documents/proposal.pdf
+[2025-12-02 08:59:24.617]	[database.py]		Attempting to insert new lead: ID 1, Name: AL 74 Bar Ristorante Pizzeria
+[2025-12-02 08:59:24.617]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 08:59:24.618]	[database.py]		Successfully established database connection.
+[2025-12-02 08:59:24.618]	[database.py]		✅ Lead successfully inserted. New Row ID: 1 (Lead ID: 1)
+[2025-12-02 08:59:24.618]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-02 08:59:24.619]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-02 08:59:24.619]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 08:59:24.619]	[database.py]		Successfully established database connection.
+[2025-12-02 08:59:24.619]	[database.py]		Successfully displayed 1 leads.
+[2025-12-02 08:59:24.809]	[scrape_images.py]		Searching images for: La Tinèra Via dei Gorini 2, 6900 Lugano, Switzerland
+[2025-12-02 08:59:37.685]	[scrape_images.py]		Downloaded: ./leads/2/images/1.jpg
+[2025-12-02 08:59:42.286]	[scrape_images.py]		Downloaded: ./leads/2/images/2.jpg
+[2025-12-02 08:59:45.483]	[scrape_images.py]		Downloaded: ./leads/2/images/3.jpg
+[2025-12-02 08:59:52.275]	[scrape_images.py]		Downloaded: ./leads/2/images/4.jpg
+[2025-12-02 08:59:54.873]	[scrape_images.py]		Downloaded: ./leads/2/images/5.jpg
+[2025-12-02 08:59:54.875]	[scrape_images.py]		images scraping done
+[2025-12-02 08:59:54.876]	[lead.py]		added images to lead: ['./leads/2/images/1.jpg', './leads/2/images/2.jpg', './leads/2/images/3.jpg', './leads/2/images/4.jpg', './leads/2/images/5.jpg']
+[2025-12-02 08:59:54.876]	[create_website.py]		Initializing client
+[2025-12-02 08:59:54.903]	[create_website.py]		CLient initialized
+[2025-12-02 08:59:54.903]	[create_website.py]		Generating prompt...
+[2025-12-02 08:59:54.904]	[create_website.py]		Done!
+[2025-12-02 08:59:54.904]	[create_website.py]		prompting model for website...
+[2025-12-02 09:00:38.464]	[create_website.py]		Checking if content is HTML
+[2025-12-02 09:00:38.464]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-02 09:00:38.465]	[create_website.py]		Saving website content to ./leads/2/index.html
+[2025-12-02 09:00:38.465]	[create_website.py]		Done writing 24717 characters into the index file
+[2025-12-02 09:00:38.485]	[qr_generator.py]		qr generated... saving it...
+[2025-12-02 09:00:38.485]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-02 09:00:38.486]	[qr_generator.py]		done!
+[2025-12-02 09:00:38.542]	[create_documentation.py]		Done! Created:
+[2025-12-02 09:00:38.542]	[create_documentation.py]		./leads/2/documents/proposal.pdf
+[2025-12-02 09:00:38.543]	[database.py]		Attempting to insert new lead: ID 2, Name: La Tinèra
+[2025-12-02 09:00:38.543]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:00:38.543]	[database.py]		Successfully established database connection.
+[2025-12-02 09:00:38.544]	[database.py]		✅ Lead successfully inserted. New Row ID: 2 (Lead ID: 2)
+[2025-12-02 09:00:38.545]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-02 09:00:38.545]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-02 09:00:38.545]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:00:38.545]	[database.py]		Successfully established database connection.
+[2025-12-02 09:00:38.545]	[database.py]		Successfully displayed 2 leads.
+[2025-12-02 09:00:38.682]	[editor.py]		Waiting for user to type edits for the websites.
+[2025-12-02 09:03:24.341]	[editor.py]		User entered the following edit: Translate to italian and swap hero with image 4.
+[2025-12-02 09:04:57.602]	[editor.py]		User entered the following edit: translate to italian, remove the placeholder from splashimages, dont use images in the menu section, the pictures are just about the exterior of the building.
+[2025-12-02 09:04:57.604]	[editor.py]		Generating prompt...
+[2025-12-02 09:04:57.610]	[editor.py]		Done!
+[2025-12-02 09:04:57.611]	[editor.py]		Generating prompt...
+[2025-12-02 09:04:57.614]	[editor.py]		Done!
+[2025-12-02 09:04:57.614]	[create_website.py]		Initializing client
+[2025-12-02 09:04:57.637]	[create_website.py]		CLient initialized
+[2025-12-02 09:04:57.637]	[editor.py]		prompting model to apply edits...
+[2025-12-02 09:05:37.618]	[create_website.py]		Checking if content is HTML
+[2025-12-02 09:05:37.619]	[editor.py]		Succesfully received a response with HTML code.
+[2025-12-02 09:05:37.620]	[editor.py]		Replacing website content on ./leads/1/index.html
+[2025-12-02 09:05:37.621]	[editor.py]		Done writing 28241 characters into the index file
+[2025-12-02 09:05:37.621]	[editor.py]		prompting model to apply edits...
+[2025-12-02 09:06:19.573]	[create_website.py]		Checking if content is HTML
+[2025-12-02 09:06:19.575]	[editor.py]		Succesfully received a response with HTML code.
+[2025-12-02 09:06:19.576]	[editor.py]		Replacing website content on ./leads/2/index.html
+[2025-12-02 09:06:19.577]	[editor.py]		Done writing 24277 characters into the index file
+[2025-12-02 09:06:19.580]	[editor.py]		Waiting for user to type edits for the websites.
+[2025-12-02 09:12:40.190]	[editor.py]		User entered the following edit: remove image 2, and keep in mind that image 3, 1 and 5 all contain a pizza, so make example in menu "pizza 1", pizza 2 ecc... (remove them from "la nostra atmosfera" and just use them in the menu thing as examples.
+[2025-12-02 09:16:10.999]	[editor.py]		User entered the following edit: just use images 1 (interior), 2 (typical dish), 3 (exterior).
+[2025-12-02 09:16:11.002]	[editor.py]		Generating prompt...
+[2025-12-02 09:16:11.008]	[editor.py]		Done!
+[2025-12-02 09:16:11.009]	[editor.py]		Generating prompt...
+[2025-12-02 09:16:11.013]	[editor.py]		Done!
+[2025-12-02 09:16:11.013]	[create_website.py]		Initializing client
+[2025-12-02 09:16:11.038]	[create_website.py]		CLient initialized
+[2025-12-02 09:16:11.038]	[editor.py]		prompting model to apply edits...
+[2025-12-02 09:16:57.928]	[create_website.py]		Checking if content is HTML
+[2025-12-02 09:16:57.929]	[editor.py]		Succesfully received a response with HTML code.
+[2025-12-02 09:16:57.930]	[editor.py]		Replacing website content on ./leads/1/index.html
+[2025-12-02 09:16:57.931]	[editor.py]		Done writing 27948 characters into the index file
+[2025-12-02 09:16:57.931]	[editor.py]		prompting model to apply edits...
+[2025-12-02 09:18:08.712]	[create_website.py]		Checking if content is HTML
+[2025-12-02 09:18:08.714]	[editor.py]		Succesfully received a response with HTML code.
+[2025-12-02 09:18:08.714]	[editor.py]		Replacing website content on ./leads/2/index.html
+[2025-12-02 09:18:08.716]	[editor.py]		Done writing 24289 characters into the index file
+[2025-12-02 09:18:08.720]	[editor.py]		Waiting for user to type edits for the websites.
+[2025-12-02 09:21:15.526]	[editor.py]		User entered the following edit: completely remove section "la nostra atmosfera" and add a section showing images in folder ./images/ named 3.jpg, 1.jpg, 5.jpg, dont use 2.jpg
+[2025-12-02 09:21:46.847]	[editor.py]		Generating prompt...
+[2025-12-02 09:21:46.851]	[editor.py]		Done!
+[2025-12-02 09:21:46.851]	[create_website.py]		Initializing client
+[2025-12-02 09:21:46.869]	[create_website.py]		CLient initialized
+[2025-12-02 09:21:46.869]	[editor.py]		prompting model to apply edits...
+[2025-12-02 09:22:22.635]	[create_website.py]		Checking if content is HTML
+[2025-12-02 09:22:22.638]	[editor.py]		Succesfully received a response with HTML code.
+[2025-12-02 09:22:22.638]	[editor.py]		Replacing website content on ./leads/1/index.html
+[2025-12-02 09:22:22.640]	[editor.py]		Done writing 28210 characters into the index file
+[2025-12-02 09:22:22.644]	[editor.py]		Waiting for user to type edits for the websites.
+[2025-12-02 09:23:48.420]	[ftp_manager.py]		Attempting to connect to FTPS...
+[2025-12-02 09:23:49.209]	[ftp_manager.py]		Succesfully connected!
+[2025-12-02 09:23:50.044]	[ftp_manager.py]		Uploading ./leads/1/index.html → /matteocola.com/preview/f/1/index.html
+[2025-12-02 09:23:51.337]	[ftp_manager.py]		Uploading ./leads/1/images/.DS_Store → /matteocola.com/preview/f/1/images/.DS_Store
+[2025-12-02 09:23:51.806]	[ftp_manager.py]		Uploading ./leads/1/images/4.jpg → /matteocola.com/preview/f/1/images/4.jpg
+[2025-12-02 09:23:52.802]	[ftp_manager.py]		Uploading ./leads/1/images/5.jpg → /matteocola.com/preview/f/1/images/5.jpg
+[2025-12-02 09:23:53.733]	[ftp_manager.py]		Uploading ./leads/1/images/2.jpg → /matteocola.com/preview/f/1/images/2.jpg
+[2025-12-02 09:23:54.600]	[ftp_manager.py]		Uploading ./leads/1/images/3.jpg → /matteocola.com/preview/f/1/images/3.jpg
+[2025-12-02 09:23:55.943]	[ftp_manager.py]		Uploading ./leads/1/images/1.jpg → /matteocola.com/preview/f/1/images/1.jpg
+[2025-12-02 09:23:57.136]	[ftp_manager.py]		Done!
+[2025-12-02 09:23:57.202]	[ftp_manager.py]		Attempting to connect to FTPS...
+[2025-12-02 09:23:57.812]	[ftp_manager.py]		Succesfully connected!
+[2025-12-02 09:23:58.590]	[ftp_manager.py]		Uploading ./leads/2/index.html → /matteocola.com/preview/f/2/index.html
+[2025-12-02 09:24:00.123]	[ftp_manager.py]		Uploading ./leads/2/images/.DS_Store → /matteocola.com/preview/f/2/images/.DS_Store
+[2025-12-02 09:24:00.568]	[ftp_manager.py]		Uploading ./leads/2/images/2.jpg → /matteocola.com/preview/f/2/images/2.jpg
+[2025-12-02 09:24:01.760]	[ftp_manager.py]		Uploading ./leads/2/images/3.jpg → /matteocola.com/preview/f/2/images/3.jpg
+[2025-12-02 09:24:02.498]	[ftp_manager.py]		Uploading ./leads/2/images/1.jpg → /matteocola.com/preview/f/2/images/1.jpg
+[2025-12-02 09:24:03.862]	[ftp_manager.py]		Done!
+[2025-12-02 09:24:03.919]	[main.py]		Done! ran all the scripts with no fatal errors. exiting...
+
+[2025-12-02 09:29:04.423]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-02 09:29:04.423]	[main.py]		==================================================
+[2025-12-02 09:29:04.423]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:29:04.426]	[database.py]		Successfully established database connection.
+[2025-12-02 09:29:04.426]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-02 09:29:04.427]	[database.py]		Database connection closed after initialization.
+[2025-12-02 09:29:05.645]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:29:05.645]	[database.py]		Successfully established database connection.
+[2025-12-02 09:29:05.646]	[database.py]		Last lead ID in database: 2
+[2025-12-02 09:29:05.646]	[main.py]		Aborting because no lead was found.
+
+[2025-12-02 09:29:37.393]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-02 09:29:37.393]	[main.py]		==================================================
+[2025-12-02 09:29:37.394]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:29:37.397]	[database.py]		Successfully established database connection.
+[2025-12-02 09:29:37.397]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-02 09:29:37.397]	[database.py]		Database connection closed after initialization.
+[2025-12-02 09:29:37.781]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:29:37.782]	[database.py]		Successfully established database connection.
+[2025-12-02 09:29:37.782]	[database.py]		Last lead ID in database: 2
+[2025-12-02 09:29:37.782]	[main.py]		Aborting because no lead was found.
+
+[2025-12-02 09:31:09.880]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-02 09:31:09.880]	[main.py]		==================================================
+[2025-12-02 09:31:09.881]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:31:09.884]	[database.py]		Successfully established database connection.
+[2025-12-02 09:31:09.885]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-02 09:31:09.885]	[database.py]		Database connection closed after initialization.
+[2025-12-02 09:31:10.975]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:31:10.975]	[database.py]		Successfully established database connection.
+[2025-12-02 09:31:10.976]	[database.py]		Last lead ID in database: 2
+[2025-12-02 09:31:10.976]	[find_customers.py]		starting lead id from: 3
+[2025-12-02 09:31:10.976]	[main.py]		Aborting because no lead was found.
+
+[2025-12-02 09:33:03.349]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-02 09:33:03.350]	[main.py]		==================================================
+[2025-12-02 09:33:03.350]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:33:03.353]	[database.py]		Successfully established database connection.
+[2025-12-02 09:33:03.353]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-02 09:33:03.354]	[database.py]		Database connection closed after initialization.
+[2025-12-02 09:33:04.098]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:33:04.098]	[database.py]		Successfully established database connection.
+[2025-12-02 09:33:04.099]	[database.py]		Last lead ID in database: 2
+[2025-12-02 09:33:04.503]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:33:04.503]	[database.py]		Successfully established database connection.
+[2025-12-02 09:33:04.504]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['AL 74 Bar Ristorante Pizzeria']
+[2025-12-02 09:33:04.504]	[database.py]		Lead exists. Status = 2
+[2025-12-02 09:33:04.504]	[find_customers.py]		Lead (AL 74 Bar Ristorante Pizzeria) skipped because it was already existing in db
+[2025-12-02 09:33:05.357]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:33:05.358]	[database.py]		Successfully established database connection.
+[2025-12-02 09:33:05.358]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Osteria Pizzeria Pazzallo']
+[2025-12-02 09:33:05.359]	[database.py]		Lead not found.
+[2025-12-02 09:33:05.359]	[find_customers.py]		🎯 LEAD found and initialized: ID 3, Osteria Pizzeria Pazzallo
+[2025-12-02 09:33:07.979]	[find_customers.py]		Fetching next page of results...
+[2025-12-02 09:33:08.748]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 09:33:08.749]	[database.py]		Successfully established database connection.
+[2025-12-02 09:33:08.749]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Porto Bello! Ristorantino alla Foce di Lugano!']
+[2025-12-02 09:33:08.750]	[database.py]		Lead not found.
+[2025-12-02 09:33:08.750]	[find_customers.py]		🎯 LEAD found and initialized: ID 4, Porto Bello! Ristorantino alla Foce di Lugano!
+[2025-12-02 09:33:08.755]	[find_customers.py]		Saved 2 leads to ./leads/index.csv
+[2025-12-02 09:33:08.756]	[scrape_images.py]		Searching images for: Osteria Pizzeria Pazzallo Vicolo Bossi 2, 6912 Pazzallo, Switzerland
+[2025-12-02 09:33:09.648]	[scrape_images.py]		Downloaded: ./leads/3/images/1.jpg
+[2025-12-02 09:33:09.967]	[scrape_images.py]		Downloaded: ./leads/3/images/2.jpg
+[2025-12-02 09:33:10.164]	[scrape_images.py]		Skipped small image (4547 bytes): https://cdn.foodjoyy.com/taverna-marina/3.jpg
+[2025-12-02 09:33:10.426]	[scrape_images.py]		Downloaded: ./leads/3/images/4.jpg
+[2025-12-02 09:33:10.577]	[scrape_images.py]		Skipped small image (4547 bytes): https://cdn.foodjoyy.com/beach-mama/2.jpg
+[2025-12-02 09:33:11.373]	[scrape_images.py]		Downloaded: ./leads/3/images/1.jpg
+[2025-12-02 09:33:11.698]	[scrape_images.py]		Downloaded: ./leads/3/images/2.jpg
+[2025-12-02 09:33:11.699]	[scrape_images.py]		images scraping done
+[2025-12-02 09:33:11.699]	[lead.py]		added images to lead: ['./leads/3/images/1.jpg', './leads/3/images/2.jpg', './leads/3/images/4.jpg']
+[2025-12-02 09:33:11.699]	[create_website.py]		Initializing client
+[2025-12-02 09:33:11.818]	[create_website.py]		CLient initialized
+[2025-12-02 09:33:11.819]	[create_website.py]		Generating prompt...
+[2025-12-02 09:33:11.819]	[create_website.py]		Done!
+[2025-12-02 09:33:11.819]	[create_website.py]		prompting model for website...
+
+[2025-12-02 10:05:52.998]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-02 10:05:52.998]	[main.py]		==================================================
+[2025-12-02 10:05:52.999]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:05:53.002]	[database.py]		Successfully established database connection.
+[2025-12-02 10:05:53.002]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-02 10:05:53.002]	[database.py]		Database connection closed after initialization.
+[2025-12-02 10:05:54.043]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:05:54.044]	[database.py]		Successfully established database connection.
+[2025-12-02 10:05:54.045]	[database.py]		Last lead ID in database: 2
+[2025-12-02 10:05:54.364]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:05:54.365]	[database.py]		Successfully established database connection.
+[2025-12-02 10:05:54.365]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Ristorante Antico']
+[2025-12-02 10:05:54.365]	[database.py]		Lead not found.
+[2025-12-02 10:05:54.365]	[find_customers.py]		🎯 LEAD found and initialized: ID 3, Ristorante Antico
+[2025-12-02 10:05:54.743]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:05:54.744]	[database.py]		Successfully established database connection.
+[2025-12-02 10:05:54.744]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['AL 74 Bar Ristorante Pizzeria']
+[2025-12-02 10:05:54.744]	[database.py]		Lead exists. Status = 2
+[2025-12-02 10:05:54.745]	[find_customers.py]		Lead (AL 74 Bar Ristorante Pizzeria) skipped because it was already existing in db
+[2025-12-02 10:05:55.671]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:05:55.672]	[database.py]		Successfully established database connection.
+[2025-12-02 10:05:55.672]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Ristorante Pizzeria Verace']
+[2025-12-02 10:05:55.673]	[database.py]		Lead not found.
+[2025-12-02 10:05:55.673]	[find_customers.py]		🎯 LEAD found and initialized: ID 4, Ristorante Pizzeria Verace
+[2025-12-02 10:05:55.677]	[find_customers.py]		Saved 2 leads to ./leads/index.csv
+[2025-12-02 10:05:55.678]	[scrape_images.py]		Searching images for: Ristorante Antico Piazza Lucchini 5, 6978 Lugano, Switzerland
+[2025-12-02 10:05:56.797]	[scrape_images.py]		Downloaded: ./leads/3/images/1.jpg
+[2025-12-02 10:05:57.245]	[scrape_images.py]		Downloaded: ./leads/3/images/2.jpg
+[2025-12-02 10:05:57.449]	[scrape_images.py]		Downloaded: ./leads/3/images/3.jpg
+[2025-12-02 10:05:57.733]	[scrape_images.py]		Downloaded: ./leads/3/images/4.jpg
+[2025-12-02 10:05:57.940]	[scrape_images.py]		Downloaded: ./leads/3/images/5.jpg
+[2025-12-02 10:05:57.940]	[scrape_images.py]		images scraping done
+[2025-12-02 10:05:57.941]	[lead.py]		added images to lead: ['./leads/3/images/1.jpg', './leads/3/images/2.jpg', './leads/3/images/3.jpg', './leads/3/images/4.jpg', './leads/3/images/5.jpg']
+[2025-12-02 10:05:57.942]	[create_website.py]		Initializing client
+[2025-12-02 10:05:58.068]	[create_website.py]		CLient initialized
+[2025-12-02 10:05:58.068]	[create_website.py]		Generating prompt...
+[2025-12-02 10:05:58.069]	[create_website.py]		Done!
+[2025-12-02 10:05:58.069]	[create_website.py]		prompting model for website...
+
+[2025-12-02 10:06:38.649]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-02 10:06:38.649]	[main.py]		==================================================
+[2025-12-02 10:06:38.649]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:06:38.652]	[database.py]		Successfully established database connection.
+[2025-12-02 10:06:38.652]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-02 10:06:38.653]	[database.py]		Database connection closed after initialization.
+[2025-12-02 10:06:39.253]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:06:39.254]	[database.py]		Successfully established database connection.
+[2025-12-02 10:06:39.254]	[database.py]		Last lead ID in database: 2
+[2025-12-02 10:06:39.494]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:06:39.495]	[database.py]		Successfully established database connection.
+[2025-12-02 10:06:39.495]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Ristorante Antico']
+[2025-12-02 10:06:39.495]	[database.py]		Lead not found.
+[2025-12-02 10:06:39.496]	[find_customers.py]		🎯 LEAD found and initialized: ID 3, Ristorante Antico
+[2025-12-02 10:06:39.847]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:06:39.848]	[database.py]		Successfully established database connection.
+[2025-12-02 10:06:39.848]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['AL 74 Bar Ristorante Pizzeria']
+[2025-12-02 10:06:39.848]	[database.py]		Lead exists. Status = 2
+[2025-12-02 10:06:39.848]	[find_customers.py]		Lead (AL 74 Bar Ristorante Pizzeria) skipped because it was already existing in db
+[2025-12-02 10:06:40.612]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:06:40.612]	[database.py]		Successfully established database connection.
+[2025-12-02 10:06:40.613]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Ristorante Pizzeria Verace']
+[2025-12-02 10:06:40.613]	[database.py]		Lead not found.
+[2025-12-02 10:06:40.614]	[find_customers.py]		🎯 LEAD found and initialized: ID 4, Ristorante Pizzeria Verace
+[2025-12-02 10:06:40.617]	[find_customers.py]		Saved 2 leads to ./leads/index.csv
+[2025-12-02 10:06:40.618]	[scrape_images.py]		Searching images for: Ristorante Antico Piazza Lucchini 5, 6978 Lugano, Switzerland
+[2025-12-02 10:06:41.703]	[scrape_images.py]		Downloaded: ./leads/3/images/1.jpg
+[2025-12-02 10:06:42.036]	[scrape_images.py]		Downloaded: ./leads/3/images/2.jpg
+[2025-12-02 10:06:42.319]	[scrape_images.py]		Downloaded: ./leads/3/images/3.jpg
+[2025-12-02 10:06:42.691]	[scrape_images.py]		Downloaded: ./leads/3/images/4.jpg
+[2025-12-02 10:06:43.153]	[scrape_images.py]		Downloaded: ./leads/3/images/5.jpg
+[2025-12-02 10:06:43.154]	[scrape_images.py]		images scraping done
+[2025-12-02 10:06:43.154]	[lead.py]		added images to lead: ['./leads/3/images/1.jpg', './leads/3/images/2.jpg', './leads/3/images/3.jpg', './leads/3/images/4.jpg', './leads/3/images/5.jpg']
+[2025-12-02 10:06:43.154]	[create_website.py]		Initializing client
+[2025-12-02 10:06:43.268]	[create_website.py]		CLient initialized
+[2025-12-02 10:06:43.269]	[create_website.py]		Generating prompt...
+[2025-12-02 10:06:43.269]	[create_website.py]		Done!
+[2025-12-02 10:06:43.269]	[create_website.py]		prompting model for website...
+[2025-12-02 10:07:55.223]	[create_website.py]		Checking if content is HTML
+[2025-12-02 10:07:55.226]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-02 10:07:55.226]	[create_website.py]		Saving website content to ./leads/3/index.html
+[2025-12-02 10:07:55.227]	[create_website.py]		Done writing 24585 characters into the index file
+[2025-12-02 10:07:55.250]	[qr_generator.py]		qr generated... saving it...
+[2025-12-02 10:07:55.263]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-02 10:07:55.265]	[qr_generator.py]		done!
+[2025-12-02 10:07:55.314]	[create_documentation.py]		Done! Created:
+[2025-12-02 10:07:55.314]	[create_documentation.py]		./leads/3/documents/proposal.pdf
+[2025-12-02 10:07:55.315]	[database.py]		Attempting to insert new lead: ID 3, Name: Ristorante Antico
+[2025-12-02 10:07:55.315]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:07:55.315]	[database.py]		Successfully established database connection.
+[2025-12-02 10:07:55.317]	[database.py]		✅ Lead successfully inserted. New Row ID: 3 (Lead ID: 3)
+[2025-12-02 10:07:55.317]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-02 10:07:55.317]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-02 10:07:55.317]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:07:55.317]	[database.py]		Successfully established database connection.
+[2025-12-02 10:07:55.318]	[database.py]		Successfully displayed 3 leads.
+[2025-12-02 10:07:55.494]	[scrape_images.py]		Searching images for: Ristorante Pizzeria Verace Via Guisan 16, 6900 Paradiso, Switzerland
+[2025-12-02 10:07:56.744]	[scrape_images.py]		Downloaded: ./leads/4/images/1.jpg
+[2025-12-02 10:07:57.253]	[scrape_images.py]		Downloaded: ./leads/4/images/2.jpg
+[2025-12-02 10:07:57.658]	[scrape_images.py]		Downloaded: ./leads/4/images/3.jpg
+[2025-12-02 10:07:58.944]	[scrape_images.py]		Downloaded: ./leads/4/images/4.jpg
+[2025-12-02 10:07:59.385]	[scrape_images.py]		Downloaded: ./leads/4/images/5.jpg
+[2025-12-02 10:07:59.386]	[scrape_images.py]		images scraping done
+[2025-12-02 10:07:59.386]	[lead.py]		added images to lead: ['./leads/4/images/1.jpg', './leads/4/images/2.jpg', './leads/4/images/3.jpg', './leads/4/images/4.jpg', './leads/4/images/5.jpg']
+[2025-12-02 10:07:59.387]	[create_website.py]		Initializing client
+[2025-12-02 10:07:59.412]	[create_website.py]		CLient initialized
+[2025-12-02 10:07:59.412]	[create_website.py]		Generating prompt...
+[2025-12-02 10:07:59.413]	[create_website.py]		Done!
+[2025-12-02 10:07:59.413]	[create_website.py]		prompting model for website...
+[2025-12-02 10:09:10.783]	[create_website.py]		Checking if content is HTML
+[2025-12-02 10:09:10.785]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-02 10:09:10.786]	[create_website.py]		Saving website content to ./leads/4/index.html
+[2025-12-02 10:09:10.787]	[create_website.py]		Done writing 31656 characters into the index file
+[2025-12-02 10:09:10.806]	[qr_generator.py]		qr generated... saving it...
+[2025-12-02 10:09:10.807]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-02 10:09:10.808]	[qr_generator.py]		done!
+[2025-12-02 10:09:10.856]	[create_documentation.py]		Done! Created:
+[2025-12-02 10:09:10.856]	[create_documentation.py]		./leads/4/documents/proposal.pdf
+[2025-12-02 10:09:10.856]	[database.py]		Attempting to insert new lead: ID 4, Name: Ristorante Pizzeria Verace
+[2025-12-02 10:09:10.857]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:09:10.857]	[database.py]		Successfully established database connection.
+[2025-12-02 10:09:10.858]	[database.py]		✅ Lead successfully inserted. New Row ID: 4 (Lead ID: 4)
+[2025-12-02 10:09:10.859]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-02 10:09:10.859]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-02 10:09:10.859]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-02 10:09:10.859]	[database.py]		Successfully established database connection.
+[2025-12-02 10:09:10.860]	[database.py]		Successfully displayed 4 leads.
+[2025-12-02 10:09:11.022]	[editor.py]		Waiting for user to type edits for the websites.
+[2025-12-02 10:12:21.967]	[editor.py]		User entered the following edit: translate to italian and add the text before the menu (All'acquisto del servizio sostituirò con il vostro vero menu.)
+[2025-12-02 10:12:49.110]	[editor.py]		User entered the following edit: translate to italian and dont use ./images/2.jpg
+[2025-12-02 10:12:49.111]	[editor.py]		Generating prompt...
+[2025-12-02 10:12:49.117]	[editor.py]		Done!
+[2025-12-02 10:12:49.118]	[editor.py]		Generating prompt...
+[2025-12-02 10:12:49.123]	[editor.py]		Done!
+[2025-12-02 10:12:49.123]	[create_website.py]		Initializing client
+[2025-12-02 10:12:49.149]	[create_website.py]		CLient initialized
+[2025-12-02 10:12:49.150]	[editor.py]		prompting model to apply edits...
+[2025-12-02 10:13:52.786]	[create_website.py]		Checking if content is HTML
+[2025-12-02 10:13:52.789]	[editor.py]		Succesfully received a response with HTML code.
+[2025-12-02 10:13:52.789]	[editor.py]		Replacing website content on ./leads/3/index.html
+[2025-12-02 10:13:52.791]	[editor.py]		Done writing 25366 characters into the index file
+[2025-12-02 10:13:52.791]	[editor.py]		prompting model to apply edits...
+[2025-12-02 10:14:51.460]	[create_website.py]		Checking if content is HTML
+[2025-12-02 10:14:51.464]	[editor.py]		Succesfully received a response with HTML code.
+[2025-12-02 10:14:51.464]	[editor.py]		Replacing website content on ./leads/4/index.html
+[2025-12-02 10:14:51.466]	[editor.py]		Done writing 32119 characters into the index file
+[2025-12-02 10:14:51.470]	[editor.py]		Waiting for user to type edits for the websites.
+[2025-12-02 10:19:38.941]	[ftp_manager.py]		Attempting to connect to FTPS...
+[2025-12-02 10:19:39.552]	[ftp_manager.py]		Succesfully connected!
+[2025-12-02 10:19:40.375]	[ftp_manager.py]		Uploading ./leads/3/index.html → /matteocola.com/preview/f/3/index.html
+[2025-12-02 10:19:41.725]	[ftp_manager.py]		Uploading ./leads/3/images/4.jpg → /matteocola.com/preview/f/3/images/4.jpg
+[2025-12-02 10:19:42.276]	[ftp_manager.py]		Uploading ./leads/3/images/5.jpg → /matteocola.com/preview/f/3/images/5.jpg
+[2025-12-02 10:19:43.182]	[ftp_manager.py]		Uploading ./leads/3/images/2.jpg → /matteocola.com/preview/f/3/images/2.jpg
+[2025-12-02 10:19:45.154]	[ftp_manager.py]		Uploading ./leads/3/images/3.jpg → /matteocola.com/preview/f/3/images/3.jpg
+[2025-12-02 10:19:45.956]	[ftp_manager.py]		Uploading ./leads/3/images/1.jpg → /matteocola.com/preview/f/3/images/1.jpg
+[2025-12-02 10:19:46.774]	[ftp_manager.py]		Done!
+[2025-12-02 10:19:46.831]	[ftp_manager.py]		Attempting to connect to FTPS...
+[2025-12-02 10:19:47.442]	[ftp_manager.py]		Succesfully connected!
+[2025-12-02 10:19:48.194]	[ftp_manager.py]		Uploading ./leads/4/index.html → /matteocola.com/preview/f/4/index.html
+[2025-12-02 10:19:49.433]	[ftp_manager.py]		Uploading ./leads/4/images/4.jpg → /matteocola.com/preview/f/4/images/4.jpg
+[2025-12-02 10:19:50.176]	[ftp_manager.py]		Uploading ./leads/4/images/5.jpg → /matteocola.com/preview/f/4/images/5.jpg
+[2025-12-02 10:19:50.994]	[ftp_manager.py]		Uploading ./leads/4/images/2.jpg → /matteocola.com/preview/f/4/images/2.jpg
+[2025-12-02 10:19:51.636]	[ftp_manager.py]		Uploading ./leads/4/images/3.jpg → /matteocola.com/preview/f/4/images/3.jpg
+[2025-12-02 10:19:52.518]	[ftp_manager.py]		Uploading ./leads/4/images/1.jpg → /matteocola.com/preview/f/4/images/1.jpg
+[2025-12-02 10:19:53.277]	[ftp_manager.py]		Done!
+[2025-12-02 10:19:53.325]	[main.py]		Done! ran all the scripts with no fatal errors. exiting...
