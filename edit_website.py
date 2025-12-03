@@ -31,4 +31,5 @@ def generate_prompt(lead: Lead):
     return p
 
 
-def apply_edits(edits: list[Edit])
+def apply_edits(edits: list[Edit]):
+    pass

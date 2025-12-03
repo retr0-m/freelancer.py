@@ -1,7 +1,0 @@
-1 - loads html from a lead
-2 - lets select (like web inspector) elements and add a property
-
-
-solutions:
- -- maybe just inject a script into the html ???   <- TESTING THIS ONE
- -- create a whole page loading the html 

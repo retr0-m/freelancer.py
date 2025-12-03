@@ -1,207 +1,214 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Tinèra - Autentica Cucina Italiana a Lugano</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
+    <meta name="description" content="Ristorante Cantinone - Gusto autentico italiano nel cuore di Lugano. Piatti tradizionali e un'atmosfera accogliente.">
+    <meta name="keywords" content="Ristorante, Cantinone, Lugano, Svizzera, Italiano, Cucina, Tradizionale, Pasta, Pizza, Vino, Prenotazioni, Gastronomia">
+    <title>Ristorante Cantinone - Cucina Italiana a Lugano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Base Styles & Reset */
         :root {
-            --primary-red: #B71C1C;
-            /* Deep Italian Red */
-            --secondary-green: #4CAF50;
-            /* Italian Green */
-            --accent-gold: #FFC107;
-            /* Warm Gold/Yellow */
-            --text-dark: #333333;
-            --text-light: #fdfdfd;
-            --background-light: #f9f9f9;
-            --background-dark: #222222;
-            --border-light: #e0e0e0;
+            --primary-color: #8B0000; /* Dark Red, classic Italian feel */
+            --secondary-color: #F8F8F8; /* Light Grey for background */
+            --text-color: #333;
+            --light-text-color: #666;
+            --white: #fff;
+            --dark-background: #2c3e50; /* A dark tone for contrast sections */
+            --accent-color: #d35400; /* A touch of orange/gold */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Open Sans', sans-serif;
+            --spacing-unit: 1rem;
         }
 
+        /* Basic Reset & Body */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--background-light);
+        html {
             scroll-behavior: smooth;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Playfair Display', serif;
-            margin-bottom: 0.8em;
-            color: var(--primary-red);
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
         }
 
-        h1 {
-            font-size: 3em;
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            margin-bottom: var(--spacing-unit);
+            color: var(--primary-color);
         }
 
-        h2 {
-            font-size: 2.2em;
-            color: var(--text-dark);
-        }
-
-        h3 {
-            font-size: 1.8em;
-        }
-
-        p {
-            margin-bottom: 1em;
-            font-size: 1.1em;
-            line-height: 1.8;
-        }
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 2rem; }
+        p { margin-bottom: var(--spacing-unit); }
 
         a {
+            color: var(--primary-color);
             text-decoration: none;
-            color: var(--primary-red);
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: var(--accent-gold);
+            color: var(--accent-color);
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
+        /* Utilities */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5em;
+            padding: 0 1.5rem;
+        }
+
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--primary-red);
-            color: var(--text-light);
-            padding: 0.8em 1.8em;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
             border-radius: 5px;
-            font-weight: 500;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-top: 1em;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
-            background-color: #a01a1a;
-            transform: translateY(-2px);
-            color: var(--text-light);
+            background-color: var(--accent-color);
         }
 
         /* Header & Navigation */
         .header {
-            background-color: var(--text-light);
-            padding: 1em 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background-color: var(--white);
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        .navbar {
+        .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2em;
+            font-family: var(--font-serif);
+            font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-red);
+            color: var(--primary-color);
         }
 
-        .nav-links {
+        .nav-menu {
             list-style: none;
             display: flex;
         }
 
-        .nav-links li {
-            margin-left: 2em;
+        .nav-menu li {
+            margin-left: 2.5rem;
         }
 
-        .nav-links a {
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 1.1em;
-            padding: 0.5em 0;
+        .nav-menu a {
+            color: var(--text-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
             position: relative;
+            padding-bottom: 0.3rem;
         }
 
-        .nav-links a::after {
+        .nav-menu a::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-red);
+            background-color: var(--primary-color);
             transition: width 0.3s ease;
         }
 
-        .nav-links a:hover::after {
+        .nav-menu a:hover::after {
             width: 100%;
         }
 
-        .menu-toggle {
+        /* Mobile Menu */
+        .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
-            padding: 0.5em;
+            font-size: 1.8rem;
+            color: var(--primary-color);
         }
 
-        .menu-toggle span {
-            height: 3px;
-            width: 25px;
-            background-color: var(--text-dark);
-            margin-bottom: 4px;
-            border-radius: 2px;
-            transition: all 0.3s ease-in-out;
-        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+                border-top: 1px solid #eee;
+            }
 
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
+            .nav-menu.active {
+                display: flex;
+            }
 
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
+            .nav-menu li {
+                margin: 0;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f5f5f5;
+            }
 
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu a {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+            }
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/1.jpg') no-repeat center center/cover;
+            position: relative;
             height: 80vh;
+            background: url('./images/1.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--text-light);
-            position: relative;
+            color: var(--white);
         }
 
         .hero::before {
@@ -211,230 +218,197 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            /* Darker overlay for text readability */
-            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
         }
 
         .hero-content {
             position: relative;
-            z-index: 2;
+            z-index: 1;
             max-width: 800px;
+            padding: 1.5rem;
         }
 
         .hero-content h1 {
-            font-size: 4.5em;
-            margin-bottom: 0.2em;
-            color: var(--text-light);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-content p {
-            font-size: 1.5em;
-            margin-bottom: 1.5em;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
             font-weight: 300;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
         }
 
-        /* Section Styling */
-        .section {
-            padding: 5em 0;
+        /* About Section */
+        .about-us {
+            background-color: var(--secondary-color);
         }
 
-        .section:nth-of-type(odd) {
-            background-color: var(--background-light);
-        }
-
-        .section:nth-of-type(even) {
-            background-color: #ffffff;
-        }
-
-        .about-us-content,
-        .contact-content {
+        .about-content {
             display: flex;
             align-items: center;
-            gap: 3em;
+            gap: 3rem;
         }
 
-        .about-us-text,
-        .contact-details {
+        .about-text {
             flex: 1;
+            padding-right: 2rem;
         }
 
-        .about-us-image {
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            font-size: 3rem;
+        }
+
+        .about-image {
             flex: 1;
-            min-width: 300px;
-            position: relative;
-        }
-
-        .about-us-image img {
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .about-us-image img:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Signature Dishes */
-        .signature-dishes .container {
             text-align: center;
         }
 
-        .signature-dishes h2 {
-            margin-bottom: 1em;
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .signature-dishes-grid {
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Menu Preview Section */
+        .menu-preview {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2em;
-            margin-top: 2em;
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .dish-card {
-            background-color: var(--text-light);
+        .menu-item {
+            background-color: var(--secondary-color);
+            padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
             text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
 
-        .dish-card:hover {
+        .menu-item:hover {
             transform: translateY(-5px);
         }
 
-        /* Added: Dish card image styling */
-        .dish-card img {
-            width: 100%;
-            height: 200px;
-            /* Fixed height for consistency */
-            object-fit: cover;
-            border-radius: 8px 8px 0 0;
-            /* Rounded top corners */
-            margin-bottom: 1.5em;
-            /* Space between image and text */
+        .menu-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
         }
 
-        .dish-card-content {
-            padding: 1.5em;
-            /* Apply padding here to contain text, separate from image */
+        .menu-item p {
+            font-size: 0.95rem;
+            color: var(--light-text-color);
+            margin-bottom: 0.5rem;
         }
 
-        .dish-card h3 {
-            font-size: 1.4em;
-            margin-bottom: 0.5em;
-            color: var(--text-dark);
+        .menu-item .price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 1rem;
         }
 
-        .dish-card p {
-            font-size: 0.95em;
-            color: #666;
-            margin-bottom: 0;
-        }
-
-        /* Gallery */
-        .gallery .container {
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--secondary-color);
             text-align: center;
-        }
-
-        .gallery h2 {
-            margin-bottom: 1.5em;
         }
 
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1em;
-            margin-top: 2em;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.03);
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
 
         .gallery-item img {
             width: 100%;
             height: 250px;
             object-fit: cover;
-            filter: brightness(0.9);
-            transition: filter 0.3s ease;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
-            filter: brightness(1);
+        .gallery-item img:hover {
+            transform: scale(1.03);
         }
 
         /* Contact Section */
         .contact {
-            background-color: var(--background-dark);
-            color: var(--text-light);
+            background-color: var(--white);
             text-align: center;
-            padding: 5em 0;
         }
 
-        .contact h2 {
-            color: var(--text-light);
-            margin-bottom: 1em;
-        }
-
-        .contact p,
-        .contact a {
-            color: var(--text-light);
-            margin-bottom: 0.5em;
-            font-size: 1.1em;
-        }
-
-        .contact a:hover {
-            color: var(--accent-gold);
-        }
-
-        .contact-info {
+        .contact-details {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 2em;
-            margin-top: 2em;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            font-size: 1.1rem;
         }
 
-        .info-block {
-            flex: 1;
-            min-width: 280px;
-            max-width: 350px;
-            text-align: center;
-            padding: 1.5em;
-            background-color: rgba(255, 255, 255, 0.08);
+        .contact-item {
+            padding: 1.5rem;
+            background-color: var(--secondary-color);
             border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-width: 280px;
+            text-align: left;
         }
 
-        .info-block h3 {
-            color: var(--accent-gold);
-            margin-bottom: 0.8em;
-            font-size: 1.5em;
+        .contact-item i {
+            color: var(--primary-color);
+            margin-right: 0.8rem;
+            font-size: 1.5rem;
         }
 
-        .info-block p {
-            font-size: 1em;
-            margin-bottom: 0.3em;
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
 
         .map-container {
-            margin-top: 3em;
+            margin-top: 3rem;
+            height: 400px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            height: 400px;
-            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .map-container iframe {
@@ -442,332 +416,178 @@
             height: 100%;
             border: 0;
         }
-
-
+        
         /* Footer */
         .footer {
-            background-color: var(--background-dark);
-            color: var(--text-light);
+            background-color: var(--dark-background);
+            color: var(--white);
+            padding: 3rem 0;
             text-align: center;
-            padding: 2em 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .footer p {
-            font-size: 0.9em;
-            margin-bottom: 0.5em;
-            color: var(--text-light);
+            margin-bottom: 0.5rem;
         }
 
         .social-links {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 1em;
-            margin-top: 1em;
+            margin-top: 1rem;
         }
 
         .social-links a {
-            color: var(--text-light);
-            font-size: 1.5em;
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
             transition: color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-gold);
+            color: var(--accent-color);
         }
 
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-content h1 {
-                font-size: 3.5em;
-            }
-
-            .hero-content p {
-                font-size: 1.3em;
-            }
-
-            h1 {
-                font-size: 2.5em;
-            }
-
-            h2 {
-                font-size: 2em;
-            }
-
-            p {
-                font-size: 1em;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1em;
-            }
-
-            .logo {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 0.5em;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: var(--text-light);
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                padding: 1em 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 0;
-                text-align: center;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 0.8em 0;
-                border-bottom: 1px solid var(--border-light);
-            }
-
-            .nav-links a::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .nav-links a:hover::after {
-                width: 50%;
-            }
-
-            .menu-toggle {
-                display: flex;
-                position: absolute;
-                right: 1.5em;
-                top: 2.2em;
-            }
-
-            .hero {
-                height: 70vh;
-            }
-
-            .hero-content h1 {
-                font-size: 2.8em;
-            }
-
-            .hero-content p {
-                font-size: 1.1em;
-            }
-
-            .section {
-                padding: 3em 0;
-            }
-
-            .about-us-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-us-image {
-                min-width: unset;
-                order: -1;
-                /* Image appears above text on mobile */
-            }
-
-            .signature-dishes-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            }
-
-            .contact-info {
-                flex-direction: column;
-            }
-
-            .info-block {
-                min-width: unset;
-                max-width: 100%;
-            }
-
-            .map-container {
-                height: 300px;
-            }
-        }
-
+        /* Small screen adjustments */
         @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            h2 {
-                font-size: 1.8em;
-            }
-
-            .hero-content h1 {
-                font-size: 2.2em;
-            }
-
-            .hero-content p {
-                font-size: 1em;
-            }
-
-            .menu-toggle {
-                top: 1.8em;
-                /* Adjust for smaller header on mobile */
-                right: 1em;
-            }
-
-            .logo {
-                font-size: 1.8em;
-            }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            .section-padding { padding: 3rem 0; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
+            .contact-details { flex-direction: column; gap: 1.5rem;}
+            .contact-item { min-width: unset; width: 100%; }
         }
     </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-
 <body>
     <header class="header">
         <div class="container">
-            <nav class="navbar">
-                <a href="#home" class="logo">La Tinèra</a>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#home">Home</a></li>
+            <a href="#hero" class="logo">Ristorante Cantinone</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
                     <li><a href="#about">Chi Siamo</a></li>
                     <li><a href="#menu">Menù</a></li>
                     <li><a href="#gallery">Galleria</a></li>
                     <li><a href="#contact">Contatti</a></li>
+                    <li><a href="#contact" class="btn small-btn">Prenota un Tavolo</a></li>
                 </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section id="hero" class="hero">
             <div class="hero-content">
-                <h1>La Tinèra</h1>
-                <p>Assapora gli Autentici Sapori Italiani nel Cuore di Lugano</p>
+                <h1>Ristorante Cantinone</h1>
+                <p>Il Gusto Autentico dell'Italia nel Cuore di Lugano</p>
+                <a href="#menu" class="btn">Esplora il Nostro Menù</a>
                 <a href="#contact" class="btn">Prenota un Tavolo</a>
             </div>
         </section>
 
-        <section id="about" class="section about-us">
-            <div class="container">
-                <div class="about-us-content">
-                    <div class="about-us-text">
-                        <h2>La Nostra Storia e Filosofia</h2>
-                        <p>Benvenuti a La Tinèra, un paradiso culinario dove le ricche tradizioni della cucina italiana
-                            incontrano l'eleganza moderna. Immersi nella pittoresca città di Lugano, vi invitiamo a
-                            intraprendere un viaggio gastronomico ispirato dalle diverse regioni d'Italia.</p>
-                        <p>La nostra passione per i sapori autentici ci spinge a procurarci gli ingredienti più
-                            raffinati e freschi, assicurando che ogni piatto racconti una storia di tradizione e
-                            passione. Dalle ricche paste ai frutti di mare squisiti e alle pizze cotte nel forno a
-                            legna, ogni creazione è realizzata con amore e precisione dai nostri talentosi chef.</p>
-                        <p>A La Tinèra, crediamo che cenare sia più di un semplice pasto; è un'esperienza da assaporare
-                            con amici e famiglia. Venite, rilassatevi nella nostra atmosfera calda e accogliente, e
-                            lasciatevi trasportare nel cuore dell'Italia.</p>
-                        <a href="#menu" class="btn">Scopri il Nostro Menù</a>
-                    </div>
-                    <div class="about-us-image">
-                        <img src="./images/1.jpg" alt="Interno accogliente de La Tinèra">
-                    </div>
+        <section id="about" class="about-us section-padding">
+            <div class="container about-content">
+                <div class="about-text">
+                    <h2>La Nostra Storia e Passione</h2>
+                    <p>Benvenuti al Ristorante Cantinone, dove la tradizione culinaria italiana prende vita. Situato nella pittoresca Piazza Cioccaro a Lugano, offriamo un'esperienza gastronomica autentica dal 1985. La nostra filosofia si basa sull'uso di ingredienti freschi e di alta qualità, selezionati con cura per portare in tavola i sapori genuini della cucina regionale italiana.</p>
+                    <p>Ogni piatto è una celebrazione delle ricette tramandate di generazione in generazione, preparate con amore e dedizione dai nostri chef esperti. Dal primo morso ai deliziosi dessert, il Cantinone è il luogo perfetto per un viaggio culinario indimenticabile, accompagnato da un'atmosfera calda e accogliente.</p>
+                    <p>Vi aspettiamo per condividere con voi la vera essenza della tavola italiana.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/2.jpg" alt="Interno accogliente del Ristorante Cantinone">
                 </div>
             </div>
         </section>
 
-        <section id="menu" class="section signature-dishes">
+        <section id="menu" class="menu-preview section-padding">
             <div class="container">
-                <h2>Piatti d'Autore</h2>
-                <p>Un assaggio delle delizie culinarie che vi aspettano.</p>
-                <div class="signature-dishes-grid">
-                    <div class="dish-card">
-                        <img src="./images/2.jpg" alt="Piatto di pasta fatta in casa con ragù">
-                        <div class="dish-card-content">
-                            <h3>Pasta Fatta in Casa al Ragù</h3>
-                            <p>Classico ragù alla bolognese cotto lentamente alla perfezione, servito con tagliatelle
-                                fresche.</p>
-                        </div>
+                <h2>I Nostri Sapori</h2>
+                <p>Un assaggio delle nostre specialità, preparate con passione e ingredienti freschi.</p>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Antipasto Misto all'Italiana</h3>
+                        <p>Selezione di salumi e formaggi tipici, olive marinate e bruschette al pomodoro fresco.</p>
+                        <span class="price">22 CHF</span>
                     </div>
-                    <div class="dish-card">
-                        <div class="dish-card-content">
-                            <h3>Pizza Margherita DOC</h3>
-                            <p>Autentica pizza napoletana con pomodori San Marzano, mozzarella fresca e basilico, cotta
-                                nel forno a legna.</p>
-                        </div>
+                    <div class="menu-item">
+                        <h3>Risotto ai Funghi Porcini</h3>
+                        <p>Risotto cremoso con funghi porcini freschi, sfumato al vino bianco e mantecato con Parmigiano Reggiano.</p>
+                        <span class="price">28 CHF</span>
                     </div>
-                    <div class="dish-card">
-                        <div class="dish-card-content">
-                            <h3>Tiramisù Classico</h3>
-                            <p>La nostra versione del dessert italiano senza tempo, strati di savoiardi imbevuti nel
-                                caffè, mascarpone e cacao.</p>
-                        </div>
+                    <div class="menu-item">
+                        <h3>Ossobuco alla Milanese</h3>
+                        <p>Stinco di vitello cotto lentamente in umido, servito con gremolata e accompagnato da risotto giallo.</p>
+                        <span class="price">36 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Filetto di Branzino al Sale</h3>
+                        <p>Branzino intero cotto al sale, sfilettato al tavolo e condito con olio extra vergine d'oliva e limone.</p>
+                        <span class="price">34 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Pizza Margherita Verace</h3>
+                        <p>Pomodoro San Marzano, mozzarella di bufala campana DOP, basilico fresco e olio EVO.</p>
+                        <span class="price">18 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Tiramisù della Nonna</h3>
+                        <p>Classico dessert italiano con savoiardi inzuppati nel caffè, crema al mascarpone e cacao in polvere.</p>
+                        <span class="price">10 CHF</span>
                     </div>
                 </div>
-                <a href="#menu" class="btn">Scopri il Nostro Menù Completo</a>
+                <a href="#" class="btn">Vedi il Menù Completo</a>
             </div>
         </section>
 
-        <section id="gallery" class="section gallery">
+        <section id="gallery" class="gallery section-padding">
             <div class="container">
-                <h2>Galleria</h2>
-                <p>Un viaggio visivo attraverso l'interno, i piatti e l'esterno de La Tinèra.</p>
+                <h2>I Nostri Ambienti e Sapori</h2>
+                <p>Lasciatevi ispirare dalle immagini del nostro ristorante e dei piatti che creiamo per voi.</p>
                 <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="./images/1.jpg" alt="Interno elegante del Ristorante La Tinèra">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./images/2.jpg" alt="Un piatto tipico italiano servito a La Tinèra">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="./images/3.jpg" alt="Esterno affascinante del Ristorante La Tinèra">
-                    </div>
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Piatto gourmet Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/4.jpg" alt="Atmosfera accogliente del Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/5.jpg" alt="Vista esterna del Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/1.jpg" alt="Chef al lavoro Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/2.jpg" alt="Dettaglio interno Ristorante Cantinone"></div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="contact section-padding">
             <div class="container">
-                <h2>Vieni a Trovarci</h2>
-                <p>Non vediamo l'ora di darvi il benvenuto a La Tinèra.</p>
-                <div class="contact-info">
-                    <div class="info-block">
-                        <h3>Indirizzo</h3>
-                        <p>Via dei Gorini 2,</p>
+                <h2>Contattaci e Prenota</h2>
+                <p>Siamo qui per rendere la tua esperienza indimenticabile. Contattaci o prenota il tuo tavolo!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <h3><i class="fas fa-map-marker-alt"></i> Indirizzo</h3>
+                        <p>Piazza Cioccaro 8</p>
                         <p>6900 Lugano, Svizzera</p>
-                        <a href="https://maps.app.goo.gl/YourGoogleMapsLinkHere" target="_blank" class="btn">Ottieni
-                            Indicazioni</a>
                     </div>
-                    <div class="info-block">
-                        <h3>Prenotazioni</h3>
-                        <p>Telefono: <a href="tel:0919235219">0919235219</a></p>
-                        <p>Email: <a href="mailto:info@latinera.ch">info@latinera.ch</a></p>
-                        <a href="tel:0919235219" class="btn">Chiamaci</a>
+                    <div class="contact-item">
+                        <h3><i class="fas fa-phone"></i> Telefono</h3>
+                        <p><a href="tel:0919231068">091 923 10 68</a></p>
+                        <p>Siamo disponibili durante gli orari di apertura.</p>
                     </div>
-                    <div class="info-block">
-                        <h3>Orari</h3>
-                        <p>Lun - Sab: 12:00 - 14:30</p>
-                        <p>Lun - Sab: 18:00 - 22:30</p>
-                        <p>Domenica: Chiuso</p>
+                    <div class="contact-item">
+                        <h3><i class="fas fa-clock"></i> Orari di Apertura</h3>
+                        <p>Martedì - Domenica: 12:00 - 14:30 | 18:30 - 22:30</p>
+                        <p>Lunedì: Chiuso</p>
                     </div>
                 </div>
+                <a href="#" class="btn">Invia una Richiesta di Prenotazione</a>
                 <div class="map-container">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.0706214228965!2d8.95561571587397!3d45.99951687911677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785ca8f2c0b7d7f%3A0x8c7c9c0c9c0c9c0c!2sVia%20dei%20Gorini%202%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sus!4v1678888888888!5m2!1sen!2sus"
-                        allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2729.417088998851!2d8.948270315802213!3d46.00262177911682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784311000000001%3A0x7d2b2b2b2b2b2b2b!2sPiazza%20Cioccaro%208%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1678888888888!5m2!1sen!2sch" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
@@ -775,43 +595,29 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2023 La Tinèra. Tutti i diritti riservati.</p>
+            <p>&copy; 2023 Ristorante Cantinone. Tutti i diritti riservati.</p>
+            <p>Piazza Cioccaro 8, 6900 Lugano, Svizzera | Tel: <a href="tel:0919231068">091 923 10 68</a></p>
             <div class="social-links">
-                <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.271 0-4.192 1.583-4.192 4.615v3.385z" />
-                    </svg></a>
-                <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="currentColor">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.148 3.228-1.667 4.747-4.919 4.919-.058 1.265-.07 1.645-.07 4.85s.012 3.584.07 4.85c-.148 3.228 1.667 4.747 4.919 4.919.058 1.265.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.148 3.228 1.667 4.747 4.919 4.919-.058 1.265-.07 1.645-.07 4.85s-.012 3.584-.07 4.85c-.148 3.228 1.667 4.747 4.919 4.919c-1.265.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-3.228-.148-4.747-1.667-4.919-4.919-.058-1.265-.07-1.645-.07-4.85s.012-3.584.07-4.85c.148-3.228 1.667-4.747 4.919-4.919 1.265-.058 1.645-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.359.21-6.78 2.618-6.99 6.99-.058 1.281-.073 1.689-.073 4.948s.014 3.668.072 4.948c.21 4.359 2.618 6.78 6.99 6.99 1.28.058 1.689.073 4.948.073s3.668-.014 4.948-.072c4.359-.21 6.78-2.618 6.99-6.99.058-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.21-4.359-2.618-6.78-6.99-6.99-1.281-.058-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                    </svg></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const navLinks = document.getElementById('nav-links');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
 
-            mobileMenu.addEventListener('click', function () {
-                navLinks.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
 
-            // Close menu when a link is clicked (for mobile)
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        mobileMenu.classList.remove('active');
-                    }
-                });
+        document.querySelectorAll('.nav-menu li a').forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('active');
             });
         });
     </script>
 </body>
-
 </html>

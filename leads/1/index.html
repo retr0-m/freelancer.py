@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AL 74 Bar Ristorante Pizzeria</title>
-    <!-- Font Google -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
-        rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>La Tinèra - Ristorante Ticinese a Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Reset Generale e Stili Base */
         :root {
-            --primary-color: #A0312F;
-            /* Dark Red, Italian accent */
-            --secondary-color: #3C5B6F;
-            /* Deep Teal/Blue, modern accent */
-            --accent-color: #D4A373;
-            /* Terracotta/Beige, warm accent */
-            --text-dark: #333333;
-            --text-light: #f4f4f4;
-            --bg-light: #fcfcfc;
-            --bg-dark: #222222;
-            --border-color: #e0e0e0;
+            --primary-color: #8B4513; /* SaddleBrown - warm brown */
+            --secondary-color: #A0522D; /* Sienna - slightly darker brown */
+            --accent-color: #D2B48C; /* Tan - lighter, complementary */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-light: #FDF5E6; /* Old Lace - creamy white */
+            --background-dark: #2F4F4F; /* Dark Slate Gray - deep contrast */
+
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
         }
 
+        /* Base Reset & Typography */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -40,202 +38,149 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            color: var(--text-color);
+            background-color: var(--background-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.8rem; }
+        h3 { font-size: 2rem; }
+        h4 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: var(--spacing-sm);
         }
 
         a {
-            text-decoration: none;
             color: var(--primary-color);
+            text-decoration: none;
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: var(--accent-color);
+            color: var(--secondary-color);
         }
 
-        ul {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            /* Remove extra space below images */
-        }
-
-        /* Tipografia */
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 3.8rem;
-        }
-
-        h2 {
-            font-size: 2.8rem;
-        }
-
-        h3 {
-            font-size: 2.0rem;
-        }
-
-        h4 {
-            font-size: 1.5rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        /* Classi di Utilità */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .section {
-            padding: 6rem 0;
-            text-align: center;
-        }
-
-        .section:nth-of-type(even) {
-            background-color: #f0f0f0;
-            /* Light grey for alternating sections */
+            padding: 0 var(--spacing-md);
         }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
             background-color: var(--primary-color);
-            color: var(--text-light);
-            border: 2px solid var(--primary-color);
+            color: var(--light-text-color);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: var(--spacing-sm);
         }
 
-        .btn-primary:hover {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-            color: var(--text-light);
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--text-light);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--text-light);
-            color: var(--primary-color);
-        }
-
-        /* Header e Navigazione */
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: var(--text-light);
-            padding: 1rem 0;
+        /* Header & Navigation */
+        .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: var(--spacing-sm) 0;
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease;
         }
 
-        .navbar .container {
+        .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--accent-color);
+            color: var(--primary-color);
+            line-height: 1;
         }
 
-        .nav-links {
+        .nav-menu ul {
+            list-style: none;
             display: flex;
-            gap: 1.5rem;
         }
 
-        .nav-links li a {
-            color: var(--text-light);
-            font-weight: 400;
+        .nav-menu li {
+            margin-left: var(--spacing-md);
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            font-weight: 500;
             font-size: 1.1rem;
-            padding: 0.5rem 0;
             position: relative;
         }
 
-        .nav-links li a::after {
+        .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-color);
+            background-color: var(--primary-color);
+            bottom: -5px;
+            left: 0;
             transition: width 0.3s ease;
         }
 
-        .nav-links li a:hover::after {
+        .nav-menu a:hover::after {
             width: 100%;
         }
 
-        /* Exclude button from underline */
-        .nav-links li a.btn::after {
-            display: none;
-        }
-
-
-        .menu-toggle {
+        .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
-            gap: 5px;
+            padding: 5px;
+            z-index: 1001;
         }
 
-        .menu-toggle .bar {
-            width: 25px;
+        .hamburger span {
             height: 3px;
-            background-color: var(--text-light);
+            width: 25px;
+            background-color: var(--text-color);
+            margin-bottom: 4px;
+            border-radius: 5px;
             transition: all 0.3s ease;
         }
 
-        /* Sezione Hero */
+        /* Hero Section */
         .hero {
+            position: relative;
             height: 100vh;
-            background-size: cover;
-            background-position: center;
+            background: url('./images/1.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--text-light);
-            position: relative;
-            padding-top: 80px;
-            /* To account for fixed navbar */
+            color: var(--light-text-color);
         }
 
         .hero::before {
@@ -245,705 +190,558 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.55);
-            z-index: 0;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 800px;
-            padding: 2rem;
+            padding: var(--spacing-md);
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            font-size: 5rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--light-text-color);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
 
         .hero-content p {
-            font-size: 1.6rem;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            line-height: 1.4;
-        }
-
-        /* Sezione Chi Siamo */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            align-items: center;
-            text-align: left;
-        }
-
-        .about-text h2 {
-            text-align: left;
-            margin-bottom: 1.5rem;
-            font-size: 3rem;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        .about-image img {
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Sezione Menù */
-        .menu-section {
-            background-color: var(--bg-light);
-            padding-bottom: 0;
-            /* Adjust for menu image */
-        }
-
-        .menu-section h2 {
-            margin-bottom: 4rem;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
-            text-align: left;
-        }
-
-        .menu-category {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .menu-category h3 {
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.8rem;
             font-size: 1.8rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--light-text-color);
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
-        .menu-item {
-            margin-bottom: 1.8rem;
+        /* Sections General Styling */
+        section {
+            padding: var(--spacing-lg) 0;
+            position: relative;
         }
 
-        .menu-item h4 {
-            font-size: 1.35rem;
-            margin-bottom: 0.3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            color: var(--text-dark);
-            /* Item name color */
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
         }
 
-        .menu-item p {
-            font-size: 0.95rem;
-            color: #666;
-            margin-top: 0.2rem;
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
         }
 
-        .menu-item .price {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
         }
 
-        .menu-image {
-            margin-top: 6rem;
-            padding-bottom: 4rem;
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--secondary-color);
+        }
+
+        .about-image {
             text-align: center;
         }
 
-        .menu-image img {
-            max-width: 90%;
-            height: 500px;
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            margin: 0 auto;
+            width: 100%;
+            max-height: 400px;
         }
 
-        /* Sezione Galleria */
-        .gallery-section {
-            background-color: #f0f0f0;
-        }
-
-        .gallery-grid {
+        /* Menu Section */
+        .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
+            gap: var(--spacing-md);
         }
 
-        .gallery-grid img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
+        .menu-category {
+            background-color: var(--background-light);
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-md);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
         }
 
-        .gallery-grid img:hover {
-            transform: scale(1.02);
+        .menu-category:hover {
+            transform: translateY(-5px);
         }
 
-        /* Sezione Contatti */
-        .contact-section {
-            background-color: var(--bg-light);
+        .menu-category h3 {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary-color);
         }
 
-        .contact-grid {
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: var(--spacing-xs);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--text-color);
+            flex-grow: 1;
+        }
+
+        .menu-item-price {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-left: var(--spacing-xs);
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+            padding-left: 10px; /* Indent description */
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
         }
 
-        .contact-info h2,
-        .reservation-form h2 {
-            text-align: left;
-            margin-bottom: 1.5rem;
-            font-size: 2.5rem;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-info {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: var(--spacing-lg);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-md);
         }
 
         .contact-info p {
             font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: #555;
+            margin-bottom: var(--spacing-sm);
         }
 
-        .contact-info p i {
+        .contact-info p strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
             color: var(--accent-color);
-            margin-right: 0.8rem;
-            font-size: 1.3rem;
         }
 
-        .contact-info p a {
-            color: #555;
-        }
-
-        .contact-info p a:hover {
-            color: var(--primary-color);
-        }
-
-        .contact-info h3 {
-            color: var(--secondary-color);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .contact-info ul {
-            list-style: none;
-            margin-left: 0;
-        }
-
-        .contact-info ul li {
-            margin-bottom: 0.5rem;
-            color: #555;
-        }
-
-        .social-links {
-            margin-top: 2rem;
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background-color: var(--background-dark);
+            min-height: 400px; /* Ensure map has height */
             display: flex;
-            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text-color);
+            font-size: 1.2rem;
         }
-
-        .social-links a {
-            font-size: 1.8rem;
-            color: var(--secondary-color);
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .reservation-form form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .reservation-form input,
-        .reservation-form textarea {
+        
+        .map-container iframe {
             width: 100%;
-            padding: 0.9rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            color: var(--text-dark);
-            transition: border-color 0.3s ease;
-        }
-
-        .reservation-form input:focus,
-        .reservation-form textarea:focus {
-            border-color: var(--accent-color);
-            outline: none;
-        }
-
-        .reservation-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .reservation-form button {
-            margin-top: 1rem;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            border: none;
-        }
-
-        .map {
-            grid-column: 1 / -1;
-            /* Make map span full width on grid */
-            margin-top: 3rem;
-        }
-
-        .map iframe {
-            width: 100%;
-            height: 450px;
+            height: 100%;
             border: 0;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Footer */
-        footer {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
+        .footer {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
             text-align: center;
-            padding: 2.5rem 0;
-            font-size: 0.95rem;
+            padding: var(--spacing-md) 0;
+            font-size: 0.9rem;
         }
 
-        /* Design Responsive */
+        .footer a {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
         @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.7rem; }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.4s ease-in-out;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                padding: var(--spacing-md);
+            }
+
+            .nav-menu li {
+                margin: var(--spacing-sm) 0;
+                text-align: center;
+            }
+
+            .nav-menu a {
+                color: var(--text-color);
+                font-size: 1.2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
             .hero-content h1 {
                 font-size: 3.5rem;
             }
 
             .hero-content p {
-                font-size: 1.3rem;
+                font-size: 1.4rem;
             }
 
-            h2 {
-                font-size: 2.4rem;
-            }
-
-            h3 {
-                font-size: 1.8rem;
-            }
-
-            h4 {
-                font-size: 1.3rem;
-            }
-
-            .menu-image img {
-                height: 400px;
-            }
-
-            .map iframe {
-                height: 350px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar .container {
-                flex-wrap: wrap;
-            }
-
-            .nav-links {
-                display: none;
-                /* Hide by default */
-                flex-direction: column;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.9);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                padding: 1rem 0;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-                padding: 0.8rem 0;
-            }
-
-            .nav-links li a {
-                font-size: 1.2rem;
-                padding: 0.8rem 1rem;
-                display: block;
-            }
-
-            .nav-links li a::after {
-                display: none;
-                /* Remove underline effect for mobile menu */
-            }
-
-            .nav-links li a.btn {
-                margin-top: 1rem;
-                display: inline-block;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .menu-toggle.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .menu-toggle.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            h2 {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .about-grid,
-            .menu-grid,
-            .gallery-grid,
-            .contact-grid {
+            .about-content, .contact-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
-            .about-text,
-            .contact-info,
-            .reservation-form {
+            .about-text, .contact-info {
                 text-align: center;
             }
 
-            .about-text h2,
-            .contact-info h2,
-            .reservation-form h2 {
-                text-align: center;
+            .about-image {
+                order: -1; /* Image first on mobile */
             }
 
-            .social-links {
-                justify-content: center;
-            }
-
-            .menu-image img {
-                height: 300px;
-            }
-
-            .map iframe {
-                height: 300px;
+            .map-container {
+                min-height: 300px;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .hero-content p {
-                font-size: 1rem;
-            }
-
-            .btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.8rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            h3 {
-                font-size: 1.5rem;
-            }
-
-            h4 {
                 font-size: 1.2rem;
+            }
+
+            .section-title {
+                margin-bottom: var(--spacing-md);
             }
 
             .logo {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
     </style>
 </head>
-
 <body>
-    <header class="hero" style="background-image: url('./images/4.jpg');">
-        <nav class="navbar">
-            <div class="container">
-                <a href="#" class="logo">AL 74</a>
-                <ul class="nav-links">
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">La Tinèra</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
                     <li><a href="#about">Chi Siamo</a></li>
-                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#menu">Menu</a></li>
                     <li><a href="#gallery">Galleria</a></li>
                     <li><a href="#contact">Contatti</a></li>
-                    <li><a href="#contact" class="btn btn-primary">Prenota un Tavolo</a></li>
                 </ul>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </nav>
-        <div class="hero-content">
-            <h1>AL 74 Bar Ristorante Pizzeria</h1>
-            <p>Sapori Autentici Italiani nel Cuore di Lugano</p>
-            <a href="#contact" class="btn btn-secondary">Prenota il Tuo Tavolo</a>
         </div>
     </header>
 
     <main>
-        <section id="about" class="section">
-            <div class="container about-grid">
-                <div class="about-text">
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>La Tinèra</h1>
+                <p>Autentici Sapori Ticinesi con un Tocco di Modernità</p>
+                <a href="#menu" class="btn">Esplora il Menu</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-title">
                     <h2>La Nostra Storia</h2>
-                    <p>Benvenuti ad AL 74, un paradiso culinario dove le ricette tradizionali italiane incontrano
-                        l'eleganza moderna. Situati a Lugano, siamo orgogliosi di servire pizze squisite, primi piatti e
-                        specialità locali preparate con gli ingredienti più freschi. La nostra passione per l'autentica
-                        cucina italiana crea un'esperienza culinaria indimenticabile per ogni ospite.</p>
-                    <p>Sia che veniate a trovarci per un pasto informale, una celebrazione speciale o semplicemente per
-                        un caffè al bar, AL 74 offre un'atmosfera calda, invitante e un servizio impeccabile. Provate un
-                        assaggio d'Italia proprio qui in Svizzera.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Benvenuti a La Tinèra: Tradizione e Passione nel Cuore di Lugano</h3>
+                        <p>La Tinèra nasce dal desiderio di celebrare la ricchezza culinaria del Canton Ticino, reinterpretando piatti tradizionali con una visione moderna e ingredienti di altissima qualità.</p>
+                        <p>Il nostro viaggio inizia con la ricerca meticolosa di prodotti locali, freschi e di stagione, provenienti da piccoli produttori della regione. Crediamo fermamente che la vera essenza della cucina risieda nella semplicità e nell'autenticità delle materie prime.</p>
+                        <p>Ogni piatto racconta una storia, un legame profondo con il territorio e le sue radici. Dalle paste fatte in casa ai risotti cremosi, dalle carni saporite ai formaggi alpini, ogni ricetta è un omaggio alla tradizione ticinese, eseguita con maestria e un pizzico di innovazione.</p>
+                        <p>Venite a scoprire l'atmosfera accogliente e familiare de La Tinèra, dove la buona cucina si unisce a un servizio attento e cordiale. Siamo più di un ristorante: siamo un luogo d'incontro, di condivisione e di piacere gastronomico.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/3.jpg" alt="Interno del ristorante La Tinèra">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="menu" class="section menu-section">
+        <section id="menu" class="menu" style="background-color: var(--background-dark);">
             <div class="container">
-                <h2>Il Nostro Delizioso Menù</h2>
+                <div class="section-title">
+                    <h2 style="color: var(--light-text-color);">Il Nostro Menu</h2>
+                </div>
                 <div class="menu-grid">
-                    <!-- Antipasti -->
                     <div class="menu-category">
                         <h3>Antipasti</h3>
                         <div class="menu-item">
-                            <h4>NOME PIATTO ANTIPASTO 1</h4>
-                            <p>DESCRIZIONE PIATTO ANTIPASTO 1</p>
-                            <span class="price">CHF 12.00</span>
+                            <span class="menu-item-name">Antipasto della Casa</span>
+                            <span class="menu-item-price">18 CHF</span>
                         </div>
+                        <p class="menu-item-description">Selezione di sfiziosità locali e di stagione.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO ANTIPASTO 2</h4>
-                            <p>DESCRIZIONE PIATTO ANTIPASTO 2</p>
-                            <span class="price">CHF 15.50</span>
+                            <span class="menu-item-name">Carpaccio di Manzo Ticinese</span>
+                            <span class="menu-item-price">22 CHF</span>
                         </div>
+                        <p class="menu-item-description">Con rucola, scaglie di parmigiano e olio extravergine.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO ANTIPASTO 3</h4>
-                            <p>DESCRIZIONE PIATTO ANTIPASTO 3</p>
-                            <span class="price">CHF 10.00</span>
+                            <span class="menu-item-name">Formaggini Freschi della Valle</span>
+                            <span class="menu-item-price">16 CHF</span>
                         </div>
+                        <p class="menu-item-description">Serviti con miele locale e noci.</p>
                     </div>
 
-                    <!-- Pizze -->
-                    <div class="menu-category">
-                        <h3>Pizze</h3>
-                        <div class="menu-item">
-                            <h4>Pizza 1</h4>
-                            <p>DESCRIZIONE PIATTO PIZZA 1</p>
-                            <span class="price">CHF 22.00</span>
-                        </div>
-                        <div class="menu-item">
-                            <h4>Pizza 2</h4>
-                            <p>DESCRIZIONE PIATTO PIZZA 2</p>
-                            <span class="price">CHF 24.50</span>
-                        </div>
-                        <div class="menu-item">
-                            <h4>Pizza 3</h4>
-                            <p>DESCRIZIONE PIATTO PIZZA 3</p>
-                            <span class="price">CHF 19.00</span>
-                        </div>
-                        <div class="menu-item">
-                            <h4>Pizza 4</h4>
-                            <p>DESCRIZIONE PIATTO PIZZA 4</p>
-                            <span class="price">CHF 26.00</span>
-                        </div>
-                    </div>
-
-                    <!-- Primi Piatti -->
                     <div class="menu-category">
                         <h3>Primi Piatti</h3>
                         <div class="menu-item">
-                            <h4>NOME PIATTO PRIMO 1</h4>
-                            <p>DESCRIZIONE PIATTO PRIMO 1</p>
-                            <span class="price">CHF 23.00</span>
+                            <span class="menu-item-name">Risotto ai Funghi Porcini</span>
+                            <span class="menu-item-price">26 CHF</span>
                         </div>
+                        <p class="menu-item-description">Cremoso risotto con funghi freschi di stagione.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO PRIMO 2</h4>
-                            <p>DESCRIZIONE PIATTO PRIMO 2</p>
-                            <span class="price">CHF 25.00</span>
+                            <span class="menu-item-name">Pizzocheri della Valtellina</span>
+                            <span class="menu-item-price">24 CHF</span>
                         </div>
+                        <p class="menu-item-description">Con patate, verza e formaggio Casera fuso.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO PRIMO 3</h4>
-                            <p>DESCRIZIONE PIATTO PRIMO 3</p>
-                            <span class="price">CHF 21.00</span>
+                            <span class="menu-item-name">Pasta Fresca al Ragù d'Anatra</span>
+                            <span class="menu-item-price">28 CHF</span>
                         </div>
+                        <p class="menu-item-description">Specialità della casa, pasta fatta a mano con ragù ricco.</p>
                     </div>
 
-                    <!-- Secondi Piatti -->
                     <div class="menu-category">
                         <h3>Secondi Piatti</h3>
                         <div class="menu-item">
-                            <h4>NOME PIATTO SECONDO 1</h4>
-                            <p>DESCRIZIONE PIATTO SECONDO 1</p>
-                            <span class="price">CHF 32.00</span>
+                            <span class="menu-item-name">Brasato di Manzo al Merlot</span>
+                            <span class="menu-item-price">35 CHF</span>
                         </div>
+                        <p class="menu-item-description">Lento cottura con polenta ticinese.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO SECONDO 2</h4>
-                            <p>DESCRIZIONE PIATTO SECONDO 2</p>
-                            <span class="price">CHF 35.00</span>
+                            <span class="menu-item-name">Filetto di Persico del Lago</span>
+                            <span class="menu-item-price">32 CHF</span>
                         </div>
+                        <p class="menu-item-description">Pescato fresco, servito con verdure di stagione.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Costolette d'Agnello alle Erbe</span>
+                            <span class="menu-item-price">38 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Accompagnate da patate al rosmarino.</p>
                     </div>
 
-                    <!-- Dolci -->
                     <div class="menu-category">
-                        <h3>Dolci</h3>
+                        <h3>Dessert & Bevande</h3>
                         <div class="menu-item">
-                            <h4>NOME PIATTO DOLCE 1</h4>
-                            <p>DESCRIZIONE PIATTO DOLCE 1</p>
-                            <span class="price">CHF 9.50</span>
+                            <span class="menu-item-name">Torta di Pane e Pere</span>
+                            <span class="menu-item-price">10 CHF</span>
                         </div>
+                        <p class="menu-item-description">Dolce tradizionale ticinese.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO DOLCE 2</h4>
-                            <p>DESCRIZIONE PIATTO DOLCE 2</p>
-                            <span class="price">CHF 11.00</span>
+                            <span class="menu-item-name">Mousse al Cioccolato Fondente</span>
+                            <span class="menu-item-price">12 CHF</span>
                         </div>
-                    </div>
-
-                    <!-- Bevande -->
-                    <div class="menu-category">
-                        <h3>Bevande</h3>
+                        <p class="menu-item-description">Con salsa ai frutti di bosco.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO BEVANDA 1</h4>
-                            <p>DESCRIZIONE PIATTO BEVANDA 1</p>
-                            <span class="price">CHF 5.00</span>
+                            <span class="menu-item-name">Selezione di Vini Ticinesi</span>
+                            <span class="menu-item-price">Da 6 CHF</span>
                         </div>
+                        <p class="menu-item-description">Vini rossi e bianchi delle migliori cantine locali.</p>
                         <div class="menu-item">
-                            <h4>NOME PIATTO BEVANDA 2</h4>
-                            <p>DESCRIZIONE PIATTO BEVANDA 2</p>
-                            <span class="price">CHF 7.00</span>
+                            <span class="menu-item-name">Caffè Espresso / Ristretto</span>
+                            <span class="menu-item-price">4 CHF</span>
                         </div>
-                        <div class="menu-item">
-                            <h4>NOME PIATTO BEVANDA 3</h4>
-                            <p>DESCRIZIONE PIATTO BEVANDA 3</p>
-                            <span class="price">CHF 4.00</span>
-                        </div>
+                        <p class="menu-item-description">Miscela italiana di alta qualità.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="gallery" class="section gallery-section">
+        <section id="gallery" class="gallery">
             <div class="container">
-                <h2>Le nostre pizze</h2>
+                <div class="section-title">
+                    <h2>I Nostri Momenti</h2>
+                </div>
                 <div class="gallery-grid">
-                    <img src="./images/3.jpg" alt="Interni moderni e accoglienti del ristorante AL 74">
-                    <img src="./images/1.jpg"
-                        alt="Un tavolo ben apparecchiato con piatti deliziosi al ristorante AL 74">
-                    <img src="./images/5.jpg" alt="Una selezione di bevande e cocktails al bar di AL 74">
+                    <div class="gallery-item">
+                        <img src="./images/4.jpg" alt="Piatto gourmet La Tinèra">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/5.jpg" alt="Interno accogliente La Tinèra">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/1.jpg" alt="Tavola apparecchiata La Tinèra">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Dettaglio della cucina La Tinèra">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section contact-section">
-            <div class="container contact-grid">
-                <div class="contact-info">
-                    <h2>Vieni a Trovarci</h2>
-                    <p><i class="fas fa-map-marker-alt"></i> Via Trevano 74, 6900 Lugano, Svizzera</p>
-                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0919714346">0919714346</a></p>
-                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@al74.ch">info@al74.ch</a></p>
-                    <h3>Orari di Apertura</h3>
-                    <ul>
-                        <li>Lunedì - Venerdì: 11:00 - 23:00</li>
-                        <li>Sabato: 11:00 - 00:00</li>
-                        <li>Domenica: 11:00 - 22:00</li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contattaci</h2>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Dove Trovarci</h3>
+                        <p><strong>Indirizzo:</strong> <br> Via dei Gorini 2, <br> 6900 Lugano, Svizzera</p>
+                        <p><strong>Telefono:</strong> <br> 091 923 52 19</p>
+                        <p><strong>Orari di Apertura:</strong> <br> Lun-Sab: 12:00-14:00, 18:30-22:00 <br> Domenica: Chiuso</p>
+                        <a href="tel:0919235219" class="btn" style="background-color: var(--accent-color); color: var(--primary-color);">Chiamaci Ora</a>
                     </div>
-                </div>
-                <div class="reservation-form">
-                    <h2>Prenota un Tavolo</h2>
-                    <form>
-                        <input type="text" placeholder="Il Tuo Nome" required>
-                        <input type="email" placeholder="La Tua Email" required>
-                        <input type="tel" placeholder="Numero di Telefono" required>
-                        <input type="date" required>
-                        <input type="time" required>
-                        <input type="number" min="1" placeholder="Numero di Ospiti" required>
-                        <textarea placeholder="Richieste Speciali (opzionale)"></textarea>
-                        <button type="submit" class="btn btn-primary">Prenota Ora</button>
-                    </form>
-                </div>
-                <div class="map">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.2917711411516!2d8.93881471556059!3d46.01211157911762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785160825319803%3A0xc991d743840e6c64!2sVia%20Trevano%2074%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sus!4v1678881234567!5m2!1sen!2sus"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.291771146607!2d8.948013315757973!3d46.00762410884877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785db2d60b54f9d%3A0x8e87d0c0c0c0c0c0!2sVia%20dei%20Gorini%202%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1678901234567!5m2!1sen!2sch" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 AL 74 Bar Ristorante Pizzeria. Tutti i diritti riservati.</p>
+            <p>&copy; 2023 La Tinèra. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
     <script>
-        // JavaScript per la gestione del menu mobile
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
 
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-        // Chiudi il menu quando si clicca su un link
-        document.querySelectorAll('.nav-links li a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileMenu.classList.remove('active');
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+
+            // Close menu if clicking outside
+            document.addEventListener('click', function(event) {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
             });
         });
     </script>
 </body>
-
 </html>

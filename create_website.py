@@ -8,7 +8,7 @@ import re
 load_dotenv()
 
 GEMINI_MODEL = "gemini-2.5-flash"
-PROMPT_BASE = "You're a web designer and developer\ncreate an amazing, content in italian, modern and professional themed website, make it responsive and **use placeholders ONLY FOR THE MENU ITEMS**, for the following restaurant:"
+PROMPT_BASE = "You're a web designer and developer\ncreate an amazing, content in italian, modern and professional themed website, with animations on load and on scroll. make it responsive and **use placeholders ONLY FOR THE MENU ITEMS, DO NOT USE THE IMAGES I GIVE YOU FOR DISHES**, for the following restaurant:"
 try:
     API_KEY = os.getenv("GEMINI_API_KEY")   
 except Exception as e:
@@ -108,10 +108,8 @@ def init_client():
 
 
 def format_html(content):
-    c=str(content)
-    c=c.replace("```html", "")
-    c=c.replace("```", "")
-    return content
+    c=str(content).replace("```html", "")
+    return c.replace("```", "")
 
 def strip_leads_folder(path: str) -> str:
     """

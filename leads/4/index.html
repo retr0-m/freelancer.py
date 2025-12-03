@@ -1,129 +1,95 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ristorante Pizzeria Verace - Autentica Cucina Italiana a Paradiso</title>
-    <meta name="description"
-        content="Vivi l'autentica cucina italiana al Ristorante Pizzeria Verace a Paradiso, Svizzera. Pizze napoletane tradizionali, pasta fatta a mano e piatti squisiti preparati con passione.">
-    <meta name="keywords"
-        content="ristorante italiano, pizzeria, Verace, Paradiso, Svizzera, cibo italiano autentico, pizza, pasta, ristorazione di lusso, Ticino, Lugano">
-    <meta name="author" content="Web Designer">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+    <title>Ristorante Antico - Cucina Tradizionale a Lugano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General Styles */
+        /* CSS Reset & Variables */
         :root {
-            --primary-color: #A0311D;
-            /* Deep Terracotta - Earthy, Italian */
-            --secondary-color: #F8F4E6;
-            /* Creamy White - Warm background */
-            --tertiary-color: #384238;
-            /* Dark Olive Green - Elegant text/accents */
-            --light-text: #FFFFFF;
-            --dark-text: #333333;
-            --accent-color: #C08A3B;
-            /* Muted Gold - subtle luxury */
-            --light-bg: #FDFCF8;
-            --section-padding: 80px 0;
-            --container-width: 1200px;
+            --primary-dark: #6B2F0C; /* Dark Brown */
+            --primary-light: #A0522D; /* Sienna */
+            --accent-gold: #D4AF37; /* Goldenrod */
+            --background-light: #FDF6E3; /* Light Cream */
+            --text-dark: #333333;
+            --text-light: #FDF6E3;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --spacing-unit: 1.5rem;
         }
 
-        * {
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: var(--dark-text);
-            background-color: var(--light-bg);
-            overflow-x: hidden;
-            /* Prevent horizontal scroll on some mobile layouts */
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Playfair Display', serif;
-            color: var(--tertiary-color);
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-        }
-
-        h2 {
-            font-size: 2.8rem;
-        }
-
-        h3 {
-            font-size: 2.2rem;
-        }
-
-        h4 {
-            font-size: 1.8rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         a {
             text-decoration: none;
-            color: var(--primary-color);
+            color: inherit;
         }
 
-        a:hover {
-            color: var(--accent-color);
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-padding {
+            padding: calc(var(--spacing-unit) * 3) 0;
         }
 
         .btn {
             display: inline-block;
-            background: var(--primary-color);
-            color: var(--light-text);
-            padding: 15px 30px;
+            background-color: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 0.8rem 2rem;
             border-radius: 5px;
-            font-weight: 500;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
             text-transform: uppercase;
-            transition: background 0.3s ease, transform 0.3s ease;
-            border: none;
-            cursor: pointer;
+            letter-spacing: 1px;
+            border: 2px solid var(--accent-gold);
         }
 
         .btn:hover {
-            background: var(--accent-color);
-            transform: translateY(-2px);
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            border-color: var(--primary-dark);
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
+            font-family: var(--font-heading);
             font-size: 3rem;
-            color: var(--tertiary-color);
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-unit);
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 0.5rem;
         }
 
         .section-title::after {
@@ -134,388 +100,364 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background-color: var(--primary-color);
+            background-color: var(--accent-gold);
         }
 
         /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
+        .main-header {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
             top: 0;
-            left: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .header .container {
+        .main-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
             font-weight: 700;
-            color: var(--primary-color);
-            line-height: 1;
-        }
-
-        .logo span {
-            color: var(--tertiary-color);
-            font-size: 1.2rem;
-            /* For 'Pizzeria' */
-            display: block;
-            margin-top: 5px;
+            color: var(--accent-gold);
             letter-spacing: 1px;
         }
 
         .nav-menu ul {
-            list-style: none;
             display: flex;
+            gap: var(--spacing-unit);
         }
 
-        .nav-menu ul li {
-            margin-left: 30px;
-        }
-
-        .nav-menu ul li a {
-            color: var(--tertiary-color);
-            font-weight: 500;
-            font-size: 1.1rem;
+        .nav-menu a {
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.5rem 0;
             position: relative;
             transition: color 0.3s ease;
-            padding-bottom: 5px;
+            color: var(--text-light);
         }
 
-        .nav-menu ul li a::after {
+        .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: 0;
             left: 0;
+            bottom: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary-color);
+            background-color: var(--accent-gold);
             transition: width 0.3s ease;
         }
 
-        .nav-menu ul li a:hover {
-            color: var(--primary-color);
-        }
-
-        .nav-menu ul li a:hover::after {
+        .nav-menu a:hover::after {
             width: 100%;
         }
 
-        .hamburger {
+        .nav-toggle {
             display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
             cursor: pointer;
-            font-size: 2rem;
-            color: var(--tertiary-color);
+            z-index: 1100;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-light);
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
 
         /* Hero Section */
         .hero {
-            position: relative;
-            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/1.jpg') no-repeat center center/cover;
+            color: var(--text-light);
+            min-height: 80vh;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            color: var(--light-text);
-            overflow: hidden;
-            margin-top: -90px;
-            /* Adjust for fixed header */
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-            z-index: 1;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
+            position: relative;
         }
 
         .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 20px;
+            max-width: 800px;
+            padding: var(--spacing-unit);
         }
 
-        .hero-content h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            color: var(--light-text);
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        .hero h2 {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            margin-bottom: var(--spacing-unit);
+            color: var(--accent-gold);
             line-height: 1.1;
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 1.5rem;
-            margin-bottom: 40px;
-            color: var(--light-text);
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* About Section */
-        .about {
-            padding: var(--section-padding);
-            background-color: var(--secondary-color);
-            color: var(--dark-text);
-            text-align: center;
+        .about-section {
+            background-color: var(--background-light);
         }
 
         .about-content {
             display: flex;
-            align-items: center;
-            gap: 60px;
             flex-wrap: wrap;
-            text-align: left;
+            align-items: center;
+            gap: var(--spacing-unit);
         }
 
-        .about-text,
-        .about-image {
+        .about-text, .about-image {
             flex: 1;
             min-width: 300px;
         }
 
-        .about-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            object-fit: cover;
-            max-height: 450px;
+        .about-text h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-unit);
         }
 
-        .about h2 {
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        .about p {
-            font-size: 1.15rem;
+        .about-text p {
+            margin-bottom: var(--spacing-unit);
+            font-size: 1.1rem;
             line-height: 1.8;
         }
 
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
         /* Menu Section */
-        .menu {
-            padding: var(--section-padding);
-            background-color: var(--light-bg);
+        .menu-section {
+            background-color: #F8F4ED; /* Slightly darker cream */
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-unit) 2rem;
+            margin-top: calc(var(--spacing-unit) * 2);
         }
 
         .menu-category {
-            background: var(--light-text);
-            padding: 30px;
+            background-color: var(--text-light);
+            padding: var(--spacing-unit);
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .menu-category:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .menu-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
+        .menu-category h4 {
+            font-family: var(--font-heading);
             font-size: 1.8rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .menu-category h3::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 2px;
-            background-color: var(--accent-color);
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
         }
 
         .menu-item {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 15px;
-            border-bottom: 1px dotted rgba(0, 0, 0, 0.2);
-            padding-bottom: 10px;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dotted rgba(var(--text-dark), 0.2);
+            padding-bottom: 0.5rem;
         }
 
         .menu-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
-            padding-bottom: 0;
         }
 
-        .menu-item-name {
+        .menu-item span:first-child {
             font-weight: 600;
-            color: var(--dark-text);
-            font-size: 1.1rem;
-            text-align: left;
-            flex: 1;
-        }
-
-        .menu-item-price {
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-left: 15px;
+            color: var(--primary-light);
             font-size: 1.1rem;
         }
 
-        .menu-item-description {
-            font-size: 0.95rem;
-            color: #666;
-            margin-top: 5px;
-            text-align: left;
-            line-height: 1.4;
+        .menu-item span:last-child {
+            font-family: var(--font-heading);
+            color: var(--accent-gold);
+            font-size: 1rem;
         }
 
         /* Gallery Section */
-        .gallery {
-            padding: var(--section-padding);
-            background-color: var(--secondary-color);
+        .gallery-section {
+            background-color: var(--background-light);
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: calc(var(--spacing-unit) * 2);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .gallery-item img:hover {
+            transform: scale(1.03);
         }
 
         /* Contact Section */
-        .contact {
-            padding: var(--section-padding);
-            background-color: var(--light-bg);
+        .contact-section {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
             text-align: center;
         }
 
         .contact-content {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-unit);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .contact-info,
-        .contact-map {
-            flex: 1;
-            min-width: 300px;
-            padding: 30px;
-            background: var(--light-text);
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .contact-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
+        .contact-section .section-title {
+            color: var(--accent-gold);
         }
 
         .contact-info p {
+            margin-bottom: 0.5rem;
             font-size: 1.1rem;
-            margin-bottom: 10px;
         }
 
         .contact-info a {
-            color: var(--tertiary-color);
-            font-weight: 500;
+            color: var(--text-light);
             transition: color 0.3s ease;
         }
 
         .contact-info a:hover {
-            color: var(--primary-color);
+            color: var(--accent-gold);
         }
 
-        .contact-map iframe {
+        .contact-form {
             width: 100%;
-            height: 350px;
-            border: 0;
-            border-radius: 8px;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: var(--spacing-unit);
         }
 
-        /* Footer */
-        .footer {
-            background: var(--tertiary-color);
-            color: var(--light-text);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .footer p {
-            margin-bottom: 10px;
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--accent-gold);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-family: var(--font-body);
             font-size: 1rem;
         }
 
-        .footer a {
-            color: var(--secondary-color);
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(var(--text-light), 0.7);
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--text-light);
+        }
+
+        .contact-form button {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--text-light);
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-dark);
+            color: rgba(var(--text-light), 0.7);
+            padding: var(--spacing-unit);
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(var(--text-light), 0.1);
+        }
+
+        .main-footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-footer .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .social-links a {
+            color: var(--text-light);
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
             transition: color 0.3s ease;
         }
 
-        .footer a:hover {
-            color: var(--light-text);
+        .social-links a:hover {
+            color: var(--accent-gold);
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .nav-menu {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 90px;
-                /* Height of header */
+                top: 100%;
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.98);
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                padding: 20px 0;
+                background-color: var(--primary-dark);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 1rem 0;
             }
 
             .nav-menu.active {
@@ -524,404 +466,243 @@
 
             .nav-menu ul {
                 flex-direction: column;
-                align-items: center;
+                text-align: center;
+                gap: 0;
             }
 
-            .nav-menu ul li {
-                margin: 15px 0;
+            .nav-menu li {
+                width: 100%;
             }
-
-            .hamburger {
+            .nav-menu a {
                 display: block;
+                padding: 0.8rem var(--spacing-unit);
+                border-bottom: 1px solid rgba(var(--text-light), 0.1);
+            }
+            .nav-menu a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .nav-menu li:last-child a {
+                border-bottom: none;
             }
 
-            .hero-content h1 {
-                font-size: 3.5rem;
+            .nav-toggle {
+                display: flex;
             }
 
-            .hero-content p {
+            .nav-toggle.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .nav-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .nav-toggle.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero h2 {
+                font-size: 3rem;
+            }
+
+            .hero p {
                 font-size: 1.2rem;
             }
 
             .section-title {
                 font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-
-            h2 {
-                font-size: 2.2rem;
-            }
-
-            h3 {
-                font-size: 1.8rem;
-            }
-
-            p {
-                font-size: 1rem;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-
-            .logo span {
-                font-size: 1.2rem;
-                margin-top: 2px;
             }
 
             .about-content {
                 flex-direction: column;
             }
 
-            .about-text,
-            .about-image {
+            .about-text, .about-image {
                 min-width: unset;
                 width: 100%;
             }
 
-            .about-image img {
-                max-height: 300px;
+            .about-image {
+                order: -1; /* Image appears above text on mobile */
             }
 
             .menu-grid {
                 grid-template-columns: 1fr;
             }
-
-            .contact-content {
-                flex-direction: column;
-            }
-
-            .contact-info,
-            .contact-map {
-                min-width: unset;
-                width: 100%;
-            }
-
-            .contact-map iframe {
-                height: 300px;
-            }
-
-            .btn {
-                padding: 12px 25px;
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                margin-bottom: 3rem;
-            }
         }
 
         @media (max-width: 480px) {
-            .hero-content h1 {
+            .hero h2 {
                 font-size: 2.5rem;
             }
 
-            .hero-content p {
+            .hero p {
                 font-size: 1rem;
             }
 
             .section-title {
                 font-size: 2rem;
             }
-
             .logo {
                 font-size: 1.8rem;
-            }
-
-            .logo span {
-                font-size: 1rem;
             }
         }
     </style>
 </head>
-
 <body>
-    <header class="header">
+    <header class="main-header">
         <div class="container">
-            <a href="#" class="logo">Verace<span>Pizzeria</span></a>
-            <nav class="nav-menu">
+            <h1 class="logo"><a href="#hero">Ristorante Antico</a></h1>
+            <nav class="nav-menu" id="navMenu">
                 <ul>
-                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
                     <li><a href="#menu">Menu</a></li>
                     <li><a href="#gallery">Galleria</a></li>
-                    <li><a href="#about">Chi Siamo</a></li>
                     <li><a href="#contact">Contatti</a></li>
-                    <li><a href="#reservations" class="btn">Prenota un tavolo</a></li>
+                    <li><a href="#">Prenota</a></li> <!-- Placeholder for menu item -->
+                    <li><a href="#">Eventi</a></li> <!-- Placeholder for menu item -->
                 </ul>
             </nav>
-            <div class="hamburger">&#9776;</div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
     <main>
         <section id="hero" class="hero">
-            <img src="./images/1.jpg"
-                alt="Squisita tavola italiana imbandita, con pizza e pasta, pronta per essere servita." class="hero-bg">
             <div class="hero-content">
-                <h1>Ristorante Pizzeria Verace</h1>
-                <p>Vivi il Vero Gusto d'Italia a Paradiso</p>
-                <a href="#menu" class="btn">Vedi il Nostro Menù</a>
+                <h2>Benvenuti al Ristorante Antico</h2>
+                <p>Scoprite il gusto autentico della tradizione italiana nel cuore di Lugano. Un'esperienza culinaria indimenticabile vi aspetta.</p>
+                <a href="#menu" class="btn">Esplora il Nostro Menù</a>
             </div>
         </section>
 
-        <section id="about" class="about">
+        <section id="about" class="about-section section-padding">
             <div class="container">
-                <h2 class="section-title">La Nostra Storia e Filosofia</h2>
+                <h2 class="section-title text-center">La Nostra Storia</h2>
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Benvenuti al Ristorante Pizzeria Verace, dove la passione per l'autentica cucina italiana
-                            incontra il fascino svizzero. Immerso nella pittoresca città di Paradiso, il nostro
-                            ristorante porta i sapori vibranti e le tradizioni d'Italia direttamente sulla vostra
-                            tavola, offrendo un viaggio culinario senza pari.</p>
-                        <p>Il nostro impegno per il termine "Verace" – che significa vero, genuino e autentico – è al
-                            centro di tutto ciò che facciamo. Selezioniamo meticolosamente solo gli ingredienti più
-                            freschi e raffinati, provenienti localmente quando possibile e importati direttamente
-                            dall'Italia per garantire un vero sapore di tradizione in ogni piatto. Dalle nostre venerate
-                            pizze napoletane cotte nel forno a legna, realizzate con tecniche tramandate, alla nostra
-                            delicata pasta fatta a mano e alle ricche specialità regionali, ogni morso è una
-                            testimonianza del nostro patrimonio.</p>
-                        <p>Vi invitiamo a unirvi a noi per un'esperienza culinaria indimenticabile, che si tratti di una
-                            vivace serata pizza con amici, una cena romantica o una gioiosa celebrazione con i propri
-                            cari. Immergetevi nell'ambiente accogliente e scoprite la vera essenza dell'ospitalità
-                            italiana al Ristorante Pizzeria Verace.</p>
+                        <h3>La Passione per la Cucina Italiana</h3>
+                        <p>Il Ristorante Antico nasce dalla visione di portare i sapori più veri e profondi della cucina tradizionale italiana a Lugano. Da generazioni, la nostra famiglia custodisce gelosamente ricette tramandate, selezionando solo ingredienti freschi e di altissima qualità.</p>
+                        <p>Ogni piatto racconta una storia, un viaggio attraverso le regioni d'Italia, preparato con amore e rispetto per la materia prima. Dalla pasta fatta in casa alle carni succulente, dai sapori del mare ai dolci della nonna, ogni boccone è un omaggio alla ricchezza gastronomica del nostro paese.</p>
+                        <p>Venite a scoprire un ambiente accogliente e raffinato, dove la tradizione incontra l'eleganza, per offrirvi non solo un pasto, ma un'esperienza sensoriale completa.</p>
                     </div>
                     <div class="about-image">
-                        <img src="./images/5.jpg"
-                            alt="Un primo piano di un piatto di pasta meticolosamente impiattato con ingredienti freschi e colori vivaci.">
+                        <img src="./images/2.jpg" alt="Interno accogliente del Ristorante Antico">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="menu" class="menu">
-            <div class="container">
-                <h2 class="section-title">Il Nostro Menù Autentico</h2>
+        <section id="menu" class="menu-section section-padding">
+            <div class="container text-center">
+                <h2 class="section-title">Il Nostro Menù</h2>
+                <p style="margin-bottom: 2rem; font-size: 1.1rem;">Un viaggio culinario attraverso le specialità regionali italiane, preparate con passione e ingredienti di stagione.</p>
+                
                 <div class="menu-grid">
                     <div class="menu-category">
-                        <h3>Antipasti</h3>
-                        <div class="menu-item">
-                            <span class="menu-item-name">Bruschetta al Pomodoro</span>
-                            <span class="menu-item-price">CHF 12.00</span>
-                        </div>
-                        <p class="menu-item-description">Pane tostato, pomodori freschi maturi, aglio, basilico e olio
-                            extra vergine d'oliva.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Tagliere di Salumi e Formaggi</span>
-                            <span class="menu-item-price">CHF 24.00</span>
-                        </div>
-                        <p class="menu-item-description">Una selezione curata di salumi italiani di alta qualità e
-                            formaggi artigianali.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Fiori di Zucca Fritti</span>
-                            <span class="menu-item-price">CHF 16.00</span>
-                        </div>
-                        <p class="menu-item-description">Fiori di zucca leggermente fritti, delicatamente ripieni di
-                            mozzarella e acciughe.</p>
+                        <h4>Antipasti</h4>
+                        <div class="menu-item"><span>Tagliere di Salumi e Formaggi</span><span>22 CHF</span></div>
+                        <div class="menu-item"><span>Carpaccio di Manzo con Tartufo</span><span>28 CHF</span></div>
+                        <div class="menu-item"><span>Fiori di Zucca Fritti</span><span>18 CHF</span></div>
+                        <div class="menu-item"><span>(Placeholder Antipasto 1)</span><span>XX CHF</span></div>
+                        <div class="menu-item"><span>(Placeholder Antipasto 2)</span><span>YY CHF</span></div>
                     </div>
-
                     <div class="menu-category">
-                        <h3>Pizze Verace</h3>
-                        <div class="menu-item">
-                            <span class="menu-item-name">Pizza Margherita D.O.C.</span>
-                            <span class="menu-item-price">CHF 19.00</span>
-                        </div>
-                        <p class="menu-item-description">Pomodori San Marzano, mozzarella di bufala fresca, foglie di
-                            basilico profumato.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Pizza Diavola</span>
-                            <span class="menu-item-price">CHF 22.00</span>
-                        </div>
-                        <p class="menu-item-description">Salame italiano piccante, ricchi pomodori San Marzano e
-                            mozzarella filante.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Pizza Parma</span>
-                            <span class="menu-item-price">CHF 24.00</span>
-                        </div>
-                        <p class="menu-item-description">Prosciutto di Parma, rucola fresca, dolci pomodorini e scaglie
-                            di parmigiano.</p>
+                        <h4>Primi Piatti</h4>
+                        <div class="menu-item"><span>Risotto ai Funghi Porcini</span><span>26 CHF</span></div>
+                        <div class="menu-item"><span>Casoncelli alla Bergamasca</span><span>24 CHF</span></div>
+                        <div class="menu-item"><span>Spaghetti alla Carbonara Originale</span><span>22 CHF</span></div>
+                        <div class="menu-item"><span>(Placeholder Primo Piatto 1)</span><span>XX CHF</span></div>
+                        <div class="menu-item"><span>(Placeholder Primo Piatto 2)</span><span>YY CHF</span></div>
                     </div>
-
                     <div class="menu-category">
-                        <h3>Primi Piatti</h3>
-                        <div class="menu-item">
-                            <span class="menu-item-name">Spaghetti Carbonara</span>
-                            <span class="menu-item-price">CHF 26.00</span>
-                        </div>
-                        <p class="menu-item-description">Guanciale croccante, tuorlo d'uovo cremoso, Pecorino Romano
-                            stagionato e pepe nero macinato fresco.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Risotto ai Funghi Porcini</span>
-                            <span class="menu-item-price">CHF 28.00</span>
-                        </div>
-                        <p class="menu-item-description">Risotto Arborio lussuosamente cremoso con funghi porcini
-                            selvatici.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Lasagne al Forno</span>
-                            <span class="menu-item-price">CHF 25.00</span>
-                        </div>
-                        <p class="menu-item-description">Strati di pasta fresca, ricco ragù a cottura lenta, besciamella
-                            vellutata e parmigiano grattugiato.</p>
+                        <h4>Secondi Piatti</h4>
+                        <div class="menu-item"><span>Filetto di Manzo al Pepe Verde</span><span>42 CHF</span></div>
+                        <div class="menu-item"><span>Ossobuco alla Milanese</span><span>38 CHF</span></div>
+                        <div class="menu-item"><span>Branzino al Sale</span><span>36 CHF</span></div>
+                        <div class="menu-item"><span>(Placeholder Secondo Piatto 1)</span><span>XX CHF</span></div>
+                        <div class="menu-item"><span>(Placeholder Secondo Piatto 2)</span><span>YY CHF</span></div>
                     </div>
-
                     <div class="menu-category">
-                        <h3>Secondi Piatti</h3>
-                        <div class="menu-item">
-                            <span class="menu-item-name">Ossobuco alla Milanese</span>
-                            <span class="menu-item-price">CHF 38.00</span>
-                        </div>
-                        <p class="menu-item-description">Stinchi di vitello brasati lentamente con una vibrante
-                            gremolata, serviti con risotto allo zafferano.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Filetto di Manzo con Salsa al Pepe Verde</span>
-                            <span class="menu-item-price">CHF 45.00</span>
-                        </div>
-                        <p class="menu-item-description">Tenero filetto di manzo con una cremosa salsa al pepe verde,
-                            accompagnato da verdure di stagione.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Branzino al Sale</span>
-                            <span class="menu-item-price">CHF 36.00</span>
-                        </div>
-                        <p class="menu-item-description">Branzino intero cotto alla perfezione in crosta di sale,
-                            servito con limone ed erbe aromatiche.</p>
-                    </div>
-
-                    <div class="menu-category">
-                        <h3>Dolci</h3>
-                        <div class="menu-item">
-                            <span class="menu-item-name">Tiramisù Classico</span>
-                            <span class="menu-item-price">CHF 10.00</span>
-                        </div>
-                        <p class="menu-item-description">Savoiardi imbevuti di caffè espresso stratificati con ricca
-                            crema al mascarpone e spolverati di cacao in polvere.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Panna Cotta ai Frutti di Bosco</span>
-                            <span class="menu-item-price">CHF 9.00</span>
-                        </div>
-                        <p class="menu-item-description">Dessert italiano cremoso e vellutato, servito con una vibrante
-                            composta di frutti di bosco misti.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Cannoli Siciliani</span>
-                            <span class="menu-item-price">CHF 11.00</span>
-                        </div>
-                        <p class="menu-item-description">Gusci di pasta fritta croccante ripieni di ricotta dolce e
-                            cremosa, spesso con frutta candita.</p>
-                    </div>
-
-                    <div class="menu-category">
-                        <h3>Vini</h3>
-                        <div class="menu-item">
-                            <span class="menu-item-name">Chianti Classico D.O.C.G.</span>
-                            <span class="menu-item-price">CHF 65.00</span>
-                        </div>
-                        <p class="menu-item-description">Un iconico vino rosso corposo dalla Toscana, con note di
-                            ciliegia e spezie.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Prosecco Superiore D.O.C.G.</span>
-                            <span class="menu-item-price">CHF 48.00</span>
-                        </div>
-                        <p class="menu-item-description">Un elegante vino bianco spumante, fresco e rinfrescante con
-                            bollicine fini.</p>
-
-                        <div class="menu-item">
-                            <span class="menu-item-name">Pinot Grigio Delle Venezie</span>
-                            <span class="menu-item-price">CHF 42.00</span>
-                        </div>
-                        <p class="menu-item-description">Un vino bianco leggero e secco, perfetto con frutti di mare e
-                            piatti più leggeri.</p>
+                        <h4>Dessert & Vini</h4>
+                        <div class="menu-item"><span>Tiramisù Classico</span><span>10 CHF</span></div>
+                        <div class="menu-item"><span>Panna Cotta ai Frutti di Bosco</span><span>9 CHF</span></div>
+                        <div class="menu-item"><span>Selezione di Vini Regionali</span><span>(Variabile)</span></div>
+                        <div class="menu-item"><span>(Placeholder Dessert 1)</span><span>XX CHF</span></div>
+                        <div class="menu-item"><span>(Placeholder Vino 1)</span><span>YY CHF</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="gallery" class="gallery">
-            <div class="container">
-                <h2 class="section-title">La Nostra Arte Culinaria e Atmosfera</h2>
+        <section id="gallery" class="gallery-section section-padding">
+            <div class="container text-center">
+                <h2 class="section-title">La Nostra Galleria</h2>
+                <p style="margin-bottom: 2rem; font-size: 1.1rem;">Uno sguardo ai nostri piatti, all'atmosfera e ai momenti speciali che creiamo.</p>
                 <div class="gallery-grid">
-                    <div class="gallery-item"><img src="./images/3.jpg"
-                            alt="Una pizza napoletana tradizionale, perfettamente cotta, con basilico fresco e mozzarella.">
-                    </div>
-                    <div class="gallery-item"><img src="./images/4.jpg"
-                            alt="L'interno elegante e accogliente del Ristorante Pizzeria Verace, con i tavoli da pranzo.">
-                    </div>
-                    <div class="gallery-item"><img src="./images/5.jpg"
-                            alt="Un primo piano di un piatto di pasta meticolosamente impiattato con ingredienti freschi e colori vivaci.">
-                    </div>
-                    <div class="gallery-item"><img src="./images/1.jpg"
-                            alt="Un'altra vista di un piatto italiano squisito, che mostra la maestria culinaria.">
-                    </div>
-
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Un piatto prelibato del Ristorante Antico"></div>
+                    <div class="gallery-item"><img src="./images/4.jpg" alt="Interno elegante e accogliente del Ristorante Antico"></div>
+                    <div class="gallery-item"><img src="./images/5.jpg" alt="Dettaglio di un tavolo imbandito con cura"></div>
+                    <div class="gallery-item"><img src="./images/1.jpg" alt="Ambiente esterno o ingresso del ristorante"></div>
+                    <div class="gallery-item"><img src="./images/2.jpg" alt="Un altro scatto dell'interno o un piatto diverso"></div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="contact-section section-padding">
             <div class="container">
-                <h2 class="section-title">Trovaci e Contattaci</h2>
+                <h2 class="section-title">Contatti & Prenotazioni</h2>
                 <div class="contact-content">
+                    <p style="font-size: 1.2rem; max-width: 600px;">Siamo a vostra disposizione per prenotazioni, eventi speciali o qualsiasi informazione. Contattateci o compilate il modulo sottostante.</p>
                     <div class="contact-info">
-                        <h3>Dettagli di Contatto</h3>
-                        <p><strong>Ristorante Pizzeria Verace</strong></p>
-                        <p>Indirizzo: <a href="https://maps.app.goo.gl/N52f2Vf8oByn6wK29" target="_blank"
-                                rel="noopener noreferrer">Via Guisan 16, 6900 Paradiso, Svizzera</a></p>
-                        <p>Telefono: <a href="tel:0919930323">091 993 03 23</a></p>
-                        <p>Email: <a href="mailto:info@ristoranteverace.ch">info@ristoranteverace.ch</a> (Email
-                            segnaposto)</p>
-                        <p><strong>Orari di Apertura:</strong></p>
-                        <p>Lun - Ven: 12:00 - 14:30 | 18:00 - 22:30</p>
-                        <p>Sab - Dom: 18:00 - 23:00</p>
-                        <p>Non vediamo l'ora di darvi il benvenuto!</p>
+                        <p><strong>Telefono:</strong> <a href="tel:0919714871">091 971 48 71</a></p>
+                        <p><strong>Indirizzo:</strong> Piazza Lucchini 5, 6978 Lugano, Svizzera</p>
+                        <p><strong>Orari:</strong> Lun-Sab: 12:00-14:30 | 19:00-22:30 | Domenica chiuso</p>
                     </div>
-                    <div class="contact-map">
-                        <h3>La Nostra Posizione sulla Mappa</h3>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.291771120485!2d8.932975976535492!3d45.99616097103859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784333634033b09%3A0xc47e30761e0e844!2sVia%20Guisan%2016%2C%206900%20Paradiso%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1701540000000!5m2!1sen!2sch"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                            title="Posizione di Ristorante Pizzeria Verace su Google Maps"></iframe>
-                    </div>
+                    <form class="contact-form" action="#" method="POST">
+                        <input type="text" name="name" placeholder="Il tuo Nome" required>
+                        <input type="email" name="email" placeholder="La tua Email" required>
+                        <input type="tel" name="phone" placeholder="Numero di Telefono">
+                        <textarea name="message" rows="5" placeholder="Il tuo Messaggio o Richiesta di Prenotazione" required></textarea>
+                        <button type="submit">Invia Messaggio</button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2023 Ristorante Pizzeria Verace. Tutti i diritti riservati.</p>
-            <p>Progettato con passione in Svizzera.</p>
-            <p><a href="#privacy" target="_blank">Informativa sulla Privacy</a> | <a href="#terms"
-                    target="_blank">Termini di Servizio</a></p>
+            <div class="footer-logo">Ristorante Antico</div>
+            <p>Piazza Lucchini 5, 6978 Lugano, Svizzera</p>
+            <p>Tel: <a href="tel:0919714871">091 971 48 71</a></p>
+            <div class="social-links" style="margin-top: 1rem;">
+                <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.273 0-4.192 1.549-4.192 4.615v3.385z"/></svg></a>
+                <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.069-4.849.069-3.204 0-3.584-.012-4.849-.069-3.254-.148-4.771-1.691-4.919-4.919-.058-1.265-.069-1.645-.069-4.849 0-3.204.012-3.584.069-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.073 4.948.073 3.259 0 3.668-.014 4.948-.073 4.354-.2 6.78-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            </div>
+            <p style="margin-top: 1rem;">&copy; 2023 Ristorante Antico. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            const navLinks = document.querySelectorAll('.nav-menu ul li a');
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
 
-            hamburger.addEventListener('click', function () {
+            navToggle.addEventListener('click', function() {
                 navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
             });
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', function () {
+            // Close menu when a link is clicked (for mobile)
+            document.querySelectorAll('.nav-menu a').forEach(item => {
+                item.addEventListener('click', function() {
                     if (navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
                     }
                 });
             });
@@ -929,35 +710,14 @@
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#reservations') {
-                        // For the reservations button, if it's not a true anchor
-                        // you might open a modal or navigate to a dedicated booking page.
-                        // For now, let's prevent default and log a message or open a placeholder.
-                        e.preventDefault();
-                        alert('La funzionalità di prenotazione sarà presto disponibile! Si prega di chiamarci al numero 091 993 03 23.');
-                        return;
-                    }
-
                     e.preventDefault();
 
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        const headerOffset = document.querySelector('.header').offsetHeight; // Get dynamic header height
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
-                    }
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 });
             });
         });
     </script>
 </body>
-
 </html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porto Bello! Ristorantino alla Foce di Lugano!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A0B9BA;
+            /* Soft Blue-Green */
+            --secondary-color: #F0F4F7;
+            /* Light Gray-Blue */
+            --accent-color: #D6AD60;
+            /* Muted Gold */
+            --dark-color: #333C40;
+            /* Dark Charcoal */
+            --light-text: #FFFFFF;
+            --dark-text: #2c3e50;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Open Sans', sans-serif;
+            --spacing-unit: 1rem;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--dark-text);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-unit) * 2;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            padding: var(--spacing-unit) var(--spacing-unit) * 2;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-text);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-unit) * 2;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/1.jpeg') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: var(--spacing-unit) * 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            margin-bottom: var(--spacing-unit);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-unit) * 2;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: #e0b86a;
+            /* slightly lighter gold */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections General */
+        section {
+            padding: var(--spacing-unit) * 5 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            margin-bottom: var(--spacing-unit) * 3;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light-text);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-unit) * 4;
+            text-align: left;
+            padding: 0 var(--spacing-unit) * 2;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-unit);
+            color: #555;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--secondary-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-unit) * 3;
+            padding: var(--spacing-unit) * 2;
+        }
+
+        .menu-item {
+            background-color: var(--light-text);
+            padding: var(--spacing-unit) * 2;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu-item h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            margin-bottom: var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .menu-item h3 span {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .menu-item p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light-text);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-unit);
+            padding: var(--spacing-unit) * 2;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.08);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            padding-bottom: 0;
+        }
+
+        .contact h2 {
+            color: var(--light-text);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-unit) * 4;
+            margin-bottom: var(--spacing-unit) * 4;
+            padding: 0 var(--spacing-unit) * 2;
+        }
+
+        .info-block {
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .info-block h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-unit);
+            color: var(--accent-color);
+        }
+
+        .info-block p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-block a {
+            color: var(--light-text);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .info-block a:hover {
+            color: var(--accent-color);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(80%) invert(92%) contrast(80%);
+            /* Modern map style */
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: var(--spacing-unit) * 2 0;
+            border-top: 1px solid var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 0 var(--spacing-unit) * 2;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image,
+            .about-text {
+                flex: none;
+                width: 100%;
+            }
+
+            .about-image img {
+                height: 300px;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: initial;
+                gap: var(--spacing-unit) * 2;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-color);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                padding: var(--spacing-unit) * 2 0;
+                gap: var(--spacing-unit);
+                text-align: center;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            .nav-menu a {
+                font-size: 1.2rem;
+                padding: var(--spacing-unit);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: var(--spacing-unit) * 3 0;
+            }
+
+            .container {
+                padding: var(--spacing-unit);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-image img {
+                height: 250px;
+            }
+
+            .menu-item h3 {
+                font-size: 1.3rem;
+            }
+
+            .menu-item h3 span {
+                font-size: 1.1rem;
+            }
+
+            .gallery-item img {
+                height: 180px;
+            }
+
+            .info-block h3 {
+                font-size: 1.5rem;
+            }
+
+            .info-block p {
+                font-size: 1rem;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar container">
+            <a href="#" class="logo">Porto Bello!</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                    <li><a href="#" class="btn">Prenota un Tavolo</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Porto Bello! Ristorantino alla Foce di Lugano!</h1>
+                <p>Il Gusto Mediterraneo Incontra la Bellezza del Lago di Lugano.</p>
+                <a href="#menu" class="btn">Esplora il Menu</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>Chi Siamo</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="./images/2.jpg" alt="Interno del Ristorante Porto Bello">
+                    </div>
+                    <div class="about-text">
+                        <p>Benvenuti al Porto Bello!, il vostro angolo di paradiso culinario sulle rive del Lago di
+                            Lugano. Con una vista mozzafiato sulla foce e un'atmosfera accogliente, offriamo
+                            un'esperienza gastronomica unica che celebra i sapori autentici del Mediterraneo.</p>
+                        <p>La nostra cucina è un inno alla freschezza e alla qualità, con ingredienti selezionati con
+                            cura e preparati con passione dai nostri chef. Che si tratti di un pranzo leggero, una cena
+                            romantica o un evento speciale, Porto Bello! è il luogo perfetto per ogni occasione. Venite
+                            a scoprire un viaggio di sapori indimenticabili in un ambiente elegante e rilassante.</p>
+                        <a href="#contact" class="btn">Scopri di più</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2>Il Nostro Menu</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 3rem; color: #555;">Piatti di mare freschissimi, pasta fatta
+                    in casa, specialità locali e dessert irresistibili. Scoprite i nostri sapori autentici!</p>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Antipasto di Mare Misto <span>28 CHF</span></h3>
+                        <p>Una selezione dei migliori frutti di mare freschi del giorno, preparati con maestria.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Spaghetti alle Vongole <span>26 CHF</span></h3>
+                        <p>Spaghetti di Gragnano con vongole veraci, aglio, olio EVO e prezzemolo fresco.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Risotto ai Funghi Porcini <span>24 CHF</span></h3>
+                        <p>Risotto cremoso con funghi porcini freschi, mantecato al parmigiano.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Filetto di Branzino al Sale <span>38 CHF</span></h3>
+                        <p>Branzino intero cotto in crosta di sale, servito con verdure di stagione.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Grigliata di Carne Mista <span>35 CHF</span></h3>
+                        <p>Un assortimento di carni selezionate alla griglia, accompagnate da patate al rosmarino.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Tiramisù della Casa <span>12 CHF</span></h3>
+                        <p>La nostra ricetta tradizionale del classico dessert italiano, fatto in casa.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Panna Cotta ai Frutti di Bosco <span>10 CHF</span></h3>
+                        <p>Panna cotta vellutata con una fresca coulis di frutti di bosco.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Selezione di Formaggi Locali <span>20 CHF</span></h3>
+                        <p>Assortimento di formaggi ticinesi e svizzeri, serviti con miele e confetture.</p>
+                    </div>
+                </div>
+                <a href="#" class="btn" style="margin-top: 3rem;">Vedi il Menu Completo (PDF)</a>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2>Momenti al Porto Bello!</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/3.jpeg" alt="Tavolo imbandito con vista lago">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/4.jpg" alt="Piatto gourmet del ristorante">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/5.jpeg" alt="Esterno del ristorante con posti a sedere">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/1.jpeg" alt="Panorama del Lago di Lugano dal ristorante">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contatti & Dove Trovarci</h2>
+                <div class="contact-info">
+                    <div class="info-block">
+                        <h3>Indirizzo</h3>
+                        <p>Circolo Velico Lugano</p>
+                        <p>Via Foce 11, 6900 Lugano, Svizzera</p>
+                        <a href="https://maps.app.goo.gl/YOUR_GOOGLE_MAPS_LINK_HERE" target="_blank">Visualizza sulla
+                            mappa</a>
+                    </div>
+                    <div class="info-block">
+                        <h3>Telefono</h3>
+                        <p><a href="tel:+41919728888">091 972 88 88</a></p>
+                        <p>Chiamaci per informazioni o prenotazioni.</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>Orari</h3>
+                        <p>Aperto tutti i giorni</p>
+                        <p>Pranzo: 12:00 - 14:30</p>
+                        <p>Cena: 18:30 - 22:30</p>
+                        <p>Si consiglia la prenotazione.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.291079313069!2d8.9566904!3d46.002829299999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785ca884c568579%3A0xc47e307e2c90e9d6!2sCircolo%20Velico%20Lugano!5e0!3m2!1sit!2sch!4v1701380962770!5m2!1sit!2sch"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Porto Bello! Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+            // Highlight active nav link on scroll
+            const sections = document.querySelectorAll('section');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - sectionHeight / 3) { // Adjust offset as needed
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.href.includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

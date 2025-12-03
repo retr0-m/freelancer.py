@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beirut - Ristorante Libanese Autentico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #A36B3F; /* Gold/Brown */
+            --secondary-color: #4A2E1F; /* Dark Brown */
+            --accent-color: #8D2F23; /* Deep Red */
+            --light-bg: #F8F4E3; /* Light Cream */
+            --dark-bg: #2C2C2C; /* Dark Grey */
+            --text-light: #F8F4E3;
+            --text-dark: #2C2C2C;
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            color: var(--text-light); /* Keep text light on hover */
+        }
+
+        section {
+            padding: 80px 0;
+            overflow: hidden; /* For scroll animations */
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu ul li {
+            margin-left: 30px;
+        }
+
+        .nav-menu ul li a {
+            color: var(--text-light);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-menu ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/1.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            padding-top: 80px; /* Adjust for fixed header */
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .about .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 400px;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            aspect-ratio: 4/3;
+        }
+
+        .about-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .menu h2 {
+            color: var(--primary-color);
+            margin-bottom: 60px;
+        }
+
+        .menu-category {
+            margin-bottom: 60px;
+        }
+
+        .menu-category h3 {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .menu-category h3::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -10px;
+            width: 80px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .menu-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item h4 {
+            font-family: var(--font-body); /* Menu item names can be body font */
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 10px;
+        }
+
+        .menu-item .price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .gallery h2 {
+            color: var(--secondary-color);
+            margin-bottom: 60px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: var(--primary-color);
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .info-block {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .info-block i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .info-block h3 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .info-block p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer p {
+            margin-top: 20px;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .about .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-image, .about-text {
+                flex: none;
+                width: 100%;
+            }
+            .about-text {
+                text-align: center;
+            }
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            .logo {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 80px; /* Below header */
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-bg);
+                /* Removed flex-direction and align-items here as they apply to children, not the container */
+                transform: translateY(-100%);
+                transition: transform 0.5s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                max-height: calc(100vh - 80px); /* Ensure it doesn't exceed viewport height below header */
+                overflow-y: auto; /* Enable scrolling if menu items are too many */
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+            }
+
+            .nav-menu ul {
+                display: flex; /* Ensure it's explicitly a flex container */
+                flex-direction: column; /* Stack items vertically */
+                align-items: center; /* Center items horizontally within the menu */
+                padding: 20px 0;
+                width: 100%; /* Take full width of parent nav-menu */
+                text-align: center; /* Center text within each list item */
+            }
+
+            .nav-menu ul li {
+                margin: 15px 0; /* Vertical spacing between menu items */
+                width: 100%; /* Ensure li takes full width to center text properly */
+            }
+            
+            .nav-menu ul li a {
+                padding: 10px 20px; /* Add padding for larger tap area */
+                display: block; /* Make the whole padding area clickable */
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .header .container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-image img {
+                height: 300px; /* More consistent height on smaller screens */
+            }
+
+            .info-block {
+                min-width: unset;
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.3rem; }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .menu-item h4 {
+                font-size: 1.2rem;
+            }
+            .menu-item .price {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Animations */
+        /* On Load */
+        .hero-content {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s forwards ease-out;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            transform: translateY(-100%);
+            animation: slideDownHeader 0.8s forwards ease-out;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes slideDownHeader {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* On Scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about .about-image.animate-on-scroll.is-visible {
+            animation: fadeInRight 1s forwards ease-out;
+        }
+        .about .about-text.animate-on-scroll.is-visible {
+            animation: fadeInLeft 1s forwards ease-out;
+        }
+        
+        .menu-category h3.animate-on-scroll.is-visible {
+            animation: fadeInSlideUp 0.8s forwards ease-out;
+        }
+        .menu-item.animate-on-scroll.is-visible {
+            animation: fadeInZoom 0.8s forwards ease-out;
+        }
+        .gallery-item.animate-on-scroll.is-visible {
+            animation: fadeInZoom 0.8s forwards ease-out;
+        }
+        .info-block.animate-on-scroll.is-visible {
+            animation: fadeInSlideUp 0.8s forwards ease-out;
+        }
+        .map-container.animate-on-scroll.is-visible {
+            animation: fadeInSlideUp 0.8s forwards ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInZoom {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Beirut</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="animate-on-load">Beirut</h1>
+            <p class="animate-on-load">Scopri l'autentica cucina libanese in un'oasi di sapori e tradizioni nel cuore di Paradiso.</p>
+            <a href="#menu" class="btn animate-on-load">Esplora il Nostro Menù</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-image animate-on-scroll">
+                <img src="./images/2.jpeg" alt="Interno del ristorante Beirut, ambiente accogliente">
+            </div>
+            <div class="about-text animate-on-scroll">
+                <h2>La Nostra Storia e Tradizione</h2>
+                <p>Benvenuti da Beirut, un viaggio culinario nel cuore del Libano, situato nella pittoresca Paradiso, Svizzera. Dal momento in cui varcherete la nostra soglia, sarete avvolti dai profumi inebrianti delle spezie mediorientali e dall'atmosfera calorosa e accogliente che riflette la leggendaria ospitalità libanese.</p>
+                <p>Il nostro chef porta avanti ricette tramandate di generazione in generazione, utilizzando solo ingredienti freschi e di alta qualità. Ogni piatto è una celebrazione della ricchezza e della diversità della cucina libanese, dalle saporite Mezze ai sontuosi piatti principali, preparati con passione e dedizione.</p>
+                <p>Che siate alla ricerca di un'esperienza gastronomica unica o di un luogo dove condividere momenti speciali con amici e famiglia, Beirut è la vostra destinazione ideale. Vi invitiamo a scoprire i sapori autentici del Libano con noi.</p>
+                <a href="#contact" class="btn">Prenota un Tavolo</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 class="animate-on-scroll">Il Nostro Menù Autentico</h2>
+
+            <div class="menu-category">
+                <h3 class="animate-on-scroll">Mezze Fredde</h3>
+                <div class="menu-grid">
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Hummus</h4>
+                        <p>Crema di ceci con tahina, succo di limone e olio d'oliva.</p>
+                        <span class="price">CHF 9.50</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Baba Ghanoush</h4>
+                        <p>Crema di melanzane affumicate con tahina, aglio e succo di limone.</p>
+                        <span class="price">CHF 10.00</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Tabbouleh</h4>
+                        <p>Insalata fresca di prezzemolo, pomodoro, cipolla, menta e bulgur.</p>
+                        <span class="price">CHF 11.00</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Labneh</h4>
+                        <p>Yogurt cremoso con aglio, menta secca e un filo d'olio d'oliva.</p>
+                        <span class="price">CHF 9.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 class="animate-on-scroll">Mezze Calde</h3>
+                <div class="menu-grid">
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Sambousek Lahme</h4>
+                        <p>Fagottini fritti ripieni di carne macinata e pinoli.</p>
+                        <span class="price">CHF 12.00</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Fatayer Sabanekh</h4>
+                        <p>Tortini di pasta sfoglia ripieni di spinaci e limone.</p>
+                        <span class="price">CHF 11.50</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Kibbeh</h4>
+                        <p>Polpette di bulgur e carne macinata, fritte alla perfezione.</p>
+                        <span class="price">CHF 13.00</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Halloumi Alla Griglia</h4>
+                        <p>Formaggio Halloumi grigliato con un tocco di menta.</p>
+                        <span class="price">CHF 14.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 class="animate-on-scroll">Piatti Principali</h3>
+                <div class="menu-grid">
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Shish Tawook</h4>
+                        <p>Spiedini di pollo marinati e grigliati, serviti con riso e insalata.</p>
+                        <span class="price">CHF 28.00</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Kafta Meshwi</h4>
+                        <p>Spiedini di carne macinata mista, grigliati e speziati.</p>
+                        <span class="price">CHF 29.50</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Arayes</h4>
+                        <p>Pane arabo ripieno di carne macinata e formaggio, grigliato.</p>
+                        <span class="price">CHF 26.00</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Samak Harra</h4>
+                        <p>Filetto di pesce al forno con salsa piccante libanese.</p>
+                        <span class="price">CHF 32.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 class="animate-on-scroll">Dessert e Bevande</h3>
+                <div class="menu-grid">
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Baklava</h4>
+                        <p>Dolce a strati di pasta fillo, noci e sciroppo dolce.</p>
+                        <span class="price">CHF 8.00</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Mouhallabieh</h4>
+                        <p>Budino di riso e latte, aromatizzato all'acqua di rose.</p>
+                        <span class="price">CHF 7.50</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Caffè Libanese</h4>
+                        <p>Caffè tradizionale forte e aromatico.</p>
+                        <span class="price">CHF 4.50</span>
+                    </div>
+                    <div class="menu-item animate-on-scroll">
+                        <h4>Tè alla Menta Fresca</h4>
+                        <p>Infuso rinfrescante con foglie di menta fresca.</p>
+                        <span class="price">CHF 5.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="animate-on-scroll">La Nostra Galleria</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="./images/3.jpg" alt="Piatto di hummus decorato">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="./images/4.jpeg" alt="Varie mezze libanesi su un tavolo">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="./images/5.jpg" alt="Dolci libanesi assortiti">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="./images/1.jpg" alt="Tavola apparecchiata con cibo libanese">
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="./images/2.jpeg" alt="Interni del ristorante Beirut">
+                </div>
+                <!-- The 6th gallery item box has been removed as per instructions -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="animate-on-scroll">Vieni a Trovarci</h2>
+
+            <div class="contact-info">
+                <div class="info-block animate-on-scroll">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Indirizzo</h3>
+                    <p>Via Generale Guisan 14</p>
+                    <p>6900 Paradiso, Switzerland</p>
+                </div>
+                <div class="info-block animate-on-scroll">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Telefono</h3>
+                    <p>0919804677</p>
+                </div>
+                <div class="info-block animate-on-scroll">
+                    <i class="fas fa-clock"></i>
+                    <h3>Orari</h3>
+                    <p>Mar - Dom: 12:00 - 14:30 | 18:30 - 22:30</p>
+                    <p>Lunedì: Chiuso</p>
+                </div>
+            </div>
+
+            <div class="map-container animate-on-scroll">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.2618882585145!2d8.937667215886638!3d45.98905277911419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785b86300000001%3A0xf6d601d3b38c234a!2sVia%20Generale%20Guisan%2014%2C%206900%20Paradiso%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1678912345678!5m2!1sen!2sch" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 Beirut Ristorante Libanese. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Toggle between fa-bars and fa-times for the icon
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when a navigation link is clicked
+        document.querySelectorAll('.nav-menu ul li a').forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.remove('fa-times');
+                hamburger.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Scroll Animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observerOptions = {
+            root: null, // viewport
+            rootMargin: '0px',
+            threshold: 0.2 // Trigger when 20% of the item is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: Unobserve once animated to save resources
+                    // observer.unobserve(entry.target); 
+                } else {
+                    // Optional: Remove 'is-visible' if element scrolls out of view
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        animateElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Special handling for about section elements to animate differently
+        const aboutSection = document.querySelector('#about');
+        const aboutImage = document.querySelector('.about-image');
+        const aboutText = document.querySelector('.about-text');
+        
+        const aboutObserver = new IntersectionObserver((entries, aboutObserver) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Only apply animation classes if not already present
+                    if (!aboutImage.classList.contains('is-visible')) {
+                        aboutImage.classList.add('is-visible');
+                    }
+                    if (!aboutText.classList.contains('is-visible')) {
+                        aboutText.classList.add('is-visible');
+                    }
+                    aboutObserver.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        });
+        if (aboutSection) aboutObserver.observe(aboutSection);
+
+        // Handle menu-items and gallery-items individually for staggered effect
+        const menuCategories = document.querySelectorAll('.menu-category');
+        menuCategories.forEach(category => {
+            const items = category.querySelectorAll('.menu-item');
+            const categoryHeading = category.querySelector('h3');
+
+            const itemObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3
+            });
+
+            // Observe heading first
+            const headingObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                        // Once heading is visible, start observing items with delay
+                        items.forEach((item, index) => {
+                            setTimeout(() => {
+                                itemObserver.observe(item);
+                            }, index * 100); // Staggered delay
+                        });
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5
+            });
+            if (categoryHeading) headingObserver.observe(categoryHeading);
+        });
+
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const galleryObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        });
+        galleryItems.forEach((item, index) => {
+            setTimeout(() => {
+                galleryObserver.observe(item);
+            }, index * 150); // Staggered delay
+        });
+
+        const infoBlocks = document.querySelectorAll('.contact-info .info-block');
+        const infoBlockObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.4
+        });
+        infoBlocks.forEach((block, index) => {
+            setTimeout(() => {
+                infoBlockObserver.observe(block);
+            }, index * 150);
+        });
+
+    </script>
+</body>
+</html>

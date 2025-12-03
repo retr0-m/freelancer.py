@@ -18,12 +18,13 @@ except Exception as e:
 
 
 class Edit:
-    def __init__(self, string: str, lead: Lead):
-        self.string=string
+    def __init__(self, generic: str, lead: Lead, specific: dict):
         self.lead=lead
+        self.generic=generic
+        self.specific=specific
         self.prompt=""
     def __str__(self):
-        return f"{self.string}"
+        return f"Edit(generic={self.generic!r}, specific={self.specific!r})"
 
     def add_prompt(self, p:str):
         self.prompt = p
@@ -81,10 +82,18 @@ def run_prompt(client, prompt):
     except Exception as e:
         log("Couldn't apply edits to specified website for the following reason: "+str(e))
 
-def replace_website_content(lead: Lead,website_content):
+def replace_website_content(
+    lead: Lead, 
+    website_content: str, 
+    temp: bool = False
+                            ):
     log(f"Replacing website content on ./leads/{lead.id}/index.html")
     website_content=format_html(website_content)
-    with open(f"./leads/{lead.id}/index.html", "w", encoding="utf-8") as f:
+    if temp:
+        path=f"./graphical_editor/temp/{lead.id}/index.html"
+    else:
+        path=f"./leads/{lead.id}/index.html"
+    with open(path, "w", encoding="utf-8") as f:
         chars = f.write(str(website_content))
     log(f"Done writing {chars} characters into the index file")
     

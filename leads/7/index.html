@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osteria Pizzeria Pazzallo - Sapori Autentici</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A32D2C; /* Dark Red */
+            --secondary-color: #D3A74A; /* Golden Yellow */
+            --tertiary-color: #4A4A4A; /* Dark Grey */
+            --light-bg: #F8F8F8;
+            --dark-bg: #2C2C2C;
+            --text-color-light: #F8F8F8;
+            --text-color-dark: #333333;
+            --font-serif: 'Merriweather', serif;
+            --font-sans: 'Open Sans', sans-serif;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            color: var(--text-color-dark);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            color: var(--tertiary-color);
+            margin-bottom: 0.8em;
+        }
+
+        h1 { font-size: 3em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 2em; }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-bg);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-color-light);
+            letter-spacing: 1px;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: var(--text-color-light);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-color-light);
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color-light);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            color: var(--text-color-light);
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-color-light);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-bg);
+        }
+
+        section:nth-of-type(odd) {
+            background-color: #F0F0F0;
+        }
+
+        .section-title {
+            font-size: 3.5em;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .about-text, .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            margin-bottom: 1em;
+            color: var(--tertiary-color);
+        }
+
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .menu-item h3 {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            font-size: 1em;
+            color: var(--tertiary-color);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            background-color: var(--dark-bg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            filter: grayscale(0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0);
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            width: 300px;
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-card p {
+            margin-bottom: 10px;
+        }
+
+        .contact-card a {
+            color: var(--tertiary-color);
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--text-color-light);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        footer .social-links a {
+            color: var(--text-color-light);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .section-title {
+                font-size: 3em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-bg);
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                display: none; /* Hidden by default */
+                flex-direction: column;
+                padding: 20px 0;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .hero {
+                height: 80vh;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9em;
+            }
+            .section-title {
+                font-size: 2.5em;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .about-text, .about-image {
+                min-width: unset;
+                width: 100%;
+            }
+            .menu-grid, .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+            .logo {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Osteria Pizzeria Pazzallo</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Il Nostro Menu</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <img src="./images/1.jpg" alt="Interno accogliente dell'Osteria Pizzeria Pazzallo" class="hero-bg">
+            <div class="hero-content">
+                <h1>Sapori Autentici, Esperienze Indimenticabili</h1>
+                <p>Un viaggio culinario tra le tradizioni italiane e l'ospitalità svizzera, nel cuore di Pazzallo.</p>
+                <a href="#contact" class="btn">Prenota un Tavolo</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">La Nostra Storia</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Benvenuti all'Osteria Pizzeria Pazzallo, un luogo dove la passione per la buona cucina e l'accoglienza calorosa si fondono per creare un'esperienza unica. Situati nel pittoresco Vicolo Bossi, portiamo in tavola l'autenticità dei sapori italiani, con un tocco di eleganza svizzera.</p>
+                        <p>Dalle pizze fragranti cotte nel forno a legna, con ingredienti freschi e selezionati, ai piatti tradizionali dell'osteria, ogni creazione è un omaggio alla gastronomia. Il nostro impegno è offrirvi non solo un pasto, ma un momento di gioia e condivisione, in un ambiente che vi farà sentire a casa.</p>
+                        <p>Siamo orgogliosi di utilizzare prodotti locali e di stagione per garantire la massima qualità e freschezza. Vi aspettiamo per farvi scoprire il vero gusto della convivialità!</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/2.jpg" alt="Interno del ristorante con tavoli apparecchiati">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2 class="section-title">Le Nostre Specialità</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Antipasti Tradizionali</h3>
+                        <p>Una selezione di antipasti freddi e caldi, perfetti per iniziare il vostro viaggio culinario.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Primi Piatti Caserecci</h3>
+                        <p>Pasta fresca e risotti, preparati secondo le ricette della nonna con ingredienti genuini.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Secondi di Carne e Pesce</h3>
+                        <p>Dalle grigliate succulente ai delicati filetti di pesce, per ogni palato un piacere.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Pizze Classiche</h3>
+                        <p>Le intramontabili della tradizione italiana, cotte nel nostro forno a legna.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Pizze Speciali</h3>
+                        <p>Le nostre creazioni uniche, con abbinamenti di sapori audaci e sorprendenti.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Dolci Artigianali</h3>
+                        <p>Concludete in dolcezza con le nostre torte e dessert fatti in casa, un vero capolavoro.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Vini Selezionati</h3>
+                        <p>Un'ampia cantina con etichette locali e internazionali, per accompagnare al meglio ogni piatto.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Bevande e Caffetteria</h3>
+                        <p>Dall'aperitivo al digestivo, per ogni momento della giornata la scelta giusta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2 class="section-title">Momenti dal Nostro Ristorante</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Dettaglio di un piatto di pasta fresca"></div>
+                    <div class="gallery-item"><img src="./images/4.jpg" alt="Pizza appena sfornata con ingredienti freschi"></div>
+                    <div class="gallery-item"><img src="./images/5.jpg" alt="Interno moderno e accogliente del ristorante"></div>
+                    <div class="gallery-item"><img src="./images/1.jpg" alt="Atmosfera serale dell'Osteria Pizzeria Pazzallo"></div>
+                    <div class="gallery-item"><img src="./images/2.jpg" alt="Tavoli esterni apparecchiati per la cena"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Dove Trovarci</h2>
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>Indirizzo</h3>
+                        <p>Osteria Pizzeria Pazzallo</p>
+                        <p>Vicolo Bossi 2,</p>
+                        <p>6912 Pazzallo, Svizzera</p>
+                        <a href="https://maps.app.goo.gl/YOUR_GOOGLE_MAPS_LINK_HERE" target="_blank" class="btn">Visualizza su Mappa</a>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Contatti</h3>
+                        <p>Telefono: <a href="tel:+41912257555">091 225 75 55</a></p>
+                        <p>Email: <a href="mailto:info@pazzalloosteria.ch">info@pazzalloosteria.ch</a></p>
+                        <p>Per prenotazioni veloci o informazioni.</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Orari</h3>
+                        <p>Martedì - Domenica:</p>
+                        <p>11:30 - 14:00 | 18:00 - 22:30</p>
+                        <p>Lunedì: Chiuso</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <!-- Google Maps Embed - Replace with your actual embed code -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.262584144007!2d8.937222876672322!3d45.98909407119293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47857211516e024b%3A0x6a053744610f6390!2sVicolo%20Bossi%202%2C%206912%20Pazzallo%2C%20Switzerland!5e0!3m2!1sen!2sit!4v1701362701047!5m2!1sen!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Osteria Pizzeria Pazzallo. Tutti i diritti riservati.</p>
+            <div class="social-links">
+                <!-- Add social media icons/links if desired (using unicode or simple text for single file) -->
+                <a href="#" aria-label="Facebook">F</a>
+                <a href="#" aria-label="Instagram">I</a>
+            </div>
+            <p>Design & Sviluppo: La Tua Agenzia Web</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            navToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+
+            // Close nav when a link is clicked (for mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        const headerOffset = document.querySelector('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 20; // -20 for extra padding
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

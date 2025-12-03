@@ -1,0 +1,648 @@
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Birreria al Forte - Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #7A3F00; /* Darker brown/gold */
+            --secondary-color: #AF792F; /* Lighter gold */
+            --accent-color: #D4AF37; /* Gold */
+            --light-bg: #F8F8F8; /* Light gray for backgrounds */
+            --dark-text: #333;
+            --light-text: #FFF;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--light-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding-bottom: 0.2rem;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+            background: url('./images/1.jpg') no-repeat center center/cover;
+            overflow: hidden; /* Ensure image doesn't bleed */
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            color: var(--light-text);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: var(--light-bg);
+        }
+
+        section:nth-of-type(even) {
+            background-color: #F0F0F0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #about .about-text {
+            flex: 1;
+        }
+
+        #about .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        #about .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Menu Preview Section */
+        #menu-preview .menu-preview-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        #menu-preview .menu-item {
+            background-color: #FFF;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        #menu-preview .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        #menu-preview .menu-item img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        #menu-preview .menu-item h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        /* Gallery Section */
+        #gallery .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        #gallery .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        #gallery .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        #gallery .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+        
+        #contact .section-title {
+            color: var(--accent-color);
+        }
+
+        #contact .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        #contact .contact-info {
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        #contact .contact-info h3, #contact .contact-form h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        #contact .contact-info p {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        #contact .contact-info p strong {
+            color: var(--secondary-color);
+        }
+
+        #contact .contact-map {
+            margin-top: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        #contact .contact-map iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            display: block;
+        }
+
+        #contact .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        #contact .contact-form input[type="text"],
+        #contact .contact-form input[type="email"],
+        #contact .contact-form textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--dark-text);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+        
+        #contact .contact-form input::placeholder,
+        #contact .contact-form textarea::placeholder {
+            color: #888;
+        }
+
+        #contact .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        #contact .contact-form .btn {
+            align-self: flex-start;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        #contact .contact-form .btn:hover {
+            background-color: var(--light-text);
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #AAA;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-menu {
+                margin-left: 0;
+            }
+            #about .about-content,
+            #contact .contact-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #about .about-image {
+                order: -1; /* Image above text on smaller screens */
+            }
+            #contact .contact-info,
+            #contact .contact-form {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.9);
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                padding: 1rem 0;
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 0;
+                text-align: center;
+            }
+
+            .nav-menu a {
+                display: block;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .nav-menu a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .nav-menu a:hover::after {
+                width: 50%;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            #hero h1 {
+                font-size: 3rem;
+            }
+
+            #hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            #contact .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Ristorante Birreria al Forte</div>
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#menu-preview">Menù</a></li>
+                    <li><a href="#birre">Birre</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Ristorante Birreria al Forte</h1>
+                <p>Gusto autentico, birra artigianale, un'esperienza indimenticabile a Lugano.</p>
+                <a href="#menu-preview" class="btn">Scopri il Menù</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">La Nostra Storia</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Benvenuti al Ristorante Birreria al Forte, dove la passione per la buona cucina e l'amore per la birra artigianale si fondono in un'esperienza unica. Situato nel cuore di Lugano, il nostro locale è un punto di riferimento per chi cerca sapori autentici e un'atmosfera accogliente.</p>
+                        <p>Dalle specialità ticinesi ai piatti internazionali, ogni creazione è pensata per deliziare il palato, accompagnata da una selezione curata delle migliori birre. Venite a trovarci e lasciatevi coccolare dal nostro servizio impeccabile e dalla qualità dei nostri prodotti.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/2.jpg" alt="Interni accoglienti del Ristorante Birreria al Forte">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu-preview">
+            <div class="container">
+                <h2 class="section-title">Le Nostre Specialità</h2>
+                <div class="menu-preview-content">
+                    <div class="menu-item">
+                        <img src="./images/3.jpg" alt="Piatto di pasta fresca">
+                        <h3>Pasta Fresca Artigianale</h3>
+                        <p>Le nostre paste sono preparate ogni giorno con ingredienti di prima scelta, seguendo ricette tradizionali e innovative.</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="./images/4.jpg" alt="Tagliere di salumi e formaggi">
+                        <h3>Taglieri Tipici</h3>
+                        <p>Un'accurata selezione di salumi e formaggi locali e nazionali, perfetti per accompagnare le nostre birre.</p>
+                    </div>
+                    <div class="menu-item">
+                        <img src="./images/5.jpg" alt="Birra artigianale in bicchiere">
+                        <h3 id="birre">Vasta Selezione di Birre</h3>
+                        <p>Dalle Lager leggere alle Stout corpose, una birra per ogni gusto e per ogni piatto. Chiedi consiglio al nostro staff!</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#contact" class="btn">Vedi il Menù Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2 class="section-title">I Nostri Ambienti e Piatti</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="./images/1.jpg" alt="Interno del ristorante con tavoli"></div>
+                    <div class="gallery-item"><img src="./images/2.jpg" alt="Barra del ristorante con birre"></div>
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Piatto gourmet servito"></div>
+                    <div class="gallery-item"><img src="./images/4.jpg" alt="Esterno del ristorante di notte"></div>
+                    <div class="gallery-item"><img src="./images/5.jpg" alt="Dettaglio di un boccale di birra"></div>
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Un altro piatto del menu"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contattaci</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Dove Trovarci</h3>
+                        <p><strong>Indirizzo:</strong> Via al Forte 1, 6900 Lugano, Svizzera</p>
+                        <p><strong>Telefono:</strong> <a href="tel:0793230335">0793230335</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:info@ristorantebirreriaalforte.ch">info@ristorantebirreriaalforte.ch</a></p>
+                        <p><strong>Orari:</strong></p>
+                        <p>Martedì - Domenica: 11:30 - 14:00 | 18:00 - 22:30</p>
+                        <p>Lunedì: Chiuso</p>
+                        <div class="contact-map">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.262529944062!2d8.95679317666299!3d46.00263629393112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784323c6d17e001%3A0x464299b4d81245e3!2sVia%20al%20Forte%201%2C%206900%20Lugano%2C%20Svizzera!5e0!3m2!1sit!2sit!4v1701550000000!5m2!1sit!2sit" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Scrivici</h3>
+                        <form action="#" method="POST">
+                            <input type="text" name="name" placeholder="Il tuo nome" required>
+                            <input type="email" name="email" placeholder="La tua email" required>
+                            <textarea name="message" placeholder="Il tuo messaggio" required></textarea>
+                            <button type="submit" class="btn">Invia Messaggio</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Ristorante Birreria al Forte. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+
+            menuToggle.addEventListener('click', function () {
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked (for mobile)
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

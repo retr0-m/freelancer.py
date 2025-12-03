@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Odeon - Cucina Raffinata a Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Base Styles & Reset */
+        :root {
+            --primary-color: #A0522D; /* Sienna - earthy, warm */
+            --secondary-color: #F8F8F8; /* Light gray for backgrounds */
+            --text-color: #333;
+            --light-text-color: #666;
+            --white: #FFFFFF;
+            --dark-bg: #1A1A1A;
+            --accent-gold: #B8860B; /* DarkGoldenRod for accent */
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+        p { margin-bottom: 1rem; }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--accent-gold);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 80px 0;
+            opacity: 0; /* Default hidden for scroll animations */
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--dark-bg);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0; /* For load animation */
+            transform: translateY(-20px); /* For load animation */
+            animation: slideInDown 0.8s ease-out forwards 0.2s;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-menu li a {
+            color: var(--white);
+            font-weight: 600;
+            padding: 5px 0;
+            position: relative;
+            opacity: 0; /* For load animation */
+            transform: translateY(-20px); /* For load animation */
+            animation: slideInDown 0.8s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+        .nav-menu li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+        .nav-menu li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .hamburger span {
+            height: 2px;
+            width: 25px;
+            background-color: var(--white);
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('./images/1.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px; /* Offset for fixed header */
+        }
+        .hero-content {
+            z-index: 1;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1s ease-out forwards 0.8s;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1s ease-out forwards 1.2s;
+        }
+        .hero .btn {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSlideUp 1s ease-out forwards 1.6s;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 100px 0;
+        }
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: scale(0.95);
+            transition: transform 0.5s ease;
+        }
+        .about.is-visible .about-image img {
+            transform: scale(1);
+        }
+        .about-content {
+            flex: 2;
+            min-width: 300px;
+            padding: 20px;
+        }
+        .about-content h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        .about-content p {
+            color: var(--light-text-color);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Menu Section */
+        .menu {
+            background-color: var(--white);
+            text-align: center;
+        }
+        .menu h2 {
+            margin-bottom: 40px;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .menu-category {
+            text-align: left;
+            padding: 25px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .menu-category h3 {
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .menu-item-price {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .menu-item-description {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-top: 5px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+        }
+        .gallery h2 {
+            color: var(--white);
+            margin-bottom: 50px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: scale(0.95);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        .gallery.is-visible .gallery-item {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-overlay i {
+            color: var(--white);
+            font-size: 2.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+        .contact h2 {
+            margin-bottom: 40px;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .contact-info, .contact-form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .contact-info h3, .contact-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--light-text-color);
+        }
+        .info-item i {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+        .info-item p {
+            margin: 0;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(160, 82, 45, 0.2);
+            outline: none;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form .btn {
+            align-self: flex-start;
+        }
+
+        .map-container {
+            margin-top: 50px;
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 50px 0;
+            text-align: center;
+        }
+        .footer h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        .footer p {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.7);
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+        .footer .legal-text {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .about-image, .about-content {
+                flex: 1 1 100%; /* Stack on smaller screens */
+            }
+            .about-image {
+                order: 2; /* Image below content on mobile */
+            }
+            .about-content {
+                order: 1;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form .btn {
+                align-self: stretch; /* Full width button */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px; /* Below header */
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-bg);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                padding: 20px 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease-out;
+            }
+            .nav-menu.active {
+                display: flex;
+                max-height: 300px; /* Adjust based on content */
+            }
+            .nav-menu li {
+                text-align: center;
+                margin: 10px 0;
+            }
+            .nav-menu li a {
+                padding: 10px 20px;
+                display: block;
+                color: var(--white);
+                animation: none; /* Disable individual load animation for mobile menu items */
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero {
+                padding-top: 100px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .about {
+                padding: 80px 0;
+            }
+            .about-image {
+                padding: 0;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 0.9rem; }
+            .logo { font-size: 1.6rem; }
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Ristorante Odeon</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero" style="--delay: 0.4s;">Home</a></li>
+                    <li><a href="#about" style="--delay: 0.6s;">Chi Siamo</a></li>
+                    <li><a href="#menu" style="--delay: 0.8s;">Il Nostro Menu</a></li>
+                    <li><a href="#gallery" style="--delay: 1.0s;">Galleria</a></li>
+                    <li><a href="#contact" style="--delay: 1.2s;">Contatti</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero is-visible">
+            <div class="hero-content">
+                <h1>Benvenuti al Ristorante Odeon</h1>
+                <p>Un'esperienza culinaria indimenticabile nel cuore di Lugano, dove tradizione e innovazione si incontrano.</p>
+                <a href="#contact" class="btn">Prenota un Tavolo</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>La Nostra Storia</h2>
+                    <p>Fondato con passione e dedizione, il Ristorante Odeon è da anni un punto di riferimento per gli amanti della buona cucina a Lugano. Ci impegniamo a offrire piatti che esaltano i sapori del territorio, utilizzando ingredienti freschi e di stagione, sapientemente selezionati dai nostri chef.</p>
+                    <p>La nostra filosofia si basa sull'armonia tra tradizione e innovazione. Ogni piatto è un viaggio sensoriale, un equilibrio perfetto tra ricette classiche e tocchi contemporanei, presentato con cura e attenzione ai dettagli.</p>
+                    <p>Venite a scoprire un ambiente raffinato e accogliente, ideale per ogni occasione: da una cena romantica a un pranzo d'affari, garantiamo un servizio impeccabile e un'atmosfera memorabile.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/2.jpg" alt="Interno del Ristorante Odeon">
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu">
+            <div class="container">
+                <h2>Il Nostro Menu</h2>
+                <div class="menu-grid">
+                    <div class="menu-category">
+                        <h3>Antipasti</h3>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Tartare di Manzo</span><br>
+                                <span class="menu-item-description">Con capperi, senape di Digione e tuorlo d'uovo.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 22</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Fiori di Zucca Fritti</span><br>
+                                <span class="menu-item-description">Ripieni di ricotta e menta, su crema di piselli.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 18</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Selezione di Formaggi Ticinesi</span><br>
+                                <span class="menu-item-description">Con confetture e miele.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 25</span>
+                        </div>
+                    </div>
+                    <div class="menu-category">
+                        <h3>Primi Piatti</h3>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Risotto ai Funghi Porcini</span><br>
+                                <span class="menu-item-description">Manteca con parmigiano 24 mesi.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 28</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Tagliatelle al Ragù di Cinghiale</span><br>
+                                <span class="menu-item-description">Ricetta tradizionale.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 26</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Gnocchi di Patate al Pesto</span><br>
+                                <span class="menu-item-description">Con pomodorini confit e pinoli tostati.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 24</span>
+                        </div>
+                    </div>
+                    <div class="menu-category">
+                        <h3>Secondi Piatti</h3>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Filetto di Branzino</span><br>
+                                <span class="menu-item-description">Cotto al forno con verdure di stagione.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 38</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Costata di Manzo Svizzero</span><br>
+                                <span class="menu-item-description">Servita con patate al forno e rosmarino.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 45</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Petto d'Anatra all'Arancia</span><br>
+                                <span class="menu-item-description">Con riduzione di agrumi e purè di carote.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 36</span>
+                        </div>
+                    </div>
+                    <div class="menu-category">
+                        <h3>Dessert</h3>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Tiramisù Classico</span><br>
+                                <span class="menu-item-description">Con mascarpone e caffè espresso.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 12</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Panna Cotta ai Frutti di Bosco</span><br>
+                                <span class="menu-item-description">Fatta in casa, fresca e leggera.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 10</span>
+                        </div>
+                        <div class="menu-item">
+                            <div>
+                                <span class="menu-item-name">Soufflé al Cioccolato Fondente</span><br>
+                                <span class="menu-item-description">Con cuore morbido e gelato alla vaniglia.</span>
+                            </div>
+                            <span class="menu-item-price">CHF 14</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <h2>La Nostra Location</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Interno del ristorante, tavoli apparecchiati">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/4.jpg" alt="Dettaglio di un tavolo con vino e candela">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/5.jpg" alt="Bar o area lounge del ristorante">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/2.jpg" alt="Angolo accogliente del ristorante">
+                        <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contattaci & Prenota</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Informazioni Utili</h3>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Via Pietro Peri 14, 6900 Lugano, Switzerland</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <p><a href="tel:0919231621">091 923 16 21</a></p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p><a href="mailto:info@ristoranteodeon.ch">info@ristoranteodeon.ch</a></p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <p>Mar-Dom: 12:00-14:30 | 18:30-22:30<br>Lunedì: Chiuso</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Invia un Messaggio</h3>
+                        <form action="#" method="POST">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="phone">Numero di Telefono (Opzionale)</label>
+                            <input type="tel" id="phone" name="phone">
+
+                            <label for="message">Il Tuo Messaggio</label>
+                            <textarea id="message" name="message" required></textarea>
+
+                            <button type="submit" class="btn">Invia Messaggio</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2737.52550186591!2d8.948256376882676!3d46.00762419842777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478432a571216a69%3A0xcb1b6f0e49f6a73c!2sVia%20Pietro%20Peri%2014%2C%206900%20Lugano%2C%20Svizzera!5e0!3m2!1sit!2sit!4v1701194300000!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <h3>Ristorante Odeon</h3>
+            <p>Via Pietro Peri 14, 6900 Lugano, Switzerland</p>
+            <p>Telefono: <a href="tel:0919231621">091 923 16 21</a></p>
+            <p>Email: <a href="mailto:info@ristoranteodeon.ch">info@ristoranteodeon.ch</a></p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="legal-text">&copy; 2023 Ristorante Odeon. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768 && document.querySelector('.hamburger').classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            // Intersection Observer for on-scroll animations
+            const animateElements = document.querySelectorAll('section');
+            const header = document.querySelector('.header');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: stop observing once animated
+                        // observer.unobserve(entry.target);
+                    } else {
+                        // Optional: remove class if element goes out of view (for repeated animations)
+                        // entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Special handling for elements within visible sections, e.g., gallery items
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const galleryObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.transform = 'scale(1)';
+                        entry.target.style.opacity = '1';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            galleryItems.forEach(item => {
+                item.style.opacity = '0'; // Initially hide for individual reveal
+                item.style.transform = 'scale(0.8)';
+                galleryObserver.observe(item);
+            });
+
+
+            // Change header background on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'rgba(26, 26, 26, 0.9)'; /* Slightly transparent dark */
+                } else {
+                    header.style.backgroundColor = 'var(--dark-bg)';
+                }
+            });
+
+            // Ensure hero is visible on load as it's the first section
+            document.querySelector('#hero').classList.add('is-visible');
+        });
+    </script>
+<script src="../../editor.js"></script></body>
+</html>

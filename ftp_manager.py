@@ -162,6 +162,9 @@ def ftps_upload_lead(lead:Lead):
 def ftps_upload_lead_list(lead_list: list[Lead]):
     for lead in lead_list:
         ftps_upload_lead(lead)
+    
+
+
 
 if __name__ == "__main__":
     

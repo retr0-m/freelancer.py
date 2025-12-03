@@ -9,10 +9,18 @@ from log import log, log_empty_row
 import ftp_manager
 import preview
 import editor
+import graphical_editor
+
+
+#Used to call graphical edits receiver
+from graphical_editor import app, current_lead
+import threading
+import uvicorn
+from time import sleep
 
 CUSTOMERS_TYPE = "Ristorante"
 CUSTOMERS_CITY = "Lugano"
-LEADS_TO_GENERATE = 2
+LEADS_TO_GENERATE = 1
 
 def main():
     log_empty_row()
@@ -42,28 +50,45 @@ def main():
         
         # create documentation in ./leads/id/documents/* - qr_generator creates the documents dir if it doesnt finds it
         qr_generator.generate_qr(lead)
-        create_documentation.create_preview_document(lead)
+        create_documentation.create_preview_document(lead)              
         
         database.insert_lead(lead)
         database.display_leads_table(limit=20, min_status=0)
-        preview.open_website_preview(lead)
+        preview.open_graphical_editor(lead) #one at a time  
+        
+        graphical_editor.current_lead=lead
+        graphical_editor.start_server()
+        try:
+            sleep(2)
+            input("\nEdit website on browser\nPress ENTER to upload files to FTPS once you're done editing\nCTRL+C to cancel edits.\n")
+        except KeyboardInterrupt:
+            graphical_editor.stop_server(save=False)
+            exit()
+            
+        graphical_editor.stop_server(save=True)
+            
+        
+        # uploading to FTPS
+        ftp_manager.ftps_upload_lead(lead)         ##TODO: save temp preview to actual ./leads/leadid
+        
+        
+        # preview.open_website_preview(lead)
     
-    while True:
-        # human check
-        edits=editor.prompt_user_edits(lead_list)
-        if len(edits) == 0:
-            break
-        editor.apply_user_edits(edits)
+    #OLD METHOD TO APPLY EDITS BY TERMINAL (until commit "Graphical editor on browser - just demo, not implemented yet")
+    ## TODO: add argv to set  editor graphical or by terminal.
+    # while True:
+    #     # human check
+    #     edits=editor.prompt_user_edits(lead_list) ##TODO need to take back Edit() maybe user a super for praphical
+    #     if len(edits) == 0:
+    #         break
+    #     editor.apply_user_edits(edits)
     
-    input("Press ENTER to upload files to FTPS\nCTRL+C to cancel.")
     
-    # uploading to FTPS
-    ftp_manager.ftps_upload_lead_list(lead_list)
     
     log("Done! ran all the scripts with no fatal errors. exiting...")
     exit(0)
     
-    
+
 
 if __name__ == "__main__":
     main()

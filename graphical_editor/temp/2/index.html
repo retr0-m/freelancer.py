@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ristorante Cantinone - Gusto autentico italiano nel cuore di Lugano. Piatti tradizionali e un'atmosfera accogliente.">
+    <meta name="keywords" content="Ristorante, Cantinone, Lugano, Svizzera, Italiano, Cucina, Tradizionale, Pasta, Pizza, Vino, Prenotazioni, Gastronomia">
+    <title>Ristorante Cantinone - Cucina Italiana a Lugano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B0000; /* Dark Red, classic Italian feel */
+            --secondary-color: #F8F8F8; /* Light Grey for background */
+            --text-color: #333;
+            --light-text-color: #666;
+            --white: #fff;
+            --dark-background: #2c3e50; /* A dark tone for contrast sections */
+            --accent-color: #d35400; /* A touch of orange/gold */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Open Sans', sans-serif;
+            --spacing-unit: 1rem;
+        }
+
+        /* Basic Reset & Body */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            margin-bottom: var(--spacing-unit);
+            color: var(--primary-color);
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 2rem; }
+        p { margin-bottom: var(--spacing-unit); }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: var(--white);
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            position: relative;
+            padding-bottom: 0.3rem;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+                border-top: 1px solid #eee;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 0;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f5f5f5;
+            }
+
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu a {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background: url('./images/1.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 60vh;
+            }
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* About Section */
+        .about-us {
+            background-color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            font-size: 3rem;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Menu Preview Section */
+        .menu-preview {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-item p {
+            font-size: 0.95rem;
+            color: var(--light-text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item .price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            min-width: 280px;
+            text-align: left;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            margin-right: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            height: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-background);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            .section-padding { padding: 3rem 0; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
+            .contact-details { flex-direction: column; gap: 1.5rem;}
+            .contact-item { min-width: unset; width: 100%; }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#hero" class="logo">Ristorante Cantinone</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                    <li><a href="#contact" class="btn small-btn">Prenota un Tavolo</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Ristorante Cantinone</h1>
+                <p>Il Gusto Autentico dell'Italia nel Cuore di Lugano</p>
+                <a href="#menu" class="btn">Esplora il Nostro Menù</a>
+                <a href="#contact" class="btn">Prenota un Tavolo</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-us section-padding">
+            <div class="container about-content">
+                <div class="about-text">
+                    <h2>La Nostra Storia e Passione</h2>
+                    <p>Benvenuti al Ristorante Cantinone, dove la tradizione culinaria italiana prende vita. Situato nella pittoresca Piazza Cioccaro a Lugano, offriamo un'esperienza gastronomica autentica dal 1985. La nostra filosofia si basa sull'uso di ingredienti freschi e di alta qualità, selezionati con cura per portare in tavola i sapori genuini della cucina regionale italiana.</p>
+                    <p>Ogni piatto è una celebrazione delle ricette tramandate di generazione in generazione, preparate con amore e dedizione dai nostri chef esperti. Dal primo morso ai deliziosi dessert, il Cantinone è il luogo perfetto per un viaggio culinario indimenticabile, accompagnato da un'atmosfera calda e accogliente.</p>
+                    <p>Vi aspettiamo per condividere con voi la vera essenza della tavola italiana.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/2.jpg" alt="Interno accogliente del Ristorante Cantinone">
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-preview section-padding">
+            <div class="container">
+                <h2>I Nostri Sapori</h2>
+                <p>Un assaggio delle nostre specialità, preparate con passione e ingredienti freschi.</p>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Antipasto Misto all'Italiana</h3>
+                        <p>Selezione di salumi e formaggi tipici, olive marinate e bruschette al pomodoro fresco.</p>
+                        <span class="price">22 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Risotto ai Funghi Porcini</h3>
+                        <p>Risotto cremoso con funghi porcini freschi, sfumato al vino bianco e mantecato con Parmigiano Reggiano.</p>
+                        <span class="price">28 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Ossobuco alla Milanese</h3>
+                        <p>Stinco di vitello cotto lentamente in umido, servito con gremolata e accompagnato da risotto giallo.</p>
+                        <span class="price">36 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Filetto di Branzino al Sale</h3>
+                        <p>Branzino intero cotto al sale, sfilettato al tavolo e condito con olio extra vergine d'oliva e limone.</p>
+                        <span class="price">34 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Pizza Margherita Verace</h3>
+                        <p>Pomodoro San Marzano, mozzarella di bufala campana DOP, basilico fresco e olio EVO.</p>
+                        <span class="price">18 CHF</span>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Tiramisù della Nonna</h3>
+                        <p>Classico dessert italiano con savoiardi inzuppati nel caffè, crema al mascarpone e cacao in polvere.</p>
+                        <span class="price">10 CHF</span>
+                    </div>
+                </div>
+                <a href="#" class="btn">Vedi il Menù Completo</a>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery section-padding">
+            <div class="container">
+                <h2>I Nostri Ambienti e Sapori</h2>
+                <p>Lasciatevi ispirare dalle immagini del nostro ristorante e dei piatti che creiamo per voi.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Piatto gourmet Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/4.jpg" alt="Atmosfera accogliente del Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/5.jpg" alt="Vista esterna del Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/1.jpg" alt="Chef al lavoro Ristorante Cantinone"></div>
+                    <div class="gallery-item"><img src="./images/2.jpg" alt="Dettaglio interno Ristorante Cantinone"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section-padding">
+            <div class="container">
+                <h2>Contattaci e Prenota</h2>
+                <p>Siamo qui per rendere la tua esperienza indimenticabile. Contattaci o prenota il tuo tavolo!</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <h3><i class="fas fa-map-marker-alt"></i> Indirizzo</h3>
+                        <p>Piazza Cioccaro 8</p>
+                        <p>6900 Lugano, Svizzera</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3><i class="fas fa-phone"></i> Telefono</h3>
+                        <p><a href="tel:0919231068">091 923 10 68</a></p>
+                        <p>Siamo disponibili durante gli orari di apertura.</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3><i class="fas fa-clock"></i> Orari di Apertura</h3>
+                        <p>Martedì - Domenica: 12:00 - 14:30 | 18:30 - 22:30</p>
+                        <p>Lunedì: Chiuso</p>
+                    </div>
+                </div>
+                <a href="#" class="btn">Invia una Richiesta di Prenotazione</a>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2729.417088998851!2d8.948270315802213!3d46.00262177911682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784311000000001%3A0x7d2b2b2b2b2b2b2b!2sPiazza%20Cioccaro%208%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1678888888888!5m2!1sen!2sch" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Ristorante Cantinone. Tutti i diritti riservati.</p>
+            <p>Piazza Cioccaro 8, 6900 Lugano, Svizzera | Tel: <a href="tel:0919231068">091 923 10 68</a></p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu li a').forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+<script src="../../editor.js"></script></body>
+</html>

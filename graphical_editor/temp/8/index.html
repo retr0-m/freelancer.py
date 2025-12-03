@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Pescheria Belvga - L'Eccellenza del Mare a Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #005f73; /* Dark Teal */
+            --secondary-color: #0a9396; /* Cyan */
+            --accent-color: #e9d8a6; /* Light Gold */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 2rem; }
+        h4 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--text-light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+        }
+
+        /* Header */
+        .main-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .main-nav ul {
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        .main-nav ul li a {
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .main-nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav ul li a:hover::after,
+        .main-nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Hamburger menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            height: 2px;
+            width: 25px;
+            background: var(--primary-color);
+            margin-bottom: 5px;
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu-toggle span:last-child {
+            margin-bottom: 0;
+        }
+
+        .menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .section-bg-light {
+            background-color: var(--bg-light);
+        }
+
+        .section-bg-gray {
+            background-color: #f8f8f8;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            text-align: left;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text {
+            padding-right: 2rem;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Menu Section */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background: var(--bg-light);
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-content p {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay h4 {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .contact-info {
+            padding-right: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-info ul li {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info ul li i { /* Placeholder for icons */
+            margin-right: 0.8rem;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .map-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: 400px; /* Fixed height for the map */
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .main-footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        .footer-logo span {
+            color: var(--text-light);
+        }
+
+        .footer-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-nav ul li {
+            margin: 0.5rem 1rem;
+        }
+
+        .footer-nav ul li a {
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-info p {
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 960px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.7rem; }
+            .section-title { font-size: 2.5rem; }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-grid, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            .about-text, .contact-info {
+                padding-right: 0;
+            }
+            .about-image {
+                order: -1; /* Image above text on mobile */
+                margin-bottom: 2rem;
+            }
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 65px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background: var(--bg-light);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+                z-index: 999;
+            }
+
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .main-nav ul li a {
+                padding: 0.8rem 0;
+                display: block;
+                font-size: 1.1rem;
+                color: var(--primary-color);
+            }
+
+            .main-nav ul li a::after {
+                background: var(--secondary-color);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .section {
+                padding: 3rem 0;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .gallery-item img {
+                height: 200px;
+            }
+            .gallery-item-overlay h4 {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            .hero {
+                height: 60vh;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+            .about-text h3 {
+                font-size: 1.8rem;
+            }
+            .menu-item-content h3 {
+                font-size: 1.3rem;
+            }
+            .menu-item-price {
+                font-size: 1.1rem;
+            }
+            .contact-info h3 {
+                font-size: 1.8rem;
+            }
+            .contact-info ul li {
+                font-size: 1rem;
+            }
+            .footer-nav ul li {
+                margin: 0.3rem 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo">Ristorante Pescheria <span>Belvga</span></a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <img src="./images/1.jpg" alt="Interno elegante del ristorante" class="hero-bg">
+            <div class="hero-content">
+                <h1>Ristorante Pescheria Belvga</h1>
+                <p>L'Eccellenza del Mare a Lugano: Freschezza, Gusto e Tradizione</p>
+                <a href="#menu" class="btn">Scopri il Nostro Menù</a>
+            </div>
+        </section>
+
+        <section class="section section-bg-light" id="about">
+            <div class="container">
+                <h2 class="section-title">La Nostra Storia</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Passione per il Mare, Amore per la Cucina</h3>
+                        <p>Benvenuti al Ristorante Pescheria Belvga, dove la passione per i sapori autentici del mare si unisce all'arte della cucina tradizionale. Nati dall'amore per il pesce freschissimo e gli ingredienti di qualità, ci impegniamo ogni giorno a portare in tavola l'eccellenza, creando piatti che deliziano il palato e raccontano storie di mare.</p>
+                        <p>La nostra filosofia è semplice: selezione rigorosa delle materie prime, rispetto per la stagionalità e creatività nella preparazione. Ogni piatto è un viaggio sensoriale, preparato con cura e dedizione dal nostro chef, per offrirvi un'esperienza culinaria indimenticabile nel cuore di Lugano.</p>
+                        <a href="#contact" class="btn">Prenota un Tavolo</a>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/2.jpg" alt="Interno accogliente del Ristorante Belvga">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-bg-gray" id="menu">
+            <div class="container">
+                <h2 class="section-title">Il Nostro Menù</h2>
+                <p>Un viaggio culinario tra i sapori più autentici e raffinati del Mediterraneo.</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="./images/3.jpg" alt="Piatto di pesce fresco">
+                        <div class="menu-item-content">
+                            <h3>Crudité Reale di Mare</h3>
+                            <p>Una selezione sublime di gamberi rossi, scampi, ostriche e tartare di tonno, serviti con limone e olio extravergine d'oliva. La freschezza che si sente!</p>
+                            <span class="menu-item-price">CHF 45</span>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="./images/4.jpg" alt="Pasta ai frutti di mare">
+                        <div class="menu-item-content">
+                            <h3>Spaghetti alle Vongole Veraci</h3>
+                            <p>Un classico intramontabile, i nostri spaghetti sono saltati con vongole veraci, aglio, peperoncino e prezzemolo fresco, un'esplosione di sapore marino.</p>
+                            <span class="menu-item-price">CHF 32</span>
+                        </div>
+                    </div>
+                    <!-- The "Branzino al Sale con Verdure" menu item has been removed as requested. -->
+                    <!-- Add more menu items if needed, using generic descriptions and images if specific ones are not available -->
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-bg-light" id="gallery">
+            <div class="container">
+                <h2 class="section-title">La Nostra Galleria</h2>
+                <p>Uno sguardo ai nostri ambienti e alle prelibatezze che vi aspettano.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/1.jpg" alt="Interno elegante del ristorante">
+                        <div class="gallery-item-overlay"><h4>L'Accoglienza</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Piatto di crudité di pesce">
+                        <div class="gallery-item-overlay"><h4>Le Crudité</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/4.jpg" alt="Piatto di pasta ai frutti di mare">
+                        <div class="gallery-item-overlay"><h4>I Primi Piatti</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/2.jpg" alt="Dettaglio dell'arredamento del ristorante">
+                        <div class="gallery-item-overlay"><h4>L'Atmosfera</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/5.jpg" alt="Piatto di pesce al forno con contorno">
+                        <div class="gallery-item-overlay"><h4>I Secondi</h4></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Un altro piatto di pesce fresco">
+                        <div class="gallery-item-overlay"><h4>Freschezza</h4></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-bg-gray" id="contact">
+            <div class="container">
+                <h2 class="section-title">Contattaci</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Dove Trovarci</h3>
+                        <ul>
+                            <li><i>&#x1F4CD;</i> Via G.B. Pioda 4, 6900 Lugano, Svizzera</li>
+                            <li><i>&#x1F4DE;</i> <a href="tel:0782296818">0782296818</a></li>
+                            <li><i>&#x2709;</i> <a href="mailto:info@belvga.ch">info@belvga.ch</a></li>
+                            <li><i>&#x23F1;</i> Orari di Apertura:</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lun - Sab: 12:00 - 14:30 | 19:00 - 22:30</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Domenica: Chiuso</li>
+                        </ul>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+G.B.+Pioda+4,+6900+Lugano,+Switzerland" target="_blank" class="btn">Visualizza sulla Mappa</a>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.269415714704!2d8.948286915669818!3d46.00424577911299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784347781b0f16f%3A0x777083049b4226f7!2sVia%20G.B.%20Pioda%204%2C%206900%20Lugano%2C%20Svizzera!5e0!3m2!1sit!2sch!4v1678888888888!5m2!1sit!2sch"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-logo">Ristorante Pescheria <span>Belvga</span></div>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="footer-info">
+                <p>&copy; 2023 Ristorante Pescheria Belvga. Tutti i diritti riservati.</p>
+                <p>Via G.B. Pioda 4, 6900 Lugano, Svizzera | Tel: 0782296818</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = mainNav.querySelectorAll('a');
+
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                menuToggle.classList.toggle('open');
+                document.body.classList.toggle('no-scroll'); // Optional: disable scroll when menu is open
+            });
+
+            // Close menu when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('open');
+                    document.body.classList.remove('no-scroll');
+                });
+            });
+
+            // Highlight active section in navigation
+            const sections = document.querySelectorAll('section');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - sectionHeight / 3) { // Adjust sensitivity
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

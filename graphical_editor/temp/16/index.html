@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Birreria City - Lugano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50; /* Dark Blue-Gray */
+            --secondary-color: #e67e22; /* Orange */
+            --accent-color: #f39c12; /* Gold/Yellow */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-light: #fdfaf6;
+            --background-dark: #1a252f;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            opacity: 0; /* Default hidden for scroll animations */
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-text-color);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        h1 { font-size: 3.5em; line-height: 1.1; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+
+        /* Header */
+        header {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--light-text-color);
+            animation: fadeInDown 1s ease-out; /* On load animation */
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+            animation: fadeInRight 1s ease-out; /* On load animation */
+            animation-fill-mode: both;
+        }
+
+        nav ul li:nth-child(1) { animation-delay: 0.2s; }
+        nav ul li:nth-child(2) { animation-delay: 0.4s; }
+        nav ul li:nth-child(3) { animation-delay: 0.6s; }
+        nav ul li:nth-child(4) { animation-delay: 0.8s; }
+        nav ul li:nth-child(5) { animation-delay: 1.0s; }
+
+        nav a {
+            color: var(--light-text-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            height: 2px;
+            width: 25px;
+            background: var(--light-text-color);
+            margin-bottom: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle span:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('./images/1.jpg') no-repeat center center/cover;
+            color: var(--light-text-color);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding-top: 80px; /* Adjust for fixed header */
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: -1;
+        }
+
+        #hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            color: var(--light-text-color);
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 1.2s;
+            animation-fill-mode: both;
+        }
+
+        #hero p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 1.5s;
+            animation-fill-mode: both;
+        }
+
+        #hero .btn {
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 1.8s;
+            animation-fill-mode: both;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--background-light);
+            color: var(--text-color);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        #about h2 {
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        #about p {
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            font-size: 1.1em;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            padding: 0 20px;
+        }
+
+        .about-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .about-item i { /* Placeholder for icons */
+            font-size: 3em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .about-item p {
+            font-size: 0.95em;
+            line-height: 1.7;
+            margin: 0 auto;
+        }
+
+        /* Menu Section */
+        #menu {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            padding: 100px 0;
+        }
+
+        #menu h2 {
+            color: var(--light-text-color);
+            margin-bottom: 60px;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .menu-category-btn {
+            background: none;
+            border: 2px solid var(--secondary-color);
+            color: var(--light-text-color);
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+
+        .menu-category-btn:hover,
+        .menu-category-btn.active {
+            background-color: var(--secondary-color);
+            color: var(--background-dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item {
+            background-color: #2c3e50; /* A slightly lighter dark background */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .menu-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.6em;
+        }
+
+        .menu-item p {
+            font-size: 1.05em;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+            flex-grow: 1; /* Allow description to take available space */
+        }
+
+        .menu-item .price {
+            font-family: var(--font-display);
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background-color: var(--background-light);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        #gallery h2 {
+            margin-bottom: 60px;
+            color: var(--primary-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            cursor: zoom-in;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        #contact h2 {
+            color: var(--light-text-color);
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .contact-item {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact-item i { /* Placeholder for icons */
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            font-size: 1.1em;
+        }
+
+        .contact-item a {
+            color: var(--light-text-color);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 900px;
+            height: 400px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--light-text-color);
+            margin-bottom: 10px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            color: var(--light-text-color);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* On Load Animations (keyframes) */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 3em; }
+            h2 { font-size: 2em; }
+            h3 { font-size: 1.5em; }
+
+            #hero h1 { font-size: 3.5em; }
+            #hero p { font-size: 1.3em; }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            nav ul {
+                margin-left: 0;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 30px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .contact-item {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-wrap: wrap;
+                justify-content: space-between; /* Keep logo and toggle separated */
+                gap: 10px;
+            }
+
+            .logo {
+                margin-bottom: 0; /* Adjust for better alignment */
+            }
+
+            nav {
+                width: 100%;
+                order: 2; /* Puts nav below logo and toggle */
+                display: none; /* Hide by default for mobile */
+                flex-direction: column;
+                text-align: center;
+                background-color: var(--background-dark);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 0;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+            .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+
+            #hero {
+                height: 80vh;
+                padding-top: 100px;
+            }
+            #hero h1 { font-size: 2.8em; }
+            #hero p { font-size: 1.2em; }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-item {
+                margin: 0 10px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            #hero h1 { font-size: 2.2em; }
+            #hero p { font-size: 1em; }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .menu-categories {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .menu-category-btn {
+                width: 80%;
+                margin: 5px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Ristorante Birreria City</a>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Galleria</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Sapori Autentici, Atmosfera Unica</h1>
+                <p>Benvenuti al Ristorante Birreria City, il cuore del gusto a Lugano.</p>
+                <a href="#menu" class="btn">Esplora il Nostro Menù</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="text-center">La Nostra Storia</h2>
+                <p class="text-center">
+                    Al Ristorante Birreria City, crediamo nella passione per la cucina e nell'arte di creare esperienze indimenticabili. 
+                    Dal 1990, serviamo piatti tradizionali e innovativi, preparati con ingredienti freschi e di stagione, accompagnati da una selezione eccezionale di birre artigianali.
+                    Un luogo dove il buon cibo incontra la convivialità.
+                </p>
+                <div class="about-grid">
+                    <div class="about-item">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Cucina di Qualità</h3>
+                        <p>Ingredienti selezionati e ricette tradizionali rivisitate con un tocco moderno.</p>
+                    </div>
+                    <div class="about-item">
+                        <i class="fas fa-beer"></i>
+                        <h3>Birre Artigianali</h3>
+                        <p>Una vasta selezione di birre locali e internazionali, per ogni palato.</p>
+                    </div>
+                    <div class="about-item">
+                        <i class="fas fa-wine-glass-alt"></i>
+                        <h3>Ambiente Accogliente</h3>
+                        <p>Atmosfera calda e invitante, perfetta per ogni occasione, dal pranzo alla cena.</p>
+                    </div>
+                    <div class="about-item">
+                        <i class="fas fa-users"></i>
+                        <h3>Servizio Impeccabile</h3>
+                        <p>Il nostro staff dedicato vi garantirà un'esperienza culinaria senza pari.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="text-center">
+            <div class="container">
+                <h2>Il Nostro Menù</h2>
+                <div class="menu-categories">
+                    <button class="menu-category-btn active" data-category="antipasti">Antipasti</button>
+                    <button class="menu-category-btn" data-category="primi">Primi Piatti</button>
+                    <button class="menu-category-btn" data-category="secondi">Secondi Piatti</button>
+                    <button class="menu-category-btn" data-category="birre">Birre Speciali</button>
+                    <button class="menu-category-btn" data-category="dolci">Dolci</button>
+                </div>
+
+                <div class="menu-grid">
+                    <!-- Antipasti -->
+                    <div class="menu-item" data-category="antipasti">
+                        <h3>Placeholder Antipasto 1</h3>
+                        <p>Descrizione breve dell'antipasto 1, con ingredienti freschi e di stagione.</p>
+                        <span class="price">CHF 12.00</span>
+                    </div>
+                    <div class="menu-item" data-category="antipasti">
+                        <h3>Placeholder Antipasto 2</h3>
+                        <p>Deliziosa combinazione di sapori per iniziare il vostro pasto nel migliore dei modi.</p>
+                        <span class="price">CHF 14.50</span>
+                    </div>
+                    <div class="menu-item" data-category="antipasti">
+                        <h3>Placeholder Antipasto 3</h3>
+                        <p>Un classico intramontabile, preparato con cura e attenzione ai dettagli.</p>
+                        <span class="price">CHF 11.00</span>
+                    </div>
+
+                    <!-- Primi Piatti -->
+                    <div class="menu-item hidden" data-category="primi">
+                        <h3>Placeholder Primo Piatto 1</h3>
+                        <p>Pasta fresca fatta in casa con sugo ricco e saporito.</p>
+                        <span class="price">CHF 22.00</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="primi">
+                        <h3>Placeholder Primo Piatto 2</h3>
+                        <p>Risotto cremoso con funghi porcini e profumo di tartufo.</p>
+                        <span class="price">CHF 25.00</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="primi">
+                        <h3>Placeholder Primo Piatto 3</h3>
+                        <p>Gnocchi di patate al pesto genovese, leggeri e gustosi.</p>
+                        <span class="price">CHF 21.50</span>
+                    </div>
+
+                    <!-- Secondi Piatti -->
+                    <div class="menu-item hidden" data-category="secondi">
+                        <h3>Placeholder Secondo Piatto 1</h3>
+                        <p>Filetto di manzo con riduzione al vino rosso e patate al forno.</p>
+                        <span class="price">CHF 38.00</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="secondi">
+                        <h3>Placeholder Secondo Piatto 2</h3>
+                        <p>Pesce fresco del lago, cotto al cartoccio con erbe aromatiche.</p>
+                        <span class="price">CHF 32.00</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="secondi">
+                        <h3>Placeholder Secondo Piatto 3</h3>
+                        <p>Cotoletta alla milanese con contorno di verdure di stagione.</p>
+                        <span class="price">CHF 29.00</span>
+                    </div>
+
+                    <!-- Birre Speciali -->
+                    <div class="menu-item hidden" data-category="birre">
+                        <h3>Placeholder Birra Artigianale Locale</h3>
+                        <p>Birra chiara leggera e rinfrescante, prodotta nella regione.</p>
+                        <span class="price">CHF 7.50</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="birre">
+                        <h3>Placeholder Birra Rossa Ipa</h3>
+                        <p>Birra intensa con note caramellate e luppoli aromatici.</p>
+                        <span class="price">CHF 8.00</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="birre">
+                        <h3>Placeholder Birra Lager Premium</h3>
+                        <p>Lager classica, ben equilibrata e dal gusto pulito.</p>
+                        <span class="price">CHF 7.00</span>
+                    </div>
+
+                    <!-- Dolci -->
+                    <div class="menu-item hidden" data-category="dolci">
+                        <h3>Placeholder Tiramisù Classico</h3>
+                        <p>Ricetta tradizionale italiana, con mascarpone e caffè.</p>
+                        <span class="price">CHF 9.00</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="dolci">
+                        <h3>Placeholder Panna Cotta ai Frutti di Bosco</h3>
+                        <p>Dolce al cucchiaio fresco e delicato, con salsa ai frutti rossi.</p>
+                        <span class="price">CHF 8.50</span>
+                    </div>
+                    <div class="menu-item hidden" data-category="dolci">
+                        <h3>Placeholder Tortino al Cioccolato</h3>
+                        <p>Tortino caldo con cuore fondente al cioccolato, servito con gelato alla vaniglia.</p>
+                        <span class="price">CHF 10.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="text-center">
+            <div class="container">
+                <h2>La Nostra Galleria</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="./images/2.jpg" alt="Interno del ristorante"></div>
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Tavolo apparecchiato"></div>
+                    <div class="gallery-item"><img src="./images/4.jpg" alt="Atmosfera serale"></div>
+                    <div class="gallery-item"><img src="./images/5.jpg" alt="Dettaglio della sala"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="text-center">
+            <div class="container">
+                <h2>Dove Trovarci</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Indirizzo</h3>
+                        <p>Via Emilio Bossi 4, 6900 Lugano, Switzerland</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Emilio+Bossi+4,+6900+Lugano,+Switzerland" target="_blank">Vedi su Google Maps</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Telefono</h3>
+                        <p>0919226480</p>
+                        <a href="tel:0919226480">Chiamaci Ora</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@ristorantebirrericity.ch</p>
+                        <a href="mailto:info@ristorantebirrericity.ch">Inviaci un'Email</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.262529064115!2d8.95155261580214!3d46.00412808070949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47843232845c48b7%3A0x2f1f0a1d6a7e0a81!2sVia%20Emilio%20Bossi%204%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1678912345678!5m2!1sen!2sch"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Ristorante Birreria City</div>
+            <p>&copy; 2023 Ristorante Birreria City. Tutti i diritti riservati.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const nav = document.getElementById('main-nav');
+
+            menuToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Close menu on link click for mobile
+            document.querySelectorAll('#main-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                    }
+                });
+            });
+
+            // Scroll Animation
+            const sections = document.querySelectorAll('section:not(#hero)'); // Exclude hero section
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Menu Category Filtering
+            const menuCategoryButtons = document.querySelectorAll('.menu-category-btn');
+            const menuItems = document.querySelectorAll('.menu-item');
+
+            menuCategoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    menuCategoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    button.classList.add('active');
+
+                    const category = button.dataset.category;
+
+                    menuItems.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'flex'; // Show item
+                            // Optional: Add a fade-in animation for filtered items
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 50); // Small delay for reflow
+                        } else {
+                            item.style.display = 'none'; // Hide item
+                        }
+                    });
+                });
+            });
+
+            // Initially show only Antipasti
+            document.querySelector('.menu-category-btn[data-category="antipasti"]').click();
+        });
+    </script>
+<script src="../../editor.js"></script></body>
+</html>

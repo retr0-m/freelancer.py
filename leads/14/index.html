@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bottegone - Ristorante Italiano a Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A0522D; /* Sienna */
+            --secondary-color: #F5DEB3; /* Wheat */
+            --dark-color: #2F4F4F; /* Dark Slate Gray */
+            --light-color: #F8F8F8; /* White Smoke */
+            --text-color: #333;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --max-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            letter-spacing: 2px;
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-color);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 5px 0;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            background: url('./images/1.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-color);
+            position: relative;
+            padding-top: 80px; /* Offset for fixed header */
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        #hero h1 {
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 15px 35px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn.btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--light-color);
+            color: var(--light-color);
+            margin-left: 20px;
+        }
+
+        .btn.btn-secondary:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+
+
+        /* Sections General */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--secondary-color);
+        }
+
+        section h2 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            color: var(--dark-color);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* About Us */
+        #chi-siamo .container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        #chi-siamo .about-text {
+            flex: 2;
+        }
+
+        #chi-siamo .about-text p {
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        #chi-siamo .about-image {
+            flex: 1;
+        }
+
+        #chi-siamo .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        /* Menu Preview */
+        #menu-anteprima {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 80px 0;
+        }
+        #menu-anteprima h2 {
+            color: var(--secondary-color);
+        }
+        #menu-anteprima h2::after {
+            background-color: var(--secondary-color);
+        }
+
+        #menu-anteprima .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-item {
+            background-color: rgba(255,255,255,0.08);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: left;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255,255,255,0.15);
+        }
+
+        .menu-item h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            border-bottom: 1px dashed rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .menu-item p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 10px;
+        }
+
+        .menu-item .price {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            float: right;
+        }
+        .menu-item .description {
+            clear: both;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
+        }
+
+        /* Gallery */
+        #galleria .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        #galleria .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #galleria .gallery-item img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Section */
+        #contatti {
+            background-color: var(--secondary-color);
+        }
+        #contatti .contact-info-map {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        #contatti .contact-details {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #contatti .contact-details h3 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 25px;
+        }
+
+        #contatti .contact-details p {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start; /* Aligns text with icons that might be taller */
+            gap: 10px;
+        }
+        #contatti .contact-details p strong {
+             color: var(--dark-color);
+        }
+
+        #contatti .contact-details i { /* Placeholder for icons */
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 2px; /* Small adjustment for alignment */
+        }
+        .contact-details .social-icons {
+            margin-top: 30px;
+        }
+        .contact-details .social-icons a {
+            font-size: 2rem;
+            margin-right: 20px;
+            color: var(--dark-color);
+            transition: color 0.3s ease;
+        }
+        .contact-details .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        #contatti .map-container {
+            flex: 2;
+            min-width: 400px;
+            height: 400px;
+            background-color: #eee; /* Placeholder for map background */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        #contatti .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        footer .footer-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        footer .footer-nav ul li a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        footer .footer-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            #hero h1 {
+                font-size: 3.5rem;
+            }
+            #hero p {
+                font-size: 1.3rem;
+            }
+            section h2 {
+                font-size: 3rem;
+            }
+            #chi-siamo .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            #chi-siamo .about-image {
+                max-width: 500px;
+            }
+            #contatti .contact-info-map {
+                flex-direction: column;
+                align-items: center;
+            }
+            #contatti .map-container {
+                width: 100%;
+                min-width: unset;
+                height: 300px;
+            }
+            #contatti .contact-details {
+                text-align: center;
+            }
+            #contatti .contact-details h3 {
+                text-align: center;
+            }
+            #contatti .contact-details p {
+                justify-content: center;
+            }
+            .contact-details .social-icons {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--dark-color);
+                width: 100%;
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            }
+            nav.active {
+                display: flex;
+            }
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+            }
+            nav ul li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
+            nav ul li a {
+                display: block;
+                padding: 10px 0;
+            }
+            nav ul li a::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            nav ul li a:hover::after {
+                width: 60%;
+            }
+
+            #hero {
+                background-position: 70% center;
+            }
+            #hero h1 {
+                font-size: 2.8rem;
+            }
+            #hero p {
+                font-size: 1.1rem;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+            .btn.btn-secondary {
+                margin-left: 10px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            section h2 {
+                font-size: 2.5rem;
+            }
+            .logo {
+                font-size: 2rem;
+            }
+            #menu-anteprima .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            #galleria .image-grid {
+                grid-template-columns: 1fr;
+            }
+            #contatti .contact-details {
+                min-width: unset;
+                width: 100%;
+            }
+            footer .footer-nav ul {
+                flex-direction: column;
+            }
+            footer .footer-nav ul li {
+                margin: 5px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero h1 {
+                font-size: 2.2rem;
+            }
+            #hero p {
+                font-size: 1rem;
+            }
+            .hero-content .btn {
+                display: block;
+                width: 80%;
+                margin: 15px auto;
+            }
+            .hero-content .btn.btn-secondary {
+                margin-left: auto;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Bottegone</a>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                &#9776; <!-- Hamburger icon -->
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#hero">HOME</a></li>
+                    <li><a href="#chi-siamo">CHI SIAMO</a></li>
+                    <li><a href="#menu-anteprima">MENU</a></li>
+                    <li><a href="#galleria">GALLERIA</a></li>
+                    <li><a href="#contatti">CONTATTI</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Bottegone</h1>
+                <p>Un viaggio culinario nel cuore di Lugano, dove la tradizione incontra l'innovazione.</p>
+                <a href="#menu-anteprima" class="btn">Esplora il Menu</a>
+                <a href="#contatti" class="btn btn-secondary">Prenota un Tavolo</a>
+            </div>
+        </section>
+
+        <section id="chi-siamo">
+            <div class="container">
+                <h2>La Nostra Storia</h2>
+                <div class="about-text">
+                    <p>Benvenuti al Bottegone, un luogo dove la passione per la buona cucina italiana si tramanda di generazione in generazione. Fondato con l'amore per gli ingredienti freschi e le ricette autentiche, il nostro ristorante è un punto di riferimento per chi cerca sapori veri e un'atmosfera accogliente a Lugano.</p>
+                    <p>Ogni piatto è una celebrazione della ricca tradizione gastronomica italiana, preparato con cura dai nostri chef che selezionano solo i migliori prodotti di stagione. Dal pane fatto in casa alle paste fresche, dalle carni pregiate ai dolci artigianali, ogni dettaglio è pensato per offrirvi un'esperienza indimenticabile.</p>
+                    <p>Che si tratti di una cena romantica, un pranzo di lavoro o una festa in famiglia, al Bottegone troverete sempre il calore e la qualità che cercate. Vi aspettiamo per deliziarvi con le nostre specialità!</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/2.jpg" alt="Interni del ristorante Bottegone">
+                </div>
+            </div>
+        </section>
+
+        <section id="menu-anteprima">
+            <div class="container">
+                <h2>I Nostri Sapori</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <h3>Antipasto Misto <span class="price">22 CHF</span></h3>
+                        <p class="description">Selezione di salumi e formaggi artigianali con confetture e pane tostato.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Lasagne alla Bolognese <span class="price">28 CHF</span></h3>
+                        <p class="description">Classica lasagna al forno con ragù di carne e besciamella, ricetta della nonna.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Risotto ai Funghi Porcini <span class="price">30 CHF</span></h3>
+                        <p class="description">Risotto cremoso con funghi porcini freschi e una spolverata di Parmigiano Reggiano.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Filetto di Manzo con Riduzione al Barolo <span class="price">48 CHF</span></h3>
+                        <p class="description">Tenero filetto di manzo cotto alla perfezione, servito con patate al rosmarino.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Pizza Margherita Speciale <span class="price">20 CHF</span></h3>
+                        <p class="description">Pomodoro San Marzano, mozzarella di bufala, basilico fresco e un filo d'olio EVO.</p>
+                    </div>
+                    <div class="menu-item">
+                        <h3>Tiramisù della Casa <span class="price">12 CHF</span></h3>
+                        <p class="description">L'autentico dolce italiano con savoiardi, caffè, mascarpone e cacao amaro.</p>
+                    </div>
+                </div>
+                <p style="margin-top: 50px; font-size: 1.1rem; color: var(--light-color);">Per il menu completo e le specialità del giorno, visitateci!</p>
+            </div>
+        </section>
+
+        <section id="galleria">
+            <div class="container">
+                <h2>I Nostri Momenti</h2>
+                <div class="image-grid">
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Piatto di pasta fresca"></div>
+                    <div class="gallery-item"><img src="./images/4.jpg" alt="Interni moderni del ristorante"></div>
+                    <div class="gallery-item"><img src="./images/5.jpg" alt="Chef al lavoro"></div>
+                    <div class="gallery-item"><img src="./images/1.jpg" alt="Tavolo apparecchiato"></div>
+                    <div class="gallery-item"><img src="./images/2.jpg" alt="Vini e dettagli interni"></div>
+                    <div class="gallery-item"><img src="./images/3.jpg" alt="Altro piatto di pasta fresca"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contatti">
+            <div class="container">
+                <h2>Contattaci</h2>
+                <div class="contact-info-map">
+                    <div class="contact-details">
+                        <h3>Ristorante Bottegone</h3>
+                        <p><strong><i class="fa-solid fa-location-dot"></i> Indirizzo:</strong> Via Massimiliano Magatti 3, 6900 Lugano, Switzerland</p>
+                        <p><strong><i class="fa-solid fa-phone"></i> Telefono:</strong> <a href="tel:0919227689">091 922 76 89</a></p>
+                        <p><strong><i class="fa-solid fa-envelope"></i> Email:</strong> <a href="mailto:info@bottegone.ch">info@bottegone.ch</a></p>
+                        <p style="margin-top: 25px;"><strong><i class="fa-solid fa-clock"></i> Orari:</strong></p>
+                        <p style="margin-left: 35px;">Lun-Ven: 12:00-14:30 | 19:00-22:30</p>
+                        <p style="margin-left: 35px;">Sab: 19:00-23:00</p>
+                        <p style="margin-left: 35px;">Dom: Chiuso</p>
+
+                        <div class="social-icons">
+                            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="TripAdvisor"><i class="fa-brands fa-tripadvisor"></i></a>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.26065406798!2d8.947265415701838!3d46.00486927911226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784333b2a2a07c3%3A0x7b5c8d2d1e2e9b8!2sVia%20Massimiliano%20Magatti%203%2C%206900%20Lugano%2C%20Svizzera!5e0!3m2!1sit!2sit!4v1678891234567!5m2!1sit!2sit"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#hero">HOME</a></li>
+                    <li><a href="#chi-siamo">CHI SIAMO</a></li>
+                    <li><a href="#menu-anteprima">MENU</a></li>
+                    <li><a href="#galleria">GALLERIA</a></li>
+                    <li><a href="#contatti">CONTATTI</a></li>
+                </ul>
+            </div>
+            <p>&copy; 2023 Bottegone. Tutti i diritti riservati.</p>
+            <p>Design & Sviluppo: [Il Tuo Nome/Azienda]</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            const nav = document.querySelector('nav');
+            const navLinks = document.querySelectorAll('nav ul li a');
+
+            navToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</body>
+</html>

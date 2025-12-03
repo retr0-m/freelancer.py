@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ristorante Taverna - Cucina Italiana di Qualità</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B0000; /* Dark Red */
+            --secondary-color: #D4AF37; /* Gold/Bronze */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --bg-light: #f9f9f9;
+            --bg-dark: #222;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Roboto', sans-serif;
+            --padding-section: 60px 20px;
+        }
+
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.2em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 2em; }
+        p { margin-bottom: 1em; }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .main-header {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .logo span {
+            color: var(--text-light);
+            font-size: 0.7em;
+            display: block;
+            line-height: 1;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            font-weight: 400;
+            font-size: 1.1em;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('./images/1.jpg') no-repeat center center/cover;
+            color: var(--text-light);
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.2em;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.6em;
+            margin-bottom: 2em;
+            color: var(--text-light);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            color: var(--text-dark);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: var(--padding-section);
+            text-align: center;
+        }
+
+        .section-alt {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .section-alt h2, .section-alt h3 {
+            color: var(--secondary-color);
+        }
+
+        .section-alt p {
+            color: var(--text-light);
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-header p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* About Us */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            text-align: left;
+        }
+
+        .about-text {
+            padding-right: 20px;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Specialties / Menu Preview */
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .specialty-item {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .specialty-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .specialty-item h3 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .specialty-item p {
+            color: var(--text-dark);
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item img {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Contact & Reservation */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            text-align: left;
+            color: var(--text-light);
+        }
+
+        .contact-info, .reservation-cta {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin-bottom: 0.8em;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+        }
+
+        .contact-info strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: var(--text-light);
+        }
+
+        .reservation-cta .btn {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            margin-top: 20px;
+        }
+
+        .reservation-cta .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .main-footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .main-footer .logo {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .main-footer address, .main-footer p {
+            margin: 0;
+        }
+
+        .main-footer a {
+            color: var(--text-light);
+            transition: color 0.3s ease;
+        }
+
+        .main-footer a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.5em; }
+            .hero p { font-size: 1.4em; }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .about-text {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu a {
+                padding: 10px 0;
+                display: block;
+            }
+
+            .hero {
+                padding: 100px 20px;
+            }
+
+            .hero h1 { font-size: 2.8em; }
+            .hero p { font-size: 1.2em; }
+
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+            h3 { font-size: 1.6em; }
+
+            .section {
+                padding: 40px 15px;
+            }
+
+            .contact-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8em;
+            }
+            .hero h1 { font-size: 2em; }
+            .hero p { font-size: 1em; }
+            .btn {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                Ristorante <span>Taverna</span>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#chi-siamo">Chi Siamo</a></li>
+                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#galleria">Galleria</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                    <li><a href="#prenota">Prenota un Tavolo</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Ristorante Taverna</h1>
+                <p>Dove la Tradizione Italiana Incontra il Gusto Raffinato</p>
+                <a href="#prenota" class="btn">Prenota un Tavolo</a>
+            </div>
+        </section>
+
+        <section id="chi-siamo" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>La Nostra Storia</h2>
+                    <p>Un'oasi di gusto nel cuore di Campione d'Italia, dedicata all'autentica cucina italiana.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Benvenuti al Ristorante Taverna!</h3>
+                        <p>Da anni deliziamo i palati con la vera cucina italiana, preparata con ingredienti freschi e di stagione, selezionati dai migliori fornitori locali. La nostra passione è creare esperienze culinarie indimenticabili in un ambiente accogliente e raffinato, dove ogni piatto racconta una storia di tradizione e amore per il buon cibo.</p>
+                        <p>Il Ristorante Taverna è più di un semplice luogo dove mangiare; è un'esperienza sensoriale completa, dove l'ospitalità e l'eccellenza culinaria si fondono per regalarvi momenti preziosi. Venite a scoprire i sapori autentici della nostra terra, reinterpretati con un tocco di modernità.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="./images/2.jpg" alt="Interni accoglienti del Ristorante Taverna">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Le Nostre Specialità</h2>
+                    <p>Un viaggio culinario attraverso i sapori più autentici d'Italia, dai classici intramontabili alle creazioni innovative.</p>
+                </div>
+                <div class="specialties-grid">
+                    <div class="specialty-item">
+                        <h3>Primi Piatti</h3>
+                        <p>Dalle nostre Lasagne al Forno, ricche e saporite, al Risotto ai Funghi Porcini, cremoso e aromatico. Pasta fresca fatta in casa ogni giorno.</p>
+                    </div>
+                    <div class="specialty-item">
+                        <h3>Secondi di Carne e Pesce</h3>
+                        <p>Assaporate l'Ossobuco alla Milanese, tenero e succulento, o il nostro Branzino al Sale, leggero e delicato, accompagnati da contorni di stagione.</p>
+                    </div>
+                    <div class="specialty-item">
+                        <h3>Dolci Fatti in Casa</h3>
+                        <p>Concludete il pasto con il nostro Tiramisù Classico, la Panna Cotta ai frutti di bosco o una selezione di gelati artigianali.</p>
+                    </div>
+                    <div class="specialty-item">
+                        <h3>Selezione di Vini</h3>
+                        <p>Una curata carta dei vini, con etichette regionali e nazionali, per accompagnare al meglio ogni piatto e esaltarne i sapori.</p>
+                    </div>
+                </div>
+                <div style="margin-top: 50px;">
+                    <a href="#" class="btn">Vedi il Menù Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="galleria" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>La Nostra Atmosfera</h2>
+                    <p>Uno sguardo all'ambiente che creiamo per voi e ai piatti che prepariamo con passione.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Interni eleganti del Ristorante Taverna">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/4.jpg" alt="Piatto gourmet del Ristorante Taverna">
+                    </div>
+                     <div class="gallery-item">
+                        <img src="./images/1.jpg" alt="Vista esterna del ristorante">
+                    </div>
+                     <div class="gallery-item">
+                        <img src="./images/2.jpg" alt="Dettaglio degli interni">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contatti" class="section section-alt">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Contattaci e Prenota</h2>
+                    <p>Siamo qui per rendere la vostra esperienza indimenticabile. Non esitate a contattarci per qualsiasi informazione o per prenotare il vostro tavolo.</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Informazioni Utili</h3>
+                        <p><strong>Indirizzo:</strong> <address>Piazza Roma, 1, 6911 Campione d'Italia CO, Switzerland</address></p>
+                        <p><strong>Telefono:</strong> <a href="tel:0916494797">0916494797</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:info@ristorantetaverna.com">info@ristorantetaverna.com</a></p>
+                        <p><strong>Orari di Apertura:</strong><br>
+                           Lunedì - Sabato: 12:00 - 14:30 | 19:00 - 22:30<br>
+                           Domenica: Chiuso</p>
+                    </div>
+                    <div id="prenota" class="reservation-cta">
+                        <h3>Prenota il Tuo Tavolo</h3>
+                        <p>Garantisci il tuo posto per un'esperienza culinaria straordinaria. Compila il modulo di prenotazione online o chiamaci direttamente.</p>
+                        <a href="#" class="btn">Prenota Ora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="logo">
+                Ristorante <span>Taverna</span>
+            </div>
+            <address>Piazza Roma, 1, 6911 Campione d'Italia CO, Switzerland</address>
+            <p>Telefono: <a href="tel:0916494797">0916494797</a></p>
+            <p>&copy; 2023 Ristorante Taverna. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

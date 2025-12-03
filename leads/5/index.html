@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL 74 Bar Ristorante Pizzeria - Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A32D2C; /* Dark Red */
+            --secondary-color: #F8F8F8; /* Light Grey/Off-white */
+            --text-color: #333;
+            --light-text-color: #666;
+            --white: #fff;
+            --dark-background: #222;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            color: var(--primary-color);
+            margin-bottom: 0.8em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.2em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+        p { margin-bottom: 1em; }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--dark-background);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #8C2625;
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .bg-dark {
+            background-color: var(--dark-background);
+            color: var(--secondary-color);
+        }
+        .bg-dark h2, .bg-dark h3 {
+            color: var(--white);
+        }
+        .bg-dark a {
+            color: var(--white);
+        }
+        .bg-dark a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1.1em;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-image: url('./images/1.jpg');
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 4.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-family: var(--font-serif);
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .hero .btn {
+            margin: 0 10px;
+        }
+
+        /* About Section */
+        .about-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            flex: 2;
+            text-align: center;
+            max-width: 700px;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .menu-category {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-category h3 {
+            color: var(--dark-background);
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .menu-item {
+            border-bottom: 1px dashed var(--secondary-color);
+            padding: 15px 0;
+            margin-bottom: 15px;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .menu-item h4 {
+            font-family: var(--font-sans);
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .menu-item p {
+            font-size: 0.9em;
+            color: var(--light-text-color);
+            margin-bottom: 5px;
+        }
+
+        .menu-item .price {
+            font-weight: 600;
+            color: var(--dark-background);
+        }
+
+        /* Specialties Section */
+        .specialties-section {
+            position: relative;
+            background-image: url('./images/5.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .specialties-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1;
+        }
+
+        .specialties-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .specialties-content h2 {
+            color: var(--white);
+            font-size: 3.5em;
+        }
+
+        .specialties-content p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            font-family: var(--font-serif);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+            margin-top: 40px;
+        }
+
+        .contact-info, .map-container {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info strong {
+            display: inline-block;
+            min-width: 80px;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .contact-info a {
+            color: var(--text-color);
+        }
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            display: block;
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-background);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.5em;
+            }
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-content, .about-image {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 15px;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .hero {
+                height: 60vh;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            h2 { font-size: 2em; }
+            h3 { font-size: 1.5em; }
+            .section-padding {
+                padding: 60px 0;
+            }
+            .contact-content {
+                flex-direction: column;
+            }
+            .contact-info, .map-container {
+                min-width: unset;
+                width: 100%;
+            }
+            .specialties-content h2 {
+                font-size: 2.5em;
+            }
+            .specialties-content p {
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .hero .btn {
+                width: 100%;
+                margin: 10px 0;
+            }
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.3em; }
+            .logo {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">AL 74</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#chi-siamo">Chi Siamo</a></li>
+                    <li><a href="#menu">Menù</a></li>
+                    <li><a href="#galleria">Galleria</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>AL 74 Bar Ristorante Pizzeria</h1>
+                <p>Gusti Autentici, Atmosfera Accogliente nel Cuore di Lugano.</p>
+                <a href="#menu" class="btn">Scopri il Menù</a>
+                <a href="#contatti" class="btn">Prenota un Tavolo</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="chi-siamo" class="section-padding">
+            <div class="container about-section">
+                <div class="about-image">
+                    <img src="./images/2.jpg" alt="Interni del ristorante AL 74">
+                </div>
+                <div class="about-content">
+                    <h2>La Nostra Storia</h2>
+                    <p>Benvenuti da <strong>AL 74</strong>! Dal cuore di Lugano, vi offriamo un viaggio culinario tra i sapori autentici della tradizione italiana. Che sia una pizza fragrante cotta nel forno a legna, un piatto di pasta fatto in casa con ingredienti freschi o un aperitivo con amici, da noi troverete sempre qualità, freschezza e un sorriso.</p>
+                    <p>Siamo un luogo dove il buon cibo incontra l'ospitalità svizzera, creando un'esperienza indimenticabile per ogni ospite. La nostra passione per la cucina si riflette in ogni dettaglio, dal servizio impeccabile all'atmosfera calda e familiare.</p>
+                    <a href="#contatti" class="btn">Vieni a Trovarci</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="section-padding bg-dark">
+            <div class="container text-center">
+                <h2>Il Nostro Menù</h2>
+                <p style="color: var(--secondary-color); font-size: 1.1em; margin-bottom: 50px;">Dalle pizze croccanti cotte nel forno a legna ai piatti tradizionali rivisitati, ogni proposta è creata con ingredienti freschi e di stagione.</p>
+
+                <div class="menu-grid">
+                    <div class="menu-category">
+                        <h3>Antipasti</h3>
+                        <div class="menu-item">
+                            <h4>Proposta Antipasto 1</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 12.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Antipasto 2</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 15.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Antipasto 3</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 9.50</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Primi Piatti</h3>
+                        <div class="menu-item">
+                            <h4>Proposta Primo Piatto 1</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 18.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Primo Piatto 2</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 22.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Primo Piatto 3</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 16.00</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Secondi di Carne</h3>
+                        <div class="menu-item">
+                            <h4>Proposta Secondo Carne 1</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 28.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Secondo Carne 2</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 34.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Secondo Carne 3</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 25.00</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Secondi di Pesce</h3>
+                        <div class="menu-item">
+                            <h4>Proposta Secondo Pesce 1</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 29.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Secondo Pesce 2</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 32.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Proposta Secondo Pesce 3</h4>
+                            <p>Breve descrizione del piatto e degli ingredienti principali.</p>
+                            <span class="price">CHF 26.00</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Pizze Classiche</h3>
+                        <div class="menu-item">
+                            <h4>Pizza Margherita</h4>
+                            <p>Pomodoro, mozzarella, basilico.</p>
+                            <span class="price">CHF 14.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Pizza Prosciutto e Funghi</h4>
+                            <p>Pomodoro, mozzarella, prosciutto cotto, funghi.</p>
+                            <span class="price">CHF 16.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Pizza Quattro Stagioni</h4>
+                            <p>Pomodoro, mozzarella, funghi, carciofi, olive, prosciutto.</p>
+                            <span class="price">CHF 18.00</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Pizze Speciali</h3>
+                        <div class="menu-item">
+                            <h4>Pizza Speciale 1</h4>
+                            <p>Breve descrizione della pizza speciale e degli ingredienti.</p>
+                            <span class="price">CHF 20.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Pizza Speciale 2</h4>
+                            <p>Breve descrizione della pizza speciale e degli ingredienti.</p>
+                            <span class="price">CHF 21.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Pizza Speciale 3</h4>
+                            <p>Breve descrizione della pizza speciale e degli ingredienti.</p>
+                            <span class="price">CHF 19.00</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Dessert</h3>
+                        <div class="menu-item">
+                            <h4>Dolce della Casa 1</h4>
+                            <p>Breve descrizione del dolce.</p>
+                            <span class="price">CHF 8.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Dolce della Casa 2</h4>
+                            <p>Breve descrizione del dolce.</p>
+                            <span class="price">CHF 9.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Dolce della Casa 3</h4>
+                            <p>Breve descrizione del dolce.</p>
+                            <span class="price">CHF 7.00</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Bevande</h3>
+                        <div class="menu-item">
+                            <h4>Acqua Minerale</h4>
+                            <p>Varietà disponibili.</p>
+                            <span class="price">CHF 4.00</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Bibita Analcolica</h4>
+                            <p>Coca-Cola, Fanta, Sprite.</p>
+                            <span class="price">CHF 4.50</span>
+                        </div>
+                        <div class="menu-item">
+                            <h4>Vino della Casa</h4>
+                            <p>Bianco o Rosso (0.5L).</p>
+                            <span class="price">CHF 15.00</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialties Section -->
+        <section class="specialties-section">
+            <div class="specialties-content">
+                <h2>Le Nostre Specialità</h2>
+                <p>Ogni piatto è una celebrazione dei sapori. Lasciatevi tentare dalle nostre proposte del giorno e dalle specialità stagionali, preparate con passione e dedizione per deliziare il vostro palato.</p>
+                <a href="#menu" class="btn">Esplora il Menù</a>
+            </div>
+        </section>
+        
+        <!-- Gallery Section -->
+        <section id="galleria" class="section-padding">
+            <div class="container text-center">
+                <h2>Momenti da AL 74</h2>
+                <p style="margin-bottom: 40px;">Una selezione di immagini che catturano l'atmosfera e i piatti del nostro ristorante.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Piatto del ristorante AL 74">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/2.jpg" alt="Interno del ristorante AL 74">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/5.jpg" alt="Piatto di pasta AL 74">
+                    </div>
+                     <div class="gallery-item">
+                        <img src="./images/1.jpg" alt="Esterno/Ingresso del ristorante AL 74">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contatti" class="section-padding">
+            <div class="container text-center">
+                <h2>Dove Trovarci e Contatti</h2>
+                <p style="margin-bottom: 40px;">Siamo qui per accogliervi nel cuore di Lugano. Non esitate a contattarci per informazioni o prenotazioni.</p>
+
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Informazioni Utili</h3>
+                        <p><strong>Indirizzo:</strong> Via Trevano 74, 6900 Lugano, Svizzera</p>
+                        <p><strong>Telefono:</strong> <a href="tel:0919714346">091 971 43 46</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:info@al74.ch">info@al74.ch</a> (placeholder)</p>
+                        <p><strong>Orari:</strong> Lunedì – Domenica: 11:00 – 23:00</p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.269199999999!2d8.93883021571271!3d46.01258817911369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478546b1424b917d%3A0x6a6d6e24699e19d7!2sVia%20Trevano%2074%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sit!4v1678888888888!5m2!1sen!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 AL 74 Bar Ristorante Pizzeria. Tutti i diritti riservati.</p>
+            <p>Via Trevano 74, 6900 Lugano, Svizzera | Telefono: 091 971 43 46</p>
+        </div>
+    </footer>
+
+</body>
+</html>

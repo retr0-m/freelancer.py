@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tinèra - Ristorante Ticinese a Lugano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513; /* SaddleBrown - warm brown */
+            --secondary-color: #A0522D; /* Sienna - slightly darker brown */
+            --accent-color: #D2B48C; /* Tan - lighter, complementary */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-light: #FDF5E6; /* Old Lace - creamy white */
+            --background-dark: #2F4F4F; /* Dark Slate Gray - deep contrast */
+
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+        }
+
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.8rem; }
+        h3 { font-size: 2rem; }
+        h4 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: var(--spacing-sm);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: var(--spacing-sm) 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: var(--spacing-md);
+        }
+
+        .nav-menu a {
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 25px;
+            background-color: var(--text-color);
+            margin-bottom: 4px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('./images/3.jpg') no-repeat center center/cover; /* EDITED: Changed to images/3.jpg */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text-color);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: var(--spacing-md);
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--light-text-color);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--light-text-color);
+            font-weight: 300;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Sections General Styling */
+        section {
+            padding: var(--spacing-lg) 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        div.about-content { /* Applying edit: fix "all to the left", put full width */
+            display: grid; /* Keep grid to handle children, but make it single column */
+            grid-template-columns: 1fr; /* Make it single column to allow content to span full width */
+            gap: var(--spacing-lg);
+            align-items: center; /* This will still align content vertically if needed */
+        }
+
+        .about-text h3 {
+            color: var(--secondary-color);
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            object-fit: cover;
+            width: 100%;
+            max-height: 400px;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .menu-category {
+            background-color: var(--background-light);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-category h3 {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--secondary-color);
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: var(--spacing-xs);
+            padding-bottom: var(--spacing-xs);
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            color: var(--text-color);
+            flex-grow: 1;
+        }
+
+        .menu-item-price {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-left: var(--spacing-xs);
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+            padding-left: 10px; /* Indent description */
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-info {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: var(--spacing-lg);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-info p strong {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background-color: var(--background-dark);
+            min-height: 400px; /* Ensure map has height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-text-color);
+            font-size: 1.2rem;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: var(--spacing-md) 0;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.7rem; }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.4s ease-in-out;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                padding: var(--spacing-md);
+            }
+
+            .nav-menu li {
+                margin: var(--spacing-sm) 0;
+                text-align: center;
+            }
+
+            .nav-menu a {
+                color: var(--text-color);
+                font-size: 1.2rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-text, .contact-info {
+                text-align: center;
+            }
+
+            .about-image {
+                order: -1; /* Image first on mobile */
+            }
+
+            .map-container {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                margin-bottom: var(--spacing-md);
+            }
+
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">La Tinèra</a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>La Tinèra</h1>
+                <p>Autentici Sapori Ticinesi con un Tocco di Modernità</p>
+                <a href="#menu" class="btn">Esplora il Menu</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>La Nostra Storia</h2>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Benvenuti a La Tinèra: Tradizione e Passione nel Cuore di Lugano</h3>
+                        <p>La Tinèra nasce dal desiderio di celebrare la ricchezza culinaria del Canton Ticino, reinterpretando piatti tradizionali con una visione moderna e ingredienti di altissima qualità.</p>
+                        <p>Il nostro viaggio inizia con la ricerca meticolosa di prodotti locali, freschi e di stagione, provenienti da piccoli produttori della regione. Crediamo fermamente che la vera essenza della cucina risieda nella semplicità e nell'autenticità delle materie prime.</p>
+                        <p>Ogni piatto racconta una storia, un legame profondo con il territorio e le sue radici. Dalle paste fatte in casa ai risotti cremosi, dalle carni saporite ai formaggi alpini, ogni ricetta è un omaggio alla tradizione ticinese, eseguita con maestria e un pizzico di innovazione.</p>
+                        <p>Venite a scoprire l'atmosfera accogliente e familiare de La Tinèra, dove la buona cucina si unisce a un servizio attento e cordiale. Siamo più di un ristorante: siamo un luogo d'incontro, di condivisione e di piacere gastronomico.</p>
+                    </div>
+                    <div class="about-image">
+                        <!-- EDITED: Image removed as per instruction -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="menu" style="background-color: var(--background-dark);">
+            <div class="container">
+                <div class="section-title">
+                    <h2 style="color: var(--light-text-color);">Il Nostro Menu</h2>
+                </div>
+                <div class="menu-grid">
+                    <div class="menu-category">
+                        <h3>Antipasti</h3>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Antipasto della Casa</span>
+                            <span class="menu-item-price">18 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Selezione di sfiziosità locali e di stagione.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Carpaccio di Manzo Ticinese</span>
+                            <span class="menu-item-price">22 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Con rucola, scaglie di parmigiano e olio extravergine.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Formaggini Freschi della Valle</span>
+                            <span class="menu-item-price">16 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Serviti con miele locale e noci.</p>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Primi Piatti</h3>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Risotto ai Funghi Porcini</span>
+                            <span class="menu-item-price">26 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Cremoso risotto con funghi freschi di stagione.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Pizzocheri della Valtellina</span>
+                            <span class="menu-item-price">24 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Con patate, verza e formaggio Casera fuso.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Pasta Fresca al Ragù d'Anatra</span>
+                            <span class="menu-item-price">28 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Specialità della casa, pasta fatta a mano con ragù ricco.</p>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Secondi Piatti</h3>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Brasato di Manzo al Merlot</span>
+                            <span class="menu-item-price">35 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Lento cottura con polenta ticinese.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Filetto di Persico del Lago</span>
+                            <span class="menu-item-price">32 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Pescato fresco, servito con verdure di stagione.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Costolette d'Agnello alle Erbe</span>
+                            <span class="menu-item-price">38 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Accompagnate da patate al rosmarino.</p>
+                    </div>
+
+                    <div class="menu-category">
+                        <h3>Dessert & Bevande</h3>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Torta di Pane e Pere</span>
+                            <span class="menu-item-price">10 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Dolce tradizionale ticinese.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Mousse al Cioccolato Fondente</span>
+                            <span class="menu-item-price">12 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Con salsa ai frutti di bosco.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Selezione di Vini Ticinesi</span>
+                            <span class="menu-item-price">Da 6 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Vini rossi e bianchi delle migliori cantine locali.</p>
+                        <div class="menu-item">
+                            <span class="menu-item-name">Caffè Espresso / Ristretto</span>
+                            <span class="menu-item-price">4 CHF</span>
+                        </div>
+                        <p class="menu-item-description">Miscela italiana di alta qualità.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contattaci</h2>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Dove Trovarci</h3>
+                        <p><strong>Indirizzo:</strong> <br> Via dei Gorini 2, <br> 6900 Lugano, Svizzera</p>
+                        <p><strong>Telefono:</strong> <br> 091 923 52 19</p>
+                        <p><strong>Orari di Apertura:</strong> <br> Lun-Sab: 12:00-14:00, 18:30-22:00 <br> Domenica: Chiuso</p>
+                        <a href="tel:0919235219" class="btn" style="background-color: var(--accent-color); color: var(--primary-color);">Chiamaci Ora</a>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.291771146607!2d8.948013315757973!3d46.00762410884877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785db2d60b54f9d%3A0x8e87d0c0c0c0c0c0!2sVia%20dei%20Gorini%202%2C%206900%20Lugano%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1678901234567!5m2!1sen!2sch" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 La Tinèra. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-menu a');
+
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+
+            // Close menu if clicking outside
+            document.addEventListener('click', function(event) {
+                if (!navMenu.contains(event.target) && !hamburger.contains(event.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    </script>
+<script src="../../editor.js"></script></body>
+</html>
