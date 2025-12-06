@@ -175,7 +175,7 @@
         .hero {
             position: relative;
             height: 100vh;
-            background: url('./images/3.jpg') no-repeat center center/cover; /* EDITED: Changed to images/3.jpg */
+            background: url('./images/1.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -245,11 +245,11 @@
         }
 
         /* About Section */
-        div.about-content { /* Applying edit: fix "all to the left", put full width */
-            display: grid; /* Keep grid to handle children, but make it single column */
-            grid-template-columns: 1fr; /* Make it single column to allow content to span full width */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: var(--spacing-lg);
-            align-items: center; /* This will still align content vertically if needed */
+            align-items: center;
         }
 
         .about-text h3 {
@@ -534,7 +534,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">Chi Siamo</a></li>
                     <li><a href="#menu">Menu</a></li>
-                    
+                    <li><a href="#gallery">Galleria</a></li>
                     <li><a href="#contact">Contatti</a></li>
                 </ul>
             </nav>
@@ -569,7 +569,7 @@
                         <p>Venite a scoprire l'atmosfera accogliente e familiare de La Tinèra, dove la buona cucina si unisce a un servizio attento e cordiale. Siamo più di un ristorante: siamo un luogo d'incontro, di condivisione e di piacere gastronomico.</p>
                     </div>
                     <div class="about-image">
-                        <!-- EDITED: Image removed as per instruction -->
+                        <img src="./images/3.jpg" alt="Interno del ristorante La Tinèra">
                     </div>
                 </div>
             </div>
@@ -665,7 +665,27 @@
             </div>
         </section>
 
-        
+        <section id="gallery" class="gallery">
+            <div class="container">
+                <div class="section-title">
+                    <h2>I Nostri Momenti</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="./images/4.jpg" alt="Piatto gourmet La Tinèra">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/5.jpg" alt="Interno accogliente La Tinèra">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/1.jpg" alt="Tavola apparecchiata La Tinèra">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="./images/3.jpg" alt="Dettaglio della cucina La Tinèra">
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="contact" class="contact">
             <div class="container">

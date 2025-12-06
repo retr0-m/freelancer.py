@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Barbershop - Stile Galattico, Taglio Perfetto</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Base Reset & Global Styles */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #eee; background-color: #1a1a1a; overflow-x: hidden; scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        ul { list-style: none; }
+        h1, h2, h3 { font-family: 'Oswald', sans-serif; margin-bottom: 1rem; color: #fff; }
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+        p { margin-bottom: 1rem; }
+
+        /* Variables */
+        :root {
+            --primary-color: #00bcd4; /* Cyan - futuristic touch */
+            --secondary-color: #ff9800; /* Orange - accent */
+            --dark-bg: #1a1a1a;
+            --dark-bg-alt: #222;
+            --mid-dark-bg: #2a2a2a;
+            --light-text: #eee;
+            --dark-text: #333;
+            --transition-speed: 0.6s;
+            --section-padding: 80px 0;
+        }
+
+        /* Utility Classes */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; background-color: var(--primary-color); color: var(--dark-bg); padding: 12px 25px; border-radius: 5px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; }
+        .btn:hover { background-color: var(--secondary-color); color: #fff; }
+        .section-title { text-align: center; margin-bottom: 3rem; position: relative; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 3px; background-color: var(--primary-color); margin: 15px auto 0; }
+
+        /* Header */
+        .header { background-color: rgba(26, 26, 26, 0.95); padding: 20px 0; position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; transform: translateY(-100px); opacity: 0; transition: transform 0.8s ease-out, opacity 0.8s ease-out; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); }
+        .header.active { transform: translateY(0); opacity: 1; }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 2rem; font-weight: 700; color: var(--primary-color); font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+        .nav-menu { display: flex; gap: 30px; }
+        .nav-menu a { font-weight: 600; position: relative; padding-bottom: 5px; transition: color var(--transition-speed) ease; }
+        .nav-menu a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background-color: var(--primary-color); transition: width var(--transition-speed) ease; }
+        .nav-menu a:hover { color: var(--primary-color); }
+        .nav-menu a:hover::after { width: 100%; }
+
+        /* Hamburger menu */
+        .hamburger-menu { display: none; flex-direction: column; cursor: pointer; position: relative; z-index: 1001; }
+        .hamburger-menu span { background-color: var(--primary-color); height: 3px; width: 25px; margin: 4px 0; transition: 0.4s; }
+        .hamburger-menu.active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+        .hamburger-menu.active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+        /* Mobile Nav */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 0; right: -100%; width: 70%; max-width: 300px; height: 100%; background-color: var(--dark-bg-alt); padding-top: 100px; transition: right 0.5s ease; z-index: 999; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3); }
+            .nav-menu.active { right: 0; display: flex; }
+            .nav-menu li { margin-bottom: 20px; text-align: center; }
+            .nav-menu a { font-size: 1.5rem; }
+            .hamburger-menu { display: flex; }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--dark-bg); /* Fallback */
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/1.jpg'); /* Using one of the provided images */
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.4);
+            z-index: -1;
+        }
+        .hero-content {
+            z-index: 1;
+            padding: 20px;
+            max-width: 900px;
+        }
+        .hero h1 { font-size: 4.5rem; margin-bottom: 20px; line-height: 1.2; transform: translateY(50px); opacity: 0; transition: transform 1s ease-out, opacity 1s ease-out; }
+        .hero p { font-size: 1.5rem; margin-bottom: 40px; transform: translateY(50px); opacity: 0; transition: transform 1s ease-out 0.3s, opacity 1s ease-out 0.3s; }
+        .hero .btn { transform: translateY(50px); opacity: 0; transition: transform 1s ease-out 0.6s, opacity 1s ease-out 0.6s; }
+        .hero.active h1, .hero.active p, .hero.active .btn { transform: translateY(0); opacity: 1; }
+
+        /* Generic Section Styling & Animations for scroll */
+        section { padding: var(--section-padding); position: relative; opacity: 0; transform: translateY(50px); transition: opacity 1s ease-out, transform 1s ease-out; }
+        section.animate { opacity: 1; transform: translateY(0); }
+
+        /* About Section */
+        .about-content { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center; }
+        .about-text, .about-image { flex: 1; min-width: 300px; }
+        .about-image img { border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+
+        /* Services Section */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .service-item {
+            background-color: var(--mid-dark-bg); padding: 30px; border-radius: 8px; text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.8s ease-out, transform 0.8s ease-out;
+            opacity: 0; /* Initial state for scroll animation */
+            transform: translateY(30px); /* Initial state for scroll animation */
+        }
+        .service-item:hover { transform: translateY(-10px); background-color: #3a3a3a; }
+        .service-item i { font-size: 3rem; color: var(--primary-color); margin-bottom: 15px; }
+        .service-item h3 { margin-bottom: 10px; color: var(--primary-color); }
+        .service-item p { font-size: 0.95rem; color: var(--light-text); }
+
+        /* Gallery Section */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .gallery-item {
+            overflow: hidden; border-radius: 8px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            opacity: 0; /* Initial state for scroll animation */
+            transform: translateY(30px); /* Initial state for scroll animation */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Base transition */
+        }
+        .gallery-item img { display: block; width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        /* Testimonials Section */
+        .testimonials { background-color: var(--dark-bg-alt); text-align: center; }
+        .testimonial-item { max-width: 700px; margin: 0 auto; padding: 20px; }
+        .testimonial-item p { font-style: italic; font-size: 1.1rem; margin-bottom: 15px; }
+        .testimonial-item .client-name { font-weight: 600; color: var(--primary-color); }
+
+        /* Contact Section */
+        .contact-content { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; }
+        .contact-info, .contact-form, .contact-map { flex: 1; min-width: 300px; }
+        .contact-info p { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--light-text); }
+        .contact-info i { color: var(--primary-color); font-size: 1.2rem; }
+        .contact-info a { color: var(--light-text); transition: color 0.3s ease; }
+        .contact-info a:hover { color: var(--primary-color); }
+        .contact-form form { display: flex; flex-direction: column; gap: 20px; }
+        .contact-form input, .contact-form textarea { padding: 12px; border: 1px solid #444; background-color: #333; border-radius: 5px; color: #eee; font-family: 'Montserrat', sans-serif; transition: border-color 0.3s ease; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.3); }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+        .contact-form .btn { align-self: flex-start; }
+        .contact-map iframe { width: 100%; height: 350px; border: 0; border-radius: 8px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); }
+
+        /* Footer */
+        .footer { background-color: var(--dark-bg); padding: 40px 0; text-align: center; border-top: 1px solid #333; }
+        .footer p { margin-bottom: 10px; color: #ccc; }
+        .social-links { margin-top: 20px; }
+        .social-links a { display: inline-block; margin: 0 10px; color: var(--primary-color); font-size: 1.8rem; transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--secondary-color); transform: scale(1.1); }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .about-content, .contact-content { flex-direction: column; text-align: center; }
+            .about-image { order: -1; } /* Image above text on smaller screens */
+            .section-title { margin-bottom: 2rem; }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1rem; }
+            .btn { padding: 10px 20px; font-size: 0.9rem; }
+            .logo { font-size: 1.8rem; }
+            .hero { height: 80vh; }
+            .service-item, .gallery-item { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#hero" class="logo">Galaxy Barbershop</a>
+            <nav class="nav-menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#services">Servizi</a></li>
+                <li><a href="#gallery">Galleria</a></li>
+                <li><a href="#testimonials">Recensioni</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </nav>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Stile Galattico, Taglio Perfetto.</h1>
+            <p>Il tuo look, la nostra passione. Vieni a scoprire l'arte della rasatura e del taglio.</p>
+            <a href="#contact" class="btn">Prenota Ora</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Chi Siamo</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Al Galaxy Barbershop, non offriamo solo tagli di capelli e rasature, ma un'esperienza unica dove la tradizione incontra l'innovazione. Con anni di esperienza, il nostro team di barbieri esperti è dedicato a creare look impeccabili, su misura per ogni cliente.</p>
+                    <p>Utilizziamo solo prodotti di alta qualità e le tecniche più moderne, garantendo un servizio eccellente e un'atmosfera rilassante. Entra nel nostro mondo e lasciati coccolare, uscirai con un look che farà girare la testa.</p>
+                    <p>Siamo il punto di riferimento a Zurigo per chi cerca professionalità, precisione e uno stile inconfondibile.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/2.jpg" alt="Barbiere al lavoro, dettaglio di un taglio.">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">I Nostri Servizi</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-cut"></i>
+                    <h3>Taglio Uomo Classico</h3>
+                    <p>Un taglio preciso e curato, adatto ad ogni stile. Dalla rifinitura alle ultime tendenze, ci prendiamo cura dei tuoi capelli.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-razor"></i>
+                    <h3>Rasatura Tradizionale</h3>
+                    <p>L'antica arte della rasatura con panno caldo, schiuma e rasoio a mano libera per una pelle liscia come seta.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-beard"></i>
+                    <h3>Rifinitura Barba</h3>
+                    <p>Modelliamo e curiamo la tua barba con precisione, per un look sempre ordinato e definito.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-head-side-mask"></i>
+                    <h3>Trattamenti Specifici</h3>
+                    <p>Trattamenti per la cura del capello e della cute, per una chioma sana e forte. Consulenze personalizzate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">La Nostra Arte</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="./images/3.jpg" alt="Stile di barba e capelli curato."></div>
+                <div class="gallery-item"><img src="./images/4.jpg" alt="Taglio di capelli moderno e sfilato."></div>
+                <div class="gallery-item"><img src="./images/5.jpg" alt="Interno del barbershop, ambiente accogliente."></div>
+                <div class="gallery-item"><img src="./images/1.jpg" alt="Cliente soddisfatto con un nuovo taglio fresco."></div>
+                <div class="gallery-item"><img src="./images/2.jpg" alt="Dettaglio della rasatura con attenzione ai particolari."></div>
+                <div class="gallery-item"><img src="./images/3.jpg" alt="Attrezzature da barbiere, pronte all'uso."></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Dicono di Noi</h2>
+            <div class="testimonial-item">
+                <p>"Il miglior barbiere di Zurigo! Ogni taglio è una garanzia e l'atmosfera è sempre accogliente e professionale. Altamente raccomandato!"</p>
+                <div class="client-name">- Marco R.</div>
+            </div>
+            <!-- More testimonials can be added here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Prenota il Tuo Stile</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contatti</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dübendorfstrasse 22, 8051 Zürich, Switzerland</p>
+                    <p><i class="fas fa-phone-alt"></i> <a href="tel:0766820255">0766820255</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@galaxybarbershop.com">info@galaxybarbershop.com</a></p>
+                    <p><i class="fas fa-clock"></i> Lun - Sab: 09:00 - 19:00</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Inviaci un Messaggio</h3>
+                    <form action="#" method="POST">
+                        <input type="text" name="name" placeholder="Il tuo Nome" required>
+                        <input type="email" name="email" placeholder="La tua Email" required>
+                        <input type="text" name="subject" placeholder="Oggetto (es. Richiesta appuntamento)">
+                        <textarea name="message" placeholder="Il tuo Messaggio" required></textarea>
+                        <button type="submit" class="btn">Invia Messaggio</button>
+                    </form>
+                </div>
+                <div class="contact-map">
+                    <h3>Dove Trovarci</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2703.2045558296245!2d8.571439276497746!3d47.39958987116127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b4111306c57%3A0x86f1e1b1d1f03f3!2sD%C3%BCbendorfstrasse%2022%2C%208051%20Z%C3%BCrich%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1701389025078!5m2!1sen!2sch" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Galaxy Barbershop. Tutti i diritti riservati.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header animation on load
+            const header = document.querySelector('.header');
+            setTimeout(() => {
+                header.classList.add('active');
+            }, 100);
+
+            // Hero section animations on load
+            const hero = document.getElementById('hero');
+            setTimeout(() => {
+                hero.classList.add('active');
+            }, 300);
+
+            // Hamburger menu toggle
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navMenu = document.querySelector('.nav-menu');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            // On scroll animations using Intersection Observer
+            const sections = document.querySelectorAll('section:not(#hero)'); // Exclude hero as it animates on load
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Trigger when 15% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+
+                        // Stagger animation for service items
+                        if (entry.target.id === 'services') {
+                            const serviceItems = entry.target.querySelectorAll('.service-item');
+                            serviceItems.forEach((item, index) => {
+                                item.style.transitionDelay = `${index * 0.15}s`;
+                                item.style.opacity = 1;
+                                item.style.transform = 'translateY(0)';
+                            });
+                        }
+
+                        // Stagger animation for gallery items
+                        if (entry.target.id === 'gallery') {
+                            const galleryItems = entry.target.querySelectorAll('.gallery-item');
+                            galleryItems.forEach((item, index) => {
+                                item.style.transitionDelay = `${index * 0.1}s`;
+                                item.style.opacity = 1;
+                                item.style.transform = 'translateY(0)';
+                            });
+                        }
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

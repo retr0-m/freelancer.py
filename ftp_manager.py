@@ -124,25 +124,41 @@ def ftps_upload_dir(ftps: FTP_TLS, local_dir: str, remote_dir: str):
         except Exception as e:
             log(f"ERROR WHILE UPLOADING FILE {local_path} ----- {e}")
 
+def ftps_folder_exists(ftps: FTP_TLS, remote_path: str) -> bool:
+    """Check if a folder exists on FTPS by attempting cwd."""
+    current = ftps.pwd()
+    try:
+        ftps.cwd(remote_path)
+        ftps.cwd(current)  # go back if success
+        return True
+    except:
+        return False
+
 def init_vars():
     load_dotenv()
 
     FTPS_HOST = os.getenv("FTPS_HOST")
     FTPS_USER = os.getenv("FTPS_USERNAME")
     FTPS_PASS = os.getenv("FTPS_PASSWORD")
-    
+
     return FTPS_HOST, FTPS_PASS, FTPS_USER
-    
+
 
 
 def ftps_upload_lead(lead:Lead):
-   
+
     FTPS_HOST, FTPS_PASS, FTPS_USER = init_vars()
 
     ftps = connect_ftps(FTPS_HOST, FTPS_USER, FTPS_PASS)
 
-    
-    ftps_create_folder(ftps, f"/matteocola.com/preview/f/{lead.id}")
+    target_dir=f"/matteocola.com/preview/f/{lead.id}"
+
+    if ftps_folder_exists(ftps, target_dir):
+        log("Folder already exists on ftp: "+target_dir)
+        ftps.quit()
+        return "Already exists"
+
+    ftps_create_folder(ftps, target_dir)
 
     ftps_send_file(
         ftps,
@@ -150,30 +166,30 @@ def ftps_upload_lead(lead:Lead):
         remote_path=f"/matteocola.com/preview/f/{lead.id}/index.html"
     )
     ftps_create_folder(ftps, f"/matteocola.com/preview/f/{lead.id}/images")
-    
-    ftps_upload_dir(ftps, f"./leads/{lead.id}/images", f"/matteocola.com/preview/f/{lead.id}/images")
+
+    ftps_upload_dir(ftps, f"./leads/{lead.id}/images", 
+                    f"/matteocola.com/preview/f/{lead.id}/images")
 
     log("Done!")
-    
+
     ftps.quit()
-    
-    
-    
+
+
+
 def ftps_upload_lead_list(lead_list: list[Lead]):
     for lead in lead_list:
         ftps_upload_lead(lead)
-    
+
 
 
 
 if __name__ == "__main__":
-    
+
     log("="*50)
     log("TESTING SCRIPT")
-    
+
     #TEST 1
     log('TEST-1 with following sandbox data:      Lead(1, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)')
     l=Lead(1, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
     ftps_upload_lead(l)
-    
-    
+

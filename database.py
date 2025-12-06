@@ -39,6 +39,7 @@ def initialize_database():
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL UNIQUE,  
             phone TEXT,
+            email TEXT,
             address TEXT,
             city TEXT,
             images TEXT,         
@@ -143,15 +144,14 @@ def insert_lead(lead: Lead):
     
     try:
         sql = """
-        INSERT INTO leads (id, name, phone, address, city, images, status)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO leads (id, name, phone, email, address, city, images, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """
-        cursor = conn.cursor()
-        
-        cursor.execute(sql, (
+        conn.execute(sql, (
             lead_data['id'],
             lead_data['name'],
             lead_data['phone'],
+            lead_data.get('email', None),
             lead_data['address'],
             lead_data['city'],
             images_json,
@@ -159,7 +159,7 @@ def insert_lead(lead: Lead):
         ))
         
         conn.commit()
-        inserted_id = cursor.lastrowid
+        inserted_id = conn.lastrowid
         log(f"✅ Lead successfully inserted. New Row ID: {inserted_id} (Lead ID: {lead.id})")
         return inserted_id
     
@@ -271,6 +271,7 @@ def lead_from_db_row(row: sqlite3.Row) -> Lead:
         id=row['id'],
         name=row['name'],
         phone=row['phone'],
+        email=row.get('email', None),
         address=row['address'],
         city=row['city'],
         images=images_list,

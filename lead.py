@@ -6,12 +6,12 @@ class Lead:
     Represents a single business lead in the pipeline, with a built-in 
     method to serialize itself for database insertion.
     """
-    def __init__(self, id: int, name: str, phone: str, address: str, city: str, 
-                 images: Optional[List[str]] = None, status: int = 0):
-        
+    def __init__(self, id: int, name: str, phone: str, address: str, city: str, email: str = None,
+                images=None, status: int = 0):
         self.id = id
         self.name = name
         self.phone = phone
+        self.email = email
         self.address = address
         self.city = city
         self.images = images if images is not None else []
@@ -36,6 +36,7 @@ class Lead:
             'phone': self.phone,
             'address': self.address,
             'city': self.city,
+            'email': self.email,
             'images': self.images, 
             'status': self.status
         }
@@ -51,20 +52,22 @@ class Lead:
         """Creates a Lead instance from Google Maps API result data."""
         
         # Google Maps API often combines address into 'formatted_address'.
-        # For simplicity, we use the whole address string here.
         full_address = result.get('formatted_address', 'N/A')
         
-        # Clean phone number (remove spaces, dashes for consistency)
+        # Clean phone number
         phone_raw = result.get('formatted_phone_number', '') or 'N/A'
         phone = re.sub(r'[^\d\+]', '', phone_raw)
+
+        # Extract email if available
+        email = result.get('email', None)  # returns None if not present
 
         return cls(
             id=lead_id,
             name=result.get('name', 'N/A'),
             phone=phone,
+            email=email,
             address=full_address,
             city=city,
-            # Images will be empty [] until Step 2 is run (status=0)
             images=[],
             status=0
         )
