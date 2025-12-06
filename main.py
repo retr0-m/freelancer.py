@@ -10,6 +10,7 @@ from log import log, log_empty_row
 import ftp_manager
 import preview
 import graphical_editor
+import proposal_sender
 CUSTOMERS_TYPE = "Barber"
 CUSTOMERS_CITY = "Zurich"
 LEADS_TO_GENERATE = 1
@@ -63,6 +64,9 @@ def main():
         # uploading to FTPS
         ftp_manager.ftps_upload_lead(lead)         ##TODO: save temp preview to actual ./leads/leadid
 
+        proposal_sender.send_proposal(lead)
+        lead.change_status(3)
+        database.update_lead_status(lead.id, 3)
 
         # preview.open_website_preview(lead)
 
