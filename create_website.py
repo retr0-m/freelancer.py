@@ -1,5 +1,5 @@
 from google import genai
-import os 
+import os
 from log import log
 from lead import Lead
 from dotenv import load_dotenv
@@ -8,9 +8,9 @@ import re
 load_dotenv()
 
 GEMINI_MODEL = "gemini-2.5-flash"
-PROMPT_BASE = "You're a web designer and developer\ncreate an amazing, content in italian, modern and professional themed website, with animations on load and on scroll. make it responsive and **use placeholders ONLY FOR THE MENU ITEMS, DO NOT USE THE IMAGES I GIVE YOU FOR DISHES**, for the following restaurant:"
+PROMPT_BASE = "You're a web designer and developer\ncreate an amazing, content in italian, modern and professional themed website, with animations on load and on scroll. make it responsive, for the following business:"
 try:
-    API_KEY = os.getenv("GEMINI_API_KEY")   
+    API_KEY = os.getenv("GEMINI_API_KEY")
 except Exception as e:
     log("Could'nt load API_KEY for gemini: "+str(e))
 
@@ -20,9 +20,9 @@ def generate_prompt(lead: Lead):
     p+="\n- Name: "+str(lead.name)
     p+="\n- Phone number: "+str(lead.phone)
     p+="\n- Address: "+str(lead.address)
-    
+
     p+="\nAnd using the following images"
-    
+
     for i in lead.images:
         p+="\n"+str(strip_leads_folder(i))
     p+="Give just the code, no words, no '''. single file that will be named index.html, and dont use placeholders for images, just use the images provided."
@@ -78,7 +78,7 @@ def is_html(content: str) -> bool:
         return True
 
     return False
-        
+
 
 def run_prompt(client, prompt):
     log("prompting model for website...")
@@ -86,7 +86,7 @@ def run_prompt(client, prompt):
         response = client.models.generate_content(
             model=GEMINI_MODEL, contents=prompt
         )
-        
+
         if is_html(response.text):
             log("Succesfully received a response with HTML code.")
         else:
@@ -122,9 +122,9 @@ def strip_leads_folder(path: str) -> str:
     # We want: ['.', 'images', '1.jpg']
     if len(parts) >= 5 and parts[0] == '.' and parts[1] == 'leads':
         return './' + '/'.join(parts[3:])
-    
+
     # fallback: return original
-    return path 
+    return path
 
 def save_website_to_file(lead: Lead,website_content):
     log(f"Saving website content to ./leads/{lead.id}/index.html")
@@ -142,16 +142,15 @@ def generate_and_save_website(lead: Lead): #main function
     prompt = generate_prompt(lead)
     website_content=run_prompt(client, prompt)
     save_website_to_file(lead, website_content)
-    
+
 
 
 if __name__ == "__main__":
     log("="*50)
     log("TESTING SCRIPT")
-    
+
     #TEST 1
     log('TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
     l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
     generate_and_save_website(l)
-    
-    
+

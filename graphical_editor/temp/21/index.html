@@ -1,0 +1,1082 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King's Barbershop Lugano da Farsat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #A0835B; /* Golden/Bronze */
+            --secondary-color: #2C3E50; /* Dark Blue/Charcoal */
+            --accent-color: #E6B34A; /* Brighter Gold */
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --bg-dark: #1a1a1a;
+            --bg-light: #ffffff;
+            --font-heading: 'Cinzel Decorative', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --section-padding: 80px 0;
+        }
+
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+        p { margin-bottom: 1rem; }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-light { color: var(--text-light); }
+        .bg-dark { background-color: var(--bg-dark); color: var(--text-light); }
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-title h2 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: var(--secondary-color);
+        }
+        .section-title.text-light h2 {
+            color: var(--text-light);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            color: var(--text-light);
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 15px 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text-light);
+            font-weight: 700;
+            opacity: 0; /* For load animation */
+            animation: fadeInTop 1s forwards 0.2s;
+        }
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+        .nav-menu ul li {
+            margin-left: 30px;
+            opacity: 0; /* For load animation */
+            animation: fadeInTop 1s forwards calc(0.3s + var(--item-index) * 0.1s);
+        }
+        .nav-menu ul li a {
+            color: var(--text-light);
+            font-weight: 500;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        .nav-menu ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-menu ul li a:hover::after,
+        .nav-menu ul li a.active::after {
+            width: 100%;
+        }
+
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger-menu span {
+            height: 3px;
+            width: 25px;
+            background-color: var(--text-light);
+            margin-bottom: 5px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('./images/1.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: var(--text-light);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-size: 5rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInBottom 1s forwards 0.8s;
+        }
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            opacity: 0;
+            animation: fadeInBottom 1s forwards 1.1s;
+        }
+        .hero-content .btn {
+            opacity: 0;
+            animation: fadeInBottom 1s forwards 1.4s;
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--section-padding);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            transform: translateX(-100px); /* For scroll animation */
+            opacity: 0;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .about-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .about-content {
+            flex: 2;
+            transform: translateX(100px); /* For scroll animation */
+            opacity: 0;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .about-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .about-content p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: var(--section-padding);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        .menu .section-title h2 {
+            color: var(--text-light);
+        }
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            gap: 15px;
+        }
+        .menu-categories button {
+            background: none;
+            border: 2px solid var(--primary-color);
+            color: var(--text-light);
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            opacity: 0; /* For scroll animation */
+            transform: translateY(20px);
+            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+        }
+        .menu-categories button.active,
+        .menu-categories button:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .menu-item {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            opacity: 0; /* For scroll animation */
+            transform: translateY(50px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .menu-item:hover img {
+            transform: scale(1.05);
+        }
+        .menu-item-content {
+            padding: 25px;
+        }
+        .menu-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .menu-item p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+        }
+        .menu-item .price {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        /* Specialties Section */
+        .specialties {
+            padding: var(--section-padding);
+            text-align: center;
+        }
+        .specialties .section-title {
+            margin-bottom: 3rem;
+        }
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .specialty-card {
+            background-color: var(--bg-light);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            opacity: 0; /* For scroll animation */
+            transform: scale(0.9);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .specialty-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .specialty-card-content {
+            padding: 25px;
+        }
+        .specialty-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        .specialty-card p {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: var(--section-padding);
+            background-color: var(--bg-dark);
+        }
+        .gallery .section-title h2 {
+            color: var(--text-light);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0; /* For scroll animation */
+            transform: scale(0.95);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .gallery-item-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+        .gallery-item-overlay i {
+            color: var(--text-light);
+            font-size: 2.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--section-padding);
+            background-color: var(--bg-light);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .contact-info {
+            opacity: 0; /* For scroll animation */
+            transform: translateX(-50px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+        .contact-info p i {
+            color: var(--primary-color);
+            margin-right: 15px;
+            font-size: 1.5rem;
+            width: 30px;
+        }
+        .contact-info strong {
+            color: var(--secondary-color);
+        }
+        .map-container {
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* For scroll animation */
+            transform: translateX(50px);
+            transition: transform 1s ease-out, opacity 1s ease-out;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        .footer .social-links {
+            margin-bottom: 20px;
+        }
+        .footer .social-links a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+        .footer p {
+            margin: 0;
+        }
+        .footer a {
+            color: var(--primary-color);
+        }
+
+        /* Animations */
+        @keyframes fadeInBottom {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInTop {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 4rem; }
+            h2 { font-size: 2.2rem; }
+            .hero-content p { font-size: 1.3rem; }
+            .section-title h2 { font-size: 2.5rem; }
+
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-image, .about-content {
+                transform: none !important; /* Override scroll animation for mobile */
+                opacity: 1 !important; /* Override scroll animation for mobile */
+            }
+            .about-image img {
+                height: 350px;
+            }
+            .about-content h2 {
+                text-align: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .contact-info, .map-container {
+                transform: none !important; /* Override scroll animation for mobile */
+                opacity: 1 !important; /* Override scroll animation for mobile */
+            }
+            .map-container {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px; /* Adjust based on header height */
+                left: 0;
+                width: 100%;
+                background-color: rgba(26, 26, 26, 0.95);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                padding: 20px 0;
+                text-align: center;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-menu ul {
+                flex-direction: column;
+            }
+            .nav-menu ul li {
+                margin: 15px 0;
+                animation: none; /* Disable specific load animation on mobile nav */
+                opacity: 1;
+            }
+            .nav-menu ul li a {
+                font-size: 1.2rem;
+            }
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-categories {
+                flex-direction: column;
+            }
+            .menu-categories button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.8rem; }
+            .hero-content p { font-size: 1rem; }
+            .btn { padding: 10px 20px; font-size: 0.9rem; }
+            .section-title h2 { font-size: 1.8rem; margin-bottom: 2rem; }
+            .about-image img { height: 250px; }
+            .contact-info p { font-size: 1rem; }
+            .contact-info p i { font-size: 1.2rem; margin-right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="#hero" class="logo">King's Barbershop Lugano</a>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li style="--item-index:0;"><a href="#hero">Home</a></li>
+                    <li style="--item-index:1;"><a href="#about">Chi Siamo</a></li>
+                    <li style="--item-index:2;"><a href="#menu">Menù</a></li>
+                    <li style="--item-index:3;"><a href="#specialties">Specialità</a></li>
+                    <li style="--item-index:4;"><a href="#gallery">Galleria</a></li>
+                    <li style="--item-index:5;"><a href="#contact">Contatti</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>King's Barbershop Lugano <br> da Farsat</h1>
+                <p>Dove il Gusto Incontra lo Stile - Un'Esperienza Culinaria Unica</p>
+                <a href="#contact" class="btn">Prenota un Tavolo</a>
+            </div>
+        </section>
+
+        <section id="about" class="about container animate-on-scroll">
+            <div class="about-image">
+                <img src="./images/2.jpg" alt="Interni del ristorante">
+            </div>
+            <div class="about-content">
+                <div class="section-title text-left">
+                    <h2>La Nostra Storia, Il Nostro Stile</h2>
+                </div>
+                <p>Benvenuti al King's Barbershop Lugano da Farsat, un luogo unico dove la tradizione culinaria si fonde con un'atmosfera inconfondibile. Nato dalla passione per l'eccellenza e il desiderio di offrire un'esperienza indimenticabile, il nostro ristorante si distingue per piatti innovativi e un servizio impeccabile.</p>
+                <p>Il nostro chef seleziona solo ingredienti freschi e di stagione, trasformandoli in creazioni che deliziano il palato e sorprendono la vista. Ogni visita è un viaggio attraverso sapori autentici e combinazioni audaci, il tutto in un ambiente che celebra l'eleganza e l'ospitalità.</p>
+                <a href="#menu" class="btn">Scopri il Menù</a>
+            </div>
+        </section>
+
+        <section id="menu" class="menu bg-dark">
+            <div class="container">
+                <div class="section-title text-light">
+                    <h2>Il Nostro Menù</h2>
+                </div>
+                <div class="menu-categories animate-on-scroll">
+                    <button class="active" data-category="all">Tutto</button>
+                    <button data-category="antipasti">Antipasti</button>
+                    <button data-category="primi">Primi Piatti</button>
+                    <button data-category="secondi">Secondi Piatti</button>
+                    <button data-category="dolci">Dolci</button>
+                    <button data-category="bevande">Bevande</button>
+                </div>
+
+                <div class="menu-grid">
+                    <!-- Antipasti -->
+                    <div class="menu-item animate-on-scroll" data-category="antipasti">
+                        <img src="https://via.placeholder.com/400x300?text=Tartare+di+Manzo" alt="Tartare di Manzo Reale">
+                        <div class="menu-item-content">
+                            <h3>Tartare di Manzo Reale</h3>
+                            <p>Fine tartare di manzo svizzero con capperi, senape antica e tuorlo d'uovo biologico.</p>
+                            <span class="price">CHF 28.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="antipasti">
+                        <img src="https://via.placeholder.com/400x300?text=Fiori+di+Zucca" alt="Fiori di Zucca Fritti">
+                        <div class="menu-item-content">
+                            <h3>Fiori di Zucca Fritti</h3>
+                            <p>Fiori di zucca in tempura, ripieni di ricotta e alici, serviti con salsa leggera.</p>
+                            <span class="price">CHF 22.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="antipasti">
+                        <img src="https://via.placeholder.com/400x300?text=Selezione+Formaggi" alt="Selezione di Formaggi">
+                        <div class="menu-item-content">
+                            <h3>Selezione di Formaggi Ticinesi</h3>
+                            <p>Assortimento di formaggi locali, accompagnati da miele e confetture artigianali.</p>
+                            <span class="price">CHF 26.-</span>
+                        </div>
+                    </div>
+
+                    <!-- Primi Piatti -->
+                    <div class="menu-item animate-on-scroll" data-category="primi">
+                        <img src="https://via.placeholder.com/400x300?text=Risotto+Zafferano" alt="Risotto allo Zafferano">
+                        <div class="menu-item-content">
+                            <h3>Risotto allo Zafferano e Ossobuco</h3>
+                            <p>Classico risotto alla milanese con pistilli di zafferano e tenero ossobuco in gremolada.</p>
+                            <span class="price">CHF 32.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="primi">
+                        <img src="https://via.placeholder.com/400x300?text=Tagliatelle+Funghi" alt="Tagliatelle ai Funghi">
+                        <div class="menu-item-content">
+                            <h3>Tagliatelle ai Funghi Porcini Freschi</h3>
+                            <p>Pasta fresca fatta in casa con una ricca salsa ai funghi porcini raccolti localmente.</p>
+                            <span class="price">CHF 29.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="primi">
+                        <img src="https://via.placeholder.com/400x300?text=Ravioli+di+Zucca" alt="Ravioli di Zucca">
+                        <div class="menu-item-content">
+                            <h3>Ravioli di Zucca al Burro e Salvia</h3>
+                            <p>Ravioli artigianali con ripieno di zucca, conditi con burro fuso, salvia e amaretto.</p>
+                            <span class="price">CHF 27.-</span>
+                        </div>
+                    </div>
+
+                    <!-- Secondi Piatti -->
+                    <div class="menu-item animate-on-scroll" data-category="secondi">
+                        <img src="https://via.placeholder.com/400x300?text=Filetto+di+Manzo" alt="Filetto di Manzo">
+                        <div class="menu-item-content">
+                            <h3>Filetto di Manzo alla Rossini</h3>
+                            <p>Tenero filetto di manzo con foie gras, tartufo nero e salsa al Madera.</p>
+                            <span class="price">CHF 48.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="secondi">
+                        <img src="https://via.placeholder.com/400x300?text=Branzino+al+Sale" alt="Branzino al Sale">
+                        <div class="menu-item-content">
+                            <h3>Branzino al Sale (per 2 persone)</h3>
+                            <p>Branzino intero cotto al sale, servito con verdure di stagione e patate al forno.</p>
+                            <span class="price">CHF 75.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="secondi">
+                        <img src="https://via.placeholder.com/400x300?text=Costolette+Agnello" alt="Costolette d'Agnello">
+                        <div class="menu-item-content">
+                            <h3>Costolette d'Agnello Scotta Dito</h3>
+                            <p>Costolette d'agnello marinate e grigliate alla perfezione, con contorno di stagione.</p>
+                            <span class="price">CHF 42.-</span>
+                        </div>
+                    </div>
+
+                    <!-- Dolci -->
+                    <div class="menu-item animate-on-scroll" data-category="dolci">
+                        <img src="https://via.placeholder.com/400x300?text=Tiramisu+Classico" alt="Tiramisù Classico">
+                        <div class="menu-item-content">
+                            <h3>Tiramisù Classico</h3>
+                            <p>Il nostro intramontabile tiramisù, preparato secondo la ricetta tradizionale.</p>
+                            <span class="price">CHF 12.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="dolci">
+                        <img src="https://via.placeholder.com/400x300?text=Tortino+Cioccolato" alt="Tortino al Cioccolato">
+                        <div class="menu-item-content">
+                            <h3>Tortino al Cioccolato con Cuore Morbido</h3>
+                            <p>Servito caldo con una pallina di gelato alla vaniglia bourbon.</p>
+                            <span class="price">CHF 14.-</span>
+                        </div>
+                    </div>
+
+                    <!-- Bevande -->
+                    <div class="menu-item animate-on-scroll" data-category="bevande">
+                        <img src="https://via.placeholder.com/400x300?text=Vino+Rosso" alt="Selezione Vini Rossi">
+                        <div class="menu-item-content">
+                            <h3>Selezione Vini Rossi</h3>
+                            <p>Ampia scelta di vini rossi locali e internazionali. Chiedi la nostra carta dei vini.</p>
+                            <span class="price">da CHF 38.-</span>
+                        </div>
+                    </div>
+                    <div class="menu-item animate-on-scroll" data-category="bevande">
+                        <img src="https://via.placeholder.com/400x300?text=Acqua+Minerale" alt="Acqua Minerale">
+                        <div class="menu-item-content">
+                            <h3>Acqua Minerale (naturale/frizzante)</h3>
+                            <p>Bottiglia da 0.75L di acqua minerale Ticinese.</p>
+                            <span class="price">CHF 7.-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="specialties" class="specialties container">
+            <div class="section-title">
+                <h2>Le Nostre Specialità</h2>
+            </div>
+            <p class="text-center" style="margin-bottom: 3rem;">Scoprite i piatti e le esperienze che rendono il King's Barbershop un'esperienza culinaria unica.</p>
+            <div class="specialties-grid">
+                <div class="specialty-card animate-on-scroll">
+                    <img src="./images/5.jpg" alt="Specialità King's">
+                    <div class="specialty-card-content">
+                        <h3>Piatto del Re</h3>
+                        <p>Una creazione esclusiva del nostro chef, che cambia settimanalmente per offrirvi il meglio degli ingredienti di stagione.</p>
+                    </div>
+                </div>
+                <div class="specialty-card animate-on-scroll">
+                    <img src="https://via.placeholder.com/500x300?text=Cocktail+Artigianali" alt="Cocktail Artigianali">
+                    <div class="specialty-card-content">
+                        <h3>Cocktail d'Autore</h3>
+                        <p>Il nostro barman crea cocktail su misura, perfetti per accompagnare ogni momento della vostra serata.</p>
+                    </div>
+                </div>
+                <div class="specialty-card animate-on-scroll">
+                    <img src="https://via.placeholder.com/500x300?text=Serate+a+Tema" alt="Serate a Tema">
+                    <div class="specialty-card-content">
+                        <h3>Serate a Tema & Degustazioni</h3>
+                        <p>Eventi speciali e degustazioni guidate per esplorare sapori e abbinamenti unici in compagnia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery bg-dark">
+            <div class="container">
+                <div class="section-title text-light">
+                    <h2>La Nostra Atmosfera</h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="./images/3.jpg" alt="Interni King's Barbershop">
+                        <div class="gallery-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/600x400?text=Tavoli+Eleganti" alt="Tavoli Eleganti">
+                        <div class="gallery-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/600x400?text=Bar+Esclusivo" alt="Bar Esclusivo">
+                        <div class="gallery-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/600x400?text=Dettagli+Design" alt="Dettagli Design">
+                        <div class="gallery-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/600x400?text=Esterno+Ristorante" alt="Esterno Ristorante">
+                        <div class="gallery-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="https://via.placeholder.com/600x400?text=Cucina+a+Vista" alt="Cucina a Vista">
+                        <div class="gallery-item-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact container">
+            <div class="section-title">
+                <h2>Venite a Trovarci</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info animate-on-scroll">
+                    <h3>Informazioni di Contatto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Indirizzo:</strong> Via alla Chiesa 18, 6962 Viganello, Switzerland</p>
+                    <p><i class="fas fa-phone-alt"></i> <strong>Telefono:</strong> <a href="tel:0912245000">091 224 50 00</a></p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:info@kingsbarbershop.ch">info@kingsbarbershop.ch</a></p>
+                    <h3>Orari di Apertura</h3>
+                    <p><i class="fas fa-clock"></i> <strong>Martedì - Domenica:</strong> 12:00 - 14:30 | 18:30 - 22:30</p>
+                    <p><i class="fas fa-clock"></i> <strong>Lunedì:</strong> Chiuso</p>
+                </div>
+                <div class="map-container animate-on-scroll">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2737.58155986968!2d8.971550276632707!3d46.0094073004313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4784323d47d4e321%3A0xc39f9b5b2a0c784!2sVia%20alla%20Chiesa%2018%2C%206962%20Viganello%2C%20Svizzera!5e0!3m2!1sit!2sit!4v1701389086307!5m2!1sit!2sit"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 King's Barbershop Lugano da Farsat. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-menu ul li a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    hamburgerMenu.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Sticky Header (optional, if header background needs to change on scroll)
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(26, 26, 26, 1)';
+            } else {
+                header.style.backgroundColor = 'rgba(26, 26, 26, 0.9)';
+            }
+        });
+
+        // Scroll Animations with Intersection Observer
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Adjust as needed: percentage of target visibility to trigger callback
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Special handling for menu categories buttons for their staggered animation
+        const menuCategoryButtons = document.querySelectorAll('.menu-categories button');
+        const menuCategoryObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    menuCategoryButtons.forEach((button, index) => {
+                        setTimeout(() => {
+                            button.style.opacity = '1';
+                            button.style.transform = 'translateY(0)';
+                        }, index * 100); // Staggered delay
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 }); // More threshold for button visibility
+
+        const menuCategoriesContainer = document.querySelector('.menu-categories');
+        if (menuCategoriesContainer) {
+            menuCategoryObserver.observe(menuCategoriesContainer);
+        }
+
+        // Menu Filtering
+        const categoryButtons = document.querySelectorAll('.menu-categories button');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const category = button.dataset.category;
+
+                menuItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block'; // Show item
+                        // Re-add animation class to trigger animation again if needed or ensure visibility
+                        item.classList.add('is-visible');
+                    } else {
+                        item.style.display = 'none'; // Hide item
+                        item.classList.remove('is-visible'); // Remove animation class when hidden
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Set active class on nav links based on scroll position
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu ul li a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) { // Adjust offset as needed
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+    </script>
+<script src="../../editor.js"></script></body>
+</html>

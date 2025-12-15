@@ -3,7 +3,7 @@ import re
 from log import log
 class Lead:
     """
-    Represents a single business lead in the pipeline, with a built-in 
+    Represents a single business lead in the pipeline, with a built-in
     method to serialize itself for database insertion.
     """
     def __init__(self, id: int, name: str, phone: str, address: str, city: str, email: str = None,
@@ -23,11 +23,11 @@ class Lead:
 
     def change_status(self, s:int):
         self.status=s
-        
-    
+
+
     def to_dict(self) -> Dict:
         """
-        Converts the Lead instance into a dictionary suitable for 
+        Converts the Lead instance into a dictionary suitable for
         database or API interaction.
         """
         return {
@@ -37,23 +37,23 @@ class Lead:
             'address': self.address,
             'city': self.city,
             'email': self.email,
-            'images': self.images, 
+            'images': self.images,
             'status': self.status
         }
-        
+
     def add_images(self, images:List) -> None:
         for img in images:
             self.images.append(img)
         log(f"added images to lead: {images}")
         return 0
-    
+
     @classmethod
     def from_map_data(cls, lead_id: int, result: dict, city: str, website_status: str):
         """Creates a Lead instance from Google Maps API result data."""
-        
+
         # Google Maps API often combines address into 'formatted_address'.
         full_address = result.get('formatted_address', 'N/A')
-        
+
         # Clean phone number
         phone_raw = result.get('formatted_phone_number', '') or 'N/A'
         phone = re.sub(r'[^\d\+]', '', phone_raw)
@@ -71,5 +71,7 @@ class Lead:
             images=[],
             status=0
         )
-        
-        
+
+
+
+

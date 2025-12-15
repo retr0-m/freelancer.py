@@ -10,10 +10,10 @@ import qr_generator
 def create_preview_document(lead: Lead):
     INPUT_PDF = "./document_templates/proposal.pdf"
     OUTPUT_PDF = f"./leads/{lead.id}/documents/proposal.pdf"
-    QR_IMAGE = f"./leads/{lead.id}/documents/qr_code.png"      
+    QR_IMAGE = f"./leads/{lead.id}/documents/qr_code.png"
     TITLE_TEXT = lead.name
 
-    TITLE_X, TITLE_Y = 50, 780  
+    TITLE_X, TITLE_Y = 50, 780
 
     QR_X, QR_Y = 40, 550
     QR_WIDTH, QR_HEIGHT = 200, 200
@@ -44,17 +44,16 @@ def create_preview_document(lead: Lead):
         writer.write(f)
 
     log("Done! Created:", OUTPUT_PDF)
-    
-    
+
+
 if __name__ == "__main__":
     log("="*50)
     log("TESTING SCRIPT")
-    
+
     #TEST 1
     log('TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
     l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
-    
+
     qr_generator.generate_qr(l)
     create_preview_document(l)
-    
-    
+

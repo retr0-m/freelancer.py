@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar-Ristorante Pizzeria Bivio - Manno, Svizzera</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         /* CSS Reset & Variables */
         :root {
-            --primary-color: #A0522D; /* A warm, inviting tone */
-            --secondary-color: #3C2F2F; /* Dark brown for text/accents */
-            --accent-color: #FFD700; /* Gold for highlights */
+            --primary-color: #A0522D;
+            /* A warm, inviting tone */
+            --secondary-color: #3C2F2F;
+            /* Dark brown for text/accents */
+            --accent-color: #FFD700;
+            /* Gold for highlights */
             --light-bg: #F8F8F8;
             --dark-bg: #2C2C2C;
             --text-light: #F8F8F8;
@@ -27,7 +33,9 @@
             --header-height: 80px;
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -45,15 +53,28 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: var(--font-heading);
             color: var(--secondary-color);
             margin-bottom: var(--spacing-sm);
         }
 
-        h1 { font-size: 3.5rem; }
-        h2 { font-size: 2.5rem; }
-        h3 { font-size: 1.8rem; }
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+        }
 
         p {
             margin-bottom: var(--spacing-sm);
@@ -86,9 +107,17 @@
             padding: 0 var(--spacing-sm);
         }
 
-        .text-center { text-align: center; }
-        .text-left { text-align: left; }
-        .text-right { text-align: right; }
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
 
         .btn {
             display: inline-block;
@@ -124,8 +153,10 @@
             height: var(--header-height);
             display: flex;
             align-items: center;
-            opacity: 0; /* Initial state for animation */
-            transform: translateY(-100%); /* Initial state for animation */
+            opacity: 0;
+            /* Initial state for animation */
+            transform: translateY(-100%);
+            /* Initial state for animation */
             animation: slideDownFadeIn 0.8s forwards 0.5s;
         }
 
@@ -150,7 +181,8 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 200px; /* Limit width for long names */
+            max-width: 200px;
+            /* Limit width for long names */
         }
 
         .nav-menu {
@@ -185,6 +217,7 @@
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
+            margin-left: 10px;
         }
 
         .hamburger .bar {
@@ -203,10 +236,12 @@
             justify-content: center;
             text-align: center;
             color: var(--text-light);
-            background-image: url('./images/1.jpg'); /* Use one of the provided images */
+            background-image: url('./images/3.jpg');
+            /* Use one of the provided images */
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            background-attachment: fixed;
+            /* Parallax effect */
             overflow: hidden;
         }
 
@@ -217,7 +252,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Overlay for readability */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Overlay for readability */
             z-index: 1;
         }
 
@@ -228,7 +264,8 @@
             padding: var(--spacing-md);
             transform: translateY(20px);
             opacity: 0;
-            animation: fadeInUp 1s forwards 1s; /* Animate after header */
+            animation: fadeInUp 1s forwards 1s;
+            /* Animate after header */
         }
 
         @keyframes fadeInUp {
@@ -289,6 +326,7 @@
         .animate-on-scroll.scale-in {
             transform: scale(0.9);
         }
+
         .animate-on-scroll.scale-in.active {
             transform: scale(1);
         }
@@ -301,7 +339,8 @@
             align-items: center;
         }
 
-        .about-text, .about-image {
+        .about-text,
+        .about-image {
             flex: 1;
             min-width: 300px;
         }
@@ -350,7 +389,8 @@
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-            pointer-events: auto; /* Ensure interaction by default */
+            pointer-events: auto;
+            /* Ensure interaction by default */
         }
 
         .menu-item:hover {
@@ -382,9 +422,11 @@
             color: var(--text-light);
             padding: var(--spacing-xl) 0;
         }
+
         .gallery .section-header h2 {
             color: var(--text-light);
         }
+
         .gallery .section-header h2::after {
             background-color: var(--accent-color);
         }
@@ -404,7 +446,8 @@
 
         .gallery-item img {
             width: 100%;
-            height: 250px; /* Fixed height for consistency */
+            height: 250px;
+            /* Fixed height for consistency */
             object-fit: cover;
             transition: transform 0.5s ease;
         }
@@ -447,14 +490,17 @@
             align-items: start;
         }
 
-        .contact-info, .opening-hours, .contact-map {
+        .contact-info,
+        .opening-hours,
+        .contact-map {
             background-color: #fff;
             padding: var(--spacing-md);
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
-        .contact-info h3, .opening-hours h3 {
+        .contact-info h3,
+        .opening-hours h3 {
             color: var(--primary-color);
             margin-bottom: var(--spacing-sm);
         }
@@ -470,6 +516,7 @@
             border-bottom: 1px dotted #ccc;
             padding-bottom: 5px;
         }
+
         .opening-hours ul li:last-child {
             border-bottom: none;
         }
@@ -502,15 +549,30 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2rem; }
-            .hero-content h1 { font-size: 3.5rem; }
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
         }
 
         @media (max-width: 768px) {
             .header {
-                height: var(--header-height); /* Ensure header stays fixed height */
+                height: var(--header-height);
+                /* Ensure header stays fixed height */
             }
+
+            .hero {
+                /* Questo fa sì che l'immagine sia visibile su iOS */
+                background-attachment: scroll;
+            }
+
             .nav-menu {
                 display: none;
                 flex-direction: column;
@@ -540,15 +602,18 @@
 
             .hamburger {
                 display: flex;
-                z-index: 1001; /* Ensure hamburger is above nav-menu when active */
+                z-index: 1001;
+                /* Ensure hamburger is above nav-menu when active */
             }
 
             .hamburger.active .bar:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
             }
+
             .hamburger.active .bar:nth-child(2) {
                 opacity: 0;
             }
+
             .hamburger.active .bar:nth-child(3) {
                 transform: translateY(-8px) rotate(-45deg);
             }
@@ -556,6 +621,7 @@
             .hero-content h1 {
                 font-size: 2.5rem;
             }
+
             .hero-content p {
                 font-size: 1rem;
             }
@@ -566,10 +632,13 @@
             }
 
             .about-image {
-                order: -1; /* Image above text on mobile */
+                order: -1;
+                /* Image above text on mobile */
             }
 
-            .menu-items, .gallery-grid, .contact-grid {
+            .menu-items,
+            .gallery-grid,
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -579,15 +648,30 @@
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.8rem; }
-            .hero-content h1 { font-size: 2rem; }
-            .hero-content p { font-size: 0.9rem; }
-            .logo { font-size: 1.5rem; max-width: 150px;}
-        }
+            h1 {
+                font-size: 2.5rem;
+            }
 
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+                max-width: 150px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <header class="header" id="header">
         <div class="container">
@@ -622,12 +706,22 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Chi Siamo</h2>
+                    <p> <i>Tutto il testo e il menu che segue è soltanto un esempio, verrà sostituito su richiesta.</i>
+                    </p>
                 </div>
                 <div class="about-content">
                     <div class="about-text animate-on-scroll scale-in">
-                        <p>Benvenuti al Bar-Ristorante Pizzeria Bivio, un luogo dove la tradizione culinaria incontra la passione per i sapori autentici. Situati in Via Cantonale 37 a Manno, Svizzera, siamo un punto di riferimento per chi cerca piatti deliziosi in un ambiente accogliente e familiare.</p>
-                        <p>Dal 1990, il Bivio è sinonimo di qualità e ospitalità. Offriamo una vasta selezione di pizze cotte nel forno a legna, primi piatti della tradizione italiana, succulenti secondi e dolci fatti in casa. Il nostro bar è il luogo ideale per una pausa caffè o un aperitivo tra amici.</p>
-                        <p>Crediamo nella freschezza degli ingredienti e nella cura dei dettagli, per garantire un'esperienza gastronomica indimenticabile a ogni visita. Vi aspettiamo per condividere con voi la nostra passione per il buon cibo e la buona compagnia.</p>
+                        <p>Benvenuti al Bar-Ristorante Pizzeria Bivio, un luogo dove la tradizione culinaria incontra la
+                            passione per i sapori autentici. Situati in Via Cantonale 37 a Manno, Svizzera, siamo un
+                            punto di riferimento per chi cerca piatti deliziosi in un ambiente accogliente e familiare.
+                        </p>
+                        <p>Dal 1990, il Bivio è sinonimo di qualità e ospitalità. Offriamo una vasta selezione di pizze
+                            cotte nel forno a legna, primi piatti della tradizione italiana, succulenti secondi e dolci
+                            fatti in casa. Il nostro bar è il luogo ideale per una pausa caffè o un aperitivo tra amici.
+                        </p>
+                        <p>Crediamo nella freschezza degli ingredienti e nella cura dei dettagli, per garantire
+                            un'esperienza gastronomica indimenticabile a ogni visita. Vi aspettiamo per condividere con
+                            voi la nostra passione per il buon cibo e la buona compagnia.</p>
                     </div>
                     <div class="about-image animate-on-scroll">
                         <img src="./images/2.jpg" alt="Interno del ristorante Bivio">
@@ -677,7 +771,7 @@
                         <p>Pomodoro, mozzarella, salamino piccante, cipolla, olive.</p>
                         <span class="price">CHF 20.50</span>
                     </div>
-                     <div class="menu-item animate-on-scroll" data-category="pizze">
+                    <div class="menu-item animate-on-scroll" data-category="pizze">
                         <h3>Pizza Quattro Stagioni</h3>
                         <p>Pomodoro, mozzarella, funghi, carciofi, prosciutto, olive.</p>
                         <span class="price">CHF 19.50</span>
@@ -740,12 +834,6 @@
                         <img src="./images/4.jpg" alt="Pizza appena sfornata">
                         <div class="gallery-item-overlay">
                             <h3>Pizza Artigianale</h3>
-                        </div>
-                    </div>
-                    <div class="gallery-item animate-on-scroll scale-in">
-                        <img src="./images/5.jpg" alt="Dessert al cioccolato">
-                        <div class="gallery-item-overlay">
-                            <h3>Dolci Fatti in Casa</h3>
                         </div>
                     </div>
                     <div class="gallery-item animate-on-scroll scale-in">
@@ -892,4 +980,5 @@
 
     </script>
 </body>
+
 </html>

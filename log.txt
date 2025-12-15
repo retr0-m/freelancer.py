@@ -1895,3 +1895,658 @@
 [2025-12-05 14:04:05.544]	[preview.py]		opening editor
 [2025-12-05 14:04:05.556]	[preview.py]		Copied images to ./graphical_editor/temp/1/images
 [2025-12-05 14:04:05.556]	[preview.py]		Made temp file in: ./graphical_editor/temp/1/index.html
+[2025-12-06 13:19:46.929]	[images_description.py]		TESTING SCRIPT
+[2025-12-06 13:19:47.087]	[images_description.py]		Generating caption...
+[2025-12-06 13:24:41.940]	[images_description.py]		TESTING SCRIPT
+[2025-12-06 13:24:42.150]	[images_description.py]		Generating caption...
+[2025-12-06 13:28:27.410]	[images_description.py]		TESTING SCRIPT
+[2025-12-06 13:28:27.792]	[images_description.py]		Generating caption...
+[2025-12-06 13:35:34.277]	[images_description.py]		TESTING SCRIPT
+[2025-12-06 13:35:34.597]	[images_description.py]		Generating caption...
+
+[2025-12-09 08:24:09.038]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 08:24:09.038]	[main.py]		==================================================
+[2025-12-09 08:24:09.039]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:24:09.056]	[database.py]		Successfully established database connection.
+[2025-12-09 08:24:09.056]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 08:24:09.057]	[database.py]		Database connection closed after initialization.
+[2025-12-09 08:24:10.435]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:24:10.437]	[database.py]		Successfully established database connection.
+[2025-12-09 08:24:10.438]	[database.py]		Last lead ID in database: 19
+[2025-12-09 08:24:10.526]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:24:10.527]	[database.py]		Successfully established database connection.
+[2025-12-09 08:24:10.529]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 08:24:10.530]	[database.py]		Lead not found.
+[2025-12-09 08:24:10.531]	[find_customers.py]		🎯 LEAD found and initialized: ID 20, Aram Barber shop
+[2025-12-09 08:24:10.539]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 08:24:10.539]	[scrape_images.py]		Searching images for: Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland
+[2025-12-09 08:24:11.153]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=143000741804341
+[2025-12-09 08:24:11.393]	[scrape_images.py]		Downloaded: ./leads/20/images/2.jpg
+[2025-12-09 08:24:11.547]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=235465149224566
+[2025-12-09 08:24:11.751]	[scrape_images.py]		Downloaded: ./leads/20/images/4.jpg
+[2025-12-09 08:24:11.937]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=138774995560249
+[2025-12-09 08:24:12.697]	[scrape_images.py]		Downloaded: ./leads/20/images/1.jpeg
+[2025-12-09 08:24:12.938]	[scrape_images.py]		Skipped small image (191 bytes): https://images.fresha.com/locations/location-profile-images/1165121/5019397/d15e1040-5809-42f3-8247-178c13f71442-SILVERBEAUTYCLINICFREETIME-CH-Ticino-Lugano-Cassarate-Fresha.jpg
+[2025-12-09 08:24:13.189]	[scrape_images.py]		Downloaded: ./leads/20/images/3.jpg
+[2025-12-09 08:24:13.540]	[scrape_images.py]		API Error while fetching images: {'kind': 'customsearch#search', 'url': {'type': 'application/json', 'template': 'https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json'}, 'queries': {'previousPage': [{'title': 'Google Custom Search - Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'searchTerms': 'Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'count': 1, 'startIndex': 8, 'inputEncoding': 'utf8', 'outputEncoding': 'utf8', 'safe': 'off', 'cx': 'a29cfb8480b8d4b9f', 'searchType': 'image', 'imgSize': 'xxlarge'}], 'request': [{'title': 'Google Custom Search - Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'searchTerms': 'Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'count': 1, 'startIndex': 9, 'inputEncoding': 'utf8', 'outputEncoding': 'utf8', 'safe': 'off', 'cx': 'a29cfb8480b8d4b9f', 'searchType': 'image', 'imgSize': 'xxlarge'}]}, 'context': {'title': 'freelancer.py'}, 'searchInformation': {'searchTime': 0.23921, 'formattedSearchTime': '0.24', 'totalResults': '0', 'formattedTotalResults': '0'}}
+[2025-12-09 08:24:13.540]	[scrape_images.py]		Aborting...
+
+[2025-12-09 08:38:08.427]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 08:38:08.427]	[main.py]		==================================================
+[2025-12-09 08:38:08.428]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:38:08.430]	[database.py]		Successfully established database connection.
+[2025-12-09 08:38:08.430]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 08:38:08.430]	[database.py]		Database connection closed after initialization.
+[2025-12-09 08:38:09.184]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:38:09.186]	[database.py]		Successfully established database connection.
+[2025-12-09 08:38:09.188]	[database.py]		Last lead ID in database: 19
+[2025-12-09 08:38:09.300]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:38:09.300]	[database.py]		Successfully established database connection.
+[2025-12-09 08:38:09.301]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 08:38:09.301]	[database.py]		Lead not found.
+[2025-12-09 08:38:09.302]	[find_customers.py]		🎯 LEAD found and initialized: ID 20, Aram Barber shop
+[2025-12-09 08:38:09.308]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 08:38:09.308]	[scrape_images.py]		Searching images for: Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland
+[2025-12-09 08:38:09.904]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=143000741804341
+[2025-12-09 08:38:10.161]	[scrape_images.py]		Downloaded: ./leads/20/images/2.jpg
+[2025-12-09 08:38:10.330]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=235465149224566
+[2025-12-09 08:38:10.450]	[scrape_images.py]		Downloaded: ./leads/20/images/4.jpg
+[2025-12-09 08:38:10.603]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=138774995560249
+[2025-12-09 08:38:11.237]	[scrape_images.py]		Downloaded: ./leads/20/images/1.jpeg
+[2025-12-09 08:38:11.466]	[scrape_images.py]		Skipped small image (191 bytes): https://images.fresha.com/locations/location-profile-images/1165121/5019397/d15e1040-5809-42f3-8247-178c13f71442-SILVERBEAUTYCLINICFREETIME-CH-Ticino-Lugano-Cassarate-Fresha.jpg
+[2025-12-09 08:38:11.707]	[scrape_images.py]		Downloaded: ./leads/20/images/3.jpg
+[2025-12-09 08:38:12.101]	[scrape_images.py]		API Error while fetching images: {'kind': 'customsearch#search', 'url': {'type': 'application/json', 'template': 'https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json'}, 'queries': {'previousPage': [{'title': 'Google Custom Search - Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'searchTerms': 'Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'count': 1, 'startIndex': 8, 'inputEncoding': 'utf8', 'outputEncoding': 'utf8', 'safe': 'off', 'cx': 'a29cfb8480b8d4b9f', 'searchType': 'image', 'imgSize': 'xxlarge'}], 'request': [{'title': 'Google Custom Search - Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'searchTerms': 'Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'count': 1, 'startIndex': 9, 'inputEncoding': 'utf8', 'outputEncoding': 'utf8', 'safe': 'off', 'cx': 'a29cfb8480b8d4b9f', 'searchType': 'image', 'imgSize': 'xxlarge'}]}, 'context': {'title': 'freelancer.py'}, 'searchInformation': {'searchTime': 0.262441, 'formattedSearchTime': '0.26', 'totalResults': '0', 'formattedTotalResults': '0'}}
+[2025-12-09 08:38:12.102]	[scrape_images.py]		Aborting...
+[2025-12-09 08:46:45.941]	[scrape_images.py]		==================================================
+[2025-12-09 08:46:45.942]	[scrape_images.py]		TESTING SCRIPT
+[2025-12-09 08:46:45.942]	[scrape_images.py]		TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
+[2025-12-09 08:46:45.942]	[scrape_images.py]		Searching images for: Al-74 Via Trevano 74, 6900 Lugano, Switzerland
+[2025-12-09 08:46:46.625]	[scrape_images.py]		Downloaded: ./leads/150/images/1.jpg
+[2025-12-09 08:46:47.196]	[scrape_images.py]		Downloaded: ./leads/150/images/2.jpg
+[2025-12-09 08:46:47.373]	[scrape_images.py]		Downloaded: ./leads/150/images/3.jpg
+[2025-12-09 08:46:47.981]	[scrape_images.py]		Downloaded: ./leads/150/images/4.jpg
+[2025-12-09 08:46:48.260]	[scrape_images.py]		Downloaded: ./leads/150/images/5.jpg
+[2025-12-09 08:46:48.260]	[scrape_images.py]		images scraping done
+
+[2025-12-09 08:46:58.598]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 08:46:58.598]	[main.py]		==================================================
+[2025-12-09 08:46:58.598]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:46:58.601]	[database.py]		Successfully established database connection.
+[2025-12-09 08:46:58.601]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 08:46:58.601]	[database.py]		Database connection closed after initialization.
+[2025-12-09 08:46:59.326]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:46:59.327]	[database.py]		Successfully established database connection.
+[2025-12-09 08:46:59.327]	[database.py]		Last lead ID in database: 19
+[2025-12-09 08:46:59.404]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:46:59.405]	[database.py]		Successfully established database connection.
+[2025-12-09 08:46:59.405]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 08:46:59.405]	[database.py]		Lead not found.
+[2025-12-09 08:46:59.405]	[find_customers.py]		🎯 LEAD found and initialized: ID 20, Aram Barber shop
+[2025-12-09 08:46:59.410]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 08:46:59.410]	[scrape_images.py]		Searching images for: Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland
+[2025-12-09 08:46:59.806]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=143000741804341
+[2025-12-09 08:47:00.027]	[scrape_images.py]		Downloaded: ./leads/20/images/2.jpg
+[2025-12-09 08:47:00.179]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=235465149224566
+[2025-12-09 08:47:00.310]	[scrape_images.py]		Downloaded: ./leads/20/images/4.jpg
+[2025-12-09 08:47:00.434]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=138774995560249
+[2025-12-09 08:47:00.844]	[scrape_images.py]		Downloaded: ./leads/20/images/1.jpeg
+[2025-12-09 08:47:01.090]	[scrape_images.py]		Skipped small image (191 bytes): https://images.fresha.com/locations/location-profile-images/1165121/5019397/d15e1040-5809-42f3-8247-178c13f71442-SILVERBEAUTYCLINICFREETIME-CH-Ticino-Lugano-Cassarate-Fresha.jpg
+[2025-12-09 08:47:01.208]	[scrape_images.py]		Downloaded: ./leads/20/images/3.jpg
+[2025-12-09 08:47:01.622]	[scrape_images.py]		API Error while fetching images: {'kind': 'customsearch#search', 'url': {'type': 'application/json', 'template': 'https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json'}, 'queries': {'previousPage': [{'title': 'Google Custom Search - Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'searchTerms': 'Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'count': 1, 'startIndex': 8, 'inputEncoding': 'utf8', 'outputEncoding': 'utf8', 'safe': 'off', 'cx': 'a29cfb8480b8d4b9f', 'searchType': 'image', 'imgSize': 'xxlarge'}], 'request': [{'title': 'Google Custom Search - Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'searchTerms': 'Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland', 'count': 1, 'startIndex': 9, 'inputEncoding': 'utf8', 'outputEncoding': 'utf8', 'safe': 'off', 'cx': 'a29cfb8480b8d4b9f', 'searchType': 'image', 'imgSize': 'xxlarge'}]}, 'context': {'title': 'freelancer.py'}, 'searchInformation': {'searchTime': 0.248468, 'formattedSearchTime': '0.25', 'totalResults': '0', 'formattedTotalResults': '0'}}
+[2025-12-09 08:47:01.623]	[scrape_images.py]		Aborting...
+[2025-12-09 08:58:14.625]	[scrape_images.py]		==================================================
+[2025-12-09 08:58:14.627]	[scrape_images.py]		TESTING SCRIPT
+[2025-12-09 08:58:14.627]	[scrape_images.py]		TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
+[2025-12-09 08:58:14.627]	[scrape_images.py]		Searching images for: Al-74 Via Trevano 74, 6900 Lugano, Switzerland
+[2025-12-09 08:58:15.324]	[scrape_images.py]		Downloaded: ./leads/150/images/1.jpg
+[2025-12-09 08:58:15.487]	[scrape_images.py]		Downloaded: ./leads/150/images/2.jpg
+[2025-12-09 08:58:15.685]	[scrape_images.py]		Downloaded: ./leads/150/images/3.jpg
+[2025-12-09 08:58:15.962]	[scrape_images.py]		Downloaded: ./leads/150/images/4.jpg
+[2025-12-09 08:58:16.107]	[scrape_images.py]		Downloaded: ./leads/150/images/5.jpg
+[2025-12-09 08:58:16.107]	[scrape_images.py]		images scraping done
+
+[2025-12-09 08:58:26.892]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 08:58:26.892]	[main.py]		==================================================
+[2025-12-09 08:58:26.892]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:58:26.895]	[database.py]		Successfully established database connection.
+[2025-12-09 08:58:26.895]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 08:58:26.895]	[database.py]		Database connection closed after initialization.
+[2025-12-09 08:58:27.468]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:58:27.468]	[database.py]		Successfully established database connection.
+[2025-12-09 08:58:27.469]	[database.py]		Last lead ID in database: 19
+[2025-12-09 08:58:27.630]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:58:27.631]	[database.py]		Successfully established database connection.
+[2025-12-09 08:58:27.631]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 08:58:27.631]	[database.py]		Lead not found.
+[2025-12-09 08:58:27.631]	[find_customers.py]		🎯 LEAD found and initialized: ID 20, Aram Barber shop
+[2025-12-09 08:58:27.636]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 08:58:27.636]	[scrape_images.py]		Searching images for: Aram Barber shop Viale Carlo Cattaneo 27, 6900 Lugano, Switzerland
+[2025-12-09 08:58:27.999]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=143000741804341
+[2025-12-09 08:58:28.187]	[scrape_images.py]		Downloaded: ./leads/20/images/2.jpg
+[2025-12-09 08:58:28.319]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=235465149224566
+[2025-12-09 08:58:28.559]	[scrape_images.py]		Downloaded: ./leads/20/images/4.jpg
+[2025-12-09 08:58:28.674]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=138774995560249
+[2025-12-09 08:58:29.212]	[scrape_images.py]		Downloaded: ./leads/20/images/1.jpeg
+[2025-12-09 08:58:29.460]	[scrape_images.py]		Skipped small image (191 bytes): https://images.fresha.com/locations/location-profile-images/1165121/5019397/d15e1040-5809-42f3-8247-178c13f71442-SILVERBEAUTYCLINICFREETIME-CH-Ticino-Lugano-Cassarate-Fresha.jpg
+[2025-12-09 08:58:29.730]	[scrape_images.py]		Downloaded: ./leads/20/images/3.jpg
+[2025-12-09 08:58:30.121]	[scrape_images.py]		No more images found.
+[2025-12-09 08:58:30.122]	[scrape_images.py]		images scraping done
+[2025-12-09 08:58:30.123]	[lead.py]		added images to lead: ['./leads/20/images/1.jpeg', './leads/20/images/2.jpg', './leads/20/images/3.jpg', './leads/20/images/4.jpg']
+[2025-12-09 08:58:30.123]	[create_website.py]		Initializing client
+[2025-12-09 08:58:30.196]	[create_website.py]		CLient initialized
+[2025-12-09 08:58:30.196]	[create_website.py]		Generating prompt...
+[2025-12-09 08:58:30.197]	[create_website.py]		Done!
+[2025-12-09 08:58:30.197]	[create_website.py]		prompting model for website...
+[2025-12-09 08:59:10.966]	[create_website.py]		Checking if content is HTML
+[2025-12-09 08:59:10.969]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-09 08:59:10.970]	[create_website.py]		Saving website content to ./leads/20/index.html
+[2025-12-09 08:59:10.971]	[create_website.py]		Done writing 27327 characters into the index file
+[2025-12-09 08:59:10.994]	[qr_generator.py]		qr generated... saving it...
+[2025-12-09 08:59:11.022]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-09 08:59:11.023]	[qr_generator.py]		done!
+[2025-12-09 08:59:11.060]	[create_documentation.py]		Done! Created:
+[2025-12-09 08:59:11.060]	[create_documentation.py]		./leads/20/documents/proposal.pdf
+[2025-12-09 08:59:11.060]	[database.py]		Attempting to insert new lead: ID 20, Name: Aram Barber shop
+[2025-12-09 08:59:11.060]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 08:59:11.061]	[database.py]		Successfully established database connection.
+[2025-12-09 08:59:11.062]	[database.py]		Database connection closed after insertion attempt.
+
+[2025-12-09 09:01:42.555]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 09:01:42.555]	[main.py]		==================================================
+[2025-12-09 09:01:42.555]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:01:42.557]	[database.py]		Successfully established database connection.
+[2025-12-09 09:01:42.558]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 09:01:42.558]	[database.py]		Database connection closed after initialization.
+[2025-12-09 09:01:43.077]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:01:43.078]	[database.py]		Successfully established database connection.
+[2025-12-09 09:01:43.078]	[database.py]		Last lead ID in database: 20
+[2025-12-09 09:01:43.134]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:01:43.135]	[database.py]		Successfully established database connection.
+[2025-12-09 09:01:43.135]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 09:01:43.135]	[database.py]		Lead exists. Status = 2
+[2025-12-09 09:01:43.135]	[find_customers.py]		Lead (Aram Barber shop) skipped because it was already existing in db
+[2025-12-09 09:01:43.394]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:01:43.395]	[database.py]		Successfully established database connection.
+[2025-12-09 09:01:43.395]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ["King's Barbershop Lugano da Farsat"]
+[2025-12-09 09:01:43.396]	[database.py]		Lead not found.
+[2025-12-09 09:01:43.396]	[find_customers.py]		🎯 LEAD found and initialized: ID 21, King's Barbershop Lugano da Farsat
+[2025-12-09 09:01:43.400]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 09:01:43.400]	[scrape_images.py]		Searching images for: King's Barbershop Lugano da Farsat Via alla Chiesa 18, 6962 Viganello, Switzerland
+[2025-12-09 09:01:44.936]	[scrape_images.py]		Downloaded: ./leads/21/images/1.jpg
+[2025-12-09 09:01:45.174]	[scrape_images.py]		Skipped small image (388 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1039563603671726
+[2025-12-09 09:01:46.425]	[scrape_images.py]		Downloaded: ./leads/21/images/3.jpg
+[2025-12-09 09:01:46.548]	[scrape_images.py]		Skipped small image (388 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1039563607005059
+[2025-12-09 09:01:47.619]	[scrape_images.py]		Downloaded: ./leads/21/images/5.jpg
+[2025-12-09 09:01:48.305]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=859993158295439
+[2025-12-09 09:01:49.451]	[scrape_images.py]		Downloaded: ./leads/21/images/2.jpg
+[2025-12-09 09:01:50.072]	[scrape_images.py]		Skipped small image (386 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=918030919158329
+[2025-12-09 09:01:51.108]	[scrape_images.py]		Skipped small image (394 bytes): https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=1642523406124840
+[2025-12-09 09:01:51.472]	[scrape_images.py]		No more images found.
+[2025-12-09 09:01:51.472]	[scrape_images.py]		images scraping done
+[2025-12-09 09:01:51.472]	[lead.py]		added images to lead: ['./leads/21/images/1.jpg', './leads/21/images/2.jpg', './leads/21/images/3.jpg', './leads/21/images/5.jpg']
+[2025-12-09 09:01:51.473]	[create_website.py]		Initializing client
+[2025-12-09 09:01:51.536]	[create_website.py]		CLient initialized
+[2025-12-09 09:01:51.536]	[create_website.py]		Generating prompt...
+[2025-12-09 09:01:51.536]	[create_website.py]		Done!
+[2025-12-09 09:01:51.536]	[create_website.py]		prompting model for website...
+[2025-12-09 09:02:50.712]	[create_website.py]		Checking if content is HTML
+[2025-12-09 09:02:50.715]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-09 09:02:50.716]	[create_website.py]		Saving website content to ./leads/21/index.html
+[2025-12-09 09:02:50.717]	[create_website.py]		Done writing 42368 characters into the index file
+[2025-12-09 09:02:50.740]	[qr_generator.py]		qr generated... saving it...
+[2025-12-09 09:02:50.754]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-09 09:02:50.755]	[qr_generator.py]		done!
+[2025-12-09 09:02:50.790]	[create_documentation.py]		Done! Created:
+[2025-12-09 09:02:50.790]	[create_documentation.py]		./leads/21/documents/proposal.pdf
+[2025-12-09 09:02:50.791]	[database.py]		Attempting to insert new lead: ID 21, Name: King's Barbershop Lugano da Farsat
+[2025-12-09 09:02:50.791]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:02:50.791]	[database.py]		Successfully established database connection.
+[2025-12-09 09:02:50.792]	[database.py]		✅ Lead successfully inserted. New Row ID: 21 (Lead ID: 21)
+[2025-12-09 09:02:50.792]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-09 09:02:50.792]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-09 09:02:50.793]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:02:50.793]	[database.py]		Successfully established database connection.
+[2025-12-09 09:02:50.793]	[database.py]		Successfully displayed 20 leads.
+[2025-12-09 09:02:50.793]	[preview.py]		opening editor
+[2025-12-09 09:02:50.810]	[preview.py]		Copied images to ./graphical_editor/temp/21/images
+[2025-12-09 09:02:50.811]	[preview.py]		Made temp file in: ./graphical_editor/temp/21/index.html
+
+[2025-12-09 09:05:29.746]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 09:05:29.746]	[main.py]		==================================================
+[2025-12-09 09:05:29.747]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:05:29.749]	[database.py]		Successfully established database connection.
+[2025-12-09 09:05:29.749]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 09:05:29.749]	[database.py]		Database connection closed after initialization.
+[2025-12-09 09:05:30.451]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:05:30.453]	[database.py]		Successfully established database connection.
+[2025-12-09 09:05:30.454]	[database.py]		Last lead ID in database: 21
+[2025-12-09 09:05:30.654]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:05:30.660]	[database.py]		Successfully established database connection.
+[2025-12-09 09:05:30.661]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ["King's Barbershop Lugano da Farsat"]
+[2025-12-09 09:05:30.662]	[database.py]		Lead exists. Status = 2
+[2025-12-09 09:05:30.662]	[find_customers.py]		Lead (King's Barbershop Lugano da Farsat) skipped because it was already existing in db
+[2025-12-09 09:05:30.790]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:05:30.792]	[database.py]		Successfully established database connection.
+[2025-12-09 09:05:30.792]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 09:05:30.793]	[database.py]		Lead exists. Status = 2
+[2025-12-09 09:05:30.794]	[find_customers.py]		Lead (Aram Barber shop) skipped because it was already existing in db
+[2025-12-09 09:05:31.116]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:05:31.118]	[database.py]		Successfully established database connection.
+[2025-12-09 09:05:31.118]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Barbershop Wellington Fade']
+[2025-12-09 09:05:31.119]	[database.py]		Lead not found.
+[2025-12-09 09:05:31.120]	[find_customers.py]		🎯 LEAD found and initialized: ID 22, Barbershop Wellington Fade
+[2025-12-09 09:05:31.128]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 09:05:31.129]	[scrape_images.py]		Searching images for: Barbershop Wellington Fade Via alle Caragne 1, 6900 Lugano, Switzerland
+[2025-12-09 09:05:31.636]	[scrape_images.py]		Downloaded: ./leads/22/images/1.jpg
+[2025-12-09 09:05:31.876]	[scrape_images.py]		Skipped small image (144 bytes): https://www.tiktok.com/api/img/?itemId=7571159997409692950&location=0&aid=1988
+[2025-12-09 09:05:32.126]	[scrape_images.py]		Downloaded: ./leads/22/images/3.jpg
+[2025-12-09 09:05:32.255]	[scrape_images.py]		Downloaded: ./leads/22/images/4.jpg
+[2025-12-09 09:05:32.507]	[scrape_images.py]		No more images found.
+[2025-12-09 09:05:32.509]	[scrape_images.py]		images scraping done
+[2025-12-09 09:05:32.511]	[lead.py]		added images to lead: ['./leads/22/images/1.jpg', './leads/22/images/3.jpg', './leads/22/images/4.jpg']
+[2025-12-09 09:05:32.511]	[create_website.py]		Initializing client
+[2025-12-09 09:05:32.594]	[create_website.py]		CLient initialized
+[2025-12-09 09:05:32.595]	[create_website.py]		Generating prompt...
+[2025-12-09 09:05:32.595]	[create_website.py]		Done!
+[2025-12-09 09:05:32.595]	[create_website.py]		prompting model for website...
+[2025-12-09 09:06:18.389]	[create_website.py]		Checking if content is HTML
+[2025-12-09 09:06:18.392]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-09 09:06:18.392]	[create_website.py]		Saving website content to ./leads/22/index.html
+[2025-12-09 09:06:18.393]	[create_website.py]		Done writing 25583 characters into the index file
+[2025-12-09 09:06:18.413]	[qr_generator.py]		qr generated... saving it...
+[2025-12-09 09:06:18.426]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-09 09:06:18.427]	[qr_generator.py]		done!
+[2025-12-09 09:06:18.461]	[create_documentation.py]		Done! Created:
+[2025-12-09 09:06:18.461]	[create_documentation.py]		./leads/22/documents/proposal.pdf
+[2025-12-09 09:06:18.461]	[database.py]		Attempting to insert new lead: ID 22, Name: Barbershop Wellington Fade
+[2025-12-09 09:06:18.462]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:06:18.462]	[database.py]		Successfully established database connection.
+[2025-12-09 09:06:18.463]	[database.py]		✅ Lead successfully inserted. New Row ID: 22 (Lead ID: 22)
+[2025-12-09 09:06:18.464]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-09 09:06:18.464]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-09 09:06:18.464]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:06:18.464]	[database.py]		Successfully established database connection.
+[2025-12-09 09:06:18.464]	[database.py]		Successfully displayed 20 leads.
+[2025-12-09 09:06:18.465]	[preview.py]		opening editor
+[2025-12-09 09:06:18.475]	[preview.py]		Copied images to ./graphical_editor/temp/22/images
+[2025-12-09 09:06:18.475]	[preview.py]		Made temp file in: ./graphical_editor/temp/22/index.html
+[2025-12-09 09:08:09.272]	[graphical_editor.py]		Initialized Edit class based on data received: Edit(generic='Make a scroll animation with the first image. (hero)', specific={'h1:nth-child(1)': 'Cambia questo testo con qualcosa di più semplice'})
+[2025-12-09 09:08:09.275]	[graphical_editor.py]		Generating prompt...
+[2025-12-09 09:08:09.278]	[graphical_editor.py]		Done!
+[2025-12-09 09:08:09.278]	[graphical_editor.py]		Initializing client
+[2025-12-09 09:08:09.294]	[graphical_editor.py]		CLient initialized
+[2025-12-09 09:08:09.295]	[graphical_editor.py]		prompting model to apply edits...
+[2025-12-09 09:08:44.036]	[create_website.py]		Checking if content is HTML
+[2025-12-09 09:08:44.039]	[graphical_editor.py]		Succesfully received a response with HTML code.
+[2025-12-09 09:08:44.040]	[graphical_editor.py]		Replacing website content on ./graphical_editor/temp/22/index.html
+[2025-12-09 09:08:44.042]	[graphical_editor.py]		Done writing 25673 characters into the index file
+[2025-12-09 09:08:44.043]	[graphical_editor.py]		Replacing website content on ./leads/22/index.html
+[2025-12-09 09:08:44.044]	[graphical_editor.py]		Done writing 25673 characters into the index file
+[2025-12-09 09:18:05.464]	[graphical_editor.py]		Replacing website content on ./leads/22/index.html
+[2025-12-09 09:18:05.470]	[graphical_editor.py]		Done writing 25673 characters into the index file
+[2025-12-09 09:18:05.596]	[ftp_manager.py]		Attempting to connect to FTPS...
+[2025-12-09 09:18:06.102]	[ftp_manager.py]		Succesfully connected!
+[2025-12-09 09:18:06.872]	[ftp_manager.py]		Uploading ./leads/22/index.html → /matteocola.com/preview/f/22/index.html
+[2025-12-09 09:18:07.666]	[ftp_manager.py]		Uploading ./leads/22/images/.DS_Store → /matteocola.com/preview/f/22/images/.DS_Store
+[2025-12-09 09:18:07.884]	[ftp_manager.py]		Uploading ./leads/22/images/4.jpg → /matteocola.com/preview/f/22/images/4.jpg
+[2025-12-09 09:18:08.245]	[ftp_manager.py]		Uploading ./leads/22/images/5.jpg → /matteocola.com/preview/f/22/images/5.jpg
+[2025-12-09 09:18:08.534]	[ftp_manager.py]		Uploading ./leads/22/images/6.png → /matteocola.com/preview/f/22/images/6.png
+[2025-12-09 09:18:09.067]	[ftp_manager.py]		Uploading ./leads/22/images/2.png → /matteocola.com/preview/f/22/images/2.png
+[2025-12-09 09:18:09.787]	[ftp_manager.py]		Uploading ./leads/22/images/3.png → /matteocola.com/preview/f/22/images/3.png
+[2025-12-09 09:18:10.507]	[ftp_manager.py]		Uploading ./leads/22/images/1.png → /matteocola.com/preview/f/22/images/1.png
+[2025-12-09 09:18:11.525]	[ftp_manager.py]		Done!
+[2025-12-09 09:18:11.551]	[proposal_sender.py]		 Lead Barbershop Wellington Fade has no email. Skipping proposal.
+[2025-12-09 09:18:11.552]	[database.py]		Attempting to update status for Lead ID 22 → 3
+[2025-12-09 09:18:11.552]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 09:18:11.553]	[database.py]		Successfully established database connection.
+[2025-12-09 09:18:11.554]	[database.py]		✅ Status updated successfully for Lead ID 22.
+[2025-12-09 09:18:11.555]	[main.py]		Done! ran all the scripts with no fatal errors. exiting...
+
+[2025-12-09 13:42:44.983]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 13:42:44.983]	[main.py]		==================================================
+[2025-12-09 13:42:44.983]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:42:44.986]	[database.py]		Successfully established database connection.
+[2025-12-09 13:42:44.986]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 13:42:44.986]	[database.py]		Database connection closed after initialization.
+[2025-12-09 13:42:45.937]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:42:45.939]	[database.py]		Successfully established database connection.
+[2025-12-09 13:42:45.940]	[database.py]		Last lead ID in database: 22
+[2025-12-09 13:42:46.046]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:42:46.047]	[database.py]		Successfully established database connection.
+[2025-12-09 13:42:46.048]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 13:42:46.048]	[database.py]		Lead exists. Status = 2
+[2025-12-09 13:42:46.049]	[find_customers.py]		Lead (Aram Barber shop) skipped because it was already existing in db
+[2025-12-09 13:42:46.607]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:42:46.609]	[database.py]		Successfully established database connection.
+[2025-12-09 13:42:46.610]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ["King's Barbershop Lugano da Farsat"]
+[2025-12-09 13:42:46.611]	[database.py]		Lead exists. Status = 2
+[2025-12-09 13:42:46.612]	[find_customers.py]		Lead (King's Barbershop Lugano da Farsat) skipped because it was already existing in db
+[2025-12-09 13:42:46.802]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:42:46.804]	[database.py]		Successfully established database connection.
+[2025-12-09 13:42:46.804]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Barbershop Wellington Fade']
+[2025-12-09 13:42:46.805]	[database.py]		Lead exists. Status = 3
+[2025-12-09 13:42:46.805]	[find_customers.py]		Lead (Barbershop Wellington Fade) skipped because it was already existing in db
+[2025-12-09 13:42:47.097]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:42:47.098]	[database.py]		Successfully established database connection.
+[2025-12-09 13:42:47.098]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['L.C. Barber Club']
+[2025-12-09 13:42:47.098]	[database.py]		Lead not found.
+[2025-12-09 13:42:47.098]	[find_customers.py]		🎯 LEAD found and initialized: ID 23, L.C. Barber Club
+[2025-12-09 13:42:47.103]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 13:42:47.103]	[scrape_images.py]		Searching images for: L.C. Barber Club Via Bertaro Lambertenghi 2, 6900 Lugano, Switzerland
+[2025-12-09 13:42:50.500]	[scrape_images.py]		Downloaded: ./leads/23/images/1.jpg
+[2025-12-09 13:42:50.503]	[scrape_images.py]		Failed to download x-raw-image:///dfcdc3579f645217ab49f67a1b1ce5a53cd376c5ec97eeb7aee6f0bae5817bba: No connection adapters were found for 'x-raw-image:///dfcdc3579f645217ab49f67a1b1ce5a53cd376c5ec97eeb7aee6f0bae5817bba'
+[2025-12-09 13:42:50.504]	[scrape_images.py]		Failed to download x-raw-image:///26211699e274b929289e7a7c16718e06bf2a42f56a41658c0a11d1b6bf405c36: No connection adapters were found for 'x-raw-image:///26211699e274b929289e7a7c16718e06bf2a42f56a41658c0a11d1b6bf405c36'
+[2025-12-09 13:42:50.505]	[scrape_images.py]		Failed to download x-raw-image:///cacc1c483f25e64a1c8bad3c52390ae0f123e80a72b1309addced278cf34aa3d: No connection adapters were found for 'x-raw-image:///cacc1c483f25e64a1c8bad3c52390ae0f123e80a72b1309addced278cf34aa3d'
+[2025-12-09 13:42:50.506]	[scrape_images.py]		Failed to download x-raw-image:///7ca9ae68684842af7acfa8edfee3fdfb407de1770105c06dba983c86c9106100: No connection adapters were found for 'x-raw-image:///7ca9ae68684842af7acfa8edfee3fdfb407de1770105c06dba983c86c9106100'
+[2025-12-09 13:42:51.141]	[scrape_images.py]		Failed to download x-raw-image:///2e92301b62c34a9c4cf68066e71131ab184dcad555c4078088801ed769520942: No connection adapters were found for 'x-raw-image:///2e92301b62c34a9c4cf68066e71131ab184dcad555c4078088801ed769520942'
+[2025-12-09 13:42:51.143]	[scrape_images.py]		Failed to download x-raw-image:///0f7d737638f0efb57d23af239f072ac04417b9562a715833a6ec17c9a95d74a8: No connection adapters were found for 'x-raw-image:///0f7d737638f0efb57d23af239f072ac04417b9562a715833a6ec17c9a95d74a8'
+[2025-12-09 13:42:51.991]	[scrape_images.py]		No more images found.
+[2025-12-09 13:42:51.991]	[scrape_images.py]		images scraping done
+[2025-12-09 13:42:51.991]	[lead.py]		added images to lead: ['./leads/23/images/1.jpg']
+[2025-12-09 13:42:51.992]	[create_website.py]		Initializing client
+[2025-12-09 13:42:52.067]	[create_website.py]		CLient initialized
+[2025-12-09 13:42:52.067]	[create_website.py]		Generating prompt...
+[2025-12-09 13:42:52.068]	[create_website.py]		Done!
+[2025-12-09 13:42:52.068]	[create_website.py]		prompting model for website...
+
+[2025-12-09 13:47:20.670]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 13:47:20.670]	[main.py]		==================================================
+[2025-12-09 13:47:20.671]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:47:20.673]	[database.py]		Successfully established database connection.
+[2025-12-09 13:47:20.673]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 13:47:20.673]	[database.py]		Database connection closed after initialization.
+[2025-12-09 13:47:21.571]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:47:21.572]	[database.py]		Successfully established database connection.
+[2025-12-09 13:47:21.573]	[database.py]		Last lead ID in database: 22
+[2025-12-09 13:47:21.674]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:47:21.675]	[database.py]		Successfully established database connection.
+[2025-12-09 13:47:21.675]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Aram Barber shop']
+[2025-12-09 13:47:21.676]	[database.py]		Lead exists. Status = 2
+[2025-12-09 13:47:21.676]	[find_customers.py]		Lead (Aram Barber shop) skipped because it was already existing in db
+[2025-12-09 13:47:22.224]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:47:22.225]	[database.py]		Successfully established database connection.
+[2025-12-09 13:47:22.226]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ["King's Barbershop Lugano da Farsat"]
+[2025-12-09 13:47:22.227]	[database.py]		Lead exists. Status = 2
+[2025-12-09 13:47:22.227]	[find_customers.py]		Lead (King's Barbershop Lugano da Farsat) skipped because it was already existing in db
+[2025-12-09 13:47:22.485]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:47:22.487]	[database.py]		Successfully established database connection.
+[2025-12-09 13:47:22.488]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Barbershop Wellington Fade']
+[2025-12-09 13:47:22.489]	[database.py]		Lead exists. Status = 3
+[2025-12-09 13:47:22.489]	[find_customers.py]		Lead (Barbershop Wellington Fade) skipped because it was already existing in db
+[2025-12-09 13:47:22.825]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:47:22.827]	[database.py]		Successfully established database connection.
+[2025-12-09 13:47:22.828]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['L.C. Barber Club']
+[2025-12-09 13:47:22.829]	[database.py]		Lead not found.
+[2025-12-09 13:47:22.829]	[find_customers.py]		🎯 LEAD found and initialized: ID 23, L.C. Barber Club
+[2025-12-09 13:47:22.837]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 13:47:22.838]	[scrape_images.py]		Searching images for: L.C. Barber Club Via Bertaro Lambertenghi 2, 6900 Lugano, Switzerland
+[2025-12-09 13:47:24.272]	[scrape_images.py]		Downloaded: ./leads/23/images/1.jpg
+[2025-12-09 13:47:24.274]	[scrape_images.py]		Failed to download x-raw-image:///dfcdc3579f645217ab49f67a1b1ce5a53cd376c5ec97eeb7aee6f0bae5817bba: No connection adapters were found for 'x-raw-image:///dfcdc3579f645217ab49f67a1b1ce5a53cd376c5ec97eeb7aee6f0bae5817bba'
+[2025-12-09 13:47:24.275]	[scrape_images.py]		Failed to download x-raw-image:///26211699e274b929289e7a7c16718e06bf2a42f56a41658c0a11d1b6bf405c36: No connection adapters were found for 'x-raw-image:///26211699e274b929289e7a7c16718e06bf2a42f56a41658c0a11d1b6bf405c36'
+[2025-12-09 13:47:24.276]	[scrape_images.py]		Failed to download x-raw-image:///cacc1c483f25e64a1c8bad3c52390ae0f123e80a72b1309addced278cf34aa3d: No connection adapters were found for 'x-raw-image:///cacc1c483f25e64a1c8bad3c52390ae0f123e80a72b1309addced278cf34aa3d'
+[2025-12-09 13:47:24.276]	[scrape_images.py]		Failed to download x-raw-image:///7ca9ae68684842af7acfa8edfee3fdfb407de1770105c06dba983c86c9106100: No connection adapters were found for 'x-raw-image:///7ca9ae68684842af7acfa8edfee3fdfb407de1770105c06dba983c86c9106100'
+[2025-12-09 13:47:24.927]	[scrape_images.py]		Failed to download x-raw-image:///2e92301b62c34a9c4cf68066e71131ab184dcad555c4078088801ed769520942: No connection adapters were found for 'x-raw-image:///2e92301b62c34a9c4cf68066e71131ab184dcad555c4078088801ed769520942'
+[2025-12-09 13:47:24.929]	[scrape_images.py]		Failed to download x-raw-image:///0f7d737638f0efb57d23af239f072ac04417b9562a715833a6ec17c9a95d74a8: No connection adapters were found for 'x-raw-image:///0f7d737638f0efb57d23af239f072ac04417b9562a715833a6ec17c9a95d74a8'
+[2025-12-09 13:47:25.639]	[scrape_images.py]		No more images found.
+[2025-12-09 13:47:25.640]	[scrape_images.py]		images scraping done
+[2025-12-09 13:47:25.641]	[lead.py]		added images to lead: ['./leads/23/images/1.jpg']
+[2025-12-09 13:47:25.643]	[create_website.py]		Initializing client
+[2025-12-09 13:47:25.723]	[create_website.py]		CLient initialized
+[2025-12-09 13:47:25.723]	[create_website.py]		Generating prompt...
+[2025-12-09 13:47:25.723]	[create_website.py]		Done!
+[2025-12-09 13:47:25.723]	[create_website.py]		prompting model for website...
+[2025-12-09 13:48:46.497]	[create_website.py]		Checking if content is HTML
+[2025-12-09 13:48:46.502]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-09 13:48:46.502]	[create_website.py]		Saving website content to ./leads/23/index.html
+[2025-12-09 13:48:46.503]	[create_website.py]		Done writing 31338 characters into the index file
+[2025-12-09 13:48:46.524]	[qr_generator.py]		qr generated... saving it...
+[2025-12-09 13:48:46.538]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-09 13:48:46.539]	[qr_generator.py]		done!
+[2025-12-09 13:48:46.574]	[create_documentation.py]		Done! Created:
+[2025-12-09 13:48:46.574]	[create_documentation.py]		./leads/23/documents/proposal.pdf
+[2025-12-09 13:48:46.575]	[database.py]		Attempting to insert new lead: ID 23, Name: L.C. Barber Club
+[2025-12-09 13:48:46.575]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:48:46.575]	[database.py]		Successfully established database connection.
+[2025-12-09 13:48:46.577]	[database.py]		✅ Lead successfully inserted. New Row ID: 23 (Lead ID: 23)
+[2025-12-09 13:48:46.577]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-09 13:48:46.577]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-09 13:48:46.577]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:48:46.577]	[database.py]		Successfully established database connection.
+[2025-12-09 13:48:46.578]	[database.py]		Successfully displayed 20 leads.
+[2025-12-09 13:48:46.578]	[preview.py]		opening editor
+[2025-12-09 13:48:46.592]	[preview.py]		Copied images to ./graphical_editor/temp/23/images
+[2025-12-09 13:48:46.592]	[preview.py]		Made temp file in: ./graphical_editor/temp/23/index.html
+[2025-12-09 13:51:05.934]	[graphical_editor.py]		Replacing website content on ./leads/23/index.html
+[2025-12-09 13:51:05.937]	[graphical_editor.py]		Done writing 0 characters into the index file
+[2025-12-09 13:51:06.112]	[ftp_manager.py]		Attempting to connect to FTPS...
+[2025-12-09 13:51:06.899]	[ftp_manager.py]		Succesfully connected!
+[2025-12-09 13:51:08.055]	[ftp_manager.py]		Uploading ./leads/23/index.html → /matteocola.com/preview/f/23/index.html
+[2025-12-09 13:51:09.810]	[ftp_manager.py]		Uploading ./leads/23/images/1.jpg → /matteocola.com/preview/f/23/images/1.jpg
+[2025-12-09 13:51:10.469]	[ftp_manager.py]		Uploading ./leads/23/images/1.png → /matteocola.com/preview/f/23/images/1.png
+[2025-12-09 13:51:14.869]	[ftp_manager.py]		Done!
+[2025-12-09 13:51:25.066]	[main.py]		Could not find lead email
+[2025-12-09 13:51:25.068]	[database.py]		Attempting to update status for Lead ID 23 → 3
+[2025-12-09 13:51:25.068]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 13:51:25.069]	[database.py]		Successfully established database connection.
+[2025-12-09 13:51:25.072]	[database.py]		✅ Status updated successfully for Lead ID 23.
+[2025-12-09 13:51:25.072]	[main.py]		Done! ran all the scripts with no fatal errors. exiting...
+
+[2025-12-09 14:05:55.594]	[main.py]		================= FREELANCER.PY ==================
+[2025-12-09 14:05:55.594]	[main.py]		==================================================
+[2025-12-09 14:05:55.594]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 14:05:55.597]	[database.py]		Successfully established database connection.
+[2025-12-09 14:05:55.597]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-09 14:05:55.597]	[database.py]		Database connection closed after initialization.
+[2025-12-09 14:05:56.543]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 14:05:56.545]	[database.py]		Successfully established database connection.
+[2025-12-09 14:05:56.546]	[database.py]		Last lead ID in database: 23
+[2025-12-09 14:05:57.728]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 14:05:57.728]	[database.py]		Successfully established database connection.
+[2025-12-09 14:05:57.729]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['Galaxy Barbershop']
+[2025-12-09 14:05:57.729]	[database.py]		Lead exists. Status = 2
+[2025-12-09 14:05:57.729]	[find_customers.py]		Lead (Galaxy Barbershop) skipped because it was already existing in db
+[2025-12-09 14:06:00.636]	[find_customers.py]		Fetching next page of results...
+[2025-12-09 14:06:02.429]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 14:06:02.430]	[database.py]		Successfully established database connection.
+[2025-12-09 14:06:02.430]	[database.py]		Checking if lead exists: SELECT status FROM leads WHERE 1=1 AND name = ? with params ['ORY`S BARBERSHOP']
+[2025-12-09 14:06:02.430]	[database.py]		Lead not found.
+[2025-12-09 14:06:02.430]	[find_customers.py]		🎯 LEAD found and initialized: ID 24, ORY`S BARBERSHOP
+[2025-12-09 14:06:02.435]	[find_customers.py]		Saved 1 leads to ./leads/index.csv
+[2025-12-09 14:06:02.436]	[scrape_images.py]		Searching images for: ORY`S BARBERSHOP Heinrichstrasse 83, 8005 Zürich, Switzerland
+[2025-12-09 14:06:04.702]	[scrape_images.py]		Downloaded: ./leads/24/images/1.jpg
+[2025-12-09 14:06:04.703]	[scrape_images.py]		Failed to download x-raw-image:///810e62d901a39d8624b7228d9095ae276189baebc356458011b339a58a0f8a31: No connection adapters were found for 'x-raw-image:///810e62d901a39d8624b7228d9095ae276189baebc356458011b339a58a0f8a31'
+[2025-12-09 14:06:04.703]	[scrape_images.py]		Failed to download x-raw-image:///a1d74d3f051a06f6e46e2239c2af312b84569298352fdcacfffb7819d5049739: No connection adapters were found for 'x-raw-image:///a1d74d3f051a06f6e46e2239c2af312b84569298352fdcacfffb7819d5049739'
+[2025-12-09 14:06:04.704]	[scrape_images.py]		Failed to download x-raw-image:///08896c5738d9e94cfc51a6b7f193c2a66defdb57d1cbd11f839ad11ce1b0666d: No connection adapters were found for 'x-raw-image:///08896c5738d9e94cfc51a6b7f193c2a66defdb57d1cbd11f839ad11ce1b0666d'
+[2025-12-09 14:06:04.704]	[scrape_images.py]		Failed to download x-raw-image:///8e7dabfd06f89a809d9b51ae6a243e468e6999e78c46f38034ccf63f5294ff61: No connection adapters were found for 'x-raw-image:///8e7dabfd06f89a809d9b51ae6a243e468e6999e78c46f38034ccf63f5294ff61'
+[2025-12-09 14:06:05.214]	[scrape_images.py]		Failed to download x-raw-image:///c176960425ca2a4f6c283405f3b1a9af96e5a7bbbbb9f142bbea454468c0db44: No connection adapters were found for 'x-raw-image:///c176960425ca2a4f6c283405f3b1a9af96e5a7bbbbb9f142bbea454468c0db44'
+[2025-12-09 14:06:05.215]	[scrape_images.py]		Failed to download x-raw-image:///bb9ce5d4806158ea470c4b78886c53f40bd061ae3ec461febb1170ba8c5d206b: No connection adapters were found for 'x-raw-image:///bb9ce5d4806158ea470c4b78886c53f40bd061ae3ec461febb1170ba8c5d206b'
+[2025-12-09 14:06:05.215]	[scrape_images.py]		Failed to download x-raw-image:///6d50518ab7f9f86ca63669730f24edd46f8dc44ace0f9bdf9b1a154e906fd468: No connection adapters were found for 'x-raw-image:///6d50518ab7f9f86ca63669730f24edd46f8dc44ace0f9bdf9b1a154e906fd468'
+[2025-12-09 14:06:05.216]	[scrape_images.py]		Failed to download x-raw-image:///dc2f11464672506f2bfc301a83421e145bbaf3f201bbe30b701033a5a02562b4: No connection adapters were found for 'x-raw-image:///dc2f11464672506f2bfc301a83421e145bbaf3f201bbe30b701033a5a02562b4'
+[2025-12-09 14:06:05.712]	[scrape_images.py]		Failed to download x-raw-image:///a701434fc4527f6e1779228f62e852df1708ff7a87b23b686bd3d07b3dfa32a2: No connection adapters were found for 'x-raw-image:///a701434fc4527f6e1779228f62e852df1708ff7a87b23b686bd3d07b3dfa32a2'
+[2025-12-09 14:06:05.713]	[scrape_images.py]		Failed to download x-raw-image:///c6cc86ce9f15ab8946a67ef09e94f451e387ef4864ad96c5b30bf9acdace9fa2: No connection adapters were found for 'x-raw-image:///c6cc86ce9f15ab8946a67ef09e94f451e387ef4864ad96c5b30bf9acdace9fa2'
+[2025-12-09 14:06:05.713]	[scrape_images.py]		Failed to download x-raw-image:///151a4bf7e080922974a47cb78ffe49c6bd8613a7d4dd394671bd145818649bac: No connection adapters were found for 'x-raw-image:///151a4bf7e080922974a47cb78ffe49c6bd8613a7d4dd394671bd145818649bac'
+[2025-12-09 14:06:05.714]	[scrape_images.py]		Failed to download x-raw-image:///d914e4823456bdfd1179850f4659c0c864af3ec489a65b580d59e08b22abdb5e: No connection adapters were found for 'x-raw-image:///d914e4823456bdfd1179850f4659c0c864af3ec489a65b580d59e08b22abdb5e'
+[2025-12-09 14:06:06.223]	[scrape_images.py]		Failed to download x-raw-image:///5cc93d7b9f91408bf20c18c358decc0147ac0ce61d0cff1422c1f593d8a1b6e4: No connection adapters were found for 'x-raw-image:///5cc93d7b9f91408bf20c18c358decc0147ac0ce61d0cff1422c1f593d8a1b6e4'
+[2025-12-09 14:06:06.224]	[scrape_images.py]		Failed to download x-raw-image:///9770bb314ac373926a63c9f14fd69a7a11ec50d0bf4c628aeb439b5c5b44c3dd: No connection adapters were found for 'x-raw-image:///9770bb314ac373926a63c9f14fd69a7a11ec50d0bf4c628aeb439b5c5b44c3dd'
+[2025-12-09 14:06:06.224]	[scrape_images.py]		Failed to download x-raw-image:///90df5680b7c1bb7b36b6334eaf3784827f1825dbe6c8731f66a7180922112a79: No connection adapters were found for 'x-raw-image:///90df5680b7c1bb7b36b6334eaf3784827f1825dbe6c8731f66a7180922112a79'
+[2025-12-09 14:06:06.225]	[scrape_images.py]		Failed to download x-raw-image:///77924f1628df0d87992f502408b1585c7c7a3e2c9445e648ed9390e3a397061d: No connection adapters were found for 'x-raw-image:///77924f1628df0d87992f502408b1585c7c7a3e2c9445e648ed9390e3a397061d'
+[2025-12-09 14:06:06.910]	[scrape_images.py]		Failed to download x-raw-image:///56b2db5887175fd00c88fe041bd1e0d6f8da53002feb61039913490a861d1b79: No connection adapters were found for 'x-raw-image:///56b2db5887175fd00c88fe041bd1e0d6f8da53002feb61039913490a861d1b79'
+[2025-12-09 14:06:06.911]	[scrape_images.py]		Failed to download x-raw-image:///fbdf348d1aeaa7fe5b9f371cb2cb13d17d04dd570451ff444677ce1f3837a089: No connection adapters were found for 'x-raw-image:///fbdf348d1aeaa7fe5b9f371cb2cb13d17d04dd570451ff444677ce1f3837a089'
+[2025-12-09 14:06:06.911]	[scrape_images.py]		Failed to download x-raw-image:///661bf5889e431896fdbb418d237b8c9c1b97a8fae98a782102b066ab939897dd: No connection adapters were found for 'x-raw-image:///661bf5889e431896fdbb418d237b8c9c1b97a8fae98a782102b066ab939897dd'
+[2025-12-09 14:06:06.912]	[scrape_images.py]		Failed to download x-raw-image:///81063924552cc6eabe8a213d21cf1a31f581a2de8c40666884d08e4574ba71c1: No connection adapters were found for 'x-raw-image:///81063924552cc6eabe8a213d21cf1a31f581a2de8c40666884d08e4574ba71c1'
+[2025-12-09 14:06:07.350]	[scrape_images.py]		Failed to download x-raw-image:///6cb11c149552c03b52f22591c90b43b96500e2b5c4a8f5d87246dee6d1f32617: No connection adapters were found for 'x-raw-image:///6cb11c149552c03b52f22591c90b43b96500e2b5c4a8f5d87246dee6d1f32617'
+[2025-12-09 14:06:07.352]	[scrape_images.py]		Failed to download x-raw-image:///90fe67e8fec5eb674c3398a8ad1c42313f78249c628422c14811bdb99044cf16: No connection adapters were found for 'x-raw-image:///90fe67e8fec5eb674c3398a8ad1c42313f78249c628422c14811bdb99044cf16'
+[2025-12-09 14:06:07.353]	[scrape_images.py]		Failed to download x-raw-image:///7ccfe228d9cfc132c549b3ce052b27f2ba5120836c34fb0a2c6f3a84ce662c44: No connection adapters were found for 'x-raw-image:///7ccfe228d9cfc132c549b3ce052b27f2ba5120836c34fb0a2c6f3a84ce662c44'
+[2025-12-09 14:06:07.355]	[scrape_images.py]		Failed to download x-raw-image:///48760187da57c11260223516a00570fdaaf4ee7d9fbc5f017c5d6b3b12c05c70: No connection adapters were found for 'x-raw-image:///48760187da57c11260223516a00570fdaaf4ee7d9fbc5f017c5d6b3b12c05c70'
+[2025-12-09 14:06:09.648]	[scrape_images.py]		Failed to download x-raw-image:///c77787defa7f8e387e66c40b4a19845c6ec72d61b476c1662d346c55bec1617d: No connection adapters were found for 'x-raw-image:///c77787defa7f8e387e66c40b4a19845c6ec72d61b476c1662d346c55bec1617d'
+[2025-12-09 14:06:10.073]	[scrape_images.py]		No more images found.
+[2025-12-09 14:06:10.073]	[scrape_images.py]		images scraping done
+[2025-12-09 14:06:10.074]	[lead.py]		added images to lead: ['./leads/24/images/1.jpg']
+[2025-12-09 14:06:10.074]	[create_website.py]		Initializing client
+[2025-12-09 14:06:10.140]	[create_website.py]		CLient initialized
+[2025-12-09 14:06:10.140]	[create_website.py]		Generating prompt...
+[2025-12-09 14:06:10.140]	[create_website.py]		Done!
+[2025-12-09 14:06:10.140]	[create_website.py]		prompting model for website...
+[2025-12-09 14:07:33.729]	[create_website.py]		Checking if content is HTML
+[2025-12-09 14:07:33.733]	[create_website.py]		Succesfully received a response with HTML code.
+[2025-12-09 14:07:33.733]	[create_website.py]		Saving website content to ./leads/24/index.html
+[2025-12-09 14:07:33.735]	[create_website.py]		Done writing 30220 characters into the index file
+[2025-12-09 14:07:33.760]	[qr_generator.py]		qr generated... saving it...
+[2025-12-09 14:07:33.774]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-09 14:07:33.775]	[qr_generator.py]		done!
+[2025-12-09 14:07:33.811]	[create_documentation.py]		Done! Created:
+[2025-12-09 14:07:33.811]	[create_documentation.py]		./leads/24/documents/proposal.pdf
+[2025-12-09 14:07:33.812]	[database.py]		Attempting to insert new lead: ID 24, Name: ORY`S BARBERSHOP
+[2025-12-09 14:07:33.812]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 14:07:33.812]	[database.py]		Successfully established database connection.
+[2025-12-09 14:07:33.814]	[database.py]		✅ Lead successfully inserted. New Row ID: 24 (Lead ID: 24)
+[2025-12-09 14:07:33.814]	[database.py]		Database connection closed after insertion attempt.
+[2025-12-09 14:07:33.814]	[database.py]		Fetching up to 20 leads with status >= 0 for display.
+[2025-12-09 14:07:33.814]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-09 14:07:33.814]	[database.py]		Successfully established database connection.
+[2025-12-09 14:07:33.815]	[database.py]		Successfully displayed 20 leads.
+[2025-12-09 14:07:33.815]	[preview.py]		Opened images editor window
+[2025-12-09 14:07:33.826]	[preview.py]		opening HTML editor
+[2025-12-09 14:07:33.827]	[preview.py]		Copied images to ./graphical_editor/temp/24/images
+[2025-12-09 14:07:33.827]	[preview.py]		Made temp file in: ./graphical_editor/temp/24/index.html
+[2025-12-09 14:08:25.152]	[main.py]		Done! ran all the scripts with no fatal errors. exiting...
+[2025-12-09 14:59:51.860]	[images_description.py]		TESTING SCRIPT
+[2025-12-09 14:59:51.949]	[images_description.py]		Generating caption...
+[2025-12-12 18:18:19.089]	[create_documentation.py]		==================================================
+[2025-12-12 18:18:19.090]	[create_documentation.py]		TESTING SCRIPT
+[2025-12-12 18:18:19.090]	[create_documentation.py]		TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
+[2025-12-12 18:18:19.098]	[qr_generator.py]		qr generated... saving it...
+[2025-12-12 18:18:19.110]	[qr_generator.py]		documents folder not found, creating one.
+[2025-12-12 18:18:19.110]	[qr_generator.py]		done!
+[2025-12-12 18:18:19.137]	[create_documentation.py]		Done! Created:
+[2025-12-12 18:18:19.137]	[create_documentation.py]		./leads/150/documents/proposal.pdf
+[2025-12-12 18:20:38.762]	[create_documentation.py]		==================================================
+[2025-12-12 18:20:38.762]	[create_documentation.py]		TESTING SCRIPT
+[2025-12-12 18:20:38.762]	[create_documentation.py]		TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
+[2025-12-12 18:20:38.771]	[qr_generator.py]		qr generated... saving it...
+[2025-12-12 18:20:38.778]	[qr_generator.py]		done!
+[2025-12-12 18:20:38.804]	[create_documentation.py]		Done! Created:
+[2025-12-12 18:20:38.804]	[create_documentation.py]		./leads/150/documents/proposal.pdf
+[2025-12-15 11:10:38.479]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:10:38.489]	[database.py]		Successfully established database connection.
+[2025-12-15 11:10:38.490]	[database.py]		Executing query: SELECT * FROM leads WHERE 1=1 with parameters: []
+[2025-12-15 11:12:07.612]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:12:07.616]	[database.py]		Successfully established database connection.
+[2025-12-15 11:12:07.618]	[database.py]		Executing query: SELECT * FROM leads WHERE 1=1 with parameters: []
+[2025-12-15 11:12:12.697]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:12:12.700]	[database.py]		Successfully established database connection.
+[2025-12-15 11:12:12.702]	[database.py]		Executing query: SELECT * FROM leads WHERE 1=1 with parameters: []
+[2025-12-15 11:12:21.378]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:12:21.380]	[database.py]		Successfully established database connection.
+[2025-12-15 11:12:21.381]	[database.py]		Executing query: SELECT * FROM leads WHERE 1=1 with parameters: []
+[2025-12-15 11:14:46.885]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:14:46.891]	[database.py]		Successfully established database connection.
+[2025-12-15 11:14:46.892]	[database.py]		Database initialized and 'leads' table ready in ./leads.db. (Name is UNIQUE)
+[2025-12-15 11:14:46.893]	[database.py]		Database connection closed after initialization.
+[2025-12-15 11:14:57.205]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:14:57.207]	[database.py]		Successfully established database connection.
+[2025-12-15 11:14:57.208]	[database.py]		Executing query: SELECT * FROM leads WHERE 1=1 with parameters: []
+[2025-12-15 11:14:57.211]	[database.py]		Successfully retrieved 24 lead(s).
+[2025-12-15 11:17:19.948]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:17:19.957]	[database.py]		Successfully established database connection.
+[2025-12-15 11:17:19.957]	[database.py]		Executing query: SELECT * FROM leads WHERE 1=1 with parameters: []
+[2025-12-15 11:17:19.958]	[database.py]		Successfully retrieved 24 lead(s).
+[2025-12-15 11:17:19.972]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:19.986]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.015]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.015]	[recreate_proposals_documentation_for_all_leads.py]		./leads/1/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.023]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.024]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.046]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.046]	[recreate_proposals_documentation_for_all_leads.py]		./leads/2/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.081]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.082]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.103]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.103]	[recreate_proposals_documentation_for_all_leads.py]		./leads/3/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.110]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.111]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.132]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.132]	[recreate_proposals_documentation_for_all_leads.py]		./leads/4/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.140]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.140]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.161]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.161]	[recreate_proposals_documentation_for_all_leads.py]		./leads/5/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.168]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.169]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.195]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.195]	[recreate_proposals_documentation_for_all_leads.py]		./leads/6/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.203]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.205]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.225]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.225]	[recreate_proposals_documentation_for_all_leads.py]		./leads/7/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.233]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.233]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.254]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.254]	[recreate_proposals_documentation_for_all_leads.py]		./leads/8/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.262]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.264]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.285]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.285]	[recreate_proposals_documentation_for_all_leads.py]		./leads/9/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.293]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.293]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.314]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.314]	[recreate_proposals_documentation_for_all_leads.py]		./leads/10/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.322]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.323]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.343]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.343]	[recreate_proposals_documentation_for_all_leads.py]		./leads/11/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.351]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.351]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.372]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.372]	[recreate_proposals_documentation_for_all_leads.py]		./leads/12/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.380]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.380]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.402]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.402]	[recreate_proposals_documentation_for_all_leads.py]		./leads/13/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.409]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.410]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.431]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.431]	[recreate_proposals_documentation_for_all_leads.py]		./leads/14/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.439]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.439]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.460]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.460]	[recreate_proposals_documentation_for_all_leads.py]		./leads/15/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.468]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.468]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.490]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.490]	[recreate_proposals_documentation_for_all_leads.py]		./leads/16/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.497]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.498]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.519]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.519]	[recreate_proposals_documentation_for_all_leads.py]		./leads/17/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.527]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.527]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.559]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.559]	[recreate_proposals_documentation_for_all_leads.py]		./leads/18/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.566]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.567]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.588]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.588]	[recreate_proposals_documentation_for_all_leads.py]		./leads/19/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.595]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.596]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.618]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.618]	[recreate_proposals_documentation_for_all_leads.py]		./leads/20/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.625]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.626]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.647]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.647]	[recreate_proposals_documentation_for_all_leads.py]		./leads/21/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.654]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.655]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.676]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.676]	[recreate_proposals_documentation_for_all_leads.py]		./leads/22/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.684]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.685]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.706]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.706]	[recreate_proposals_documentation_for_all_leads.py]		./leads/23/documents/proposal_tantum.pdf
+[2025-12-15 11:17:20.713]	[qr_generator.py]		qr generated... saving it...
+[2025-12-15 11:17:20.714]	[qr_generator.py]		done!
+[2025-12-15 11:17:20.737]	[recreate_proposals_documentation_for_all_leads.py]		Done! Created:
+[2025-12-15 11:17:20.737]	[recreate_proposals_documentation_for_all_leads.py]		./leads/24/documents/proposal_tantum.pdf
+[2025-12-15 11:35:48.353]	[database.py]		Attempting to connect to database file: ./leads.db
+[2025-12-15 11:35:48.358]	[database.py]		Successfully established database connection.
+[2025-12-15 11:35:48.358]	[database.py]		Last lead ID in database: 24

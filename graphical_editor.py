@@ -14,7 +14,8 @@ import threading
 import asyncio
 from time import sleep
 import subprocess
-
+import shutil
+from glob import glob
 
 
 load_dotenv()
@@ -138,18 +139,39 @@ def run_prompt(client, prompt):
     except Exception as e:
         log("Couldn't apply edits to specified website for the following reason: "+str(e))
 
-def replace_temp_website_content(
-    lead: Lead, 
-    website_content: str
-    ):
+
+
+def replace_temp_website_content(lead: Lead, website_content: str):
     log(f"Replacing website content on ./graphical_editor/temp/{lead.id}/index.html")
-    website_content=format_html(website_content)
-    path=f"./graphical_editor/temp/{lead.id}/index.html"
-    with open(path, "w", encoding="utf-8") as f:
+
+    website_content = format_html(website_content)
+    temp_folder = f"./graphical_editor/temp/{lead.id}"
+    temp_index = os.path.join(temp_folder, "index.html")
+
+    with open(temp_index, "w", encoding="utf-8") as f:
         chars = f.write(str(website_content))
+
     log(f"Done writing {chars} characters into the index file")
 
+    # Copy images into the leads folder
+    src_images = os.path.join(temp_folder, "images")
+    dest_images = f"./leads/{lead.id}/images"
 
+    log(f"Putting images from path {src_images}/* to {dest_images}/*")
+
+    # Create destination directory if needed
+    os.makedirs(dest_images, exist_ok=True)
+
+    copied = 0
+    for file in glob(os.path.join(src_images, "*")):
+        if os.path.isfile(file):
+            try:
+                shutil.copy(file, dest_images)
+                copied += 1
+            except Exception as e:
+                log(f"⚠️ Failed to copy {file}: {e}")
+
+    log(f"📸 {copied} image(s) successfully copied for Lead ID {lead.id}")
 def replace_website_content(
     lead: Lead, 
     website_content: str

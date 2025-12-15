@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L.C. Barber Club - L'Arte della Rasatura e del Taglio a Lugano</title>
+    <meta name="description"
+        content="L.C. Barber Club a Lugano, Svizzera. Offriamo tagli di capelli moderni e tradizionali, rasature classiche e cura della barba. Prenota il tuo appuntamento per un'esperienza di stile unica.">
+    <link rel="canonical" href="https://www.tuosito.com/"> <!-- Sostituire con il dominio reale -->
+
+    <!-- Google Fonts: Montserrat per il testo generale, Playfair Display per i titoli -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Import Font Awesome per le icone. Questo è un CDN esterno, ma l'import è all'interno del file unico. */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+        /* Variabili CSS per una gestione facile dei colori e dei font */
+        :root {
+            --primary-color: #A08A63;
+            /* Oro/Bronzo accentato */
+            --secondary-color: #2C2C2C;
+            /* Grigio scuro profondo */
+            --text-color-light: #F0F0F0;
+            /* Testo chiaro per sfondi scuri */
+            --text-color-dark: #1A1A1A;
+            /* Testo scuro per bottoni */
+            --bg-dark: #121212;
+            /* Sfondo molto scuro */
+            --bg-light: #202020;
+            /* Sfondo leggermente meno scuro */
+            --font-body: 'Montserrat', sans-serif;
+            --font-heading: 'Playfair Display', serif;
+        }
+
+        /* Reset e stili globali */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color-light);
+            background-color: var(--bg-dark);
+            overflow-x: hidden;
+            /* Previene lo scroll orizzontale */
+        }
+
+        /* Stile per evitare lo scroll del body quando il menu mobile è aperto */
+        body.nav-open {
+            overflow: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+            color: var(--text-color-light);
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+        }
+
+        h3 {
+            font-size: 2.2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #C2A87F;
+            /* Oro più chiaro */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--text-color-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            background: #C2A87F;
+            transform: translateY(-2px);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header */
+        .header {
+            background-color: rgba(18, 18, 18, 0.95);
+            /* Sfondo semi-trasparente */
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-color-light);
+            font-weight: 400;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 5px;
+            /* Spazio per l'underline */
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            /* Stile per link attivo */
+            width: 100%;
+        }
+
+        /* Menu hamburger per mobile */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            justify-content: space-between;
+            z-index: 1001;
+            /* Sopra al menu quando aperto */
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-color-light);
+            transition: all 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+
+        /* Animazione menu-toggle */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('./images/1.png') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-color-light);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+            /* Overlay scuro */
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInTop 1s forwards 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hero-content p {
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInTop 1s forwards 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content .btn {
+            font-size: 1.25rem;
+            padding: 1rem 2.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInTop 1s forwards 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* Animazione on-load per l'hero */
+        @keyframes fadeInTop {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Sezioni generiche */
+        .section {
+            padding: 6rem 0;
+            background-color: var(--bg-dark);
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 3.5rem;
+            color: var(--primary-color);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            filter: grayscale(20%) brightness(80%);
+            transition: filter 0.3s ease;
+        }
+
+        .about-image img:hover {
+            filter: grayscale(0%) brightness(100%);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(var(--primary-color), 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #bbb;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info,
+        .contact-form {
+            background-color: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .contact-info h3,
+        .contact-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.8rem;
+            font-size: 2rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .contact-info p i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            width: 25px;
+            /* Allinea le icone */
+            text-align: center;
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form label {
+            margin-bottom: 0.7rem;
+            color: var(--text-color-light);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(var(--primary-color), 0.3);
+            border-radius: 5px;
+            background-color: var(--bg-dark);
+            color: var(--text-color-light);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(var(--primary-color), 0.2);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #888;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form .btn {
+            align-self: flex-start;
+            margin-top: 1rem;
+        }
+
+        .map-container {
+            margin-top: 3.5rem;
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            /* Per arrotondare gli angoli dell'iframe */
+        }
+
+        .map-container h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 5px;
+            display: block;
+            /* Rimuove lo spazio extra sotto l'iframe */
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-dark);
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(var(--primary-color), 0.2);
+        }
+
+        .footer .social-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer .social-links a {
+            font-size: 2rem;
+            margin: 0 1rem;
+            color: var(--text-color-light);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer p {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+
+        /* Animazioni allo scroll (Intersection Observer) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ritardi specifici per animazioni a cascata */
+        .animate-on-scroll[style*="transition-delay"] {
+            /* Questo se il ritardo è inline */
+        }
+
+        .animate-on-scroll:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .animate-on-scroll:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .animate-on-scroll:nth-child(4) {
+            transition-delay: 0.3s;
+        }
+
+        .animate-on-scroll:nth-child(5) {
+            transition-delay: 0.4s;
+        }
+
+
+        /* Media Queries per la responsività */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.4rem;
+            }
+
+            h3 {
+                font-size: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .nav-menu li {
+                margin-left: 1.5rem;
+            }
+
+            .about-text h3 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header .container {
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                /* Sotto l'header */
+                left: 0;
+                width: 100%;
+                background-color: rgba(18, 18, 18, 0.98);
+                padding: 1.5rem 0;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+                max-height: 0;
+                /* Nasconde il menu */
+                overflow: hidden;
+                transition: max-height 0.4s ease-in-out;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                max-height: 300px;
+                /* Mostra il menu, valore sufficiente per tutti i link */
+            }
+
+            .nav-menu li {
+                margin: 0;
+                text-align: center;
+                padding: 0.8rem 0;
+                border-bottom: 1px solid rgba(var(--primary-color), 0.1);
+            }
+
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu a {
+                font-size: 1.3rem;
+            }
+
+            .nav-menu a::after {
+                display: none;
+                /* Rimuove l'underline animato su mobile */
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .hero-content .btn {
+                font-size: 1.1rem;
+                padding: 0.9rem 2.2rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+                /* Immagine sopra il testo su mobile */
+                margin-bottom: 2rem;
+            }
+
+            .services-grid,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info p {
+                font-size: 1rem;
+            }
+
+            .contact-info p i {
+                font-size: 1.3rem;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-content .btn {
+                font-size: 0.9rem;
+                padding: 0.7rem 1.8rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .service-card h3,
+            .contact-info h3,
+            .contact-form h3 {
+                font-size: 1.6rem;
+            }
+
+            .map-container iframe {
+                height: 250px;
+            }
+
+            .footer .social-links a {
+                font-size: 1.6rem;
+                margin: 0 0.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">L.C. Barber Club</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Chi Siamo</a></li>
+                    <li><a href="#services">Servizi</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>L'Arte della Rasatura e del Taglio</h1>
+            <p>Benvenuti all'L.C. Barber Club a Lugano, dove la tradizione incontra lo stile moderno. Un'esperienza
+                unica per l'uomo che apprezza la cura di sé.</p>
+            <a href="#contact" class="btn">Prenota Ora</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Chi Siamo</h2>
+            <div class="about-grid">
+                <div class="about-text animate-on-scroll">
+                    <h3>Esperienza, Stile, Tradizione</h3>
+                    <p>Fondato con la passione per l'artigianato e l'eleganza maschile, L.C. Barber Club è più di un
+                        semplice barbiere. Siamo un santuario per l'uomo moderno, un luogo dove potersi rilassare e
+                        godere di un servizio impeccabile nel cuore di Lugano.</p>
+                    <p>I nostri barbieri esperti utilizzano solo prodotti di alta qualità e tecniche affinate nel tempo,
+                        garantendo un risultato perfetto per ogni taglio e rasatura. La nostra missione è offrire non
+                        solo un servizio, ma un'esperienza indimenticabile che ti farà sentire rinnovato e sicuro di te.
+                    </p>
+                    <p>Vieni a scoprire un ambiente accogliente e professionale, dove ogni dettaglio è curato per
+                        offrirti il massimo del comfort e dello stile.</p>
+                </div>
+                <div class="about-image animate-on-scroll">
+                    <img src="./images/1.png" alt="Interno del L.C. Barber Club a Lugano" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">I Nostri Servizi</h2>
+            <div class="services-grid">
+                <div class="service-card animate-on-scroll">
+                    <h3>Taglio Capelli Uomo</h3>
+                    <p>Dai tagli classici alle ultime tendenze, ogni stile è personalizzato per riflettere al meglio la
+                        tua personalità e le tue esigenze.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
+                    <h3>Rasatura Tradizionale</h3>
+                    <p>L'antica e rilassante arte della rasatura con panno caldo, pennello e lama affilata per una pelle
+                        perfettamente liscia e rinfrescata.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.4s;">
+                    <h3>Rifinitura Barba</h3>
+                    <p>Sia che tu preferisca una barba corta e curata o un look più audace, i nostri esperti la
+                        modelleranno alla perfezione con prodotti specifici.</p>
+                </div>
+                <div class="service-card animate-on-scroll" style="transition-delay: 0.6s;">
+                    <h3>Trattamenti Viso</h3>
+                    <p>Una gamma di trattamenti specifici per la pelle maschile, per un viso purificato, idratato e
+                        visibilmente ringiovanito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Contattaci</h2>
+            <div class="contact-content">
+                <div class="contact-info animate-on-scroll">
+                    <h3>Informazioni di Contatto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Via Bertaro Lambertenghi 2, 6900 Lugano, Svizzera</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:0794743024">0794743024</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@lcbarberclub.com">info@lcbarberclub.com</a>
+                    </p>
+                    <p><i class="fas fa-clock"></i> Lun - Ven: 09:00 - 19:00</p>
+                    <p><i class="fas fa-clock"></i> Sab: 09:00 - 14:00</p>
+                    <p><i class="fas fa-clock"></i> Dom: Chiuso</p>
+                </div>
+                <div class="contact-form animate-on-scroll">
+                    <h3>Inviaci un Messaggio</h3>
+                    <form action="#" method="POST">
+                        <!-- L'action dovrebbe puntare a uno script lato server per l'invio -->
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" placeholder="Il tuo nome" required>
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="La tua email" required>
+
+                        <label for="subject">Oggetto</label>
+                        <input type="text" id="subject" name="subject" placeholder="Oggetto del messaggio" required>
+
+                        <label for="message">Messaggio</label>
+                        <textarea id="message" name="message" placeholder="Il tuo messaggio..." required></textarea>
+
+                        <button type="submit" class="btn">Invia Messaggio</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container animate-on-scroll" style="transition-delay: 0.2s;">
+                <h3>Dove Trovarci</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2740.091107567156!2d8.938803315777494!3d46.00767197911072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4785c42ae3e2715d%3A0xc9b0d2d3c9b1c7b5!2sVia%20Bertaro%20Lambertenghi%202%2C%206900%20Lugano%2C%20Svizzera!5e0!3m2!1sit!2sch!4v1678888888888!5m2!1sit!2sch"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Seguici su Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Seguici su Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/0794743024" aria-label="Contattaci su WhatsApp"><i
+                        class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2023 L.C. Barber Club. Tutti i diritti riservati.</p>
+            <p>Realizzato con passione a Lugano, Svizzera.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Funzione per lo smooth scrolling dei link di navigazione
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Impedisce il comportamento di default del link
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Calcola la posizione di scroll tenendo conto dell'altezza dell'header fisso
+                    const headerOffset = document.querySelector('.header').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset - 20; // 20px di padding extra
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Chiudi il menu mobile se è aperto
+                if (document.body.classList.contains('nav-open')) {
+                    document.body.classList.remove('nav-open');
+                    document.querySelector('.nav-menu').classList.remove('active');
+                    document.querySelector('.menu-toggle').classList.remove('active');
+                }
+            });
+        });
+
+        // Toggle del menu mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            document.body.classList.toggle('nav-open'); // Previene lo scroll del body
+        });
+
+        // Chiude il menu mobile quando si clicca fuori dall'area del menu o sul menu stesso
+        document.addEventListener('click', (event) => {
+            // Controlla se il click non è avvenuto sul menuToggle o sul navMenu
+            const isClickInsideNav = navMenu.contains(event.target) || menuToggle.contains(event.target);
+            if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.classList.remove('nav-open');
+            }
+        });
+
+        // Animazioni allo scroll tramite Intersection Observer API
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observerOptions = {
+            root: null, // viewport come root
+            rootMargin: '0px',
+            threshold: 0.2 // L'elemento è visibile almeno al 20%
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Opzionale: smetti di osservare l'elemento una volta che è animato
+                    // observer.unobserve(entry.target);
+                } else {
+                    // Opzionale: rimuovi la classe per far rianimare l'elemento quando esce dalla viewport e poi rientra
+                    // entry.target.classList.remove('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Attiva il link di navigazione corrente basandosi sullo scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - document.querySelector('.header').offsetHeight - 50) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Setta il link 'Home' come attivo all'inizio
+        document.addEventListener('DOMContentLoaded', () => {
+            const homeLink = document.querySelector('.nav-menu a[href="#hero"]');
+            if (homeLink) {
+                homeLink.classList.add('active');
+            }
+        });
+    </script>
+</body>
+
+</html>

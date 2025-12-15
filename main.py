@@ -1,6 +1,5 @@
-
-import database
 from time import sleep
+import database
 import scrape_images
 import create_website
 import create_documentation
@@ -29,8 +28,8 @@ def main():
     else:
         log("Aborting because no lead was found.")
         exit()
-
     for lead in lead_list:
+        uploaded_ftp=False
 
         files=scrape_images.search_lead_images(lead)
 
@@ -48,25 +47,34 @@ def main():
         database.insert_lead(lead)
         database.display_leads_table(limit=20, min_status=0)
         preview.open_graphical_editor(lead) #one at a time
-
         graphical_editor.current_lead=lead
         graphical_editor.start_server()
         try:
             sleep(2)
             input("\nEdit website on browser\nPress ENTER to upload files to FTPS once you're done editing\nCTRL+C to cancel edits.\n")
+            graphical_editor.stop_server(save=True)
+            # uploading to FTPS
+            ftp_manager.ftps_upload_lead(lead)
+            uploaded_ftp=True
         except KeyboardInterrupt:
             graphical_editor.stop_server(save=False)
-            exit()
-
-        graphical_editor.stop_server(save=True)
 
 
-        # uploading to FTPS
-        ftp_manager.ftps_upload_lead(lead)         ##TODO: save temp preview to actual ./leads/leadid
+        if uploaded_ftp:
+            try:
+                sleep(2)
+                input("\nPress ENTER to send e-mail proposal\nCTRL+C to cancel.\n")
 
-        proposal_sender.send_proposal(lead)
-        lead.change_status(3)
-        database.update_lead_status(lead.id, 3)
+                if not lead.email:
+                    log("Could not find lead email")
+                else:
+                    proposal_sender.send_proposal(lead)
+
+                    lead.change_status(3)
+            except KeyboardInterrupt:
+                exit()
+
+            database.update_lead_status(lead.id, 3)
 
         # preview.open_website_preview(lead)
 

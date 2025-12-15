@@ -36,13 +36,13 @@ def google_image_search(query, num_images=10, output_dir="images"):
         }
 
         response = requests.get(url, params=params).json()
-        
-        items = response.get("items", [])
-        
-        if first_query and not items:
-            log(f"API Error while fetching images: {response}")
-            return -1
 
+        items = response.get("items", [])
+
+
+        if first_query:
+            first_query = False 
+            
         if not items:
             log("No more images found.")
             break
@@ -76,7 +76,7 @@ def google_image_search(query, num_images=10, output_dir="images"):
 
             except Exception as e:
                 log(f"Failed to download {img_url}: {e}")
-        
+
         start += n
 
     log("images scraping done")
@@ -84,18 +84,18 @@ def google_image_search(query, num_images=10, output_dir="images"):
 
 def search_lead_images(lead:Lead):
     query = f"{lead.name} {lead.address}"
-    
+
     img_path = f"./leads/{lead.id}/images"
     status_code = google_image_search(query, num_images=5, output_dir=img_path)
     if status_code == 0:
-        
+
         files = sorted(
-            os.path.join(img_path, f) 
-            for f in os.listdir(img_path) 
-            if "." in f 
+            os.path.join(img_path, f)
+            for f in os.listdir(img_path)
+            if "." in f
         )
         return files
-    
+
     elif status_code == -1:
         log("Aborting...")
         print("Aborting due to scrape_images.py -> API_ERROR\nMaybe maximum API quota exceeded?")
@@ -106,10 +106,9 @@ def search_lead_images(lead:Lead):
 if __name__ == "__main__":
     log("="*50)
     log("TESTING SCRIPT")
-    
+
     #TEST 1
     log('TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
     l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
     files=search_lead_images(l)
-    
-    
+

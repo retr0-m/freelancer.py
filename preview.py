@@ -16,8 +16,11 @@ def open_website_on_vscode(lead: Lead):
 
 
 def open_graphical_editor(lead: Lead):
-    log("opening editor")
-    open_website_on_vscode(lead)
+    file_to_show = f"./graphical_editor/temp/{lead.id}/images"
+    subprocess.call(["open", "-R", file_to_show])
+    log("Opened images editor window")
+    log("opening HTML editor")
+    # open_website_on_vscode(lead)
     # Paths
     original_html = f"./leads/{lead.id}/index.html"
     original_images_dir = f"./leads/{lead.id}/images"

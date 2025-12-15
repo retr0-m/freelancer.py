@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aram Barber Shop - L'Arte della Rasatura e del Taglio Perfetto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --primary-bg: #1a1a1a;
+            --secondary-bg: #222;
+            --accent-color: #c2a04e; /* Gold-like */
+            --text-light: #f5f5f5;
+            --text-dark: #cccccc;
+            --border-color: #333;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-light);
+            background-color: var(--primary-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--text-light);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background-color: var(--primary-bg);
+            color: var(--text-light);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-menu ul li {
+            margin-left: 30px;
+        }
+
+        .nav-menu ul li a {
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-menu ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+        }
+
+        .hamburger span {
+            height: 3px;
+            width: 100%;
+            background-color: var(--text-light);
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            background: url('./images/1.jpeg') no-repeat center center/cover;
+            padding-top: var(--header-height);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            animation: zoomIn 1s ease-out;
+            animation-delay: 1.5s;
+            animation-fill-mode: both;
+        }
+
+        .btn:hover {
+            background-color: var(--text-light);
+            transform: translateY(-3px);
+            color: var(--primary-bg);
+        }
+
+        /* Section Styling */
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            position: relative;
+            color: var(--text-light);
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* About Section */
+        #chi-siamo {
+            background-color: var(--secondary-bg);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-weight: 300;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Services Section */
+        #servizi {
+            background-color: var(--primary-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            background-color: #2c2c2c;
+        }
+
+        .service-item i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .service-item p {
+            color: var(--text-dark);
+            font-weight: 300;
+        }
+
+        /* Gallery Section */
+        #galleria {
+            background-color: var(--secondary-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.08);
+        }
+
+        /* Call to Action (Booking) */
+        .cta {
+            text-align: center;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 60px 20px;
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-bg);
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--primary-bg);
+            font-weight: 400;
+        }
+
+        .cta .btn {
+            background-color: var(--primary-bg);
+            color: var(--accent-color);
+        }
+
+        .cta .btn:hover {
+            background-color: var(--text-light);
+            color: var(--primary-bg);
+        }
+
+        /* Contact Section */
+        #contatti {
+            background-color: var(--primary-bg);
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .contact-item {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-item i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            color: var(--text-dark);
+            font-weight: 300;
+            margin-bottom: 5px;
+        }
+
+        .contact-item a {
+            color: var(--text-dark);
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+
+        .map-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-bg);
+            color: var(--text-dark);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: var(--text-dark);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animations on Scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Specific animations */
+        .animate-on-scroll.zoom-in {
+            transform: scale(0.9);
+        }
+        .animate-on-scroll.zoom-in.in-view {
+            transform: scale(1);
+        }
+
+        .animate-on-scroll.slide-left {
+            transform: translateX(-50px);
+        }
+        .animate-on-scroll.slide-left.in-view {
+            transform: translateX(0);
+        }
+
+        .animate-on-scroll.slide-right {
+            transform: translateX(50px);
+        }
+        .animate-on-scroll.slide-right.in-view {
+            transform: translateX(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .nav-menu ul li {
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 0;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-bg);
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+                transition: transform 0.3s ease-in-out;
+                transform: translateY(-100%);
+            }
+
+            .nav-menu.active {
+                display: flex;
+                transform: translateY(0);
+            }
+
+            .nav-menu ul {
+                flex-direction: column;
+                width: 100%;
+                padding: 20px 0;
+            }
+
+            .nav-menu ul li {
+                margin: 0;
+                text-align: center;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-menu ul li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-menu ul li a {
+                display: block;
+                padding: 15px 0;
+                font-size: 1.1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-item {
+                max-width: 90%;
+            }
+
+            .map-container iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-item h3 {
+                font-size: 1.3rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">Aram <span>Barber</span></a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#chi-siamo">Chi Siamo</a></li>
+                    <li><a href="#servizi">Servizi</a></li>
+                    <li><a href="#galleria">Galleria</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                    <li><a href="#prenota" class="btn">Prenota</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>L'Arte della Rasatura e del Taglio Perfetto</h1>
+                <p>Tradizione e Stile Moderno a Lugano. Scopri l'eccellenza in ogni dettaglio.</p>
+                <a href="#prenota" class="btn">Prenota Ora</a>
+            </div>
+        </section>
+
+        <section id="chi-siamo" class="animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll slide-left">Chi Siamo</h2>
+                <div class="about-content">
+                    <div class="about-text animate-on-scroll slide-left">
+                        <h3>La Nostra Storia, La Vostra Bellezza</h3>
+                        <p>Aram Barber Shop è più di un semplice barbiere: è un luogo dove la tradizione incontra l'innovazione. Con anni di esperienza nel settore, il nostro team di esperti è dedicato a offrire tagli impeccabili, rasature classiche e trattamenti barba personalizzati.</p>
+                        <p>Ogni cliente è unico, e il nostro obiettivo è esaltare la vostra personalità con uno stile che vi rappresenti. Utilizziamo solo prodotti di alta qualità e le tecniche più raffinate per garantirvi un'esperienza di benessere e cura in un ambiente rilassante e accogliente.</p>
+                        <p>Venite a trovarci a Lugano e lasciatevi coccolare dall'arte del grooming maschile.</p>
+                    </div>
+                    <div class="about-image animate-on-scroll slide-right">
+                        <img src="./images/2.jpg" alt="Barbiere al lavoro">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servizi" class="animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll zoom-in">I Nostri Servizi</h2>
+                <div class="services-grid">
+                    <div class="service-item animate-on-scroll">
+                        <i class="fas fa-cut"></i>
+                        <h3>Taglio Uomo Classico</h3>
+                        <p>Il taglio senza tempo che esalta la vostra eleganza naturale. Precisione e attenzione ai dettagli per un look sempre impeccabile.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll">
+                        <i class="fas fa-scissors"></i>
+                        <h3>Taglio e Styling Moderno</h3>
+                        <p>Le ultime tendenze e le tecniche più innovative per un look contemporaneo e personalizzato che si adatta al vostro stile.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll">
+                        <i class="fas fa-razor"></i>
+                        <h3>Rasatura Tradizionale</h3>
+                        <p>Un rituale di lusso con panno caldo, prodotti specifici e mani esperte per una pelle liscia e rigenerata.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll">
+                        <i class="fas fa-beard"></i>
+                        <h3>Rifinitura Barba</h3>
+                        <p>Cura e definizione per la vostra barba. Dalla rifinitura precisa alla modellatura, per un aspetto curato e alla moda.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll">
+                        <i class="fas fa-spa"></i>
+                        <h3>Trattamenti Capelli e Barba</h3>
+                        <p>Prodotti di alta qualità e trattamenti specifici per la salute e la vitalità di capelli e barba.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll">
+                        <i class="fas fa-spray-can-sparkles"></i>
+                        <h3>Trattamento Viso Uomo</h3>
+                        <p>Pulizia profonda, idratazione e massaggio per una pelle fresca, luminosa e dall'aspetto sano.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galleria" class="animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll slide-right">La Nostra Arte</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item animate-on-scroll zoom-in">
+                        <img src="./images/3.jpg" alt="Esempio di taglio capelli">
+                    </div>
+                    <div class="gallery-item animate-on-scroll zoom-in">
+                        <img src="./images/4.jpg" alt="Esempio di rasatura">
+                    </div>
+                    <div class="gallery-item animate-on-scroll zoom-in">
+                        <img src="./images/2.jpg" alt="Interno negozio barbiere">
+                    </div>
+                    <div class="gallery-item animate-on-scroll zoom-in">
+                        <img src="./images/1.jpeg" alt="Strumenti da barbiere">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prenota" class="cta animate-on-scroll">
+            <div class="container">
+                <h2>Pronto per il Tuo Nuovo Look?</h2>
+                <p>Non aspettare! Prenota il tuo appuntamento oggi stesso e lasciati trasformare dai nostri esperti.</p>
+                <a href="tel:0912290933" class="btn">Chiama per Prenotare</a>
+            </div>
+        </section>
+
+        <section id="contatti" class="animate-on-scroll">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll slide-left">Contattaci</h2>
+                <div class="contact-info">
+                    <div class="contact-item animate-on-scroll slide-left">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Indirizzo</h3>
+                        <p>Viale Carlo Cattaneo 27</p>
+                        <p>6900 Lugano, Svizzera</p>
+                        <a href="https://maps.app.goo.gl/YOUR_MAP_LINK_HERE" target="_blank">Ottieni indicazioni</a>
+                    </div>
+                    <div class="contact-item animate-on-scroll zoom-in">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Telefono</h3>
+                        <p><a href="tel:0912290933">091 229 0933</a></p>
+                        <p>Siamo a tua disposizione per appuntamenti e informazioni.</p>
+                    </div>
+                    <div class="contact-item animate-on-scroll slide-right">
+                        <i class="fas fa-clock"></i>
+                        <h3>Orari di Apertura</h3>
+                        <p>Lun-Ven: 9:00 - 19:00</p>
+                        <p>Sab: 9:00 - 17:00</p>
+                        <p>Dom: Chiuso</p>
+                    </div>
+                </div>
+                <div class="map-container animate-on-scroll zoom-in">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2757.262590740927!2d8.955407076326466!3d46.0028290710926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47852a32c7f04301%3A0x6b4c1a5908e75e11!2sViale%20Carlo%20Cattaneo%2027%2C%206900%20Lugano%2C%20Svizzera!5e0!3m2!1sit!2sit!4v1701234567890!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Aram Barber Shop. Tutti i diritti riservati.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Sticky header functionality (optional, not explicitly asked but good for UX)
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 0) {
+                header.style.backgroundColor = 'rgba(26, 26, 26, 0.9)'; /* Slightly transparent when scrolled */
+            } else {
+                header.style.backgroundColor = 'var(--primary-bg)';
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observerOptions = {
+            root: null, /* viewport */
+            rootMargin: '0px',
+            threshold: 0.2 /* 20% of element in view */
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); /* Stop observing once animated */
+                }
+            });
+        }, observerOptions);
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Initial load animations for hero section (already handled by Animate.css on direct classes)
+    </script>
+</body>
+</html>
