@@ -8,6 +8,9 @@ import qr_generator
 import database
 import subprocess
 import sys
+import os
+import zipfile
+from datetime import datetime
 
 def choose_printer_and_print(files: list[str]):
     """
@@ -101,6 +104,44 @@ def create_preview_document_tantum(lead: Lead):
     log("Done! Created:", OUTPUT_PDF)
 
 
+def create_zip_with_files(files_path, destination_path):
+    """
+    Creates a ZIP archive containing the given files.
+
+    :param files_path: list[str] | str
+        - List of file paths OR a directory path
+    :param destination_path: str
+        - Path to the resulting .zip file
+    """
+
+    # Normalize input: directory → list of files
+    if isinstance(files_path, str):
+        if not os.path.isdir(files_path):
+            raise ValueError(f"Path does not exist or is not a directory: {files_path}")
+
+        files = [
+            os.path.join(files_path, f)
+            for f in os.listdir(files_path)
+            if os.path.isfile(os.path.join(files_path, f))
+        ]
+    else:
+        files = files_path
+    if not files:
+        raise ValueError("No files to zip.")
+
+    # Ensure destination folder exists
+    os.makedirs(os.path.dirname(destination_path) or ".", exist_ok=True)
+
+    with zipfile.ZipFile(destination_path, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for file in files:
+            print(".", end="")
+            if not os.path.isfile(file):
+                continue
+            lead_id = file.split("/")[2]  # ./leads/{id}/documents/...
+            arcname = f"proposal_{lead_id}.pdf"
+            zipf.write(file, arcname)
+
+    return destination_path
 
 if __name__ == "__main__":
 
@@ -113,14 +154,22 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             exit()
         if cmd == "help":
-            print("\nhelp -> shows this message\ntest -> runs test protocol for this script\ngenerate -> generates doc for all leads in ./leads/.\nprint -> prints the documents.")
+            print("\nhelp -> shows this message\ntest -> runs test protocol for this script\ngenerate -> generates doc for all leads in ./leads/.\nprint -> prints the documents.\nzip -> saves a zip with the documents\n\tzip download -> to download folder\n\tzip current -> to current folder")
         elif cmd == "test":
             log("="*50)
             log("TESTING SCRIPT")
 
             #TEST 1
             log('TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
-            l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
+            l=Lead(
+                    150,
+                    "Al-74",
+                    "21312432",
+                    "Via Trevano 74, 6900 Lugano, Switzerland",
+                    "Lugano",
+                    [],
+                    0
+                )
 
             qr_generator.generate_qr(l)
             create_preview_document_tantum(l)
@@ -132,6 +181,23 @@ if __name__ == "__main__":
                 qr_generator.generate_qr(l)
                 create_preview_document_tantum(l)
 
+        elif cmd == "zip download":
+            last_id=database.get_last_lead_id()
+            files=[]
+            for i in range(0,last_id):
+                files.append(f"./leads/{i}/documents/proposal_tantum.pdf")
+            create_zip_with_files(
+                files,
+                destination_path=f"/Users/kali/Downloads/documents_{datetime.now()}.zip"
+                )
+
+        elif cmd == "zip current":
+            last_id=database.get_last_lead_id()
+            files=[]
+            for i in range(0,last_id):
+                files.append(f"./leads/{i}/documents/proposal_tantum.pdf")
+            create_zip_with_files(files,destination_path=f"./documents_{datetime.now()}.zip")
+
         elif cmd == "print":
             last_id=database.get_last_lead_id()
             files=[]
@@ -141,8 +207,6 @@ if __name__ == "__main__":
 
         elif cmd == "exit":
             exit()
-            quit()
 
         else:
             print("command not found, type 'help' to get help")
-            

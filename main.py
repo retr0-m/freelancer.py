@@ -1,23 +1,57 @@
 from time import sleep
+from sys import argv
 import database
 import scrape_images
 import create_website
 import create_documentation
 import find_customers
 import qr_generator
-from log import log, log_empty_row
+from log import log, log_empty_row, logo
 import ftp_manager
 import preview
 import graphical_editor
 import proposal_sender
+
 CUSTOMERS_TYPE = "Barber"
 CUSTOMERS_CITY = "Zurich"
 LEADS_TO_GENERATE = 1
 
+def get_argv():
+    global CUSTOMERS_TYPE, CUSTOMERS_CITY, LEADS_TO_GENERATE
+
+    # argv[0] is the script name
+    args = argv[1:]
+
+    if len(args) >= 1:
+        CUSTOMERS_TYPE = args[0]
+        log(f"Using '{CUSTOMERS_TYPE}' as CUSTOMERS_TYPE (from argv)")
+    else:
+        log(f"No argv for CUSTOMERS_TYPE found, using default '{CUSTOMERS_TYPE}'")
+
+    if len(args) >= 2:
+        CUSTOMERS_CITY = args[1]
+        log(f"Using '{CUSTOMERS_CITY}' as CUSTOMERS_CITY (from argv)")
+    else:
+        log(f"No argv for CUSTOMERS_CITY found, using default '{CUSTOMERS_CITY}'")
+
+    if len(args) >= 3:
+        try:
+            LEADS_TO_GENERATE = int(args[2])
+            log(f"Using {LEADS_TO_GENERATE} as LEADS_TO_GENERATE (from argv)")
+        except ValueError:
+            log(
+                f"Invalid argv for LEADS_TO_GENERATE ('{args[2]}'), "
+                f"using default {LEADS_TO_GENERATE}"
+            )
+    else:
+        log(f"No argv for LEADS_TO_GENERATE found, using default {LEADS_TO_GENERATE}")
+
 def main():
     log_empty_row()
-    log("="*17+" FREELANCER.PY "+"="*18)
-    log("="*50)
+    logo()
+
+
+    get_argv()
 
     #init db
     database.initialize_database()
