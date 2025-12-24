@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dadabar - Ihre Bar in Zürich</title>
+    <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #f0c040; /* Golden/amber, suitable for a bar */
+            --text-color: #eee;
+            --dark-background: #1a1a1a;
+            --light-background: #2b2b2b;
+            --accent-color: #f0c040;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--dark-background);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Utility classes for animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-background);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-color);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./images/3.jpg') no-repeat center center/cover;
+            filter: brightness(0.4);
+            z-index: 1;
+            animation: heroZoom 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes heroZoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            animation: textFadeIn 1.5s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+            animation: textFadeIn 2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes textFadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-background);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            animation: textFadeIn 2.5s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        .btn:hover {
+            background-color: #e0b030;
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--light-background);
+            margin-top: 1px; /* Small margin to ensure distinct backgrounds */
+            position: relative; /* For scroll animations */
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--dark-background);
+        }
+
+        section h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        section p {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Contact Section Specifics */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            flex: 1 1 300px;
+            background-color: var(--dark-background);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-item h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .contact-item p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        .contact-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #e0b030;
+            text-decoration: underline;
+        }
+
+        .map-frame {
+            margin-top: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            margin-top: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            header nav ul {
+                margin-top: 15px;
+                text-align: center;
+            }
+
+            header nav ul li {
+                margin: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            section h2 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-item {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .map-frame iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .logo {
+                font-size: 1.8rem;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+                display: block;
+                padding: 5px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            section p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#hero" class="logo">Dadabar</a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Startseite</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content fade-in">
+                <h1>Willkommen im Dadabar</h1>
+                <p>Erleben Sie unvergessliche Abende am Limmatquai in Zürich.</p>
+                <a href="#kontakt" class="btn">Besuchen Sie uns</a>
+            </div>
+        </section>
+
+        <section id="ueber-uns" class="fade-in">
+            <div class="container">
+                <h2>Über uns</h2>
+                <p>
+                    Das Dadabar am Limmatquai 136 in Zürich ist der perfekte Ort, um den Tag ausklingen zu lassen oder einen besonderen Abend zu beginnen.
+                    Geniessen Sie unsere handverlesenen Getränke und Cocktails in einer stilvollen und gemütlichen Atmosphäre.
+                    Ob für einen Drink nach der Arbeit oder ein Treffen mit Freunden – bei uns sind Sie immer herzlich willkommen.
+                    Tauchen Sie ein in eine Welt des Genusses und der guten Gesellschaft.
+                </p>
+            </div>
+        </section>
+
+        <section id="kontakt" class="fade-in">
+            <div class="container">
+                <h2>Kontakt & Lage</h2>
+                <div class="contact-info">
+                    <div class="contact-item fade-in">
+                        <h3>Adresse</h3>
+                        <p>Dadabar</p>
+                        <p>Limmatquai 136</p>
+                        <p>8001 Zürich</p>
+                        <p>Schweiz</p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h3>Telefon</h3>
+                        <p>Für Anfragen und weitere Informationen:</p>
+                        <p><a href="tel:+41442546000">044 254 60 00</a></p>
+                    </div>
+                    <div class="contact-item fade-in">
+                        <h3>Öffnungszeiten</h3>
+                        <p>Montag - Donnerstag: 17:00 - 23:00 Uhr</p>
+                        <p>Freitag - Samstag: 17:00 - 01:00 Uhr</p>
+                        <p>Sonntag: Geschlossen</p>
+                    </div>
+                </div>
+                <div class="map-frame fade-in">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.4357065997235!2d8.541302876615822!3d47.37189197116127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a0b6d21e1a5%3A0x66f6c764e5c5c5c1!2sLimmatquai%20136%2C%208001%20Z%C3%BCrich%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1701389201201!5m2!1sen!2sch" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Dadabar. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.fade-in');
+
+            const appearOptions = {
+                threshold: 0.3,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('appear');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

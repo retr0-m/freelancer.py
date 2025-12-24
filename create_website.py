@@ -3,31 +3,47 @@ import os
 from log import log
 from lead import Lead
 from dotenv import load_dotenv
+import json
 import re
 
 load_dotenv()
 
 GEMINI_MODEL = "gemini-2.5-flash"
-PROMPT_BASE = "You're a web designer and developer\ncreate an amazing, content in italian, modern and professional themed website, with animations on load and on scroll. make it responsive, for the following business:"
+PROMPT_FILE = "./generate_website_prompt.json"
+
 try:
     API_KEY = os.getenv("GEMINI_API_KEY")
 except Exception as e:
-    log("Could'nt load API_KEY for gemini: "+str(e))
+    log("Couldn't load API_KEY for gemini: " + str(e))
 
-def generate_prompt(lead: Lead):
-    log("Generating prompt...")
-    p=PROMPT_BASE
-    p+="\n- Name: "+str(lead.name)
-    p+="\n- Phone number: "+str(lead.phone)
-    p+="\n- Address: "+str(lead.address)
 
-    p+="\nAnd using the following images"
+def generate_prompt(lead: Lead) -> str:
+    log("Generating JSON prompt...")
 
-    for i in lead.images:
-        p+="\n"+str(strip_leads_folder(i))
-    p+="Give just the code, no words, no '''. single file that will be named index.html, and dont use placeholders for images, just use the images provided."
+    # Load base prompt
+    try:
+        with open(PROMPT_FILE, "r", encoding="utf-8") as f:
+            prompt_base = json.load(f)
+    except Exception as e:
+        raise RuntimeError(f"Failed to load prompt base: {e}")
+
+    # Build final prompt payload
+    prompt = {
+        "system": prompt_base,
+        "business": {
+            "name": lead.name,
+            "phone_number": lead.phone,
+            "address": lead.address
+        },
+        "images": {
+            strip_leads_folder(img): lead.images_description[img] for img in lead.images_description
+        }
+    }
+
     log("Done!")
-    return p
+
+    # Return as JSON string for the model
+    return json.dumps(prompt, ensure_ascii=False, indent=2)
 
 
 def is_html(content: str) -> bool:
@@ -140,6 +156,7 @@ def generate_and_save_website(lead: Lead): #main function
     """
     client = init_client()
     prompt = generate_prompt(lead)
+    log(f"Running prompt with following data: \n{prompt}")
     website_content=run_prompt(client, prompt)
     save_website_to_file(lead, website_content)
 
@@ -148,9 +165,21 @@ def generate_and_save_website(lead: Lead): #main function
 if __name__ == "__main__":
     log("="*50)
     log("TESTING SCRIPT")
+    log("="*50)
 
     #TEST 1
     log('TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
-    l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
-    generate_and_save_website(l)
+    l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", "aaa@aaaa.aa", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
+    images_descriptions={'./leads/1/images/1.jpg': ' The image shows an urban scene with historical architecture. There is a large church prominently featured in the center with a tall clock tower and a statue at its peak. The church has a distinctive facade, possibly made of stone or concrete, with a classical design. A bell tower with clocks on each side adds to the grandeur of the structure. In front of the church, there is a town square with a few people visible and benches placed for public use. Surrounding buildings have balconies and windows that suggest they might be residential or commercial in nature. The sky is overcast, indicating it could be a cool day or the photo may have been taken during a time of year when the weather is not ideal. The road is relatively clear with no significant traffic, except for one motorcycle visible on the right side of the frame. There are trees and plants around the area, adding to the aesthetic appeal of the location. ', './leads/1/images/2.jpg': ' The image depicts an elegant indoor dining area with modern decor, featuring a wall of plants and stylish lighting. It has a sophisticated ambiance, with a large table set for dinner surrounded by chairs, and a view through the window to another room. '}
+    l.add_images_description(images_descriptions)
+    prompt=generate_prompt(l)
+    print(prompt)
+
+    log("="*50)
+
+
+    # #TEST 1
+    # log('TEST-2 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
+    # l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", "aaa@aaa.aaa", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
+    # generate_and_save_website(l)
 

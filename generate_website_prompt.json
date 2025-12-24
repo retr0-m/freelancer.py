@@ -1,0 +1,90 @@
+{
+    "role": "web designer and developer",
+    "language_rules": {
+        "source": "business.address",
+        "method": "deterministic_mapping",
+        "mapping": {
+            "cantons": {
+                "ZH": "de-CH",
+                "BE": "de-CH",
+                "LU": "de-CH",
+                "UR": "de-CH",
+                "SZ": "de-CH",
+                "OW": "de-CH",
+                "NW": "de-CH",
+                "GL": "de-CH",
+                "ZG": "de-CH",
+                "FR": "fr-CH",
+                "SO": "de-CH",
+                "BS": "de-CH",
+                "BL": "de-CH",
+                "SH": "de-CH",
+                "AR": "de-CH",
+                "AI": "de-CH",
+                "SG": "de-CH",
+                "GR": "multilingual",
+                "AG": "de-CH",
+                "TG": "de-CH",
+                "TI": "it-CH",
+                "VD": "fr-CH",
+                "VS": "multilingual",
+                "NE": "fr-CH",
+                "GE": "fr-CH",
+                "JU": "fr-CH"
+            },
+            "cities": {
+                "Zürich": "de-CH",
+                "Zurich": "de-CH",
+                "Bern": "de-CH",
+                "Basel": "de-CH",
+                "Luzern": "de-CH",
+                "St. Gallen": "de-CH",
+                "Genf": "fr-CH",
+                "Geneva": "fr-CH",
+                "Lausanne": "fr-CH",
+                "Neuchâtel": "fr-CH",
+                "Lugano": "it-CH",
+                "Bellinzona": "it-CH",
+                "Locarno": "it-CH"
+            }
+        },
+        "multilingual_handling": {
+            "priority": "local_majority_language",
+            "grisons_default": "de-CH",
+            "valais_default": "fr-CH"
+        },
+        "fallback": "en",
+        "enforcement": {
+            "no_language_mixing": true,
+            "use_regional_variant": true
+        }
+    },
+    "style": {
+        "tone": "modern",
+        "professional": true,
+        "responsive": true,
+        "animations": {
+            "on_load": true,
+            "on_scroll": true
+        }
+    },
+    "output_constraints": {
+        "format": "html",
+        "single_file": true,
+        "filename": "index.html",
+        "no_explanations": true,
+        "no_code_blocks": true,
+        "no_placeholders": true
+    },
+    "instructions": [
+        "Determine the website language strictly using language_rules",
+        "If canton and city conflict, city takes precedence",
+        "Use the selected language consistently across all content",
+        "Do not mix languages under any circumstances",
+        "Apply correct Swiss spelling and conventions for the selected language",
+        "Create an amazing themed website for the provided business",
+        "Use only the images provided",
+        "Do not reference images that are not provided",
+        "Return only raw HTML code"
+    ]
+}

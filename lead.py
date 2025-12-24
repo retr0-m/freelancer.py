@@ -15,6 +15,7 @@ class Lead:
         self.address = address
         self.city = city
         self.images = images if images is not None else []
+        self.images_description={}
         self.status = status
     def __str__(self):
         return f"id:{self.id}, name:{self.name}, status:{self.status})"
@@ -41,11 +42,15 @@ class Lead:
             'status': self.status
         }
 
-    def add_images(self, images:List) -> None:
+    def add_images(self, images:List, descr:bool = False) -> int:
         for img in images:
             self.images.append(img)
         log(f"added images to lead: {images}")
         return 0
+
+    def add_images_description(self, images_with_description: dict) -> dict:
+        self.images_description=images_with_description
+        return self.images_description
 
     @classmethod
     def from_map_data(cls, lead_id: int, result: dict, city: str, website_status: str):

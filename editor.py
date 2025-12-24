@@ -107,7 +107,10 @@ def apply_user_edits(edits_list: list[Edit]):
     client=init_client()
     for e in edits_list:
         content=run_prompt(client, e.prompt)
-        replace_website_content(e.lead, content)
+        if content:
+            replace_website_content(e.lead, content)
+        else:
+            log("Error while applying edits")
 
 
 

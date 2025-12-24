@@ -3,6 +3,8 @@ import inspect
 from typing import List
 import os
 
+FILE="./log.txt"
+
 def logo():
     msg="""
         ███████╗██████╗ ███████╗███████╗██╗      █████╗ ███╗   ██╗ ██████╗███████╗██████╗
@@ -13,7 +15,7 @@ def logo():
         ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝  ╚═╝
                                     F R E E L A N C E R . P Y
         """
-    with open("./log.txt", "a") as f:
+    with open(FILE, "a") as f:
         f.write(msg)
     print(msg)
 
@@ -32,15 +34,16 @@ def log(*msg: str) -> None:
     prefix = f"[{time_str}]\t[{file_name}]\t\t"
 
     # 4. Write to the log file
-    with open("./log.txt", "a") as f:
+    with open(FILE, "a") as f:
         for m in msg:
             f.write(f"{prefix}{m}\n")
 
-
+def log_fatal_error(msg):
+    log(f"[FATAL ERROR]\t{msg}")
 
 
 def log_empty_row():
-    with open("./log.txt", "a") as f:
+    with open(FILE, "a") as f:
         f.write("\n")
 
 

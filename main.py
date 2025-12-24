@@ -1,6 +1,7 @@
 from time import sleep
 from sys import argv
 import database
+import editor
 import scrape_images
 import create_website
 import create_documentation
@@ -11,44 +12,77 @@ import ftp_manager
 import preview
 import graphical_editor
 import proposal_sender
+import editor
+import imgs_descriptions
 
-CUSTOMERS_TYPE = "Barber"
+CUSTOMERS_TYPE = "Bar"
 CUSTOMERS_CITY = "Zurich"
 LEADS_TO_GENERATE = 1
+USE_GRAPHICAL_EDITOR = True
+
+
+def print_help():
+    log(
+        "Usage:\n"
+        "  python script.py <use_graphical_editor> [customers_type] [customers_city] [leads_to_generate]\n\n"
+        "Arguments:\n"
+        "  use_graphical_editor : true | false | 1 | 0 | yes | no\n"
+        "  customers_type       : e.g. Barber, Restaurant, Dentist\n"
+        "  customers_city       : e.g. Zurich, Berlin, Paris\n"
+        "  leads_to_generate    : integer\n\n"
+        "Example:\n"
+        "  python script.py false Barber Zurich 10"
+    )
+
+
+def parse_bool(value: str) -> bool:
+    return value.lower() in ("1", "true", "yes", "y", "on")
+
 
 def get_argv():
-    global CUSTOMERS_TYPE, CUSTOMERS_CITY, LEADS_TO_GENERATE
+    global CUSTOMERS_TYPE, CUSTOMERS_CITY, LEADS_TO_GENERATE, USE_GRAPHICAL_EDITOR
 
-    # argv[0] is the script name
     args = argv[1:]
 
-    if len(args) >= 1:
-        CUSTOMERS_TYPE = args[0]
+    if not args or args[0] in ("-h", "--help"):
+        print_help()
+        return
+
+    # 1️⃣ USE_GRAPHICAL_EDITOR
+    USE_GRAPHICAL_EDITOR = parse_bool(args[0])
+    log(f"Using USE_GRAPHICAL_EDITOR={USE_GRAPHICAL_EDITOR} (from argv)")
+
+    # 2️⃣ CUSTOMERS_TYPE
+    if len(args) >= 2:
+        CUSTOMERS_TYPE = args[1]
         log(f"Using '{CUSTOMERS_TYPE}' as CUSTOMERS_TYPE (from argv)")
     else:
         log(f"No argv for CUSTOMERS_TYPE found, using default '{CUSTOMERS_TYPE}'")
 
-    if len(args) >= 2:
-        CUSTOMERS_CITY = args[1]
+    # 3️⃣ CUSTOMERS_CITY
+    if len(args) >= 3:
+        CUSTOMERS_CITY = args[2]
         log(f"Using '{CUSTOMERS_CITY}' as CUSTOMERS_CITY (from argv)")
     else:
         log(f"No argv for CUSTOMERS_CITY found, using default '{CUSTOMERS_CITY}'")
 
-    if len(args) >= 3:
+    # 4️⃣ LEADS_TO_GENERATE
+    if len(args) >= 4:
         try:
-            LEADS_TO_GENERATE = int(args[2])
+            LEADS_TO_GENERATE = int(args[3])
             log(f"Using {LEADS_TO_GENERATE} as LEADS_TO_GENERATE (from argv)")
         except ValueError:
             log(
-                f"Invalid argv for LEADS_TO_GENERATE ('{args[2]}'), "
+                f"Invalid argv for LEADS_TO_GENERATE ('{args[3]}'), "
                 f"using default {LEADS_TO_GENERATE}"
             )
     else:
         log(f"No argv for LEADS_TO_GENERATE found, using default {LEADS_TO_GENERATE}")
 
+
 def main():
+    print("Running scripts... (See log.txt for details)")
     log_empty_row()
-    logo()
 
 
     get_argv()
@@ -69,29 +103,48 @@ def main():
 
         if files:
             lead.add_images(files)
-            lead.change_status(1) # Status 1 = images scraped
+            images_description=imgs_descriptions.get_dict(lead)
+            lead.add_images_description(images_description)
+            lead.change_status(1) # Status 1 = images scraped and described
 
         create_website.generate_and_save_website(lead)
         lead.change_status(2) # Status 2 = website done
 
-        # create documentation in ./leads/id/documents/* - qr_generator creates the documents dir if it doesnt finds it
-        qr_generator.generate_qr(lead)
-        create_documentation.create_preview_document(lead)
 
         database.insert_lead(lead)
         database.display_leads_table(limit=20, min_status=0)
-        preview.open_graphical_editor(lead) #one at a time
-        graphical_editor.current_lead=lead
-        graphical_editor.start_server()
-        try:
-            sleep(2)
-            input("\nEdit website on browser\nPress ENTER to upload files to FTPS once you're done editing\nCTRL+C to cancel edits.\n")
-            graphical_editor.stop_server(save=True)
-            # uploading to FTPS
-            ftp_manager.ftps_upload_lead(lead)
-            uploaded_ftp=True
-        except KeyboardInterrupt:
-            graphical_editor.stop_server(save=False)
+        if USE_GRAPHICAL_EDITOR:
+            preview.open_graphical_editor(lead) #one at a time
+            graphical_editor.current_lead=lead
+            graphical_editor.start_server()
+            try:
+                sleep(2)
+                input("\nEdit website on browser\nPress ENTER to upload files to FTPS once you're done editing\nCTRL+C to cancel edits.\n")
+                graphical_editor.stop_server(save=True)
+                # uploading to FTPS
+                ftp_manager.ftps_upload_lead(lead)
+                uploaded_ftp=True
+                # create documentation in ./leads/id/documents/* - qr_generator creates the documents dir if it doesnt finds it
+                qr_generator.generate_qr(lead)
+                create_documentation.create_preview_document(lead)
+            except KeyboardInterrupt:
+                graphical_editor.stop_server(save=False)
+        else:
+            while True:
+                # human check
+                edits=editor.prompt_user_edits(lead_list)
+                if len(edits) == 0:
+                    break
+                editor.apply_user_edits(edits)
+            try:
+                input("Press ENTER to upload files to FTPS\nCTRL+C to cancel edits.\n")
+                ftp_manager.ftps_upload_lead(lead)
+                uploaded_ftp=True
+                # create documentation in ./leads/id/documents/* - qr_generator creates the documents dir if it doesnt finds it
+                qr_generator.generate_qr(lead)
+                create_documentation.create_preview_document(lead)
+            except KeyboardInterrupt:
+                pass
 
 
         if uploaded_ftp:
@@ -105,6 +158,8 @@ def main():
                     proposal_sender.send_proposal(lead)
 
                     lead.change_status(3)
+
+
             except KeyboardInterrupt:
                 exit()
 
@@ -112,14 +167,6 @@ def main():
 
         # preview.open_website_preview(lead)
 
-    #OLD METHOD TO APPLY EDITS BY TERMINAL (until commit "Graphical editor on browser - just demo, not implemented yet")
-    ## TODO: add argv to set  editor graphical or by terminal.
-    # while True:
-    #     # human check
-    #     edits=editor.prompt_user_edits(lead_list) ##TODO need to take back Edit() maybe user a super for praphical
-    #     if len(edits) == 0:
-    #         break
-    #     editor.apply_user_edits(edits)
 
 
 
@@ -130,3 +177,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
