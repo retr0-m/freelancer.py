@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORY`S BARBERSHOP – Ihr Experte für Herrenhaarschnitte in Zürich</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A0522D; /* Sienna */
+            --secondary-color: #36454F; /* Charcoal */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-light: #f4f4f4;
+            --background-dark: #222;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-light);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+
+        h1 { font-size: 3em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: var(--primary-color);
+            font-weight: 700;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        nav ul li a {
+            color: var(--light-text-color);
+            font-weight: 400;
+            font-size: 1.1em;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1920x1080/36454F/FFFFFF?text=Barbershop') center center no-repeat; /* Placeholder for visual effect */
+            background-size: cover;
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 150px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin-top: -85px; /* Adjust for fixed header */
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards 0.5s;
+        }
+
+        .hero h1 {
+            color: var(--primary-color);
+            font-size: 4em;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 15px 30px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            color: var(--light-text-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        section:nth-of-type(even) {
+            background-color: var(--background-light);
+        }
+        section:nth-of-type(odd) {
+            background-color: #fff;
+        }
+        section h2 {
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .services-grid, .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-item, .team-member {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .service-item:hover, .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .service-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .service-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: left;
+        }
+        .about-content p {
+            font-size: 1.1em;
+            color: #444;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .contact-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .contact-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        .contact-item p {
+            margin: 0;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text-color);
+            padding: 50px 0;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        footer .footer-nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        footer .footer-nav ul li {
+            margin: 0 15px;
+        }
+        footer .footer-nav ul li a {
+            color: var(--light-text-color);
+        }
+        footer .footer-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 120px 20px;
+                min-height: 80vh;
+            }
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            header .container {
+                flex-direction: column;
+                padding: 10px 20px;
+            }
+            .logo {
+                margin-bottom: 10px;
+                animation: none; /* Disable specific animation for smaller screens */
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 5px 10px;
+                animation: none; /* Disable specific animation for smaller screens */
+            }
+            section {
+                padding: 60px 0;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            .services-grid, .team-grid, .contact-info {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .about-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .contact-item {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            nav ul li {
+                margin: 5px 8px;
+            }
+            .logo {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">ORY`S BARBERSHOP</div>
+            <nav>
+                <ul>
+                    <li><a href="#startseite">Startseite</a></li>
+                    <li><a href="#dienstleistungen">Dienstleistungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="startseite" class="hero">
+            <div class="hero-content">
+                <h1>Ihr Experte für Herrenhaarschnitte & Pflege</h1>
+                <p>Traditionelles Handwerk trifft auf modernen Stil in Zürich.</p>
+                <a href="#kontakt" class="btn">Termin buchen</a>
+            </div>
+        </section>
+
+        <section id="dienstleistungen" class="fade-in-section">
+            <div class="container">
+                <h2>Unsere Dienstleistungen</h2>
+                <div class="services-grid">
+                    <div class="service-item fade-in-section">
+                        <h3>Klassischer Haarschnitt</h3>
+                        <p>Meisterhaft ausgeführte Haarschnitte, die Ihren Stil perfektionieren, von traditionell bis modern.</p>
+                    </div>
+                    <div class="service-item fade-in-section">
+                        <h3>Bartpflege & Rasur</h3>
+                        <p>Professionelle Bartpflege und traditionelle Rasuren mit heisser Kompresse für ein makelloses Ergebnis.</p>
+                    </div>
+                    <div class="service-item fade-in-section">
+                        <h3>Kopfmassage</h3>
+                        <p>Entspannende Kopfmassagen, die die Durchblutung fördern und das Haarwachstum anregen.</p>
+                    </div>
+                    <div class="service-item fade-in-section">
+                        <h3>Gesichtspflege</h3>
+                        <p>Erfrischende und pflegende Gesichtsbehandlungen, speziell auf die Bedürfnisse der Männerhaut abgestimmt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ueber-uns" class="fade-in-section">
+            <div class="container">
+                <h2>Über ORY`S BARBERSHOP</h2>
+                <div class="about-content">
+                    <p class="fade-in-section">
+                        Bei ORY`S BARBERSHOP sind wir stolz darauf, eine Oase für Männer zu sein, die Wert auf Qualität, Handwerk und Stil legen.
+                        Seit unserer Gründung in Zürich sind wir bestrebt, nicht nur Haare zu schneiden, sondern ein Erlebnis zu schaffen, das Entspannung
+                        und Perfektion verbindet. Unser Team aus erfahrenen Barbieren beherrscht die Kunst des Haarschnitts und der Bartpflege mit Leidenschaft und Präzision.
+                    </p>
+                    <p class="fade-in-section">
+                        Wir verwenden nur die besten Produkte, um sicherzustellen, dass Sie sich nach jedem Besuch frisch, gepflegt und selbstbewusst fühlen.
+                        Traditionelle Techniken kombiniert mit modernen Trends ermöglichen es uns, jedem Kunden einen individuellen Look zu verleihen,
+                        der seine Persönlichkeit unterstreicht. Treten Sie ein und lassen Sie sich von unserer Expertise überzeugen.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" class="fade-in-section">
+            <div class="container">
+                <h2>Kontaktieren Sie uns</h2>
+                <div class="contact-info">
+                    <div class="contact-item fade-in-section">
+                        <h3>Adresse</h3>
+                        <p>Heinrichstrasse 83</p>
+                        <p>8005 Zürich</p>
+                        <p>Schweiz</p>
+                    </div>
+                    <div class="contact-item fade-in-section">
+                        <h3>Telefon</h3>
+                        <p><a href="tel:+41442710002">044 271 00 02</a></p>
+                        <p>Rufen Sie uns an, um einen Termin zu vereinbaren.</p>
+                    </div>
+                    <div class="contact-item fade-in-section">
+                        <h3>Öffnungszeiten</h3>
+                        <p>Dienstag - Freitag: 09:00 - 19:00</p>
+                        <p>Samstag: 09:00 - 17:00</p>
+                        <p>Sonntag - Montag: Geschlossen</p>
+                    </div>
+                </div>
+                <div class="fade-in-section" style="margin-top: 60px;">
+                    <p style="font-size: 1.1em; color: #555;">Besuchen Sie uns für Ihr perfektes Styling. Wir freuen uns auf Sie!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ORY`S BARBERSHOP. Alle Rechte vorbehalten.</p>
+            <p>Heinrichstrasse 83, 8005 Zürich, Schweiz | Telefon: <a href="tel:+41442710002">044 271 00 02</a></p>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#startseite">Startseite</a></li>
+                    <li><a href="#dienstleistungen">Dienstleistungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a, .footer-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // On-scroll animations
+            const faders = document.querySelectorAll('.fade-in-section');
+            const appearOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.style.animation = 'fadeInUp 1s ease-out forwards';
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

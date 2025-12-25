@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAR MAU - Ihr urbaner Treffpunkt in Zürich</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #777;
+            --accent-color: #a0a0a0;
+            --light-bg: #f8f8f8;
+            --dark-bg: #222;
+            --text-light: #fff;
+            --text-dark: #333;
+            --spacing-unit: 1rem;
+        }
+
+        /* Basic Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-bottom: var(--spacing-unit);
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: var(--spacing-unit);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 calc(var(--spacing-unit) * 1.5);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: var(--spacing-unit) 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: calc(var(--spacing-unit) * 2);
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--text-light);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            overflow: hidden;
+            margin-top: 60px; /* Offset for fixed header */
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./images/1.jpg') no-repeat center center/cover;
+            filter: brightness(0.6);
+            z-index: -1;
+            transform: scale(1.05);
+            animation: zoomOut 20s ease-out infinite alternate;
+        }
+
+        #hero .hero-content {
+            z-index: 1;
+            padding: calc(var(--spacing-unit) * 2);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.8s;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-unit);
+            color: var(--text-light);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text-light);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* General Section Styling */
+        section {
+            padding: calc(var(--spacing-unit) * 5) 0;
+            background-color: var(--light-bg);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            animation: fadeInAndSlideUp 1s ease-out forwards;
+        }
+        
+        /* Specific delays for sections for a 'staggered load' effect */
+        #about { animation-delay: 1.5s; }
+        #location { animation-delay: 2.0s; }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-bg);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 2);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Location Section */
+        #location {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #location::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./images/2.jpg') no-repeat center center/cover;
+            filter: brightness(0.4) saturate(0.5);
+            z-index: -1;
+            transform: scale(1.1);
+            animation: zoomIn 15s ease-out infinite alternate;
+        }
+
+        #location h2 {
+            color: var(--text-light);
+        }
+
+        #location .location-info {
+            z-index: 1;
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: calc(var(--spacing-unit) * 2);
+            background-color: rgba(0,0,0,0.6);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            animation: fadeInDown 1s ease-out forwards;
+            animation-delay: 2.5s;
+        }
+        
+        #location .location-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: calc(var(--spacing-unit) * 2) 0;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: 2.8s;
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInAndSlideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomOut {
+            from { transform: scale(1.05); }
+            to { transform: scale(1.00); }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(1.00); }
+            to { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: var(--spacing-unit);
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 var(--spacing-unit);
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1.2rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            #hero h1 {
+                font-size: 2rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">BAR MAU</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Start</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#location">Standort</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Willkommen bei BAR MAU</h1>
+                <p>Ihr urbaner Rückzugsort im Herzen von Zürich</p>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>Über BAR MAU</h2>
+                <div class="about-content">
+                    <p>Entdecken Sie BAR MAU, Ihre neue Lieblingsbar in Zürich. Gelegen an der Zypressenstrasse 36, bieten wir eine einzigartige Atmosphäre, die zum Verweilen und Geniessen einlädt. Ob für einen belebenden Kaffee am Morgen, ein leichtes Mittagessen oder einen entspannten Abend mit Freunden bei einem exquisiten Drink – bei uns sind Sie immer richtig.</p>
+                    <p>Wir legen grossen Wert auf Qualität, ausgewählte Produkte und einen herzlichen Service, der jeden Besuch zu einem besonderen Erlebnis macht. Tauchen Sie ein in unser stilvolles Ambiente und erleben Sie unvergessliche Momente. BAR MAU – wo gute Gesellschaft auf exzellente Drinks trifft und das Zürcher Stadtleben pulsiert.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="location">
+            <div class="container">
+                <h2>Unser Standort</h2>
+                <div class="location-info">
+                    <p>Besuchen Sie uns:</p>
+                    <p><strong>BAR MAU</strong></p>
+                    <p>Zypressenstrasse 36</p>
+                    <p>8003 Zürich, Schweiz</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 BAR MAU. Alle Rechte vorbehalten.</p>
+            <p>Zypressenstrasse 36, 8003 Zürich, Schweiz</p>
+        </div>
+    </footer>
+</body>
+</html>

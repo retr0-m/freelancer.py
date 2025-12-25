@@ -1,4 +1,13 @@
-0 = customer found
+0 = lead found
 1 = images Scraped
-2 = website Done
-3 = Documentation Done
+2 = images described
+3 = website Done
+4 = waiting for human approval on web server
+    -> -1 = not approved (delete it)
+    -> 5 = approved
+6 = Documentation Done
+7 = uploaded to ftps
+8 = uploaded to DB
+9 = proposal sent. (instagram)
+10 = customer acquired
+11 = online with customer preferences

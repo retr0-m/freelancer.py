@@ -6,10 +6,11 @@ from dotenv import load_dotenv
 import json
 import re
 
+
+from config import TEMP_PATH, GEMINI_MODEL, PROMPT_FILE
+
 load_dotenv()
 
-GEMINI_MODEL = "gemini-2.5-flash"
-PROMPT_FILE = "./generate_website_prompt.json"
 
 try:
     API_KEY = os.getenv("GEMINI_API_KEY")
@@ -44,6 +45,36 @@ def generate_prompt(lead: Lead) -> str:
 
     # Return as JSON string for the model
     return json.dumps(prompt, ensure_ascii=False, indent=2)
+
+def generate_prompt_server(lead: Lead) -> str:
+    log("Generating JSON prompt meant to fit in server __temp__ folder version...")
+
+    # Load base prompt
+    try:
+        with open(PROMPT_FILE, "r", encoding="utf-8") as f:
+            prompt_base = json.load(f)
+    except Exception as e:
+        raise RuntimeError(f"Failed to load prompt base: {e}")
+
+    # Build final prompt payload
+    prompt = {
+        "system": prompt_base,
+        "business": {
+            "name": lead.name,
+            "phone_number": lead.phone,
+            "address": lead.address
+        },
+        "images": {
+            strip_temp_folder(img): lead.images_description[img] for img in lead.images_description
+        }
+    }
+
+    log("Done!")
+
+    # Return as JSON string for the model
+    return json.dumps(prompt, ensure_ascii=False, indent=2)
+
+
 
 
 def is_html(content: str) -> bool:
@@ -110,8 +141,8 @@ def run_prompt(client, prompt):
             exit()
         return response.text
     except Exception as e:
-        log("Could not generate website for the following reason: "+str(e))
-
+        log("[FATAL ERROR]\tCould not generate website for the following reason: "+str(e))
+        exit(1)
 
 def init_client():
     log("Initializing client")
@@ -142,6 +173,28 @@ def strip_leads_folder(path: str) -> str:
     # fallback: return original
     return path
 
+from config import TEMP_PATH
+
+def strip_temp_folder(path: str) -> str:
+    """
+    Convert './server/__temp__/150/images/1.jpg' → './images/1.jpg'
+    by removing the first two path segments after '.'.
+    """
+    parts = path.split('/')
+
+    # Example parts: ['.', 'leads', '150', 'images', '1.jpg']
+    # We want: ['.', 'images', '1.jpg']
+    if len(parts) >= 5 and parts[0] == '.' and parts[2] == TEMP_PATH:
+        return './' + '/'.join(parts[3:])
+    if len(parts) >= 5 and parts[0] == '.' and parts[1] == TEMP_PATH:
+        return './' + '/'.join(parts[3:])
+
+    # fallback: return original
+    return path
+
+
+
+# ! DEPRECATED IN SERVER VERSION
 def save_website_to_file(lead: Lead,website_content):
     log(f"Saving website content to ./leads/{lead.id}/index.html")
     website_content=format_html(website_content)
@@ -149,7 +202,17 @@ def save_website_to_file(lead: Lead,website_content):
         chars=f.write(str(website_content))
     log(f"Done writing {chars} characters into the index file")
 
+# * USE THIS INSTEAD
+def save_website_to_temp(lead: Lead, website_content):
+    log(f"Saving website content to ./{TEMP_PATH}/{lead.id}/index.html")
+    website_content=format_html(website_content)
+    with open(f"./{TEMP_PATH}/{lead.id}/index.html", "a") as f:
+        chars=f.write(str(website_content))
+    log(f"Done writing {chars} characters into the index file")
 
+
+
+# ! DEPRECATED IN SERVER VERSION
 def generate_and_save_website(lead: Lead): #main function
     """
     Main function that should be called when using this file as a imported library
@@ -161,8 +224,20 @@ def generate_and_save_website(lead: Lead): #main function
     save_website_to_file(lead, website_content)
 
 
+# * USE THIS INSTEAD FOR FULLY FUNCTIONAL SERVER VERSION.
+def generate_and_save_temp_website(lead: Lead): #main function
+    """
+    Main function that should be called when using this file as a imported library
+    """
+    client = init_client()
+    prompt: str = generate_prompt_server(lead)
+    log(f"Running prompt with following data: \n{prompt}")
+    website_content = run_prompt(client, prompt)
+    save_website_to_temp(lead, website_content)
 
-if __name__ == "__main__":
+
+
+def test_1():
     log("="*50)
     log("TESTING SCRIPT")
     log("="*50)
@@ -171,12 +246,16 @@ if __name__ == "__main__":
     log('TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
     l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", "aaa@aaaa.aa", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
     images_descriptions={'./leads/1/images/1.jpg': ' The image shows an urban scene with historical architecture. There is a large church prominently featured in the center with a tall clock tower and a statue at its peak. The church has a distinctive facade, possibly made of stone or concrete, with a classical design. A bell tower with clocks on each side adds to the grandeur of the structure. In front of the church, there is a town square with a few people visible and benches placed for public use. Surrounding buildings have balconies and windows that suggest they might be residential or commercial in nature. The sky is overcast, indicating it could be a cool day or the photo may have been taken during a time of year when the weather is not ideal. The road is relatively clear with no significant traffic, except for one motorcycle visible on the right side of the frame. There are trees and plants around the area, adding to the aesthetic appeal of the location. ', './leads/1/images/2.jpg': ' The image depicts an elegant indoor dining area with modern decor, featuring a wall of plants and stylish lighting. It has a sophisticated ambiance, with a large table set for dinner surrounded by chairs, and a view through the window to another room. '}
-    l.add_images_description(images_descriptions)
-    prompt=generate_prompt(l)
-    print(prompt)
+    print(generate_and_save_temp_website(l))
 
     log("="*50)
 
+
+def test_2():
+    print(strip_temp_folder("./server/__temp__/images/1.jpg"))
+
+if __name__ == "__main__":
+    test_2()
 
     # #TEST 1
     # log('TEST-2 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')

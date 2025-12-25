@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiamo Caffè Zürich</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5C4033; /* Dark Coffee Brown */
+            --secondary-color: #B28E6F; /* Lighter Coffee/Caramel */
+            --text-color: #333;
+            --light-bg: #F8F5F2; /* Off-white / Cream */
+            --white: #fff;
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: var(--spacing-unit) calc(2 * var(--spacing-unit));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero {
+            background-color: #E6DCD2; /* Soft light brown */
+            color: var(--primary-color);
+            text-align: center;
+            padding: 6rem var(--spacing-unit);
+            animation: fadeIn 1s ease-out;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 5rem calc(2 * var(--spacing-unit));
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+        
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 1rem auto 0;
+        }
+
+        .text-content {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-item p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            margin-top: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem calc(2 * var(--spacing-unit));
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+
+            nav a {
+                padding: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            section {
+                padding: 3rem var(--spacing-unit);
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .text-content {
+                font-size: 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#home" class="logo">Amiamo Caffè</a>
+        <nav>
+            <ul>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#menu">Speisekarte</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <h1>Ihr Ort für erstklassigen Kaffee und gemütliche Stunden in Zürich</h1>
+            <p>Erleben Sie die Leidenschaft für besten Kaffee und hausgemachte Köstlichkeiten.</p>
+            <a href="#menu" class="btn">Entdecken Sie unsere Spezialitäten</a>
+        </section>
+
+        <section id="about" class="fade-in-section">
+            <h2>Unsere Geschichte</h2>
+            <div class="text-content">
+                <p>Bei Amiamo Caffè leben wir unsere Liebe zum Kaffee. Mit grösster Sorgfalt wählen wir die feinsten Kaffeebohnen aus den besten Anbaugebieten der Welt aus. Jede Tasse ist das Ergebnis unserer Hingabe und unseres Strebens nach Perfektion. Wir sind stolz darauf, ein Stück italienische Kaffeekultur nach Zürich zu bringen und Ihnen einen Ort zu bieten, an dem Sie dem Alltag entfliehen können. Unser gemütliches Ambiente lädt zum Verweilen ein – ob für ein entspanntes Frühstück, eine inspirierende Kaffeepause oder einen geselligen Nachmittag mit Freunden.</p>
+                <p style="margin-top: 1.5rem;">Wir freuen uns darauf, Sie bei uns begrüssen zu dürfen und Ihnen ein unvergessliches Kaffeeerlebnis zu bereiten.</p>
+            </div>
+        </section>
+
+        <section id="menu" class="fade-in-section">
+            <h2>Unsere Spezialitäten</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Espresso Perfetto</h3>
+                    <p>Ein intensiver Genuss aus 100% Arabica-Bohnen, perfekt zubereitet.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Cappuccino Classico</h3>
+                    <p>Cremiger Espresso mit perfekt aufgeschäumter Milch und einer feinen Note.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Latte Macchiato</h3>
+                    <p>Schicht für Schicht ein Kunstwerk – milder Milchkaffee für besondere Momente.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Frische Backwaren</h3>
+                    <p>Von knusprigen Croissants bis zu süssen Teilchen, täglich frisch für Sie gebacken.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Kleine Snacks</h3>
+                    <p>Salzige Leckereien für den kleinen Hunger zwischendurch, mit Liebe zubereitet.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Saisonale Getränke</h3>
+                    <p>Entdecken Sie unsere wechselnden saisonalen Kaffee- und Teegetränke.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="fade-in-section">
+            <h2>Besuchen Sie uns</h2>
+            <div class="contact-info">
+                <p><strong>Adresse:</strong> Sihlfeldstrasse 63, 8003 Zürich, Schweiz</p>
+                <p><strong>Telefon:</strong> <a href="tel:+41433332521">043 333 25 21</a></p>
+                <p>Wir sind von Montag bis Samstag für Sie da.</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Amiamo+Caff%C3%A8+Sihlfeldstrasse+63,+8003+Z%C3%BCrich" target="_blank" class="btn">Route planen</a>
+            </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.408791011504!2d8.514659476722237!3d47.37803730263683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b7762635991%3A0x6a05e2632598380d!2sSihlfeldstrasse%2063%2C%208003%20Z%C3%BCrich%2C%20Switzerland!5e0!3m2!1sen!2sch!4v1701234567890!5m2!1sen!2sch" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Amiamo Caffè. Alle Rechte vorbehalten. | Sihlfeldstrasse 63, 8003 Zürich</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in-section');
+
+            const options = {
+                root: null, /* viewport */
+                rootMargin: '0px',
+                threshold: 0.2 /* Trigger when 20% of the section is visible */
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); /* Stop observing once visible */
+                    }
+                });
+            }, options);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

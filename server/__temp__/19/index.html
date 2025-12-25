@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coiffeur Lilla - Ihr Salon in Zürich</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6a0572; /* Deep purple */
+            --secondary-color: #9c27b0; /* Lighter purple */
+            --accent-color: #f7b731; /* Golden yellow */
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --background-light: #fdfdff;
+            --background-dark: #2c0032;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--background-light);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5em;
+            color: var(--primary-color);
+        }
+
+        h1 { font-size: 3em; }
+        h2 { font-size: 2.5em; }
+        h3 { font-size: 1.8em; }
+
+        header {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--light-text-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text-color);
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 0.3em;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 10rem 0 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin-top: -6rem; /* Adjust for fixed header */
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 0.3em;
+            color: var(--light-text-color);
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            margin-bottom: 2.5em;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1em 2.5em;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background-color: #e6a02b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        section {
+            padding: 6rem 0;
+            background-color: var(--background-light);
+            animation: slideInUp 0.8s ease-out forwards;
+            animation-delay: 0.2s; /* Initial load delay, not true scroll anim */
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        section:nth-of-type(even) {
+            background-color: #f3f3f8;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 0.5em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1em;
+            font-size: 1.1em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .service-item {
+            background-color: #fff;
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-item h3 {
+            color: var(--primary-color);
+            margin-top: 1em;
+            margin-bottom: 0.8em;
+            font-size: 1.6em;
+        }
+
+        .service-item p {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            width: 100%;
+            max-width: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8em;
+            font-size: 1.4em;
+        }
+
+        .contact-item p {
+            margin-bottom: 0.5em;
+            color: #555;
+        }
+
+        .contact-item a {
+            font-weight: 500;
+        }
+
+        footer {
+            background-color: var(--background-dark);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5em;
+            font-size: 0.9em;
+        }
+
+        footer .social-links a {
+            color: var(--light-text-color);
+            margin: 0 0.8rem;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding-top: 0;
+            }
+            .nav-links {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: space-around;
+            }
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+            .hero {
+                padding: 8rem 0 6rem;
+                min-height: auto;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero p {
+                font-size: 1em;
+                margin-bottom: 2em;
+            }
+            section {
+                padding: 4rem 0;
+            }
+            .section-title {
+                margin-bottom: 2.5rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                max-width: 100%;
+            }
+            .contact-item {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links li {
+                margin-left: 0.8rem;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            .btn {
+                padding: 0.8em 2em;
+            }
+            .logo {
+                font-size: 1.5em;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.4em; }
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Generic slide-in for sections for initial load animation */
+        section {
+            opacity: 0; /* Hidden by default */
+            transform: translateY(30px); /* Slightly moved down */
+            animation: slideInUp 0.8s ease-out forwards;
+            animation-delay: var(--delay); /* Use CSS variable for staggered delays */
+        }
+
+        /* Staggered animation delays for sections */
+        section:nth-of-type(1) { --delay: 0.8s; } /* Hero content has 0.5s */
+        section:nth-of-type(2) { --delay: 1.2s; } /* About */
+        section:nth-of-type(3) { --delay: 1.6s; } /* Dienstleistungen */
+        section:nth-of-type(4) { --delay: 2.0s; } /* Kontakt */
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="#home" class="logo">Coiffeur Lilla</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#dienstleistungen">Dienstleistungen</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Ihr Coiffeur für Stil und Wohlbefinden in Zürich</h1>
+                <p>Entdecken Sie bei Coiffeur Lilla Ihren perfekten Look – mit Leidenschaft, Präzision und den neuesten Trends.</p>
+                <a href="#kontakt" class="btn">Jetzt Termin vereinbaren</a>
+            </div>
+        </section>
+
+        <section id="ueber-uns">
+            <div class="container">
+                <h2 class="section-title">Über Coiffeur Lilla</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Willkommen bei Coiffeur Lilla, Ihrem modernen Salon im Herzen von Zürich. Wir leben unsere Leidenschaft für Haare und Stil und bieten Ihnen ein einzigartiges Friseurerlebnis. Unser erfahrenes Team kreiert für Sie den Look, der Ihre Persönlichkeit unterstreicht und Sie strahlen lässt.</p>
+                        <p>Bei uns steht der Kunde im Mittelpunkt. Wir nehmen uns Zeit für eine individuelle Beratung, um Ihre Wünsche zu verstehen und die optimale Lösung für Ihre Haarstruktur und Ihren Typ zu finden. Ob klassischer Haarschnitt, trendige Coloration oder festliches Styling – wir arbeiten mit grösster Sorgfalt und verwenden ausschliesslich hochwertige Produkte.</p>
+                        <p>Treten Sie ein in eine Oase der Ruhe und lassen Sie sich verwöhnen. Wir freuen uns darauf, Sie bei Coiffeur Lilla begrüssen zu dürfen und gemeinsam Ihren Traumlook zu verwirklichen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dienstleistungen">
+            <div class="container">
+                <h2 class="section-title">Unsere Dienstleistungen</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h3>Haarschnitte</h3>
+                        <p>Präzise Schnitte für Damen, Herren und Kinder, die Ihre natürliche Schönheit hervorheben und einfach zu stylen sind.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Färben & Mèches</h3>
+                        <p>Von sanften Tönungen über lebendige Colorationen bis hin zu feinen Mèches – für einen strahlenden Auftritt.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Styling & Hochsteckfrisuren</h3>
+                        <p>Perfektes Styling für jeden Anlass, von Alltagslooks bis zu eleganten Hochsteckfrisuren für Hochzeiten und Events.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Haarpflege & Kuren</h3>
+                        <p>Individuelle Pflegeprogramme und intensive Kuren, die Ihrem Haar Glanz und Vitalität zurückgeben.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Bärte</h3>
+                        <p>Professionelle Bartpflege und -gestaltung für den modernen Mann, passend zu Ihrem Stil.</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Brautfrisuren</h3>
+                        <p>Lassen Sie sich für Ihren schönsten Tag von uns beraten und stylen. Wir kreieren Ihre Traumfrisur.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <div class="container">
+                <h2 class="section-title">Kontakt & Anfahrt</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Adresse</h3>
+                        <p>Coiffeur Lilla</p>
+                        <p>Altstetterstrasse 168</p>
+                        <p>8048 Zürich, Schweiz</p>
+                        <p><a href="https://www.google.com/maps/search/?api=1&query=Altstetterstrasse+168,+8048+Zürich" target="_blank" rel="noopener noreferrer">Auf Google Maps anzeigen</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Telefon</h3>
+                        <p>Für Terminvereinbarungen oder Fragen:</p>
+                        <p><a href="tel:+41444328146">044 432 81 46</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Öffnungszeiten</h3>
+                        <p>Dienstag - Freitag: 09:00 - 18:00 Uhr</p>
+                        <p>Samstag: 09:00 - 16:00 Uhr</p>
+                        <p>Montag & Sonntag: Geschlossen</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Coiffeur Lilla. Alle Rechte vorbehalten.</p>
+            <div class="social-links">
+                <!-- No social media links provided, so omitting icon examples -->
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

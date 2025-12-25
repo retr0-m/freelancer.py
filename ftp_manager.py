@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from log import log
 from lead import Lead
+from config import TEMP_PATH
 
 def connect_ftps(host: str, username: str, password: str) -> FTP_TLS:
     """
@@ -145,6 +146,7 @@ def init_vars():
 
 
 
+# ! DEPRECATED IN SERVER VERSION
 def ftps_upload_lead(lead:Lead):
 
     FTPS_HOST, FTPS_PASS, FTPS_USER = init_vars()
@@ -167,8 +169,39 @@ def ftps_upload_lead(lead:Lead):
     )
     ftps_create_folder(ftps, f"/matteocola.com/preview/f/{lead.id}/images")
 
-    ftps_upload_dir(ftps, f"./leads/{lead.id}/images", 
+    ftps_upload_dir(ftps, f"./leads/{lead.id}/images",
                     f"/matteocola.com/preview/f/{lead.id}/images")
+
+    log("Done!")
+
+    ftps.quit()
+
+
+# * USE THIS INSTEAD
+def ftps_upload_lead_from_server(lead:Lead):
+
+    FTPS_HOST, FTPS_PASS, FTPS_USER = init_vars()
+
+    ftps = connect_ftps(FTPS_HOST, FTPS_USER, FTPS_PASS)
+
+    target_dir=f"/matteocola.com/preview/s/{lead.id}"
+
+    if ftps_folder_exists(ftps, target_dir):
+        log("Folder already exists on ftp: "+target_dir)
+        ftps.quit()
+        return "Already exists"
+
+    ftps_create_folder(ftps, target_dir)
+
+    ftps_send_file(
+        ftps,
+        local_path=f"./{TEMP_PATH}/{lead.id}/index.html",
+        remote_path=f"/matteocola.com/preview/s/{lead.id}/index.html"
+    )
+    ftps_create_folder(ftps, f"/matteocola.com/preview/s/{lead.id}/images")
+
+    ftps_upload_dir(ftps, f"./{TEMP_PATH}/{lead.id}/images",
+                    f"/matteocola.com/preview/s/{lead.id}/images")
 
     log("Done!")
 
@@ -190,6 +223,6 @@ if __name__ == "__main__":
 
     #TEST 1
     log('TEST-1 with following sandbox data:      Lead(1, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)')
-    l=Lead(1, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", ["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
+    l=Lead(1, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", "aa",["./leads/150/images/1.jpg","./leads/150/images/2.png"], 0)
     ftps_upload_lead(l)
 

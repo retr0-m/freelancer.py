@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAMAN Café-Bar - Ihr gemütlicher Treffpunkt in Zürich</title>
+    <meta name="description" content="Entdecken Sie die YAMAN Café-Bar in Zürich: Geniessen Sie exzellenten Kaffee, erfrischende Getränke und köstliche Snacks in einer modernen und einladenden Atmosphäre.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☕%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --primary-color: #A36F3F; /* Warm brown */
+            --secondary-color: #F8F3EC; /* Off-white */
+            --accent-color: #5C4033; /* Darker brown */
+            --text-color: #333333;
+            --light-text-color: #FFFFFF;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --spacing-unit: 1rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--accent-color);
+            margin-bottom: var(--spacing-unit);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+
+        p { margin-bottom: var(--spacing-unit); }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 calc(2 * var(--spacing-unit));
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-in-left.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .slide-in-right.appear {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--light-text-color);
+            padding: var(--spacing-unit) 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            animation: fadeIn 1s ease-out forwards;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: calc(2 * var(--spacing-unit));
+            animation: fadeInRight 1s ease-out forwards;
+        }
+        nav ul li a {
+            color: var(--text-color);
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/2.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text-color);
+            padding-top: 80px; /* Offset for fixed header */
+        }
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInScale 1.2s ease-out forwards;
+        }
+        .hero h1 {
+            color: var(--light-text-color);
+            font-size: 4.5rem;
+            margin-bottom: var(--spacing-unit);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: calc(2 * var(--spacing-unit));
+            animation: fadeInUp 1.2s ease-out forwards;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            animation: fadeInUp 1.4s ease-out forwards;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: calc(6 * var(--spacing-unit)) 0;
+            text-align: center;
+        }
+        section:nth-of-type(even) {
+            background-color: var(--secondary-color);
+        }
+        section h2 {
+            margin-bottom: calc(3 * var(--spacing-unit));
+            position: relative;
+            display: inline-block;
+        }
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: var(--primary-color);
+            left: 20%;
+            bottom: -10px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: calc(4 * var(--spacing-unit));
+            text-align: left;
+            margin-top: calc(4 * var(--spacing-unit));
+        }
+        .about-text, .about-details {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-unit);
+        }
+        .about-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .about-details ul li {
+            margin-bottom: var(--spacing-unit);
+            font-size: 1.1rem;
+        }
+        .about-details ul li strong {
+            color: var(--accent-color);
+        }
+
+        /* Menu Section (Highlights) */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: calc(3 * var(--spacing-unit));
+            margin-top: calc(4 * var(--spacing-unit));
+        }
+        .menu-item {
+            background-color: var(--light-text-color);
+            padding: calc(2 * var(--spacing-unit));
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        .menu-item h3 {
+            color: var(--primary-color);
+            margin-bottom: calc(0.5 * var(--spacing-unit));
+        }
+        .menu-item p {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: calc(3 * var(--spacing-unit));
+            margin-top: calc(4 * var(--spacing-unit));
+        }
+        .contact-card {
+            background-color: var(--light-text-color);
+            padding: calc(2 * var(--spacing-unit));
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: left;
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-unit);
+        }
+        .contact-card p {
+            margin-bottom: calc(0.5 * var(--spacing-unit));
+        }
+        .contact-card p strong {
+            color: var(--accent-color);
+        }
+        .contact-card a {
+            display: block;
+            margin-top: var(--spacing-unit);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: calc(3 * var(--spacing-unit)) 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        footer .social-links a {
+            color: var(--light-text-color);
+            font-size: 1.5rem;
+            margin: 0 var(--spacing-unit);
+            transition: color 0.3s ease;
+        }
+        footer .social-links a:hover {
+            color: var(--primary-color);
+        }
+        footer p {
+            margin-top: var(--spacing-unit);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            h1 { font-size: 3.5rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.2rem; }
+            nav ul li { margin-left: var(--spacing-unit); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 1.8rem; }
+            .hero {
+                height: 80vh;
+                padding-top: 60px;
+            }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1rem; }
+            header .container { flex-direction: column; }
+            header .logo { margin-bottom: var(--spacing-unit); }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            nav ul li { margin: 0.5rem 1rem; }
+            .about-content { flex-direction: column; text-align: center; }
+            .about-text, .about-details { min-width: unset; width: 100%; }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.5rem; }
+            .hero { padding-top: 40px; }
+            .hero h1 { font-size: 2.2rem; }
+            .btn-primary { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+            .container { padding: 0 var(--spacing-unit); }
+            section { padding: calc(4 * var(--spacing-unit)) 0; }
+        }
+
+        /* On Load Animations (initial hidden state) */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">YAMAN Café-Bar</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Startseite</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#menu">Speisekarte</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Willkommen in der YAMAN Café-Bar</h1>
+                <p>Ihre Oase mitten im Herzen von Zürich – Genuss und Gemütlichkeit in einem.</p>
+                <a href="#menu" class="btn-primary">Unsere Speisekarte entdecken</a>
+            </div>
+        </section>
+
+        <section id="about" class="fade-in">
+            <div class="container">
+                <h2>Über uns</h2>
+                <div class="about-content">
+                    <div class="about-text slide-in-left">
+                        <h3>Ein Ort zum Wohlfühlen</h3>
+                        <p>Die YAMAN Café-Bar ist Ihr gemütlicher Treffpunkt in Zürich. Wir haben einen Ort geschaffen, an dem Sie dem Alltag entfliehen und besondere Momente geniessen können. Egal ob für einen schnellen Kaffee am Morgen, ein entspanntes Mittagessen oder einen Drink am Abend – bei uns sind Sie immer willkommen.</p>
+                        <p>Wir legen Wert auf Qualität und eine herzliche Atmosphäre. Lassen Sie sich von unserem freundlichen Team verwöhnen und entdecken Sie unsere vielfältigen Angebote.</p>
+                    </div>
+                    <div class="about-details slide-in-right">
+                        <h3>Unsere Werte</h3>
+                        <ul>
+                            <li><strong>Frische:</strong> Nur die besten Zutaten für Ihren Genuss.</li>
+                            <li><strong>Gastfreundschaft:</strong> Wir heissen jeden Gast herzlich willkommen.</li>
+                            <li><strong>Atmosphäre:</strong> Ein stilvolles und entspanntes Ambiente.</li>
+                            <li><strong>Innovation:</strong> Ständig neue Kreationen und Angebote.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="fade-in">
+            <div class="container">
+                <h2>Unsere Spezialitäten</h2>
+                <p>Von aromatischem Kaffee über erfrischende Drinks bis zu herzhaften Snacks – hier ist für jeden Geschmack etwas dabei.</p>
+                <div class="menu-grid">
+                    <div class="menu-item slide-in-left">
+                        <h3>Kaffee & Heissgetränke</h3>
+                        <p>Espresso, Cappuccino, Latte Macchiato, Tee und mehr – perfekt für Ihre Pause.</p>
+                    </div>
+                    <div class="menu-item fade-in">
+                        <h3>Gebäck & Süssigkeiten</h3>
+                        <p>Täglich frisch gebackene Croissants, Kuchen und andere süsse Versuchungen.</p>
+                    </div>
+                    <div class="menu-item slide-in-right">
+                        <h3>Erfrischende Drinks</h3>
+                        <p>Hausgemachte Limonaden, Säfte, ausgewählte Biere und feine Weine.</p>
+                    </div>
+                    <div class="menu-item slide-in-left">
+                        <h3>Herzhafte Snacks</h3>
+                        <p>Kleine Sandwiches, Salate und leckere Bites für den kleinen Hunger zwischendurch.</p>
+                    </div>
+                </div>
+                <a href="#contact" class="btn-primary" style="margin-top: 3rem;">Gleich reservieren</a>
+            </div>
+        </section>
+
+        <section id="contact" class="fade-in">
+            <div class="container">
+                <h2>Kontakt & Anfahrt</h2>
+                <p>Besuchen Sie uns in unserer charmanten Café-Bar. Wir freuen uns auf Sie!</p>
+                <div class="contact-info">
+                    <div class="contact-card slide-in-left">
+                        <h3>Adresse</h3>
+                        <p><strong>YAMAN Café-Bar</strong></p>
+                        <p>Schmidgasse 4</p>
+                        <p>8001 Zürich</p>
+                        <p>Schweiz</p>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <h3>Kontakt</h3>
+                        <p><strong>Telefon:</strong> <a href="tel:+41762651086">076 265 10 86</a></p>
+                        <p><strong>E-Mail:</strong> <a href="mailto:info@yamancafe.ch">info@yamancafe.ch</a></p>
+                    </div>
+                    <div class="contact-card slide-in-right">
+                        <h3>Öffnungszeiten</h3>
+                        <p><strong>Montag - Freitag:</strong> 07:00 - 20:00 Uhr</p>
+                        <p><strong>Samstag:</strong> 08:00 - 22:00 Uhr</p>
+                        <p><strong>Sonntag:</strong> Geschlossen</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><span style="font-family: Arial, sans-serif;">f</span></a>
+                <a href="#" aria-label="Instagram"><span style="font-family: Arial, sans-serif;">&#x1F4F8;</span></a>
+            </div>
+            <p>&copy; 2023 YAMAN Café-Bar. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // On-scroll animations
+            const faders = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+
+            const appearOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -100px 0px" // Start animation 100px before element is fully visible
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('appear');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

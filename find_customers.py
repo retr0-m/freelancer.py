@@ -103,7 +103,7 @@ def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000, m
 
     return leads_list
 
-
+# ! OBSOLETE ON SERVER VERSION. JUST SAVE ON DB....
 def save_leads_to_csv(leads_list: List[Lead]):
     """
     Accepts a list of Lead objects and saves their data to the index.csv file.

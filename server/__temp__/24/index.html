@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'BAR Bistro am Predigerplatz 38, Zürich</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #333;
+            --secondary-color: #f8f8f8;
+            --accent-color: #e0b04c;
+            --text-color: #333;
+            --light-text-color: #f8f8f8;
+            --dark-background: #1a1a1a;
+            --transition-speed: 0.6s ease-out;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #c99a3c;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-background);
+            color: var(--light-text-color);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
+            opacity: 0; /* For on-load animation */
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        header.scrolled {
+            background-color: rgba(26, 26, 26, 0.95);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--light-text-color);
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-text-color);
+            font-weight: 400;
+            font-size: 1.0em;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text-color);
+            overflow: hidden;
+            background-color: var(--dark-background);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay */
+            z-index: 1;
+        }
+
+        .hero img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            animation: zoomIn 10s ease-in-out infinite alternate;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInUp 1s forwards 1s;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 15px;
+            color: var(--light-text-color);
+            letter-spacing: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--dark-background);
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #c99a3c;
+            transform: translateY(-3px);
+        }
+
+        /* Section styles */
+        section {
+            padding: 80px 0;
+            opacity: 0; /* For on-scroll animation */
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            background-color: var(--secondary-color);
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-text-color);
+        }
+
+        section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section h2 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            padding: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .contact-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+        }
+
+        .contact-item p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-background);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5em;
+            }
+
+            nav ul {
+                display: none; /* Hide navigation on small screens, can add hamburger menu */
+            }
+
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1.2em;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">D'BAR Bistro</a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <img src="./images/2.jpg" alt="Belebte Strasse bei Nacht">
+            <div class="hero-content">
+                <h1>D'BAR Bistro</h1>
+                <p>Ihr Treffpunkt am Predigerplatz in Zürich für Genussmomente.</p>
+                <a href="#kontakt" class="btn">Kontakt aufnehmen</a>
+            </div>
+        </section>
+
+        <section id="ueber-uns" class="container">
+            <h2>Über uns</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Willkommen in D'BAR Bistro, Ihrem gemütlichen Rückzugsort mitten in Zürich. Wir am Predigerplatz 38 laden Sie ein, in einer modernen und einladenden Atmosphäre eine Auszeit vom Alltag zu geniessen.</p>
+                    <p>Unser Bistro ist bekannt für seine herzliche Gastfreundschaft und eine sorgfältig ausgewählte Auswahl an Speisen und Getränken, die sowohl für den schnellen Lunch als auch für entspannte Abende geeignet sind. Wir legen Wert auf frische Zutaten und bieten Ihnen ein Erlebnis, das den Gaumen verwöhnt.</p>
+                    <p>Egal ob für einen Kaffee am Morgen, ein leichtes Mittagessen oder einen Drink nach Feierabend – D'BAR Bistro ist der perfekte Ort, um sich mit Freunden zu treffen, Geschäftstermine abzuhalten oder einfach nur die pulsierende Atmosphäre von Zürich zu erleben.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./images/2.jpg" alt="Ansicht des Bistros bei Nacht">
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" class="container">
+            <h2>Kontakt & Anfahrt</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Adresse</h3>
+                    <p>Predigerpl. 38</p>
+                    <p>8001 Zürich, Schweiz</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Telefon</h3>
+                    <p><a href="tel:+41445549992">044 554 99 92</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Öffnungszeiten</h3>
+                    <p>Mo - Fr: 09:00 - 23:00</p>
+                    <p>Sa: 10:00 - 00:00</p>
+                    <p>So: Geschlossen</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 D'BAR Bistro. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header scroll effect
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // On-scroll section animations
+            const sections = document.querySelectorAll('section');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                if (!section.classList.contains('hero')) { // Exclude hero section from this specific animation
+                    observer.observe(section);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -7,12 +7,11 @@ Returns:
 import base64
 from pathlib import Path
 import requests
+from config import TEMP_PATH
 from lead import Lead
 from log import log, log_fatal_error
-
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODEL = "llava:7b"
-MAX_RETRIES = 5 # for connection error
+from config import OLLAMA_URL, MODEL, MAX_RETRIES
+# for connection error
 
 
 def image_to_base64(image_path: str) -> str:
@@ -29,25 +28,46 @@ def ask_llava(prompt: str, image_path: str):
     if image_path:
         payload["images"] = [image_to_base64(image_path)]
 
-    response = requests.post(OLLAMA_URL, json=payload)
+    response = requests.post(OLLAMA_URL, json=payload, timeout=10)
     response.raise_for_status()
 
     return response.json()["response"]
 
+# ! OBSOLETE, NOW USING lead.get_absolute_images_paths -> list[str]
+def get_server_path_from_img(img_path: str, lead_id: int) -> str:
+    """
+    Transforms:
+    images/1.jpg
+    →
+    ./server/__temp__/<lead_id>/images/1.jpg
+    """
+    img_path = img_path.lstrip("/")  # safety
+
+    return str(
+       Path(TEMP_PATH) / str(lead_id) / img_path
+    )
+
 def get_dict(lead: Lead) -> dict:
 
     images: list[str] = lead.images
+
+    # * RE-APPENDING THE TEMP PATH SO THE LLAVA:7B CAN GET THE PROPER PATH TO THE FILES
+    server_images : list[str] = []
+    server_images = lead.get_absolute_images_paths()
+
     descriptions: dict = {}
 
-    for image in images:
-        log(f"Giving image description... ({image})")
+
+
+    for i in range(0,len(images)-1):
+        log(f"Giving image description... ({server_images[i]})")
         for try_number in range(MAX_RETRIES):
             try:
                 answer = ask_llava(
                     prompt="you're a web developer, shortly describe the following image that may be used to build a website in 20 words ",
-                    image_path=image
+                    image_path=server_images[i]
                 )
-                descriptions[image]=str(answer)
+                descriptions[images[i]]=str(answer)
                 log("Description successfully received!")
                 break
             except requests.exceptions.HTTPError as e:

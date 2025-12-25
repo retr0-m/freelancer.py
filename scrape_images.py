@@ -1,6 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
+from create_website import strip_temp_folder
 from lead import Lead
 from log import log
 # Load environment variables from .env
@@ -82,6 +83,8 @@ def google_image_search(query, num_images=10, output_dir="images"):
     log("images scraping done")
     return 0
 
+
+# ! DEPRECATED IN SERVER VERSION
 def search_lead_images(lead:Lead):
     query = f"{lead.name} {lead.address}"
 
@@ -101,6 +104,29 @@ def search_lead_images(lead:Lead):
         print("Aborting due to scrape_images.py -> API_ERROR\nMaybe maximum API quota exceeded?")
         quit()
 
+from config import TEMP_PATH
+
+# * USE THIS INSTEAD
+def search_lead_server_images(lead:Lead):
+    query = f"{lead.name} {lead.address}"
+
+    img_path = f"./{TEMP_PATH}/{lead.id}/images"
+    status_code = google_image_search(query, num_images=5, output_dir=img_path)
+    if status_code == 0:
+
+        files = sorted(
+            os.path.join(img_path, f)
+            for f in os.listdir(img_path)
+            if "." in f
+        )
+        return [strip_temp_folder(file) for file in files]
+
+    elif status_code == -1:
+        log("Aborting...")
+        print("Aborting due to scrape_images.py -> API_ERROR\nMaybe maximum API quota exceeded?")
+        quit()
+
+
 
 
 if __name__ == "__main__":
@@ -109,6 +135,6 @@ if __name__ == "__main__":
 
     #TEST 1
     log('TEST-1 with following sandbox data:      Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)')
-    l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland", "Lugano", [], 0)
+    l=Lead(150, "Al-74", "21312432", "Via Trevano 74, 6900 Lugano, Switzerland","aaaa", "Lugano", [], 0)
     files=search_lead_images(l)
 

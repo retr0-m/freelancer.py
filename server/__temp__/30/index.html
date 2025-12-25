@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Bar Djoric Balkan – Ihr Stück Balkan in Zürich</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #A32E2E; /* Deep red, Balkan flag inspired */
+            --secondary-color: #333333; /* Dark charcoal */
+            --accent-color: #E2B04B; /* Golden yellow */
+            --text-light: #f4f4f4;
+            --text-dark: #222222;
+            --bg-light: #ffffff;
+            --bg-dark: #1a1a1a;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        /* Basic Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--secondary-color);
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 2.8em; }
+        h2 { font-size: 2.2em; }
+        h3 { font-size: 1.8em; }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-load {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .animate-on-load.delay-1 { animation-delay: 0.2s; }
+        .animate-on-load.delay-2 { animation-delay: 0.4s; }
+        .animate-on-load.delay-3 { animation-delay: 0.6s; }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 30px;
+        }
+
+        header nav ul li a {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        header nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        header nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(45deg, var(--primary-color), #6D1F1F);
+            color: var(--text-light);
+            text-align: center;
+            padding: 8rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            font-size: 4em;
+            margin-bottom: 0.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 2em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 0.8em 2em;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #FFD700;
+            transform: translateY(-3px);
+            color: var(--secondary-color);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        section:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .offering-item {
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 2em;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .offering-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .offering-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8em;
+        }
+
+        .offering-item p {
+            font-size: 0.95em;
+            color: var(--secondary-color);
+        }
+        
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .contact-info, .contact-map {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--bg-light);
+            padding: 2.5em;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1em;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.8em;
+        }
+
+        .contact-info p strong {
+            color: var(--secondary-color);
+        }
+
+        .contact-map {
+            height: 300px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            header nav ul li {
+                margin: 0 15px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.8em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+
+            .hero {
+                padding: 6rem 0;
+            }
+
+            header .logo {
+                font-size: 1.5em;
+            }
+
+            header nav ul li {
+                margin: 0 8px 10px;
+            }
+
+            .btn {
+                padding: 0.6em 1.5em;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container animate-on-load">
+            <div class="logo">Cafe Bar Djoric Balkan</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#offerings">Speisen & Getränke</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1 class="animate-on-load delay-1">Willkommen im Cafe Bar Djoric Balkan</h1>
+                <p class="animate-on-load delay-2">Ihr Stück Balkan mitten in Zürich – Geniessen Sie authentische Aromen und herzliche Gastfreundschaft.</p>
+                <a href="#offerings" class="btn animate-on-load delay-3">Unsere Angebote entdecken</a>
+            </div>
+        </section>
+
+        <section id="about" class="animate-on-scroll">
+            <div class="container">
+                <h2>Über uns</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Das Cafe Bar Djoric Balkan bringt die lebendige Kultur und die köstlichen Geschmäcker des Balkans direkt nach Zürich. Seit unserer Eröffnung ist es unser Ziel, einen Ort zu schaffen, an dem sich unsere Gäste wie zu Hause fühlen können, umgeben von einer warmen und einladenden Atmosphäre.</p>
+                        <p>Wir sind stolz darauf, traditionelle Rezepte und frische Zutaten zu verwenden, um Ihnen ein unvergessliches kulinarisches Erlebnis zu bieten. Ob für einen belebenden Balkan-Kaffee am Morgen, ein gemütliches Mittagessen oder einen geselligen Abend mit Freunden – bei uns finden Sie stets den richtigen Rahmen.</p>
+                        <p>Kommen Sie vorbei und tauchen Sie ein in eine Welt voller Genuss, Musik und Gastfreundschaft. Wir freuen uns darauf, Sie begrüssen zu dürfen!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="offerings" class="animate-on-scroll">
+            <div class="container">
+                <h2>Unsere Speisen & Getränke</h2>
+                <div class="offerings-grid">
+                    <div class="offering-item">
+                        <h3>Traditioneller Balkan-Kaffee</h3>
+                        <p>Ein starker, aromatischer Kaffee, nach alter Balkan-Tradition zubereitet und serviert. Perfekt für einen belebenden Start in den Tag oder eine gemütliche Pause.</p>
+                    </div>
+                    <div class="offering-item">
+                        <h3>Hausgemachte Süssigkeiten</h3>
+                        <p>Entdecken Sie unsere Auswahl an hausgemachten Kuchen und Desserts, inspiriert von traditionellen Balkan-Rezepten. Süss und unwiderstehlich.</p>
+                    </div>
+                    <div class="offering-item">
+                        <h3>Frische Säfte & Getränke</h3>
+                        <p>Neben unseren Kaffeespezialitäten bieten wir eine Vielzahl an erfrischenden Säften, Softdrinks und ausgewählten alkoholischen Getränken an.</p>
+                    </div>
+                    <div class="offering-item">
+                        <h3>Kleine Snacks & Vorspeisen</h3>
+                        <p>Lassen Sie sich von unseren kleinen Balkan-Häppchen und Vorspeisen verführen, ideal zum Teilen oder für den kleinen Hunger zwischendurch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="animate-on-scroll">
+            <div class="container">
+                <h2>Kontakt & Anfahrt</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Besuchen Sie uns</h3>
+                        <p>Wir freuen uns darauf, Sie im Cafe Bar Djoric Balkan begrüssen zu dürfen.</p>
+                        <p><strong>Adresse:</strong><br> Friesstrasse 12, 8050 Zürich, Schweiz</p>
+                        <p><strong>Telefon:</strong><br> Nicht angegeben</p>
+                        <p><strong>Öffnungszeiten:</strong><br>
+                            Mo - Fr: 08:00 - 22:00 Uhr<br>
+                            Sa: 09:00 - 23:00 Uhr<br>
+                            So: Geschlossen</p>
+                    </div>
+                    <div class="contact-map">
+                        Karte & Standort<br>(Ohne interaktive Karte – kein Code erlaubt)
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Cafe Bar Djoric Balkan. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // On scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

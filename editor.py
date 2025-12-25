@@ -1,7 +1,9 @@
+# ! THIS FILE WILL BE DEPRECATED STARTING OFF SERVER 1.5.1 VERSION
+
 from log import log
 from lead import Lead
 from google import genai
-import os 
+import os
 from dotenv import load_dotenv
 from create_website import is_html, init_client, format_html
 
@@ -11,10 +13,10 @@ load_dotenv()
 GEMINI_MODEL = "gemini-2.5-flash"
 PROMPT_BASE = "You're a web designer and developer\napply the following edits:"
 try:
-    API_KEY = os.getenv("GEMINI_API_KEY")   
+    API_KEY = os.getenv("GEMINI_API_KEY")
 except Exception as e:
     log("Could'nt load API_KEY for gemini: "+str(e))
-    
+
 
 
 class Edit:
@@ -28,7 +30,7 @@ class Edit:
 
     def add_prompt(self, p:str):
         self.prompt = p
-    
+
 
 def yes_or_no_input(text: str): #deprecated
     while True:
@@ -39,8 +41,10 @@ def yes_or_no_input(text: str): #deprecated
             return False
         else:
             "Answer with y or n"
-        
 
+
+
+    # !! DEPRECATED
 def prompt_user_edits(lead_list: list[Lead]) -> list[Edit]:
     # will be { lead.id : "Make the title bolder..."}
     log("Waiting for user to type edits for the websites.")
@@ -72,7 +76,7 @@ def run_prompt(client, prompt):
         response = client.models.generate_content(
             model=GEMINI_MODEL, contents=prompt
         )
-        
+
         if is_html(response.text):
             log("Succesfully received a response with HTML code.")
         else:
@@ -83,8 +87,8 @@ def run_prompt(client, prompt):
         log("Couldn't apply edits to specified website for the following reason: "+str(e))
 
 def replace_website_content(
-    lead: Lead, 
-    website_content: str, 
+    lead: Lead,
+    website_content: str,
     temp: bool = False
                             ):
     log(f"Replacing website content on ./leads/{lead.id}/index.html")
@@ -96,7 +100,7 @@ def replace_website_content(
     with open(path, "w", encoding="utf-8") as f:
         chars = f.write(str(website_content))
     log(f"Done writing {chars} characters into the index file")
-    
+
 
 def apply_user_edits(edits_list: list[Edit]):
     # prompt_gemini...
@@ -130,5 +134,5 @@ if __name__ == "__main__":
     for e in edits:
         content=run_prompt(client, e.prompt)
         replace_website_content(e.lead, content)
-    
-    
+
+

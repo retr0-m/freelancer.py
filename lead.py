@@ -1,6 +1,7 @@
 from typing import List, Dict, Optional
 import re
 from log import log
+from config import TEMP_PATH
 class Lead:
     """
     Represents a single business lead in the pipeline, with a built-in
@@ -22,6 +23,9 @@ class Lead:
     def __repr__(self):
         return f"Lead(id={self.id}, name='{self.name}', phone='{self.phone}', address='{self.address}', city='{self.city}', images='{self.images}' status={self.status})"
 
+    def get_absolute_images_paths(self) -> list[str]:
+        return [(TEMP_PATH+"/"+str(self.id)+"/"+path) for path in self.images]
+
     def change_status(self, s:int):
         self.status=s
 
@@ -42,7 +46,15 @@ class Lead:
             'status': self.status
         }
 
+    # ! OBSOLETE IN SERVER VERSION
     def add_images(self, images:List, descr:bool = False) -> int:
+        for img in images:
+            self.images.append(img)
+        log(f"added images to lead: {images}")
+        return 0
+
+    # * USE THIS INSTEAD
+    def add_server_images(self, images:List, descr:bool = False) -> int:
         for img in images:
             self.images.append(img)
         log(f"added images to lead: {images}")

@@ -1,0 +1,11 @@
+google
+google-genai
+dotenv
+reportlab
+PyPDF2
+qrcode
+googlemaps
+pandas
+fastapi
+uvicorn
+qr_generator

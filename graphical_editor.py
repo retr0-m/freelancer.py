@@ -23,7 +23,7 @@ load_dotenv()
 GEMINI_MODEL = "gemini-2.5-flash"
 PROMPT_BASE = "You're a web designer and developer\napply the following edits:\n"
 try:
-    API_KEY = os.getenv("GEMINI_API_KEY")   
+    API_KEY = os.getenv("GEMINI_API_KEY")
 except Exception as e:
     log("Could'nt load API_KEY for gemini: "+str(e))
 
@@ -84,7 +84,7 @@ async def receive(request: Request):
 
     # Example: print to check
     log("Initialized Edit class based on data received: "+str(edit))
-    
+
     apply_user_edit(edit)
 
     return JSONResponse({"status": "ok"})
@@ -101,7 +101,7 @@ def init_client():
 def generate_prompt(edit: Edit):
     log("Generating prompt...")
     p=PROMPT_BASE
-    if edit.generic:  
+    if edit.generic:
         p+=str(edit.generic)
     if edit.generic and edit.specific:
         p+="\nAnd the following edits to specific elements:"
@@ -109,8 +109,8 @@ def generate_prompt(edit: Edit):
         p+="\nSpecific selector to element to edit    :    Edits to apply"
         for k in edit.specific:
             p += "\n" + k + " : " + edit.specific[k]
-        
-    
+
+
     p+="\nto the following HTML:\n\n"
     with open(f"./graphical_editor/temp/{edit.lead.id}/index.html", "r", encoding="utf-8") as f:
         html=f.read()
@@ -129,7 +129,7 @@ def run_prompt(client, prompt):
         response = client.models.generate_content(
             model=GEMINI_MODEL, contents=prompt
         )
-        
+
         if is_html(response.text):
             log("Succesfully received a response with HTML code.")
         else:
@@ -173,7 +173,7 @@ def replace_temp_website_content(lead: Lead, website_content: str):
 
     log(f"📸 {copied} image(s) successfully copied for Lead ID {lead.id}")
 def replace_website_content(
-    lead: Lead, 
+    lead: Lead,
     website_content: str
     ):
     log(f"Replacing website content on ./leads/{lead.id}/index.html")
@@ -212,5 +212,5 @@ if __name__ == "__main__":
     # start_server()
     # sleep(300)
     # stop_server()
-    
-    
+
+
