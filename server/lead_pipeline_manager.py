@@ -42,6 +42,7 @@ city_max_number:int = len(CUSTOMERS_CITY) - 1
 # ? This core function (lead pipeline) updates current_type number everytime it doesnt finds any leads, and then if it runs out of types it goes to the next customer city, resetting the types.
 def lead_pipeline(lead_number: int):
     global current_city_number, current_type_number
+    lead_list: list = []
     while True:
         lead_list=find_customers.find_and_initialize_leads(CUSTOMERS_TYPE[current_type_number], CUSTOMERS_CITY[current_city_number], max_leads=lead_number)
         if not lead_list:
@@ -95,14 +96,16 @@ def lead_pipeline(lead_number: int):
 def mainloop():
     log("[mainloop] \t STARTING...")
     n : int = 0
-    while True:
+
+    while how_many_leads_in_temp() <= MAX_LEADS_TO_DISPLAY:
         n+=1
         log(f"Recalled server.lead_pipeline_manager.mainloop().while-true (:81) -> ({n})")
-        leads_waiting_for_approval: int = how_many_leads_in_temp()
-        while leads_waiting_for_approval <= MAX_LEADS_TO_DISPLAY:
-            lead_number: int = MAX_LEADS_TO_DISPLAY - leads_waiting_for_approval
-            try:
-                lead_pipeline(lead_number)
-            except Exception as e:
-                log(f"UNCATCHED EXEPTION DURING THE EXECUTION OF LEAD_PIPELINE, EXITING.... (server.lead_pipeline_manager.mainloop:last-line)\n\tThe exception was the following:\n{e}")
-                exit()
+        lead_number: int = MAX_LEADS_TO_DISPLAY - how_many_leads_in_temp()
+        try:
+            lead_pipeline(lead_number)
+        except Exception as e:
+            log(f"UNCATCHED EXCEPTION DURING THE EXECUTION OF LEAD_PIPELINE, EXITING.... (server.lead_pipeline_manager.mainloop:last-line)\n\tThe exception was the following:\n{e}")
+            exit()
+
+
+# TODO: FIX DOUBLE WHILE TRUE.

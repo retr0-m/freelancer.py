@@ -72,21 +72,21 @@ def get_argv():
         return
 
 
-    # 2️⃣ CUSTOMERS_TYPE
+    # CUSTOMERS_TYPE
     if len(args) >= 1:
         CUSTOMERS_TYPE = args[0]
         log(f"Using '{CUSTOMERS_TYPE}' as CUSTOMERS_TYPE (from argv)")
     else:
         log(f"No argv for CUSTOMERS_TYPE found, using default '{CUSTOMERS_TYPE}'")
 
-    # 3️⃣ CUSTOMERS_CITY
+    # CUSTOMERS_CITY
     if len(args) >= 2:
         CUSTOMERS_CITY = args[1]
         log(f"Using '{CUSTOMERS_CITY}' as CUSTOMERS_CITY (from argv)")
     else:
         log(f"No argv for CUSTOMERS_CITY found, using default '{CUSTOMERS_CITY}'")
 
-    # 4️⃣ LEADS_TO_GENERATE
+    # LEADS_TO_GENERATE
     if len(args) >= 3:
         try:
             LEADS_TO_GENERATE = int(args[3])
@@ -97,7 +97,7 @@ def get_argv():
                 f"using default {LEADS_TO_GENERATE}"
             )
     else:
-        log(f"No argv for LEADS_TO_GENERATE found, using default {LEADS_TO_GENERATE}")
+        log("No argv for LEADS_TO_GENERATE found, using default.")
 
 
 # ! KILLING server_human_approval.srv when program exites
@@ -147,6 +147,4 @@ def wipe_sandbox_data():
 
 if __name__ == "__main__":
     main()
-
-
 
