@@ -2,6 +2,7 @@ SERVER VERSION - 1.6.2
 - improved human approval web page design
 - fixed bug for images no showing in the web page for human approval
 - improved language support
+- added images to gitignore
 
 
 SERVER VERSION - 1.6.1
