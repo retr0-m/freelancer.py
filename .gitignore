@@ -1,5 +1,5 @@
 .env
-index.html
-.jpg
-.png
-images/
+**/index.html
+**/*.jpg
+**/*.png
+**/*.pdf
