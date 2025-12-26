@@ -1,9 +1,13 @@
-TODO list
+#TODO list
+make the dashboard scalable
+fix images not loading in preview dashboard
+open document after creating (let the function return a path that will be opened using browser)
 
-- main.py
-        add to ftp the whole thanngggg 
-        and then we run it and we made it cuh
+add language support:
+    - lead.language ("IT,EN,DE")
+    - lead.value ("CHF, €")
+    - preventivo language
+    - user document languages
 
-- make it a fully automated server
-- so upload to a temp ftp / use my server with cloudflare tunnels to upload websites, and i enter with my phone to give it a human check and see if: yes, send proposal, no dont do anything and dont upload to ftp.
-- (do it with far away cities)
+video or screenshot of the website
+marketing ai tester

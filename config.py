@@ -4,7 +4,7 @@ Docstring for config
 * CONFIG FILE IS ONLY FOR RUNNING SERVER VERSION, EVERY STRING WILL BE IGNORED ON CURRENT MAIN BRANCH.
 """
 
-VERSION="SERVER 1.5.2"
+VERSION="SERVER 1.6.1"
 
 
 # * create_website.py
@@ -13,9 +13,6 @@ PROMPT_FILE = "../generate_website_prompt.json"
 
 
 TEMP_PATH="__temp__" # * Used by many scripts in SERVER version
-
-
-
 
 # * server.py
 CUSTOMERS_TYPE = [
@@ -123,7 +120,7 @@ CUSTOMERS_CITY = [
     "Locarno",
 ]
 
-MAX_LEADS_TO_DISPLAY = 10 # * This means, when there are no leads generated how many should the program generate? and if there are some that have already been generated, how many should be added?
+MAX_LEADS_TO_DISPLAY = 2 # * This means, when there are no leads generated how many should the program generate? and if there are some that have already been generated, how many should be added?
 
 
 

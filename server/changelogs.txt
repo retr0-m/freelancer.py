@@ -1,3 +1,10 @@
+SERVER VERSION - 1.6.1
+added language support:
+    - lead.language ("IT,EN,DE")
+    - lead.value ("CHF, €")
+    - proposal language
+    - user document languages
+
 SERVER VERSION - 1.5.2
 - added in config.py a list of customers_type and customers_city, so each time no leads were found of a type in a city, it changes the type, and if it runs out of types, it searches in another city, like 2 base 15 chars aa ab ac ... ba bb bc ... ca cc cd
 - created lead_pipeline_manager.py -> will manage the pipeline for creating a new website for a new lead.

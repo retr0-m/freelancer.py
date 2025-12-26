@@ -131,7 +131,9 @@ def main():
     log("Done! ran all the scripts with no fatal errors.")
 
 
-
+def test_1():
+    from lead_pipeline_manager import how_many_leads_in_temp
+    print(how_many_leads_in_temp())
 
 
 

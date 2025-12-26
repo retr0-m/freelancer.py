@@ -120,7 +120,8 @@ def approved(lead: Lead) -> None:
     ftp_manager.ftps_upload_lead_from_server(lead)
     qr_generator.generate_qr_server(lead)
     create_documentation.create_preview_document_server(lead)
-    print("DONE!!!!!!")
+    log(f"DONE APPLYING APPROVE PIPELINE FOR LEAD: {str(lead)}")
+    delete_preview(lead.id)
 
 
 

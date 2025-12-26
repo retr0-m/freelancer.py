@@ -4,6 +4,7 @@
         how should it be called (arg lead_number)
 """
 import sys
+from time import sleep
 sys.path.insert(1, '../')
 
 
@@ -95,17 +96,24 @@ def lead_pipeline(lead_number: int):
 
 def mainloop():
     log("[mainloop] \t STARTING...")
-    n : int = 0
+    n : int = 0 # * used to not log many times "waiting for user to approve or delete a lead."
 
-    while how_many_leads_in_temp() <= MAX_LEADS_TO_DISPLAY:
-        n+=1
-        log(f"Recalled server.lead_pipeline_manager.mainloop().while-true (:81) -> ({n})")
-        lead_number: int = MAX_LEADS_TO_DISPLAY - how_many_leads_in_temp()
-        try:
-            lead_pipeline(lead_number)
-        except Exception as e:
-            log(f"UNCATCHED EXCEPTION DURING THE EXECUTION OF LEAD_PIPELINE, EXITING.... (server.lead_pipeline_manager.mainloop:last-line)\n\tThe exception was the following:\n{e}")
-            exit()
-
+    while True:
+        if how_many_leads_in_temp() < MAX_LEADS_TO_DISPLAY:
+            n=0
+            log(f"Recalled server.lead_pipeline_manager.mainloop().while-true (:81) -> ({n})")
+            lead_number: int = MAX_LEADS_TO_DISPLAY - how_many_leads_in_temp()
+            try:
+                lead_pipeline(lead_number)
+            except Exception as e:
+                log(f"UNCATCHED EXCEPTION DURING THE EXECUTION OF LEAD_PIPELINE, EXITING.... (server.lead_pipeline_manager.mainloop:last-line)\n\tThe exception was the following:\n{e}")
+                exit()
+        else:
+            n+=1
+            if(n==1):
+                log("Waiting for user to approve or delete a lead.")
+                sleep(1)
+            else:
+                sleep(2)
 
 # TODO: FIX DOUBLE WHILE TRUE.

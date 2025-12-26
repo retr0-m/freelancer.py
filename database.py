@@ -3,6 +3,7 @@ import json
 from typing import List, Dict, Optional
 from lead import Lead
 from log import log
+import languages_support
 
 # Define the path to your database file
 DB_FILE = './leads.db'
@@ -43,7 +44,10 @@ def initialize_database():
             address TEXT,
             city TEXT,
             images TEXT,
-            status INTEGER NOT NULL
+            status INTEGER NOT NULL,
+            country_code TEXT,
+            currency TEXT,
+            language_codes TEXT
         );
         """
         cursor.execute(create_table_sql)
@@ -144,11 +148,10 @@ def insert_lead(lead: Lead):
     images_json = json.dumps(lead_data.get('images', []))
 
     try:
-        sql = """
-        INSERT INTO leads (id, name, phone, email, address, city, images, status)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """
-        cursor.execute(sql, (
+        cursor.execute("""
+            INSERT INTO leads (id, name, phone, email, address, city, images, status, country_code, currency, language_codes)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
             lead_data['id'],
             lead_data['name'],
             lead_data['phone'],
@@ -156,7 +159,10 @@ def insert_lead(lead: Lead):
             lead_data['address'],
             lead_data['city'],
             images_json,
-            lead_data.get('status', 0)
+            lead_data.get('status', 0),
+            lead_data.get('country_code'),
+            lead_data.get('currency'),
+            lead_data.get('language_codes')
         ))
 
         conn.commit()
@@ -256,28 +262,44 @@ def display_leads_table(limit: int = 10, min_status: int = 0):
         if conn:
             conn.close()
 
+
 def lead_from_db_row(row: sqlite3.Row) -> Lead:
     """
-    Converts a single sqlite3.Row object back into a Lead instance.
-    (This is a crucial helper for any retrieval function)
+    Converts a single sqlite3.Row object back into a Lead instance,
+    including rebuilding the LocaleInfo object.
     """
-    # 1. Deserialize the 'images' JSON string back into a Python list
+    # Deserialize images
     try:
         images_list = json.loads(row['images'])
     except (json.JSONDecodeError, TypeError):
         images_list = []
 
-    # 2. Instantiate the Lead class
-    return Lead(
+    # Instantiate the Lead
+    lead = Lead(
         id=row['id'],
         name=row['name'],
         phone=row['phone'],
-        email = row['email'] if 'email' in row.keys() else None,
+        email=row['email'] if 'email' in row.keys() else None,
         address=row['address'],
         city=row['city'],
         images=images_list,
         status=row['status']
     )
+
+    # --- Rebuild LocaleInfo from DB columns ---
+    localeinfo = languages_support.LocaleInfo(row['address'])  
+    try:
+        localeinfo.language_codes = json.loads(row['language_codes'] or "[]")
+    except json.JSONDecodeError:
+        localeinfo.language_codes = []
+
+    # Optional: rebuild human-readable languages list
+    localeinfo.languages = [
+        languages_support.LANGUAGE_NAMES.get(code, code) for code in localeinfo.language_codes
+    ]
+
+    lead.localeinfo = localeinfo
+    return lead
 
 
 def get_leads(lead_id: Optional[int] = None, name: Optional[str] = None,

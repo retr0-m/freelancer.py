@@ -62,7 +62,8 @@ def generate_prompt_server(lead: Lead) -> str:
         "business": {
             "name": lead.name,
             "phone_number": lead.phone,
-            "address": lead.address
+            "address": lead.address,
+            "language": lead.localeinfo.languages if lead.localeinfo.languages else lead.localeinfo.language_codes
         },
         "images": {
             strip_temp_folder(img): lead.images_description[img] for img in lead.images_description

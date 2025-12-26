@@ -2,6 +2,8 @@ from typing import List, Dict, Optional
 import re
 from log import log
 from config import TEMP_PATH
+from languages_support import LocaleInfo
+import json
 class Lead:
     """
     Represents a single business lead in the pipeline, with a built-in
@@ -18,6 +20,7 @@ class Lead:
         self.images = images if images is not None else []
         self.images_description={}
         self.status = status
+        self.localeinfo: LocaleInfo = LocaleInfo(address)
     def __str__(self):
         return f"id:{self.id}, name:{self.name}, status:{self.status})"
     def __repr__(self):
@@ -35,16 +38,23 @@ class Lead:
         Converts the Lead instance into a dictionary suitable for
         database or API interaction.
         """
-        return {
-            'id': self.id,
-            'name': self.name,
-            'phone': self.phone,
-            'address': self.address,
-            'city': self.city,
-            'email': self.email,
-            'images': self.images,
-            'status': self.status
+        data = {
+            "id": self.id,
+            "name": self.name,
+            "phone": self.phone,
+            "email": self.email,
+            "address": self.address,
+            "city": self.city,
+            "images": self.images,
+            "status": self.status,
         }
+
+        if hasattr(self, "localeinfo") and self.localeinfo:
+            data["country_code"] = self.localeinfo.country_code
+            data["currency"] = self.localeinfo.currency
+            data["language_codes"] = json.dumps(self.localeinfo.language_codes)
+
+        return data
 
     # ! OBSOLETE IN SERVER VERSION
     def add_images(self, images:List, descr:bool = False) -> int:
