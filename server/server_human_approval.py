@@ -42,16 +42,16 @@ templates = Jinja2Templates(directory="templates")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+# Mount TEMP_DIR/*/images as static so HTML <img> links work without changing HTML
+# For each lead folder, mount its images folder dynamically
 
-@app.get("/preview/{lead_id}/images/{image_name}")
+
+@app.get("/preview/{lead_id}/images/{image_name:path}")
 def serve_image(lead_id: int, image_name: str):
     image_path = TEMP_DIR / str(lead_id) / "images" / image_name
-
     if not image_path.exists():
         raise HTTPException(status_code=404, detail="Image not found")
-
-    return FileResponse(image_path)
-
+    return FileResponse(image_path.resolve())
 
 
 # ------------------------
@@ -68,19 +68,15 @@ class ReviewRequest(BaseModel):
 
 @app.get("/preview/{lead_id}", response_class=HTMLResponse)
 def preview_website(lead_id: int):
-    """
-    Serves the generated index.html for preview.
-    """
-    log(f"[PREVIEW] Requested preview for lead_id={lead_id}")
-
     index_path = TEMP_DIR / str(lead_id) / "index.html"
-
     if not index_path.exists():
-        log(f"[PREVIEW][ERROR] index.html not found for lead_id={lead_id}")
         raise HTTPException(status_code=404, detail="Website not found")
 
-    log(f"[PREVIEW] Serving index.html for lead_id={lead_id}")
-    return index_path.read_text(encoding="utf-8")
+    html_content = index_path.read_text(encoding="utf-8")
+    # Inject <base> right after <head>
+    html_content = html_content.replace("<head>", f"<head><base href='/preview/{lead_id}/'>")
+    return HTMLResponse(html_content)
+
 
 
 @app.post("/review/{lead_id}")
@@ -212,4 +208,4 @@ def stop_server():
 
 if __name__ == "__main__":
     log("[SERVER] Launched via __main__")
-    run_server_in_different_thread()
+    run_server()

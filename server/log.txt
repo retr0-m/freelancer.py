@@ -158,3 +158,116 @@ Example:
 [2025-12-26 02:09:17.984]	[create_website.py]		prompting model for website...
 [2025-12-26 02:09:18.266]	[create_website.py]		[FATAL ERROR]	Could not generate website for the following reason: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/usage?tab=rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 41.748961056s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '41s'}]}}
 [2025-12-26 02:09:18.267]	[server_human_approval.py]		Succesfully killed web server interface thread (probably @onexit -> server_human_approval.stop_server())
+[2025-12-26 02:18:38.319]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:18:38.337]	[server_human_approval.py]		[SERVER] Launched via __main__
+[2025-12-26 02:18:38.362]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:18:52.984]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:18:52.998]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:18:52.999]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:18:54.408]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=4
+[2025-12-26 02:18:54.409]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=4
+[2025-12-26 02:23:43.726]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:23:43.750]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:23:43.752]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:23:45.292]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=6
+[2025-12-26 02:23:45.293]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=6
+[2025-12-26 02:23:48.133]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=3
+[2025-12-26 02:23:48.134]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=3
+[2025-12-26 02:24:03.095]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:24:03.402]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:24:03.404]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:24:09.911]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=4
+[2025-12-26 02:24:09.912]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=4
+[2025-12-26 02:24:15.412]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=3
+[2025-12-26 02:24:15.413]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=3
+[2025-12-26 02:24:17.975]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:24:17.996]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:24:17.997]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:24:23.544]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=2
+[2025-12-26 02:24:23.546]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=2
+[2025-12-26 02:28:36.962]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:28:36.963]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:29:14.106]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:29:14.107]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:29:24.789]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:29:24.791]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:29:45.673]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:29:45.675]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:33:13.159]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:33:13.166]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:33:13.937]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:33:13.938]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:33:14.538]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:33:14.539]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:33:15.151]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:33:15.152]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:33:18.681]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:33:18.699]	[server_human_approval.py]		[SERVER] Launched via __main__
+[2025-12-26 02:33:18.734]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:33:22.400]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:33:22.401]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:37:42.898]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:37:42.918]	[server_human_approval.py]		[SERVER] Launched via __main__
+[2025-12-26 02:37:42.949]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:37:46.256]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:37:46.256]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:37:50.299]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:37:50.570]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:37:50.571]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:37:57.616]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=6
+[2025-12-26 02:37:57.618]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=6
+[2025-12-26 02:38:03.922]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=3
+[2025-12-26 02:38:03.924]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=3
+[2025-12-26 02:38:05.301]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=2
+[2025-12-26 02:38:05.303]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=2
+[2025-12-26 02:38:50.844]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:38:50.975]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:38:50.976]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:40:51.801]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:40:51.913]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:40:51.914]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:40:58.788]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=3
+[2025-12-26 02:40:58.790]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=3
+[2025-12-26 02:41:00.368]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=6
+[2025-12-26 02:41:00.370]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=6
+[2025-12-26 02:41:01.436]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:41:01.437]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:41:02.144]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=4
+[2025-12-26 02:41:02.145]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=4
+[2025-12-26 02:41:02.866]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=4
+[2025-12-26 02:41:02.867]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=4
+[2025-12-26 02:41:03.635]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=3
+[2025-12-26 02:41:03.637]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=3
+[2025-12-26 02:41:04.233]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=2
+[2025-12-26 02:41:04.235]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=2
+[2025-12-26 02:41:04.887]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=5
+[2025-12-26 02:41:04.889]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=5
+[2025-12-26 02:41:06.816]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=6
+[2025-12-26 02:41:06.818]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=6
+[2025-12-26 02:41:07.449]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:41:07.451]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:41:08.216]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=1
+[2025-12-26 02:41:08.218]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=1
+[2025-12-26 02:41:08.943]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=4
+[2025-12-26 02:41:08.944]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=4
+[2025-12-26 02:42:00.883]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:42:00.986]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:42:00.987]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:42:03.973]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=4
+[2025-12-26 02:42:03.974]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=4
+[2025-12-26 02:46:09.922]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:46:09.940]	[server_human_approval.py]		[SERVER] Launched via __main__
+[2025-12-26 02:46:09.973]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:46:12.184]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:46:12.441]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:46:12.443]	[server_human_approval.py]		[API] Found 6 pending lead(s)
+[2025-12-26 02:46:16.001]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=6
+[2025-12-26 02:46:16.002]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=6
+[2025-12-26 02:46:25.452]	[server_human_approval.py]		[PREVIEW] Requested preview for lead_id=6
+[2025-12-26 02:46:25.454]	[server_human_approval.py]		[PREVIEW] Serving index.html for lead_id=6
+[2025-12-26 02:48:45.946]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:48:45.963]	[server_human_approval.py]		[SERVER] Launched via __main__
+[2025-12-26 02:48:45.998]	[server_human_approval.py]		[INIT] TEMP_DIR set to: /Users/kali/Desktop/business/new websites side hustle/scripts/automating-website-creation/server/__temp__
+[2025-12-26 02:48:55.205]	[server_human_approval.py]		[DASHBOARD] Dashboard loaded
+[2025-12-26 02:48:55.321]	[server_human_approval.py]		[API] Listing pending leads
+[2025-12-26 02:48:55.322]	[server_human_approval.py]		[API] Found 6 pending lead(s)
