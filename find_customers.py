@@ -80,6 +80,7 @@ def find_and_initialize_leads(keyword: str, location: str, radius: int = 5000, m
                     city=location,
                     website_status=website if website else "Nessun Sito"
                 )
+                lead_obj.fetch_localeinfo()
 
                 exists=database.lead_exists(name=lead_obj.name)
                 if not exists:

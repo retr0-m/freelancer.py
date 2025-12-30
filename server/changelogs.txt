@@ -1,3 +1,15 @@
+SERVER VERSION - 1.7.2
+- improved website creation:
+    google ranking
+    copyright matteocola
+
+
+SERVER VERSION - 1.7.1
+- general improvements for server_human_approval.py
+- developing ssocial_media_manager.py -> handles all the socials and requests.
+- developed screenshot_website.py script, called after website creation in __temp__ folder (only for server version) and makes a video of the given website -> this will be used to send a preview of teh website without needing the user to click on a link
+- beta testing screenshot_website.py
+
 SERVER VERSION - 1.6.2
 - improved human approval web page design
 - fixed bug for images no showing in the web page for human approval

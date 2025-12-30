@@ -45,6 +45,7 @@ def initialize_database():
             city TEXT,
             images TEXT,
             status INTEGER NOT NULL,
+            instagram TEXT,
             country_code TEXT,
             currency TEXT,
             language_codes TEXT
@@ -149,17 +150,22 @@ def insert_lead(lead: Lead):
 
     try:
         cursor.execute("""
-            INSERT INTO leads (id, name, phone, email, address, city, images, status, country_code, currency, language_codes)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO leads (
+                id, name, phone, email, address, city,
+                images, status, instagram,
+                country_code, currency, language_codes
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             lead_data['id'],
             lead_data['name'],
             lead_data['phone'],
-            lead_data.get('email', None),
+            lead_data.get('email'),
             lead_data['address'],
             lead_data['city'],
             images_json,
             lead_data.get('status', 0),
+            lead.instagram,                 # ✅ HERE
             lead_data.get('country_code'),
             lead_data.get('currency'),
             lead_data.get('language_codes')
@@ -283,7 +289,8 @@ def lead_from_db_row(row: sqlite3.Row) -> Lead:
         address=row['address'],
         city=row['city'],
         images=images_list,
-        status=row['status']
+        status=row['status'],
+        instagram=row['instagram']
     )
 
     # --- Rebuild LocaleInfo from DB columns ---
@@ -300,6 +307,34 @@ def lead_from_db_row(row: sqlite3.Row) -> Lead:
 
     lead.localeinfo = localeinfo
     return lead
+
+
+def update_lead_instagram(lead_id: int, instagram: str | None) -> bool:
+    log(f"Updating Instagram for Lead ID {lead_id} → {instagram}")
+    conn = create_connection()
+    if conn is None:
+        return False
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE leads SET instagram = ? WHERE id = ?",
+            (instagram, lead_id)
+        )
+        conn.commit()
+
+        if cursor.rowcount == 0:
+            log(f"⚠️ No lead found with ID {lead_id}")
+            return False
+
+        log(f"✅ Instagram updated for Lead ID {lead_id}")
+        return True
+
+    except sqlite3.Error as e:
+        log(f"❌ Error updating Instagram for Lead ID {lead_id}: {e}")
+        return False
+    finally:
+        conn.close()
 
 
 def get_leads(lead_id: Optional[int] = None, name: Optional[str] = None,

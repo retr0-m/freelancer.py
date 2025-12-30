@@ -9,3 +9,6 @@ pandas
 fastapi
 uvicorn
 qr_generator
+
+playwright
+selenium

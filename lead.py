@@ -3,14 +3,27 @@ import re
 from log import log
 from config import TEMP_PATH
 from languages_support import LocaleInfo
+import find_lead_instagram
+import screenshot_website
 import json
+from config import TEMP_PATH
 class Lead:
     """
     Represents a single business lead in the pipeline, with a built-in
     method to serialize itself for database insertion.
     """
-    def __init__(self, id: int, name: str, phone: str, address: str, city: str, email: str = None,
-                images=None, status: int = 0):
+    def __init__(
+        self,
+        id: int,
+        name: str,
+        phone: str,
+        address: str,
+        city: str,
+        email: str = None,
+        images=None,
+        status: int = 0,
+        instagram: str | None = None
+    ):
         self.id = id
         self.name = name
         self.phone = phone
@@ -18,9 +31,10 @@ class Lead:
         self.address = address
         self.city = city
         self.images = images if images is not None else []
-        self.images_description={}
+        self.images_description = {}
         self.status = status
-        self.localeinfo: LocaleInfo = LocaleInfo(address)
+        self.instagram = instagram
+        self.localeinfo = None
     def __str__(self):
         return f"id:{self.id}, name:{self.name}, status:{self.status})"
     def __repr__(self):
@@ -32,6 +46,46 @@ class Lead:
     def change_status(self, s:int):
         self.status=s
 
+    def fetch_localeinfo(self) -> None:
+        self.localeinfo: LocaleInfo = LocaleInfo(self.address)
+
+    def record_preview(self): # * AVAILABLE FOR SERVER VERSION
+
+        screenshot_website.html_file_to_scrolling_video(
+            html_path=TEMP_PATH+"/"+str(self.id)+"/index.html",
+            output_dir=TEMP_PATH+"/"+str(self.id)+"/videos",
+            width=390,
+            height=844,
+            scroll_step=20,
+            scroll_delay=0.03
+        )
+        screenshot_website.html_file_to_scrolling_video(
+            html_path=TEMP_PATH+"/"+str(self.id)+"/index.html",
+            output_dir=TEMP_PATH+"/"+str(self.id)+"/videos",
+            width=1440,
+            height=900,
+            scroll_step=20,
+            scroll_delay=0.03
+        )
+
+    def fetch_instagram(self) -> str | None:
+        """
+        Attempts to discover and set the Instagram handle for this lead.
+        """
+        if self.instagram is not None:
+            log(f"[LEAD] Instagram already set for lead {self.id}: {self.instagram}")
+            return self.instagram
+
+        log(f"[LEAD] Fetching Instagram for lead {self.id}")
+        result = find_lead_instagram.from_lead(self)
+
+        if result:
+            self.instagram = result["handle"]
+            log(f"[LEAD] Instagram set for lead {self.id}: {self.instagram}")
+        else:
+            log(f"[LEAD] No Instagram found for lead {self.id}")
+
+        return self.instagram
 
     def to_dict(self) -> Dict:
         """
@@ -96,7 +150,7 @@ class Lead:
             address=full_address,
             city=city,
             images=[],
-            status=0
+            status=0,
         )
 
 

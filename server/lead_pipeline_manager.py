@@ -19,6 +19,7 @@ import create_website
 import database
 import imgs_descriptions
 from pathlib import Path
+from lead import Lead
 
 
 def how_many_leads_in_temp() -> int:
@@ -43,7 +44,7 @@ city_max_number:int = len(CUSTOMERS_CITY) - 1
 # ? This core function (lead pipeline) updates current_type number everytime it doesnt finds any leads, and then if it runs out of types it goes to the next customer city, resetting the types.
 def lead_pipeline(lead_number: int):
     global current_city_number, current_type_number
-    lead_list: list = []
+    lead_list: list[Lead] = []
     while True:
         lead_list=find_customers.find_and_initialize_leads(CUSTOMERS_TYPE[current_type_number], CUSTOMERS_CITY[current_city_number], max_leads=lead_number)
         if not lead_list:
@@ -62,10 +63,22 @@ def lead_pipeline(lead_number: int):
         else:
             break
 
-
-    temp_leads.create(lead_list) # ? Creating the dirs tree for the incoming leads
-
+    lead_list_with_instagram: list[Lead] = []
+    # ? CHECKING WHICH LEADS HAVE INSTAGRAM.
     for lead in lead_list:
+        # ? DOES INSTAGRAM FETCHING WORKS? (IF NOT: REMOVE THE LEAD BUT KEEP IN DB SO IT WONT FIND IT AGAIN)
+        ig: str | None = lead.fetch_instagram()
+        if ig is not None or ig:
+            lead_list_with_instagram.append(lead)
+        else:
+            log(f"Could not find lead ({lead.id}) Instagram, setting -1 as status and saving in db... (this lead will not be processed due to performance improvement)")
+            lead.change_status(-1)
+            database.insert_lead(lead)
+
+
+    temp_leads.create(lead_list_with_instagram) # ? Creating the dirs tree for the incoming leads
+
+    for lead in lead_list_with_instagram:
 
         files=scrape_images.search_lead_server_images(lead)
         if files:
@@ -77,7 +90,7 @@ def lead_pipeline(lead_number: int):
 
 
 
-    for lead in lead_list:
+    for lead in lead_list_with_instagram:
         create_website.generate_and_save_temp_website(lead)
         lead.change_status(3) # * Status 3 = website done
 
@@ -90,7 +103,7 @@ def lead_pipeline(lead_number: int):
 
 
     # * FROM NOW ON IF A LEAD WEBSITE IS APPROVED THE CODE WILL FOLLOW IN ./server_human_approval.py -> approved()
-
+    # IF APPROVED: lead.fetch_instagram -> publish story -> send proposal
 
 
 

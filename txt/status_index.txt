@@ -1,3 +1,4 @@
+-1 = lead failed (not approved / instagram not found...)
 0 = lead found
 1 = images Scraped
 2 = images described

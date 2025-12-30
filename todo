@@ -1,12 +1,15 @@
 
 # TODO list
 
-open document after creating (let the function return a path that will be opened using browser)
-
-video or screenshot of the website
 marketing ai tester
 
 language support fixes:
 
 * document for customers (proposal)
 * user agreements
+
+
+INSTAGRAM:
+host preview image/video same folder as lead on ftps
+
+* update ftps func to upload it

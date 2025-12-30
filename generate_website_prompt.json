@@ -85,6 +85,10 @@
         "Create an amazing themed website for the provided business",
         "Use only the images provided",
         "Do not reference images that are not provided",
-        "Return only raw HTML code"
+        "Return only raw HTML code",
+        "Add google ranking best practices meta tags",
+        "Ensure the website is mobile-friendly and responsive",
+        "Incorporate modern design principles and animations as specified in style",
+        "Add at the bottom of the page Matteo Cola 2025©  All rights reserved"
     ]
 }

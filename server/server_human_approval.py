@@ -9,6 +9,7 @@ from pathlib import Path
 import sys
 
 sys.path.insert(1, '../')
+import proposal_sender
 import qr_generator
 import create_documentation
 from lead import Lead
@@ -108,7 +109,7 @@ def review_website(lead_id: int, review: ReviewRequest):
 
 
 def approved(lead: Lead) -> None:
-    """Gets called each time a lead was human-approved in the /review route. 
+    """Gets called each time a lead was human-approved in the /review route.
 
     Args:
         lead (Lead): Lead that was approved
@@ -116,8 +117,20 @@ def approved(lead: Lead) -> None:
     ftp_manager.ftps_upload_lead_from_server(lead)
     qr_generator.generate_qr_server(lead)
     create_documentation.create_preview_document_server(lead)
+    lead.record_preview()
+    # TODO: implement instagram logic here
+    # ? double checking instagram username.
+    if lead.instagram:
+        pass # proposal on ig
+    else:
+        if lead.fetch_instagram() is not None:
+            pass # proposal on ig
+        else:
+            log("Lead initialized and approved but couldnt find the instagram. Double check function in lead_pipeline_manager to check for instagram before initializing ")
+
     log(f"DONE APPLYING APPROVE PIPELINE FOR LEAD: {str(lead)}")
     delete_preview(lead.id)
+
 
 
 

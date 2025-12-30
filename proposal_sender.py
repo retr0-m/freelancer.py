@@ -18,7 +18,7 @@ SENDER_EMAIL = os.getenv("SENDER_EMAIL")
 SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")
 # ----------------------------------------
 
-def send_proposal(lead: Lead) -> bool:
+def send_email(lead: Lead) -> bool:
     """
     Sends a proposal email with attached PDF to the given Lead.
     Returns True if email was sent successfully, False otherwise.
@@ -90,6 +90,11 @@ Web Designer — matteocola.com
     except Exception as e:
         log(f" Failed to send email to {lead.email} (Lead ID {lead.id}): {e}")
         return False
+
+
+def send_instagram():
+    pass    #TODO IMPLEMENT THIS FUNC
+
 
 # ---------------- TESTING ----------------
 if __name__ == "__main__":

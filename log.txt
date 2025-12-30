@@ -16,3 +16,56 @@
 [2025-12-24 17:57:31.271]	[log.py]		[FATAL ERROR]	[Errno 2] No such file or directory: '__temp__/150/leads/1/images/2.jpg'
 [2025-12-24 17:57:31.271]	[imgs_descriptions.py]		{}
 [2025-12-24 17:57:31.271]	[imgs_descriptions.py]		==================================================
+[2025-12-26 11:55:39.303]	[find_lead_instagram.py]		[FROM_LEAD] Starting Instagram search for lead ID=42, name='Bäckerei Steiner'
+[2025-12-26 11:55:39.303]	[find_lead_instagram.py]		[FROM_LEAD] Generated search queries: ['Bäckerei Steiner Zürich instagram', 'Bäckerei Steiner instagram', '+41445556677 instagram', 'baeckerei-steiner.ch instagram']
+[2025-12-26 11:55:39.303]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: Bäckerei Steiner Zürich instagram
+[2025-12-26 11:55:39.304]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: Bäckerei Steiner Zürich instagram
+[2025-12-26 11:55:39.304]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'Bäckerei Steiner Zürich instagram': Google CSE API key or CX missing
+[2025-12-26 11:55:39.304]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: Bäckerei Steiner instagram
+[2025-12-26 11:55:39.304]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: Bäckerei Steiner instagram
+[2025-12-26 11:55:39.305]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'Bäckerei Steiner instagram': Google CSE API key or CX missing
+[2025-12-26 11:55:39.305]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: +41445556677 instagram
+[2025-12-26 11:55:39.305]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: +41445556677 instagram
+[2025-12-26 11:55:39.305]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query '+41445556677 instagram': Google CSE API key or CX missing
+[2025-12-26 11:55:39.306]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: baeckerei-steiner.ch instagram
+[2025-12-26 11:55:39.306]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: baeckerei-steiner.ch instagram
+[2025-12-26 11:55:39.306]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'baeckerei-steiner.ch instagram': Google CSE API key or CX missing
+[2025-12-26 11:55:39.306]	[find_lead_instagram.py]		[FROM_LEAD] No Instagram account found for lead ID=42
+[2025-12-26 11:56:10.334]	[find_lead_instagram.py]		[FROM_LEAD] Starting Instagram search for lead ID=42, name='Bäckerei Steiner'
+[2025-12-26 11:56:10.335]	[find_lead_instagram.py]		[FROM_LEAD] Generated search queries: ['Bäckerei Steiner Zürich instagram', 'Bäckerei Steiner instagram', '+41445556677 instagram', 'baeckerei-steiner.ch instagram']
+[2025-12-26 11:56:10.335]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: Bäckerei Steiner Zürich instagram
+[2025-12-26 11:56:10.335]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: Bäckerei Steiner Zürich instagram
+[2025-12-26 11:56:10.335]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'Bäckerei Steiner Zürich instagram': Google CSE API key or CX missing
+[2025-12-26 11:56:10.335]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: Bäckerei Steiner instagram
+[2025-12-26 11:56:10.335]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: Bäckerei Steiner instagram
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'Bäckerei Steiner instagram': Google CSE API key or CX missing
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: +41445556677 instagram
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: +41445556677 instagram
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query '+41445556677 instagram': Google CSE API key or CX missing
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: baeckerei-steiner.ch instagram
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: baeckerei-steiner.ch instagram
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'baeckerei-steiner.ch instagram': Google CSE API key or CX missing
+[2025-12-26 11:56:10.336]	[find_lead_instagram.py]		[FROM_LEAD] No Instagram account found for lead ID=42
+[2025-12-26 12:06:28.848]	[find_lead_instagram.py]		[FROM_LEAD] Starting Instagram search for lead ID=42, name='Bäckerei Steiner'
+[2025-12-26 12:06:28.849]	[find_lead_instagram.py]		[FROM_LEAD] Generated search queries: ['Bäckerei Steiner Zürich instagram', 'Bäckerei Steiner instagram', '+41445556677 instagram', 'baeckerei-steiner.ch instagram']
+[2025-12-26 12:06:28.850]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: Bäckerei Steiner Zürich instagram
+[2025-12-26 12:06:28.850]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: Bäckerei Steiner Zürich instagram
+[2025-12-26 12:06:28.850]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'Bäckerei Steiner Zürich instagram': Google CSE API key or CX missing
+[2025-12-26 12:06:28.850]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: Bäckerei Steiner instagram
+[2025-12-26 12:06:28.851]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: Bäckerei Steiner instagram
+[2025-12-26 12:06:28.851]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'Bäckerei Steiner instagram': Google CSE API key or CX missing
+[2025-12-26 12:06:28.851]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: +41445556677 instagram
+[2025-12-26 12:06:28.851]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: +41445556677 instagram
+[2025-12-26 12:06:28.851]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query '+41445556677 instagram': Google CSE API key or CX missing
+[2025-12-26 12:06:28.852]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: baeckerei-steiner.ch instagram
+[2025-12-26 12:06:28.852]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: baeckerei-steiner.ch instagram
+[2025-12-26 12:06:28.852]	[find_lead_instagram.py]		[FROM_LEAD][ERROR] Google CSE failed for query 'baeckerei-steiner.ch instagram': Google CSE API key or CX missing
+[2025-12-26 12:06:28.852]	[find_lead_instagram.py]		[FROM_LEAD] No Instagram account found for lead ID=42
+[2025-12-26 12:07:07.961]	[find_lead_instagram.py]		[FROM_LEAD] Starting Instagram search for lead ID=42, name='Bäckerei Steiner'
+[2025-12-26 12:07:07.961]	[find_lead_instagram.py]		[FROM_LEAD] Generated search queries: ['Bäckerei Steiner Zürich instagram', 'Bäckerei Steiner instagram', '+41445556677 instagram', 'baeckerei-steiner.ch instagram']
+[2025-12-26 12:07:07.961]	[find_lead_instagram.py]		[FROM_LEAD] Trying query: Bäckerei Steiner Zürich instagram
+[2025-12-26 12:07:07.961]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE query: Bäckerei Steiner Zürich instagram
+[2025-12-26 12:07:08.419]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Google CSE HTTP 200
+[2025-12-26 12:07:08.419]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Inspecting result item: Steiner Flughafebeck AG (@steinerflughafebeck) · Zürich
+[2025-12-26 12:07:08.420]	[find_lead_instagram.py]		[INSTAGRAM SEARCH] Found Instagram handle: steinerflughafebeck
+[2025-12-26 12:07:08.420]	[find_lead_instagram.py]		[FROM_LEAD] Instagram match found for lead ID=42 using query 'Bäckerei Steiner Zürich instagram'
