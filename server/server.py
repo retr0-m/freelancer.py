@@ -123,7 +123,9 @@ def main():
 
     lead_pipeline_manager.mainloop()
 
-    #TODO: SEND PROPOSAL
+    #TODO: 
+    #   - screenshot website
+    #   - send proposal via instagram dms
 
     # wipe_sandbox_data() only for devs purposes, this will wipe all the data you collected about the leads...
 

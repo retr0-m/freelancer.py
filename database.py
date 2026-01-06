@@ -165,7 +165,7 @@ def insert_lead(lead: Lead):
             lead_data['city'],
             images_json,
             lead_data.get('status', 0),
-            lead.instagram,                 # ✅ HERE
+            lead_data.get('instagram'),
             lead_data.get('country_code'),
             lead_data.get('currency'),
             lead_data.get('language_codes')
@@ -294,7 +294,7 @@ def lead_from_db_row(row: sqlite3.Row) -> Lead:
     )
 
     # --- Rebuild LocaleInfo from DB columns ---
-    localeinfo = languages_support.LocaleInfo(row['address'])  
+    localeinfo = languages_support.LocaleInfo(row['address'])
     try:
         localeinfo.language_codes = json.loads(row['language_codes'] or "[]")
     except json.JSONDecodeError:

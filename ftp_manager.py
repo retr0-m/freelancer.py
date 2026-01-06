@@ -185,7 +185,7 @@ def ftps_upload_lead_from_server(lead:Lead):
     ftps = connect_ftps(FTPS_HOST, FTPS_USER, FTPS_PASS)
 
     target_dir=f"/matteocola.com/preview/s/{lead.id}"
-
+    log("Uploading lead to ftps at: "+target_dir)
     if ftps_folder_exists(ftps, target_dir):
         log("Folder already exists on ftp: "+target_dir)
         ftps.quit()
@@ -206,6 +206,7 @@ def ftps_upload_lead_from_server(lead:Lead):
     log("Done!")
 
     ftps.quit()
+    log(f"Lead {lead.id} uploaded to FTPS successfully.")
 
 
 

@@ -101,6 +101,7 @@ class Lead:
             "city": self.city,
             "images": self.images,
             "status": self.status,
+            "instagram": self.instagram,
         }
 
         if hasattr(self, "localeinfo") and self.localeinfo:

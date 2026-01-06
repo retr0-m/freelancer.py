@@ -1,2 +1,0 @@
-#BETA SCRIPT
-

@@ -1,3 +1,8 @@
+"""
+This script should only used by developers to recreate the proposal
+documentation for all leads in the database.
+"""
+
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from PyPDF2 import PdfReader, PdfWriter
