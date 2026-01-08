@@ -15,7 +15,7 @@ async function loadLeads() {
     })
 
     if (leads.length === 0) {
-        container.innerHTML = '<p>No pending leads</p>'
+        container.innerHTML = '<p style="padding: 10px;">Generating leads...</p>'
         document.getElementById('frame').src = ''
     }
 }

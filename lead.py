@@ -7,6 +7,7 @@ import find_lead_instagram
 import screenshot_website
 import json
 from config import TEMP_PATH
+from instagram_usernames_blacklist import is_blacklisted
 class Lead:
     """
     Represents a single business lead in the pipeline, with a built-in
@@ -78,12 +79,15 @@ class Lead:
 
         log(f"[LEAD] Fetching Instagram for lead {self.id}")
         result = find_lead_instagram.from_lead(self)
-
+        if is_blacklisted(result["handle"]):
+            log(f"[LEAD] Instagram handle '{result['handle']}' is blacklisted.")
+            return None
         if result:
             self.instagram = result["handle"]
             log(f"[LEAD] Instagram set for lead {self.id}: {self.instagram}")
         else:
             log(f"[LEAD] No Instagram found for lead {self.id}")
+            return None
 
         return self.instagram
 

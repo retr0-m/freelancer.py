@@ -48,6 +48,15 @@ def get_server_path_from_img(img_path: str, lead_id: int) -> str:
     )
 
 def get_dict(lead: Lead) -> dict:
+    """
+    Docstring for get_dict
+
+    :param lead: laed object
+    :type lead: Lead
+    :return: Description of the images in a dict format
+    :rtype: dict{image_path (str): description(str)}
+        If llava:7b fails to give a description for an image, the description will be "unknown"
+    """
 
     images: list[str] = lead.images
 
@@ -60,7 +69,10 @@ def get_dict(lead: Lead) -> dict:
 
 
     for i in range(0,len(images)-1):
+
         log(f"Giving image description... ({server_images[i]})")
+        description_received:bool = False
+        
         for try_number in range(MAX_RETRIES):
             try:
                 answer = ask_llava(
@@ -68,13 +80,17 @@ def get_dict(lead: Lead) -> dict:
                     image_path=server_images[i]
                 )
                 descriptions[images[i]]=str(answer)
+                description_received=True
                 log("Description successfully received!")
                 break
             except requests.exceptions.HTTPError as e:
-                if(try_number>=1) : log(f"CONNECTION ERROR WHILE PROMPTING LLAVA:7B MODEL, RETRYING WITH A MAX OF {MAX_RETRIES}, ERROR IS THE FOLLOWING: {e}")
-                else: log(f"Retrying connection with llava:7b... (try number: {try_number})")
+                if(try_number<1) : log(f"CONNECTION ERROR WHILE PROMPTING LLAVA:7B MODEL, RETRYING WITH A MAX OF {MAX_RETRIES}, ERROR IS THE FOLLOWING: {e}")
+                else: log(f"Retrying connection with llava:7b... (try number: {try_number})\t exception occurred: {e}")
             except Exception as e:
                 log(str(e))
+        if description_received==False:
+            log_fatal_error("LLAVA:7B FAILED TO GIVE A DESCRIPTION FOR THE IMAGE AFTER MULTIPLE ATTEMPTS, SETTING DESCRIPTION AS 'unknown'")
+            descriptions[images[i]]="unknown"
     return descriptions
 
 

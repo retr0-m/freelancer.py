@@ -55,7 +55,9 @@ def html_file_to_scrolling_video(
         page = context.new_page()
         page.goto(file_url, wait_until="load")
 
-        page.add_style_tag("::-webkit-scrollbar { display: none; }")
+        page.add_style_tag(
+            content="::-webkit-scrollbar { display: none; }"
+        )
         page.wait_for_timeout(500)
 
         max_scroll = page.evaluate(

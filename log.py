@@ -23,19 +23,30 @@ def logo():
 
 def log(*msg: str) -> None:
     """
-    Logs messages to log.txt, prepending the current datetime and
-    the file path of the function that called 'log'.
+    Logs messages to log.txt, prepending:
+    - timestamp with milliseconds
+    - file name
+    - function name
+    - line number
     """
-    caller_frame = inspect.stack()[1]
-    file_path = caller_frame.filename
-    file_name = os.path.basename(file_path)
 
-    # 3. Format the log line prefix
-    time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3] # Format time with milliseconds
-    prefix = f"[{time_str}]\t[{file_name}]\t\t"
+    # Caller info (1 level up the stack)
+    frame = inspect.stack()[1]
+    file_name = os.path.basename(frame.filename)
+    func_name = frame.function
+    line_no = frame.lineno
 
-    # 4. Write to the log file
-    with open(FILE, "a") as f:
+    # Timestamp
+    time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
+
+    # Prefix
+    prefix = (
+        f"[{time_str}]\t"
+        f"[{file_name} - {func_name}():{line_no}]\t\t"
+    )
+
+    # Write log
+    with open(FILE, "a", encoding="utf-8") as f:
         for m in msg:
             f.write(f"{prefix}{m}\n")
 
