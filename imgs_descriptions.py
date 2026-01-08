@@ -28,7 +28,7 @@ def ask_llava(prompt: str, image_path: str):
     if image_path:
         payload["images"] = [image_to_base64(image_path)]
 
-    response = requests.post(OLLAMA_URL, json=payload, timeout=10)
+    response = requests.post(OLLAMA_URL, json=payload, timeout=120)
     response.raise_for_status()
 
     return response.json()["response"]
@@ -71,10 +71,10 @@ def get_dict(lead: Lead) -> dict:
                 log("Description successfully received!")
                 break
             except requests.exceptions.HTTPError as e:
-                if(try_number<=1) : log(f"CONNECTION ERROR WHILE PROMPTING LLAVA:7B MODEL, RETRYING WITH A MAX OF {MAX_RETRIES}, ERROR IS THE FOLLOWING: {e}")
+                if(try_number>=1) : log(f"CONNECTION ERROR WHILE PROMPTING LLAVA:7B MODEL, RETRYING WITH A MAX OF {MAX_RETRIES}, ERROR IS THE FOLLOWING: {e}")
                 else: log(f"Retrying connection with llava:7b... (try number: {try_number})")
             except Exception as e:
-                log_fatal_error(str(e))
+                log(str(e))
     return descriptions
 
 

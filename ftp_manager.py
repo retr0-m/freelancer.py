@@ -207,7 +207,7 @@ def ftps_upload_lead_from_server(lead:Lead):
 
     ftps.quit()
     log(f"Lead {lead.id} uploaded to FTPS successfully.")
-
+    return f"https://matteocola.com/preview/s/{lead.id}/index.html"
 
 
 def ftps_upload_lead_list(lead_list: list[Lead]):

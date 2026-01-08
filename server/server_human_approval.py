@@ -8,8 +8,10 @@ import shutil
 from pathlib import Path
 import sys
 
+from instagram.social_media_manager import InstagramManager
+
 sys.path.insert(1, '../')
-import proposal_sender
+import screenshot_website
 import qr_generator
 import create_documentation
 from lead import Lead
@@ -114,17 +116,41 @@ def approved(lead: Lead) -> None:
     Args:
         lead (Lead): Lead that was approved
     """
-    ftp_manager.ftps_upload_lead_from_server(lead)
-    qr_generator.generate_qr_server(lead)
-    create_documentation.create_preview_document_server(lead)
-    lead.record_preview()
-    # TODO: implement instagram logic here
+    link = ftp_manager.ftps_upload_lead_from_server(lead)
+    # lead.record_preview()
+
+    path: str = TEMP_PATH+"/"+str(lead.id)+"/index.html"
+    video_paths=[]
+    video_paths.append(
+        screenshot_website.html_file_to_scrolling_video(
+            html_path=path,
+            output_dir=f"./{TEMP_PATH}/{lead.id}/videos/",
+            width=390,
+            height=844,
+            scroll_step=20,
+            scroll_delay=0.03
+            )
+        )
+    video_paths.append(
+        screenshot_website.html_file_to_scrolling_video(
+            html_path=path,
+            output_dir=f"./{TEMP_PATH}/{lead.id}/videos/",
+            width=1440,
+            height=900,
+            scroll_step=20,
+            scroll_delay=0.03
+            )
+        )
+
+    bot = InstagramManager()
+    uname=str(lead.instagram)
+
     # ? double checking instagram username.
     if lead.instagram:
-        pass # proposal on ig
+        bot.send_proposal_to_user_by_username(lead.instagram, video_paths, link)
     else:
         if lead.fetch_instagram() is not None:
-            pass # proposal on ig
+            bot.send_proposal_to_user_by_username(uname, video_paths, link)
         else:
             log("Lead initialized and approved but couldnt find the instagram. Double check function in lead_pipeline_manager to check for instagram before initializing ")
 

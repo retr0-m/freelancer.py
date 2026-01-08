@@ -89,6 +89,8 @@
         "Add google ranking best practices meta tags",
         "Ensure the website is mobile-friendly and responsive",
         "Incorporate modern design principles and animations as specified in style",
+        "Prevent horizontal scrolling on all devices",
+        "Do not use navbars on mobile devices, use hamburger menus instead",
         "Add at the bottom of the page Matteo Cola 2025©  All rights reserved"
     ]
 }

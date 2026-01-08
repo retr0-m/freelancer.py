@@ -39,7 +39,16 @@ from subprocess import run
 import lead_pipeline_manager
 import server_human_approval
 
-# caution: path[0] is reserved for script path (or '' in REPL)
+
+# ! KILLING server_human_approval.srv when program exites
+import atexit
+
+@atexit.register
+def shutdown():
+    server_human_approval.stop_server()
+
+
+
 
 
 sys.path.insert(1, '../')
@@ -100,14 +109,6 @@ def get_argv():
         log("No argv for LEADS_TO_GENERATE found, using default.")
 
 
-# ! KILLING server_human_approval.srv when program exites
-from server_human_approval import stop_server
-import atexit
-
-@atexit.register
-def shutdown():
-    stop_server()
-
 
 
 def main():
@@ -123,14 +124,7 @@ def main():
 
     lead_pipeline_manager.mainloop()
 
-    #TODO: 
-    #   - screenshot website
-    #   - send proposal via instagram dms
-
-    # wipe_sandbox_data() only for devs purposes, this will wipe all the data you collected about the leads...
-
-
-    log("Done! ran all the scripts with no fatal errors.")
+    log("Done! ran all the scripts and exited mainloop with status code 0.")
 
 
 def test_1():

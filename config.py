@@ -127,4 +127,4 @@ MAX_LEADS_TO_DISPLAY = 2 # * This means, when there are no leads generated how m
 # * imgs_description.py
 OLLAMA_URL = "http://localhost:11434/api/generate"
 MODEL = "llava:7b"
-MAX_RETRIES = 5
+MAX_RETRIES = 10

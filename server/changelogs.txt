@@ -1,3 +1,18 @@
+SERVER VERSION - 2.0.0
+- fully implemented instagram dms proposal method!! -> see InstagramManager class
+
+SERVER VERSION - 1.8.1
+- started instagram proposal sender implementation
+    class InstagramManager() -> no args
+    methods to:
+        create drivers
+        login
+        open dm
+        strart following by username 
+        human sleep (preventing ban)
+        opload file to dm (still not working)
+        send message to user
+
 SERVER VERSION - 1.7.2
 - improved website creation:
     google ranking

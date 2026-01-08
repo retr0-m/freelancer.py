@@ -18,7 +18,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, InvalidArgumentException
 load_dotenv()
 
 
@@ -211,48 +211,58 @@ class InstagramManager:
     def upload_file_to_dm(self, username, file_path):
         log("→ upload_file_to_dm() start")
 
-        profile_url = f"{self.BASE_URL}{username}/"
-        self.driver.get(profile_url)
+        self.driver.get(f"{self.BASE_URL}{username}/")
         self.human_sleep(3, 5)
 
+        # Open DM
         try:
-            btn = self.wait.until(
+            self.wait.until(
                 EC.element_to_be_clickable(
                     (By.XPATH, "//div[text()='Message' or text()='Send message']")
                 )
-            )
-            btn.click()
+            ).click()
         except:
-            log("← upload_file_to_dm() end (cannot open DM)")
             raise RuntimeError(f"Cannot message @{username}")
 
-        self.human_sleep(3, 5)
+        self.human_sleep(4, 6)
 
-        # Notification popup
+        # Dismiss notification popup
         try:
-            not_now = self.wait.until(
-                EC.element_to_be_clickable((By.XPATH, "//button[text()='Not Now']"))
-            )
-            not_now.click()
-            self.human_sleep()
+            self.wait.until(
+                EC.element_to_be_clickable(
+                    (By.XPATH, "//button[contains(text(),'Not')]")
+                )
+            ).click()
         except:
             pass
 
-        # Find file input (hidden)
-        file_input = self.wait.until(
+        # ✅ WAIT FOR DM COMPOSER (NOT <form>)
+        self.wait.until(
             EC.presence_of_element_located(
-                (By.CSS_SELECTOR, "input[type='file']")
+                (By.XPATH, "//div[@contenteditable='true']")
             )
         )
 
-        # Force visible (important)
-        self.driver.execute_script(
-            "arguments[0].style.display = 'block';", file_input
+        self.human_sleep(1, 2)
+
+        # Find file input
+        file_input = self.wait.until(
+            EC.presence_of_element_located(
+                (By.XPATH, "//input[@type='file']")
+            )
         )
+
+        # Force interaction
+        self.driver.execute_script("""
+            arguments[0].style.display = 'block';
+            arguments[0].style.visibility = 'visible';
+            arguments[0].style.opacity = 1;
+            arguments[0].style.pointerEvents = 'auto';
+        """, file_input)
 
         file_input.send_keys(os.path.abspath(file_path))
 
-        log(f"📤 File uploaded to DM with @{username}")
+        log(f"📤 File queued in DM with @{username}")
         log("← upload_file_to_dm() end")
 
     def open_user_dm(self, username):
@@ -273,8 +283,10 @@ class InstagramManager:
         except:
             log("← open_user_dm() end (failed)")
             raise RuntimeError(f"Cannot message @{username}")
-    def send_message_to_user(self, username, message):
 
+    def send_message_to_user(self, username:str, message:str):
+
+        message+="\n"
         self.human_sleep(3, 5)
 
         try:
@@ -293,21 +305,41 @@ class InstagramManager:
 
         self.human_type(box, message)
         box.send_keys(Keys.ENTER)
-
+        log("Waiting to ensure message is sent...")
+        self.human_sleep(2, 4)
         log(f"📨 Message sent to @{username}")
         log("← send_message_to_user() end")
 
-    def send_proposal_to_user_by_username(self, username):
-        log("→ send_proposal_to_user_by_username() start")
+    def send_proposal_to_user_by_username(self, username:str, path_to_files:list, link_to_website:str):
+        log("Sending proposal to user by username: " + username)
+        try:
+            self.create_driver()
+            self.login()
 
-        proposal = (
-            "Hey! \n"
-            "I came across your profile and wanted to reach out. "
-            "Let me know if you'd be open to a quick chat."
-        )
-        self.send_message_to_user(username, proposal)
+            self.start_following_user_by_username(username)
+            self.open_user_dm(username)
+            for path_to_file in path_to_files:
+                self.upload_file_to_dm(username, path_to_file)
 
-        log("← send_proposal_to_user_by_username() end")
+            with open("./instagram/proposal_template.txt", "r", encoding="utf-8") as f:
+                proposal_message = f.read()
+            proposal_message += link_to_website
+            self.send_message_to_user(username, proposal_message)
+            self.human_sleep(2,4)
+            self.quit()
+        except InvalidArgumentException as e:
+            log(f"Error sending proposal to @{username}: Invalid argument, video for proposal was not found, details: {e}")
+            self.quit()
+        except TimeoutException as e:
+            log(f"Error sending proposal to @{username}: Timeout while waiting for page elements, details: {e}")
+            self.quit()
+        except NoSuchElementException as e:
+            log(f"Error sending proposal to @{username}: Required page element not found, details: {e}")
+            self.quit()
+        except Exception as e:
+            log(f"Error sending proposal to @{username}: {e}")
+            self.quit()
+
 
     # ----------------------------
     # TEST / HEALTH CHECK
